@@ -8,7 +8,6 @@ import {
     Typography,
     IconButton,
     Collapse,
-    Switch,
     Badge,
   } from "@material-tailwind/react";
 import { NavLink } from 'react-router-dom';
@@ -27,10 +26,17 @@ const Header = () => {
 
       const navList = (
         <ul className="mt-4 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
-          
-            <li><NavLink to={SHOP_USER} className="text-sm flex items-center text-gray font-semibold hover:text-red-800">
+
+          <Typography
+            as="li"
+            variant="h6"
+            color="blue-gray"
+            className="text-sm font-semibold hover:text-red-800"
+          >
+            <a href={SHOP_USER} className="flex items-center">
             Магазин
-          </NavLink></li>
+            </a>
+          </Typography>
           
           <Typography
             as="li"
@@ -310,9 +316,7 @@ const Header = () => {
                     <div className="mr-4 hidden lg:block">{navList}</div>
                     <div className="flex items-center gap-x-1 mr-2">
                     
-                    <div className='mx-3 items-center mt-2'>
-                        <Switch/>
-                    </div>
+                    
                     
                     
                     <IconButton color='blue-gray' variant='outlined' className=' h-8 w-8 rounded-full mr-3'>

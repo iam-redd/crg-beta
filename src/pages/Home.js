@@ -1,4 +1,4 @@
-import { Button, Typography } from '@material-tailwind/react';
+import { Button } from '@material-tailwind/react';
 import React from 'react';
 import movie from '../assets/IMG_2584.webm'
 import schoolImg from '../assets/kons_img4.jpg'
@@ -25,8 +25,8 @@ const Home = () => {
             </video>
             </div>
             <div className='absolute top-20 left-14'>
-                <h1 className='text-4xl w-3/4 font-black text-white 2xl:w-2/3 2xl:text-6xl'>ЖАРИМ КОФЕ КАЖДЫЙ ДЕНЬ</h1>
-                <p className='text-base w-2/3 font-normal text-white mt-5 2xl:text-xl'>Поставки свежеобжаренного кофе и сиропов собственного производства</p>
+                <h1 className='text-3xl w-3/4 font-black text-white 2xl:w-2/3 2xl:text-5xl'>ЖАРИМ КОФЕ КАЖДЫЙ ДЕНЬ</h1>
+                <p className='text-base w-2/3 font-normal text-white mt-5 2xl:text-lg'>Поставки свежеобжаренного кофе и сиропов собственного производства</p>
             </div>
             <div className='absolute bottom-20 left-14'>
                     <Button size='md' variant='outlined' color='white' className='font-thin text-xs mr-5 hover:background-white hover:text-white'> В каталог</Button>
@@ -44,25 +44,20 @@ const Home = () => {
             <figcaption className="absolute bottom-20 left-14">
             <Button size='md' variant='outlined' color='white' className='font-thin text-xs'>Тык сюда и тык туда</Button>
             </figcaption>
-            <figcaption className="absolute top-20 left-14 pr-14">
-              <div>
-                <h1 color="white" className='text-start text-white text-4xl font-black 2xl:text-5xl'>
-                  ШКОЛА БАРИСТА
-                </h1>
-                <Typography variant="lead" color="white" className='text-start mt-5'>
-                  Научим готовить вкусный кофе, с любовью
-                </Typography>
-              </div>
-            </figcaption>
+            
+            <div className='absolute top-20 left-14'>
+                <h1 className='text-3xl w-3/4 font-black text-white 2xl:w-2/3 2xl:text-5xl'>ШКОЛА БАРИСТА</h1>
+                <p className='text-base w-2/3 font-normal text-white mt-5 2xl:text-lg'>Научим готовить вкусный кофе, с любовью</p>
+            </div>
           </figure>
           </div>
-</div>
+        </div>
 
           <main>
             <div className='mt-10 md:h-full xl:mx-auto xl:max-w-screen-xl 2xl:max-w-screen-2xl'>
               <div> 
                 <div>
-                  <h2 className='text-2xl font-bold text-center my-10'>НОВИНКИ</h2>
+                  <h2 className='text-xl font-bold text-center my-10'>НОВИНКИ</h2>
                 </div>
                 
                   <div className='flex justify-between'>
@@ -76,7 +71,7 @@ const Home = () => {
             </div>
 
             <div className='mt-10 bg-crg-opacity bg-no-repeat bg-white py-5'>
-              <div className='xl:mx-auto xl:max-w-screen-xl 2xl:max-w-screen-2xl'>
+              <div className='xl:mx-auto xl:max-w-screen-xl 2xl:max-w-screen-xl'>
               <h2 className='text-2xl font-bold text-center'>COFFEE ROASTERY GROUP</h2>
               <div className='flex w-full items-center'>
                 <div className='flex w-2/5 p-10'>

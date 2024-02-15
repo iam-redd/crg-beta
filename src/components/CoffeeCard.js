@@ -6,13 +6,13 @@ function CoffeeCard () {
     return (
         <div>
         <Card className='w-80 h-full border py-5 px-5'>
-                <div className='flex justify-end py-2 px-4'>
+                <div className='flex justify-end py-2 px-4 text-xs'>
                 Топ-недели
                 </div>
-                <h2 className='text-center font-bold text-2xl'>Перу</h2>
+                <h2 className='text-center font-bold text-xl'>Перу</h2>
                 <div className='flex mt-5'>
                     <img src={cardImg} alt='card-img' className='object-cover w-1/2'/>
-                    <div  className='grid grid-cols-1 grid-rows-6 gap-3 px-4 py-3 text-xs'>
+                    <div  className='grid grid-cols-1 grid-rows-8 gap-1 px-3 py-2 text-xs'>
                         <p>
                             Обработка: <span>Мытая</span>
                         </p>
@@ -30,7 +30,7 @@ function CoffeeCard () {
                                     </span>
                         </p>
                 </div>
-                <div className='flex justify-between items-center mt-8 text-sm'>
+                <div className='flex justify-between items-center mt-4 text-sm'>
                     <div className='grid grid-cols-4 items-center'>
                     Помол: 
                     <div className='col-span-3'>
@@ -59,7 +59,7 @@ function CoffeeCard () {
                     
                 </div>
                 <div className='mt-5'>
-                    <Typography variant='h5'>Цена: <span>50000</span> UZS</Typography>
+                    <Typography variant='h6'>Цена: <span>50000</span> UZS</Typography>
                 </div>
                 <div className='flex mt-5 items-center justify-between'>
                     <div className='flex items-center justify-between'>
