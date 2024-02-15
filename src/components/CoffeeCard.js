@@ -69,10 +69,7 @@ function CoffeeCard () {
                     </div>
                         <Button variant='outlined' color='red'>В корзину</Button>
                 </div>
-                
-
             </Card>
-            
         </div>
     );
 };
