@@ -1,0 +1,6 @@
+.main-button{
+    border: 2px black solid;
+    width: fit-content;
+    padding: 8px;
+    border-radius: 15px;
+}

@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import './styles/button.css'
+import './styles/home.css'
 import { BrowserRouter } from 'react-router-dom';
 import AppRouter from './components/AppRouter';
 import { ThemeProvider } from '@material-tailwind/react';

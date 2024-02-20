@@ -4,7 +4,7 @@ import { Button, Card, IconButton, Option, Progress, Select, Typography } from '
 
 function CoffeeCard () {
     return (
-        <div>
+        <div className='mb-5'>
         <Card className='w-80 h-full border py-5 px-5'>
                 <div className='flex justify-end py-2 px-4 text-xs'>
                 Топ-недели
