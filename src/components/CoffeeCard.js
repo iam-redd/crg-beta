@@ -1,58 +1,14 @@
 import React, { useState } from 'react';
 import { Button, Card, IconButton, Option, Progress, Select, Typography } from '@material-tailwind/react';
 import cart from '../assets/icons/icons8-cart-64.png'
-import url from '../default.json'
-import { useDispatch, useSelector } from 'react-redux'
-import { addTooBasket } from '../store/slices/basketSlice';
+import img from '../assets/cards/JMB_8162.jpg'
 import {useNavigate} from 'react-router-dom'
 function CoffeeCard({ data }) {
-    const dispatch = useDispatch()
     const weightSize = ['250гр', '500гр', '1000гр']
-    const amount = (1)
     const [boolBasket,setBoolBasket] = useState(false)
-    let showBtnCartPomol = false
-    let showBtnCartweight = false
-    const [pomol, setPomol] = useState(null)
-    const [weight, setWeight] = useState(null)
-    const allProductsId = useSelector(state => state.basket.allProductsId)
-    const basket = useSelector(state => state.basket.basket)
+  
     const navigate = useNavigate()
-    const changePomol = (val) => {
-        const template = basket.filter(product => product.pomol === val)
-        const template2 = template.filter(product => product.weight === weight)
-        if(basket.length > 0 && template2.length > 0){
-            console.log(template2)
-            setBoolBasket(true)
-        }else{
-            setBoolBasket(!true)
-        }
-        setPomol(val)
-    }
-    const changeWeight = (val) => {
-        const template = basket.filter(product => product.weight === val)
-        const template2 = template.filter(product => product.pomol === pomol)
-        if(basket.length > 0 && template2.length > 0){
-            console.log(template2)
-            setBoolBasket(true)
-        }else{
-            setBoolBasket(!true)
-        }
-        setWeight(val)
-    }
 
-
-    function addToBasketе() {
-        if (pomol === null) {
-            return console.log('Помол не выбран')
-        }
-        if (weight === null) {
-            return console.log('Обьем упаковки не выбран')
-        }
-        const info = { id: data._id, amount, weight, pomol }
-        dispatch(addTooBasket(info))
-        setBoolBasket(true)
-        return console.log('Добавлен в корзину')
-    }
     return (
         <div className='mb-5'>
             <Card className='w-80 h-full border py-5 px-5'>
@@ -61,7 +17,7 @@ function CoffeeCard({ data }) {
                 </div>
                 <h2 className='text-center font-bold text-xl'>{'Efhiopia'}</h2>
                 <div className='flex mt-5'>
-                    <img src={`${url.backendUrl}/${data.img}`} alt='card-img' className='object-cover w-1/2' />
+                    <img src={`${img}`} alt='card-img' className='object-cover w-1/2' />
                     <div className='grid grid-cols-1 grid-rows-8 gap-1 px-3 py-2 text-xs'>
                         <p>
                             Обработка: <span>Мытая</span>
@@ -84,7 +40,7 @@ function CoffeeCard({ data }) {
                     <div className='grid grid-cols-4 items-center'>
                         Помол:
                         <div className='col-span-3'>
-                            <Select size="md" label="Выберите помол" onChange={(e) => changePomol(e)}>
+                            <Select size="md" label="Выберите помол">
                                 <Option value='turku'>Под турку</Option>
                                 <Option value='mokka'>Под гейзер/Мокка</Option>
                                 <Option value='espresso'>Под Эспрессо</Option>
@@ -98,13 +54,12 @@ function CoffeeCard({ data }) {
                     <div className='grid grid-cols-4 items-center'>
                         <p>Вес:</p>
                         <div className='col-span-3'>
-                            <Select size="md" label="Выберите вес" onChange={(e) => changeWeight(e)}>
+                            <Select size="md" label="Выберите вес">
                                 {
                                     weightSize.map((item, index) => (
                                         <Option
                                             key={index}
                                             value={item}
-                                            disabled={!data.weight[index]}
                                         >{item}
                                         </Option>
                                     ))
@@ -136,7 +91,7 @@ function CoffeeCard({ data }) {
                     {
                         boolBasket ?
                             <Button variant='outlined' color='red' onClick={()=> navigate('/basket')}> <span><img style={{ display: 'inline-block', marginRight: '5px' }} width={24} height={24} src={cart} alt="" /></span>Перейти</Button> :
-                            <Button variant='outlined' color='red' onClick={addToBasketе}>В корзину</Button>
+                            <Button variant='outlined' color='red'>В корзину</Button>
                     }
 
                 </div>

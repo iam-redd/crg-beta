@@ -15,7 +15,7 @@ import { useGetAllGoodsQuery } from '../../store/goodsApi';
 import {useSelector} from 'react-redux'
 
 const Home = () => {
-  const { data, isSuccess } = useGetAllGoodsQuery()
+  // const { data, isSuccess } = useGetAllGoodsQuery()
   // if (isSuccess) {
   //   console.log(data)
   // }
@@ -67,20 +67,11 @@ const Home = () => {
             </div>
             <div className=''>
               <div className='flex justify-between sm:flex-wrap sm:justify-around md:flex-wrap md:justify-around xl:flex-nowrap'>
-                {
-                  isSuccess ? <>
-                    {
-                      data.map((card, index) => (
-                        <CoffeeCard key={index} data={card}/>
-                      ))
-                    }
-                  </> :
-                    <></>
-                }
-                {/* <CoffeeCard />
+                
                 <CoffeeCard />
                 <CoffeeCard />
-                <CoffeeCard /> */}
+                <CoffeeCard />
+                <CoffeeCard />
               </div>
             </div>
           </div>
