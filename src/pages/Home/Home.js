@@ -16,9 +16,9 @@ import {useSelector} from 'react-redux'
 
 const Home = () => {
   const { data, isSuccess } = useGetAllGoodsQuery()
-  if (isSuccess) {
-    console.log(data)
-  }
+  // if (isSuccess) {
+  //   console.log(data)
+  // }
   const basket = useSelector(state => state.basket.basket)
   console.log(basket)
   return (

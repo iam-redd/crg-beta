@@ -22,7 +22,6 @@ import {
     InboxIcon,
   } from "@heroicons/react/24/solid";
   import { ChevronRightIcon, ChevronDownIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
-   
 
 const Shop = () => {
 
@@ -146,14 +145,14 @@ const Shop = () => {
                 <Input icon={<MagnifyingGlassIcon className="h-5 w-5 hidden" />} className='hidden' />
                 <Input icon={<MagnifyingGlassIcon className="h-5 w-5" />} label="Поиск по товарам" />
             </div>
+            {/* <CoffeeCard/>
             <CoffeeCard/>
             <CoffeeCard/>
             <CoffeeCard/>
             <CoffeeCard/>
             <CoffeeCard/>
             <CoffeeCard/>
-            <CoffeeCard/>
-            <CoffeeCard/>
+            <CoffeeCard/> */}
         </div>
         </div>
         </div>

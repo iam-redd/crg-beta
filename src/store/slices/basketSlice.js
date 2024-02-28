@@ -1,21 +1,28 @@
-import {createSlice} from '@reduxjs/toolkit'
+import { createSlice } from "@reduxjs/toolkit";
+
 
 const basketSlice = createSlice({
     name: 'basket',
-    initialState:{
-        basket:[],
+    initialState: {
+        basket: [],
+        allProductsId: [],
     },
-    reducers:{
-        addToBasket(state,{payload}){
-            console.log(payload)
-            return
+    reducers: {
+        addTooBasket(state, { payload }) {
+            if(payload.property){
+                const index = state.allProductsId.indexOf(payload.id)
+                if(state.basket[index].weight === payload.weight){
+                    state.basket[index].amount = state.basket[index].amount + payload.amount
+                }else{
+                    
+                }
+            }else{
+                state.basket.push(payload)
+                state.allProductsId.push(payload.id)
+            }
         },
-        removeFromToBasket(state,{payload}){
-
-        },
-    }
+    },
 })
 
-export const {addToBasket,removeFromToBasket} = basketSlice.actions;
-
-export default basketSlice.reducer;
+export const { addTooBasket } = basketSlice.actions;
+export default basketSlice.reducer

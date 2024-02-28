@@ -1,8 +1,5 @@
 import React from 'react';
-
 import { ShoppingCartIcon, UserIcon } from "@heroicons/react/24/solid";
-
-
 import {
     Navbar,
     Typography,
@@ -10,13 +7,10 @@ import {
     Collapse,
     Badge,
   } from "@material-tailwind/react";
-import { NavLink } from 'react-router-dom';
 import { ABOUT_COFFEE, HOME_PAGE, JS_BARISTA, RECIPES, SHOP_USER } from '../utils/consts';
 
 const Header = () => {
-
     const [openNav, setOpenNav] = React.useState(false);
-
     React.useEffect(() => {
         window.addEventListener(
           "resize",
@@ -26,7 +20,6 @@ const Header = () => {
 
       const navList = (
         <ul className="mt-4 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
-
           <Typography
             as="li"
             variant="h6"
@@ -37,7 +30,6 @@ const Header = () => {
             Магазин
             </a>
           </Typography>
-          
           <Typography
             as="li"
             variant="h6"
@@ -70,7 +62,6 @@ const Header = () => {
           </Typography>
         </ul>
       );
-
       const topNavList = (
         <div className='flex flex-col gap-2 text-gray-800'>
         <ul className='mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 text-sm'>
@@ -84,7 +75,6 @@ const Header = () => {
         </div>
         </div>
       );
-
         return (
           <div className="bg-white">
               <Navbar className="sticky h-full shadow-sm z-10 mx-auto max-w-screen-xl 2xl:max-w-screen-2xl rounded-none px-4 2xl:px-0 py-2 lg:px-8 lg:py-4">
@@ -97,7 +87,6 @@ const Header = () => {
                     <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
                     width="35" height="35" viewBox="0 0 374.000000 375.000000"
                     preserveAspectRatio="xMidYMid meet">
-
                     <g transform="translate(0.000000,375.000000) scale(0.100000,-0.100000)"
                     fill="#BA181B" stroke="none">
                     <path d="M1670 3729 c-623 -66 -1182 -454 -1464 -1017 -97 -193 -164 -414
@@ -315,15 +304,9 @@ const Header = () => {
                   <div className="flex items-center gap-4">
                     <div className="mr-4 hidden lg:block">{navList}</div>
                     <div className="flex items-center gap-x-1 mr-2">
-                    
-                    
-                    
-                    
                     <IconButton color='blue-gray' variant='outlined' className=' h-8 w-8 rounded-full mr-3'>
                       <UserIcon className="h-4 w-4" />
                     </IconButton>
-                  
-                    
                     <Badge content="1" color='blue-gray' withBorder>
                     <IconButton color='blue-gray' className='h-8 w-8 rounded-full'>
                       <ShoppingCartIcon className="h-4 w-4" />
