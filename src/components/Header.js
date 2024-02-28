@@ -1,95 +1,112 @@
 import React from 'react';
 import { ShoppingCartIcon, UserIcon } from "@heroicons/react/24/solid";
 import {
-    Navbar,
-    Typography,
-    IconButton,
-    Collapse,
-    Badge,
-  } from "@material-tailwind/react";
+  Navbar,
+  Typography,
+  IconButton,
+  Collapse,
+  Badge,
+} from "@material-tailwind/react";
 import { ABOUT_COFFEE, HOME_PAGE, JS_BARISTA, RECIPES, SHOP_USER } from '../utils/consts';
 
 const Header = () => {
-    const [openNav, setOpenNav] = React.useState(false);
-    React.useEffect(() => {
-        window.addEventListener(
-          "resize",
-          () => window.innerWidth >= 960 && setOpenNav(false),
-        );
-      }, []);
+  const [openNav, setOpenNav] = React.useState(false);
+  React.useEffect(() => {
+    window.addEventListener(
+      "resize",
+      () => window.innerWidth >= 960 && setOpenNav(false),
+    );
+  }, []);
 
-      const navList = (
-        <ul className="mt-4 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
-          <Typography
-            as="li"
-            variant="h6"
-            color="blue-gray"
-            className="text-sm font-semibold hover:text-red-800"
-          >
-            <a href={SHOP_USER} className="flex items-center">
-            Магазин
-            </a>
-          </Typography>
-          <Typography
-            as="li"
-            variant="h6"
-            color="blue-gray"
-            className="text-sm font-semibold hover:text-red-800"
-          >
-            <a href={JS_BARISTA} className="flex items-center">
-              Школа бариста
-            </a>
-          </Typography>
-          <Typography
-            as="li"
-            variant="h6"
-            color="blue-gray"
-            className="text-sm font-semibold hover:text-red-800"
-          >
-            <a href={RECIPES} className="flex items-center">
-              Рецепты
-            </a>
-          </Typography>
-          <Typography
-            as="li"
-            variant="h6"
-            color="blue-gray"
-            className="text-sm font-semibold hover:text-red-800"
-          >
-            <a href={ABOUT_COFFEE} className="flex items-center">
-              Энциклопедия
-            </a>
-          </Typography>
-        </ul>
-      );
-      const topNavList = (
-        <div className='flex flex-col gap-2 text-gray-800'>
-        <ul className='mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 text-sm'>
-            <li>О нас</li>
-            <li>Оплата и доставка</li>
-            <li>Опт</li>
-            <li>Контакты</li>
-        </ul>
-        <div className='text-md cursor-text text-gray-600 mb-5'>
+  const navList = (
+    <ul className="mt-4 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
+      <Typography
+        as="li"
+        variant="h6"
+        color="blue-gray"
+        className="text-sm font-semibold hover:text-red-800"
+      >
+        <a href={SHOP_USER} className="flex items-center">
+          Магазин
+        </a>
+      </Typography>
+      <Typography
+        as="li"
+        variant="h6"
+        color="blue-gray"
+        className="text-sm font-semibold hover:text-red-800"
+      >
+        <a href={JS_BARISTA} className="flex items-center">
+          Школа бариста
+        </a>
+      </Typography>
+      <Typography
+        as="li"
+        variant="h6"
+        color="blue-gray"
+        className="text-sm font-semibold hover:text-red-800"
+      >
+        <a href={RECIPES} className="flex items-center">
+          Рецепты
+        </a>
+      </Typography>
+      <Typography
+        as="li"
+        variant="h6"
+        color="blue-gray"
+        className="text-sm font-semibold hover:text-red-800"
+      >
+        <a href={ABOUT_COFFEE} className="flex items-center">
+          Энциклопедия
+        </a>
+      </Typography>
+    </ul>
+  );
+  const topNavList = (
+    <div className='flex flex-col gap-2 text-gray-800'>
+      <ul className='mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 text-sm'>
+        <li>О нас</li>
+        <li>Оплата и доставка</li>
+        <li>Опт</li>
+        <li>Контакты</li>
+      </ul>
+      <div className='text-md cursor-text text-gray-600 mb-5'>
         Call-центр: +998(99)000-00-00
+      </div>
+    </div>
+  );
+  return (
+    <div className="bg-white">
+      <>
+        <div className="bg-white">
+          <div className='border-b border-gray-200'>
+            <div className='h-full mx-auto max-w-screen-xl 2xl:max-w-screen-2xl hidden nowrap  px-4 py-1 2xl:px-0 items-center justify-between text-gray-600 lg:flex lg:px-4 lg:py-2'>
+              <div className='text-sm cursor-text ml-5'>
+                Call-центр: +998(99)000-00-00
+              </div>
+              <ul className='flex text-xs'>
+                <li className='cursor-pointer ml-5 hover:text-red-600'>О нас</li>
+                <li className='cursor-pointer ml-5 hover:text-red-600'>Оплата и доставка</li>
+                <li className='cursor-pointer ml-5 hover:text-red-600'>Опт</li>
+                <li className='cursor-pointer ml-5 hover:text-red-600'>Контакты</li>
+              </ul>
+            </div>
+          </div>
         </div>
-        </div>
-      );
-        return (
-          <div className="bg-white">
-              <Navbar className="sticky h-full shadow-sm z-10 mx-auto max-w-screen-xl 2xl:max-w-screen-2xl rounded-none px-4 2xl:px-0 py-2 lg:px-8 lg:py-4">
-                <div className="flex items-center justify-between text-blue-gray-900">
-                  <Typography
-                    as="a"
-                    href={HOME_PAGE}
-                    className="cursor-pointer font-medium flex items-center"
-                  >  {/*LOGO CRG */}
-                    <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
-                    width="35" height="35" viewBox="0 0 374.000000 375.000000"
-                    preserveAspectRatio="xMidYMid meet">
-                    <g transform="translate(0.000000,375.000000) scale(0.100000,-0.100000)"
-                    fill="#BA181B" stroke="none">
-                    <path d="M1670 3729 c-623 -66 -1182 -454 -1464 -1017 -97 -193 -164 -414
+      </>
+      <Navbar className="sticky h-full shadow-sm z-10 mx-auto max-w-screen-xl 2xl:max-w-screen-2xl rounded-none px-4 2xl:px-0 py-2 lg:px-8 lg:py-4">
+        <div className="flex items-center justify-between text-blue-gray-900">
+          <Typography
+            as="a"
+            href={HOME_PAGE}
+            className="cursor-pointer font-medium flex items-center"
+          >  {/*LOGO CRG */}
+            <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+              width="35" height="35" viewBox="0 0 374.000000 375.000000"
+              preserveAspectRatio="xMidYMid meet">
+              <g transform="translate(0.000000,375.000000) scale(0.100000,-0.100000)"
+                fill="#BA181B" stroke="none">
+                <path d="M1670 3729 c-623 -66 -1182 -454 -1464 -1017 -97 -193 -164 -414
                     -185 -607 -13 -115 -17 -367 -7 -440 12 -90 48 -280 56 -296 4 -8 15 -44 24
                     -80 20 -76 92 -231 170 -363 270 -458 727 -782 1251 -886 140 -28 429 -38 572
                     -20 419 52 793 244 1100 564 480 499 644 1235 422 1901 -231 694 -810 1161
@@ -275,90 +292,90 @@ const Header = () => {
                     -8 3 -5 6 6 6 11 1 17 -2 13 -5z m-52 -14 c-11 -5 -27 -9 -35 -9 -13 -1 -13 0
                     0 9 8 5 24 9 35 9 l20 0 -20 -9z m-542 -57 c-7 -2 -19 -2 -25 0 -7 3 -2 5 12
                     5 14 0 19 -2 13 -5z"/>
-                    <path d="M1921 3097 c-20 -25 -41 -86 -41 -122 0 -35 0 -35 45 -35 34 0 47 5
+                <path d="M1921 3097 c-20 -25 -41 -86 -41 -122 0 -35 0 -35 45 -35 34 0 47 5
                     55 19 14 27 13 124 -2 139 -16 16 -43 15 -57 -1z"/>
-                    <path d="M1552 2826 c-34 -39 -50 -103 -32 -135 10 -20 12 -20 41 -5 42 21 75
+                <path d="M1552 2826 c-34 -39 -50 -103 -32 -135 10 -20 12 -20 41 -5 42 21 75
                     95 62 138 -12 42 -35 43 -71 2z"/>
-                    <path d="M2252 2866 c-6 -13 -8 -27 -5 -30 11 -11 43 15 43 34 0 28 -25 25
+                <path d="M2252 2866 c-6 -13 -8 -27 -5 -30 11 -11 43 15 43 34 0 28 -25 25
                     -38 -4z"/>
-                    <path d="M2501 2864 c-24 -31 -27 -44 -8 -44 16 0 47 32 47 48 0 23 -19 21
+                <path d="M2501 2864 c-24 -31 -27 -44 -8 -44 16 0 47 32 47 48 0 23 -19 21
                     -39 -4z"/>
-                    <path d="M2920 2600 c-70 -6 -98 -13 -155 -43 -127 -65 -128 -64 36 -71 79 -4
+                <path d="M2920 2600 c-70 -6 -98 -13 -155 -43 -127 -65 -128 -64 36 -71 79 -4
                     169 -11 199 -16 86 -15 180 16 180 60 0 28 -45 58 -98 65 -26 4 -54 8 -62 9
                     -8 2 -53 0 -100 -4z"/>
-                    <path d="M990 2294 c-13 -4 -15 -36 -15 -212 l0 -207 60 -3 c32 -2 69 -1 82 3
+                <path d="M990 2294 c-13 -4 -15 -36 -15 -212 l0 -207 60 -3 c32 -2 69 -1 82 3
                     36 9 92 74 107 126 19 63 7 157 -27 208 -40 60 -142 102 -207 85z"/>
-                    <path d="M1860 2178 c-49 -52 -65 -129 -29 -136 20 -4 69 85 69 127 0 37 -11
+                <path d="M1860 2178 c-49 -52 -65 -129 -29 -136 20 -4 69 85 69 127 0 37 -11
                     39 -40 9z"/>
-                    <path d="M2650 2185 c-7 -14 -10 -28 -6 -32 11 -11 41 12 41 32 0 28 -20 28
+                <path d="M2650 2185 c-7 -14 -10 -28 -6 -32 11 -11 41 12 41 32 0 28 -20 28
                     -35 0z"/>
-                    <path d="M1474 2185 c-19 -29 -29 -102 -20 -138 8 -33 73 -97 98 -97 11 0 33
+                <path d="M1474 2185 c-19 -29 -29 -102 -20 -138 8 -33 73 -97 98 -97 11 0 33
                     13 49 29 25 25 29 37 29 84 0 63 -21 107 -61 131 -40 24 -76 20 -95 -9z"/>
-                    <path d="M3013 1563 c-35 -13 -82 -153 -51 -153 34 1 88 68 88 111 0 29 -18
+                <path d="M3013 1563 c-35 -13 -82 -153 -51 -153 34 1 88 68 88 111 0 29 -18
                     49 -37 42z"/>
-                    <path d="M2306 1586 c-42 -44 -59 -118 -33 -143 14 -15 18 -14 42 1 55 36 78
+                <path d="M2306 1586 c-42 -44 -59 -118 -33 -143 14 -15 18 -14 42 1 55 36 78
                     135 39 167 -11 9 -21 4 -48 -25z"/>
-                    </g>
-                    </svg>
-                  </Typography>
-                  <div className="flex items-center gap-4">
-                    <div className="mr-4 hidden lg:block">{navList}</div>
-                    <div className="flex items-center gap-x-1 mr-2">
-                    <IconButton color='blue-gray' variant='outlined' className=' h-8 w-8 rounded-full mr-3'>
-                      <UserIcon className="h-4 w-4" />
-                    </IconButton>
-                    <Badge content="1" color='blue-gray' withBorder>
-                    <IconButton color='blue-gray' className='h-8 w-8 rounded-full'>
-                      <ShoppingCartIcon className="h-4 w-4" />
-                    </IconButton>
-                  </Badge>
-                    </div>
-                    <IconButton
-                      variant="text"
-                      className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
-                      ripple={false}
-                      onClick={() => setOpenNav(!openNav)}
-                    >
-                      {openNav ? (
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          className="h-6 w-6"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          strokeWidth={2}
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M6 18L18 6M6 6l12 12"
-                          />
-                        </svg>
-                      ) : (
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-6 w-6"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth={2}
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M4 6h16M4 12h16M4 18h16"
-                          />
-                        </svg>
-                      )}
-                    </IconButton>
-                  </div>
-                </div>
-                <Collapse open={openNav}>
-                  {navList}
-                  {topNavList}
-                </Collapse>
-              </Navbar>
+              </g>
+            </svg>
+          </Typography>
+          <div className="flex items-center gap-4">
+            <div className="mr-4 hidden lg:block">{navList}</div>
+            <div className="flex items-center gap-x-1 mr-2">
+              <IconButton color='blue-gray' variant='outlined' className=' h-8 w-8 rounded-full mr-3'>
+                <UserIcon className="h-4 w-4" />
+              </IconButton>
+              <Badge content="1" color='blue-gray' withBorder>
+                <IconButton color='blue-gray' className='h-8 w-8 rounded-full'>
+                  <ShoppingCartIcon className="h-4 w-4" />
+                </IconButton>
+              </Badge>
             </div>
-    );
+            <IconButton
+              variant="text"
+              className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
+              ripple={false}
+              onClick={() => setOpenNav(!openNav)}
+            >
+              {openNav ? (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  className="h-6 w-6"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              ) : (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                </svg>
+              )}
+            </IconButton>
+          </div>
+        </div>
+        <Collapse open={openNav}>
+          {navList}
+          {topNavList}
+        </Collapse>
+      </Navbar>
+    </div>
+  );
 };
 
 export default Header;
