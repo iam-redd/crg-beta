@@ -59,7 +59,7 @@ function CoffeeCard({ data }) {
                 <div className='flex justify-end py-2 px-4 text-xs'>
                     Топ-недели
                 </div>
-                <h2 className='text-center font-bold text-xl'>{data?.name ? data.name : ''}</h2>
+                <h2 className='text-center font-bold text-xl'>{'Efhiopia'}</h2>
                 <div className='flex mt-5'>
                     <img src={`${url.backendUrl}/${data.img}`} alt='card-img' className='object-cover w-1/2' />
                     <div className='grid grid-cols-1 grid-rows-8 gap-1 px-3 py-2 text-xs'>
@@ -67,16 +67,16 @@ function CoffeeCard({ data }) {
                             Обработка: <span>Мытая</span>
                         </p>
                         <p>Кислотность:</p>
-                        <Progress color='red' size='sm' value={data?.acidity ? data.acidity : 0} />
+                        <Progress color='red' size='sm' value={80} />
                         <p>Плотность:</p>
-                        <Progress color='red' size='sm' value={data?.density ? data.density : 0} />
-                        <p>Оценка Q: <span>{data?.scores ? data.scores : 0}</span></p>
+                        <Progress color='red' size='sm' value={50} />
+                        <p>Оценка Q: <span>{80}</span></p>
                     </div>
                 </div>
                 <div className='mt-5 text-sm'>
                     <p>
                         Описание: <span>
-                            {data?.description ? data.description : ''}
+                            {'Определённый вкусовой профиль, баланс в котором смещён в сторону сладости и тактильности, плотное тело, мягкая ненавязчивая кислотность, шоколадные нотки. Натуральная обработка.'}
                         </span>
                     </p>
                 </div>
@@ -115,12 +115,8 @@ function CoffeeCard({ data }) {
                 </div>
                 <div className='mt-5'>
                     <Typography variant='h6'>Цена:
-                        <span>{
-                            (-1 === weightSize.indexOf(weight) || 0 === weightSize.indexOf(weight)) && "от "
-                        }
-                            {
-                                -1 === weightSize.indexOf(weight) ? data.priceUser[0] : data.priceUser[weightSize.indexOf(weight)]
-                            }
+                        <span>
+                            150 000
                         </span> UZS</Typography>
                 </div>
                 <div className='flex mt-5 items-center justify-between'>
