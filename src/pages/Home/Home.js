@@ -13,12 +13,14 @@ import teamImg from '../../assets/crg-team.png'
 import instagramIcon from '../../assets/icons/instagram-icon.svg'
 import { useGetAllGoodsQuery } from '../../store/goodsApi';
 import {useSelector} from 'react-redux'
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const { data, isSuccess } = useGetAllGoodsQuery()
   // if (isSuccess) {
   //   console.log(data)
   // }
+  const navigate = useNavigate()
   const basket = useSelector(state => state.basket.basket)
   console.log(basket)
   return (
@@ -50,7 +52,7 @@ const Home = () => {
               alt="School"
             />
             <figcaption className="absolute bottom-20 left-14">
-              <Button size='md' variant='outlined' color='white' className='font-thin text-xs'>Тык сюда и тык туда</Button>
+              <Button size='md' variant='outlined' color='white' onClick={() => navigate('/barista-school')} className='font-thin text-xs'>Тык сюда и тык туда</Button>
             </figcaption>
             <div className='absolute top-20 left-14'>
               <h1 className='text-3xl w-3/4 font-black text-white 2xl:w-2/3 2xl:text-5xl'>ШКОЛА БАРИСТА</h1>

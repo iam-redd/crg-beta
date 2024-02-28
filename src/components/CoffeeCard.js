@@ -37,8 +37,6 @@ function CoffeeCard({ data }) {
         }
         setWeight(val)
     }
-
-
     function addToBasketе() {
         if (pomol === null) {
             return console.log('Помол не выбран')
