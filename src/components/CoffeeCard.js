@@ -6,15 +6,12 @@ import {useNavigate} from 'react-router-dom'
 function CoffeeCard({ data }) {
     const weightSize = ['250гр', '500гр', '1000гр']
     const [boolBasket,setBoolBasket] = useState(false)
-<<<<<<< HEAD
   
     const navigate = useNavigate()
-=======
     const [pomol, setPomol] = useState(null)
     const [weight, setWeight] = useState(null)
     const allProductsId = useSelector(state => state.basket.allProductsId)
     const basket = useSelector(state => state.basket.basket)
-    const navigate = useNavigate()
     const changePomol = (val) => {
         const template = basket.filter(product => product.pomol === val)
         const template2 = template.filter(product => product.weight === weight)
