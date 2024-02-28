@@ -13,6 +13,7 @@ import UserProfile from "./pages/UserProfile"
 import WS_Basket from "./pages/WS_Basket"
 import WS_Shop from "./pages/WS_Shop"
 import WholeSellerProfile from "./pages/WholeSellerProfile"
+
 import { ABOUT_COFFEE, ABOUT_PAGE, ADMIN, BASKET, HOME_PAGE, JS_BARISTA, LOG_IN, PAY_DELIVERY, RECIPES, REGISTRATION, SHOP_USER, SHOP_WHOLESELLER, USER_PROFILE, WHOLESELLER_PROFILE, WS_BASKET } from "./utils/consts"
 
 export const userRoutes = [
@@ -107,7 +108,6 @@ export const wholeSellerRoutes = [
         path: WHOLESELLER_PROFILE,
         Component: WholeSellerProfile
     },
-    
 ]
 
 export const adminRoutes = [
