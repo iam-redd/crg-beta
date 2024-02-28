@@ -14,41 +14,6 @@ function CoffeeCard({ data }) {
     const [weight, setWeight] = useState(null)
     const allProductsId = useSelector(state => state.basket.allProductsId)
     const basket = useSelector(state => state.basket.basket)
-    const navigate = useNavigate()
-    const changePomol = (val) => {
-        const template = basket.filter(product => product.pomol === val)
-        const template2 = template.filter(product => product.weight === weight)
-        if(basket.length > 0 && template2.length > 0){
-            console.log(template2)
-            setBoolBasket(true)
-        }else{
-            setBoolBasket(!true)
-        }
-        setPomol(val)
-    }
-    const changeWeight = (val) => {
-        const template = basket.filter(product => product.weight === val)
-        const template2 = template.filter(product => product.pomol === pomol)
-        if(basket.length > 0 && template2.length > 0 && data._id === template2[0].id){
-            console.log(template2)
-            setBoolBasket(true)
-        }else{
-            setBoolBasket(!true)
-        }
-        setWeight(val)
-    }
-    function addToBasketе() {
-        if (pomol === null) {
-            return console.log('Помол не выбран')
-        }
-        if (weight === null) {
-            return console.log('Обьем упаковки не выбран')
-        }
-        const info = { id: data._id, amount, weight, pomol }
-        dispatch(addTooBasket(info))
-        setBoolBasket(true)
-        return console.log('Добавлен в корзину')
-    }
     return (
         <div className='mb-5'>
             <Card className='w-80 h-full border py-5 px-5'>
