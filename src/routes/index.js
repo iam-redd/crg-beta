@@ -18,7 +18,7 @@ import PayDelivery from '../pages/PayDelivery'
 import AboutCoffe from '../pages/AboutCoffee'
 import JsBarista from '../pages/JSBarista'
 import NotFound from '../pages/NotFound'
-const router = createBrowserRouter(createRoutesFromElements(
+const router = createBrowserRouter(createRoutesFromElements( 
     <Route>
         <Route path="/" element={<Layout/>}>
             <Route index element={<Main/>} />
