@@ -10,8 +10,6 @@ function CoffeeCard({ data }) {
     const weightSize = ['250гр', '500гр', '1000гр']
     const amount = (1)
     const [boolBasket,setBoolBasket] = useState(false)
-    let showBtnCartPomol = false
-    let showBtnCartweight = false
     const [pomol, setPomol] = useState(null)
     const [weight, setWeight] = useState(null)
     const allProductsId = useSelector(state => state.basket.allProductsId)
@@ -31,7 +29,7 @@ function CoffeeCard({ data }) {
     const changeWeight = (val) => {
         const template = basket.filter(product => product.weight === val)
         const template2 = template.filter(product => product.pomol === pomol)
-        if(basket.length > 0 && template2.length > 0){
+        if(basket.length > 0 && template2.length > 0 && data._id === template2[0].id){
             console.log(template2)
             setBoolBasket(true)
         }else{
