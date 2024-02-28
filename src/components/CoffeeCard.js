@@ -2,40 +2,17 @@ import React, { useState } from 'react';
 import { Button, Card, IconButton, Option, Progress, Select, Typography } from '@material-tailwind/react';
 import cart from '../assets/icons/icons8-cart-64.png'
 import img from '../assets/cards/JMB_8162.jpg'
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux';
 function CoffeeCard({ data }) {
     const weightSize = ['250гр', '500гр', '1000гр']
-    const [boolBasket,setBoolBasket] = useState(false)
-  
+    const [boolBasket, setBoolBasket] = useState(false)
+
     const navigate = useNavigate()
     const [pomol, setPomol] = useState(null)
     const [weight, setWeight] = useState(null)
     const allProductsId = useSelector(state => state.basket.allProductsId)
     const basket = useSelector(state => state.basket.basket)
-    const changePomol = (val) => {
-        const template = basket.filter(product => product.pomol === val)
-        const template2 = template.filter(product => product.weight === weight)
-        if(basket.length > 0 && template2.length > 0){
-            console.log(template2)
-            setBoolBasket(true)
-        }else{
-            setBoolBasket(!true)
-        }
-        setPomol(val)
-    }
-    const changeWeight = (val) => {
-        const template = basket.filter(product => product.weight === val)
-        const template2 = template.filter(product => product.pomol === pomol)
-        if(basket.length > 0 && template2.length > 0 && data._id === template2[0].id){
-            console.log(template2)
-            setBoolBasket(true)
-        }else{
-            setBoolBasket(!true)
-        }
-        setWeight(val)
-    }
->>>>>>> newFuchers
-
     return (
         <div className='mb-5'>
             <Card className='w-80 h-full border py-5 px-5'>
@@ -117,7 +94,7 @@ function CoffeeCard({ data }) {
                     </div> */}
                     {
                         boolBasket ?
-                            <Button variant='outlined' color='red' onClick={()=> navigate('/basket')}> <span><img style={{ display: 'inline-block', marginRight: '5px' }} width={24} height={24} src={cart} alt="" /></span>Перейти</Button> :
+                            <Button variant='outlined' color='red' onClick={() => navigate('/basket')}> <span><img style={{ display: 'inline-block', marginRight: '5px' }} width={24} height={24} src={cart} alt="" /></span>Перейти</Button> :
                             <Button variant='outlined' color='red'>В корзину</Button>
                     }
 
