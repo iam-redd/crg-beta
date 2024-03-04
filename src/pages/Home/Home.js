@@ -1,11 +1,10 @@
 import { Button } from '@material-tailwind/react';
 import React from 'react';
-import movie from '../../assets/IMG_2584.webm'
+import movie from '../../assets/kons_img4.jpg'
 import schoolImg from '../../assets/kons_img4.jpg'
 import roasterImg from '../../assets/roaster.png'
 import skladImg from '../../assets/sklad.png'
 import CoffeeCard from '../../components/CoffeeCard';
-
 import deliveryIcon from '../../assets/icons/delivery1.svg'
 import cupIcon from '../../assets/icons/cup.svg'
 import starIcon from '../../assets/icons/star.svg'
@@ -16,10 +15,10 @@ import {useSelector} from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
-  // const { data, isSuccess } = useGetAllGoodsQuery()
-  // if (isSuccess) {
-  //   console.log(data)
-  // }
+  const { data, isSuccess } = useGetAllGoodsQuery()
+  if (isSuccess) {
+    console.log(data)
+  }
   const navigate = useNavigate()
   const basket = useSelector(state => state.basket.basket)
   console.log(basket)
@@ -69,11 +68,13 @@ const Home = () => {
             </div>
             <div className=''>
               <div className='flex justify-between sm:flex-wrap sm:justify-around md:flex-wrap md:justify-around xl:flex-nowrap'>
-                
-                <CoffeeCard />
-                <CoffeeCard />
-                <CoffeeCard />
-                <CoffeeCard />
+                {
+                  isSuccess ? <>
+                  {
+                    data.map((card,index)=> <CoffeeCard key={index} data={card}/> )
+                  }
+                  </> : <h1>Loading....</h1>
+                }
               </div>
             </div>
           </div>
