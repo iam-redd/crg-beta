@@ -58,6 +58,7 @@ function CoffeeCard({ data }) {
                     Топ-недели
                 </div>
                 <h2 className='text-center font-bold text-xl'>{data?.name ? data.name : ''}</h2>
+                <p className='text-red-600 text-xs text-center font-medium'>под эспрессо</p>
                 <div className='flex mt-5'>
                     <img src={`${url.backendUrl}/${data.img}`} alt='card-img' className='object-cover w-1/2' />
                     <div className='grid grid-cols-1 grid-rows-8 gap-1 px-3 py-2 text-xs'>
