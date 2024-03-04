@@ -1,4 +1,4 @@
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, useLocation } from 'react-router-dom';
 import styles from './userProfile.module.css'
 import { useState } from 'react';
 import { useDispatch } from 'react-redux'
@@ -9,6 +9,9 @@ const UserProfile = () => {
     const [isVisible, setVisible] = useState(false)
     const handleVisible = () => setVisible(!isVisible)
     const dispatch = useDispatch()
+
+    const location = useLocation()
+    const fromPage = location.state?.from?.pathname || '/'
 
     const handleLogout = () => {
         dispatch(logout())

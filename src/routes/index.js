@@ -18,23 +18,28 @@ import PayDelivery from '../pages/PayDelivery'
 import AboutCoffe from '../pages/AboutCoffee'
 import JsBarista from '../pages/JSBarista'
 import NotFound from '../pages/NotFound'
+import RequireAuth from "../pages/hoc/RequireAuth";
 const router = createBrowserRouter(createRoutesFromElements(
     <Route>
-        <Route path="/" element={<Layout/>}>
-            <Route index element={<Main/>} />
-            <Route path="shop" element={<ShopUser/>} />
-            <Route path="shop-wholeseller" element={<ShopWholeseller/>} />
-            <Route path="user-profile" element={<UserProfile/>} />
-            <Route path="user-profile/login" element={<Login/>} />
-            <Route path="user-profile/registration" element={<Registration/>} />
-            <Route path="basket" element={<Basket/>} />
-            <Route path="wholeseller-basket" element={<WsBasket/>} />
-            <Route path="admin" element={<Admin/>} />
-            <Route path="about" element={<AboutPage/>} />
-            <Route path="pay-n-delivery" element={<PayDelivery/>} />
-            <Route path="about-coffe" element={<AboutCoffe/>} />
-            <Route path="barista-school" element={<JsBarista/>} />
-            <Route path="*" element={<NotFound/>}/>
+        <Route path="/" element={<Layout />}>
+            <Route index element={<Main />} />
+            <Route path="shop" element={<ShopUser />} />
+            <Route path="shop-wholeseller" element={<ShopWholeseller />} />
+            <Route path="user-profile" element={<UserProfile />} />
+            <Route path="user-profile/login" element={<Login />} />
+            <Route path="user-profile/registration" element={<Registration />} />
+            <Route path="basket" element={<Basket />} />
+            <Route path="wholeseller-basket" element={<WsBasket />} />
+            <Route path="admin" element={
+            <RequireAuth>
+<Admin/>
+            </RequireAuth>
+        } />
+            <Route path="about" element={<AboutPage />} />
+            <Route path="pay-n-delivery" element={<PayDelivery />} />
+            <Route path="about-coffe" element={<AboutCoffe />} />
+            <Route path="barista-school" element={<JsBarista />} />
+            <Route path="*" element={<NotFound />} />
         </Route>
     </Route>
 
