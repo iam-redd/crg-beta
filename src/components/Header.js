@@ -6,7 +6,7 @@ import {
   IconButton,
   Collapse,
   Badge,
-} from "@material-tailwind/react";
+} from "@material-tailwind/react"; 
 import { ABOUT_COFFEE, HOME_PAGE, JS_BARISTA, RECIPES, SHOP_USER } from '../utils/consts';
 
 const Header = () => {
