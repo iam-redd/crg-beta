@@ -88,7 +88,7 @@ function CoffeeCard({ data }) {
                                 <Option value='espresso'>Под Эспрессо</Option>
                                 <Option value='filter'>Под Фильтр</Option>
                                 <Option value='french-press'>Под Френч-пресс</Option>
-                            </Select>
+                            </Select> 
                         </div>
                     </div>
                 </div>
