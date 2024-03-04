@@ -9,9 +9,6 @@ const UserProfile = () => {
     const [isVisible, setVisible] = useState(false)
     const handleVisible = () => setVisible(!isVisible)
     const dispatch = useDispatch()
-    // const decoded = jwt.verify(token, 'secret123')
-    // const userId = decoded._id
-    // console.log(userId)
 
     const handleLogout = () => {
         dispatch(logout())

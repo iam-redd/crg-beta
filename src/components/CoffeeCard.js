@@ -82,8 +82,8 @@ function CoffeeCard({ data }) {
                     <div className='grid grid-cols-4 items-center'>
                         Помол:
                         <div className='col-span-3'>
-                            <Select size="md" label="Выберите помол" onChange={(e) => changePomol(e)}>
-                                <Option value='turku'>Под турку</Option>
+                            <Select size="md" label="Выберите помол" defaultValue={'turku'} onChange={(e) => changePomol(e)}>
+                                <Option  value='turku'>Под турку</Option>
                                 <Option value='mokka'>Под гейзер/Мокка</Option>
                                 <Option value='espresso'>Под Эспрессо</Option>
                                 <Option value='filter'>Под Фильтр</Option>
@@ -114,7 +114,7 @@ function CoffeeCard({ data }) {
                 <div className='mt-5'>
                     <Typography variant='h6'>Цена:
                         <span>{
-                            (-1 === weightSize.indexOf(weight) || 0 === weightSize.indexOf(weight)) && "от "
+                            !weightSize.includes(weight)&& "от "
                         }
                             {
                                 -1 === weightSize.indexOf(weight) ? data.priceUser[0] : data.priceUser[weightSize.indexOf(weight)]
