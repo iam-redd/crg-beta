@@ -127,7 +127,7 @@ const Home = () => {
             <img src={teamImg} alt='Team' className='mx-5' />
             <div>
               <span className='text-lg font-bold'>Подпишись на нас</span>
-              <p className='mt-1 w-4/5'>Здесь мы рассказываем о том, что у нас происходит каждый день. О людях, анонсах, процессах, событиях и новых сортах кофе.</p>
+              <p className='mt-1 w-4/5 text-sm'>Здесь мы рассказываем о том, что у нас происходит каждый день. О людях, анонсах, процессах, событиях и новых сортах кофе.</p>
             </div>
             <div className=''>
               <div className='flex'>

@@ -13,13 +13,51 @@ function CoffeeCard({ data }) {
     const [weight, setWeight] = useState(null)
     const allProductsId = useSelector(state => state.basket.allProductsId)
     const basket = useSelector(state => state.basket.basket)
+    const navigate = useNavigate()
+    const changePomol = (val) => {
+        const template = basket.filter(product => product.pomol === val)
+        const template2 = template.filter(product => product.weight === weight)
+        if(basket.length > 0 && template2.length > 0){
+            console.log(template2)
+            setBoolBasket(true)
+        }else{
+            setBoolBasket(!true)
+        }
+        setPomol(val)
+    }
+    const changeWeight = (val) => {
+        const template = basket.filter(product => product.weight === val)
+        const template2 = template.filter(product => product.pomol === pomol)
+        if(basket.length > 0 && template2.length > 0 && data._id === template2[0].id){
+            console.log(template2)
+            setBoolBasket(true)
+        }else{
+            setBoolBasket(!true)
+        }
+        setWeight(val)
+    }
+
+
+    function addToBasketе() {
+        if (pomol === null) {
+            return console.log('Помол не выбран')
+        }
+        if (weight === null) {
+            return console.log('Обьем упаковки не выбран')
+        }
+        const info = { id: data._id, amount, weight, pomol }
+        dispatch(addTooBasket(info))
+        setBoolBasket(true)
+        return console.log('Добавлен в корзину')
+    }
     return (
         <div className='mb-5'>
             <Card className='w-80 h-full border py-5 px-5'>
                 <div className='flex justify-end py-2 px-4 text-xs'>
                     Топ-недели
                 </div>
-                <h2 className='text-center font-bold text-xl'>{'Efhiopia'}</h2>
+                <h2 className='text-center font-bold text-xl'>{data?.name ? data.name : ''}</h2>
+                <p className='text-red-600 text-xs text-center font-medium'>под эспрессо</p>
                 <div className='flex mt-5'>
                     <img src={`${img}`} alt='card-img' className='object-cover w-1/2' />
                     <div className='grid grid-cols-1 grid-rows-8 gap-1 px-3 py-2 text-xs'>
@@ -44,8 +82,9 @@ function CoffeeCard({ data }) {
                     <div className='grid grid-cols-4 items-center'>
                         Помол:
                         <div className='col-span-3'>
-                            <Select size="md" label="Выберите помол">
-                                <Option value='turku'>Под турку</Option>
+
+                            <Select size="md" label="Выберите помол" defaultValue={'turku'} onChange={(e) => changePomol(e)}>
+                                <Option  value='turku'>Под турку</Option>
                                 <Option value='mokka'>Под гейзер/Мокка</Option>
                                 <Option value='espresso'>Под Эспрессо</Option>
                                 <Option value='filter'>Под Фильтр</Option>
@@ -74,8 +113,13 @@ function CoffeeCard({ data }) {
                 </div>
                 <div className='mt-5'>
                     <Typography variant='h6'>Цена:
-                        <span>
-                            150 000
+                        <span>{
+                            !weightSize.includes(weight)&& "от "
+                        }
+                            {
+                                -1 === weightSize.indexOf(weight) ? data.priceUser[0] : data.priceUser[weightSize.indexOf(weight)]
+                            }
+
                         </span> UZS</Typography>
                 </div>
                 <div className='flex mt-5 items-center justify-between'>
