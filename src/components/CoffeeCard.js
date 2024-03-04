@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
 import { Button, Card, IconButton, Option, Progress, Select, Typography } from '@material-tailwind/react';
 import cart from '../assets/icons/icons8-cart-64.png'
-import url from '../default.json'
-import { useDispatch, useSelector } from 'react-redux'
-import { addTooBasket } from '../store/slices/basketSlice';
-import {useNavigate} from 'react-router-dom'
+import img from '../assets/cards/JMB_8162.jpg'
+import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux';
 function CoffeeCard({ data }) {
-    const dispatch = useDispatch()
     const weightSize = ['250гр', '500гр', '1000гр']
-    const amount = (1)
-    const [boolBasket,setBoolBasket] = useState(false)
+    const [boolBasket, setBoolBasket] = useState(false)
+
+    const navigate = useNavigate()
     const [pomol, setPomol] = useState(null)
     const [weight, setWeight] = useState(null)
     const allProductsId = useSelector(state => state.basket.allProductsId)
@@ -60,22 +59,22 @@ function CoffeeCard({ data }) {
                 <h2 className='text-center font-bold text-xl'>{data?.name ? data.name : ''}</h2>
                 <p className='text-red-600 text-xs text-center font-medium'>под эспрессо</p>
                 <div className='flex mt-5'>
-                    <img src={`${url.backendUrl}/${data.img}`} alt='card-img' className='object-cover w-1/2' />
+                    <img src={`${img}`} alt='card-img' className='object-cover w-1/2' />
                     <div className='grid grid-cols-1 grid-rows-8 gap-1 px-3 py-2 text-xs'>
                         <p>
                             Обработка: <span>Мытая</span>
                         </p>
                         <p>Кислотность:</p>
-                        <Progress color='red' size='sm' value={data?.acidity ? data.acidity : 0} />
+                        <Progress color='red' size='sm' value={80} />
                         <p>Плотность:</p>
-                        <Progress color='red' size='sm' value={data?.density ? data.density : 0} />
-                        <p>Оценка Q: <span>{data?.scores ? data.scores : 0}</span></p>
+                        <Progress color='red' size='sm' value={50} />
+                        <p>Оценка Q: <span>{80}</span></p>
                     </div>
                 </div>
                 <div className='mt-5 text-sm'>
                     <p>
                         Описание: <span>
-                            {data?.description ? data.description : ''}
+                            {'Определённый вкусовой профиль, баланс в котором смещён в сторону сладости и тактильности, плотное тело, мягкая ненавязчивая кислотность, шоколадные нотки. Натуральная обработка.'}
                         </span>
                     </p>
                 </div>
@@ -83,6 +82,7 @@ function CoffeeCard({ data }) {
                     <div className='grid grid-cols-4 items-center'>
                         Помол:
                         <div className='col-span-3'>
+
                             <Select size="md" label="Выберите помол" defaultValue={'turku'} onChange={(e) => changePomol(e)}>
                                 <Option  value='turku'>Под турку</Option>
                                 <Option value='mokka'>Под гейзер/Мокка</Option>
@@ -97,13 +97,12 @@ function CoffeeCard({ data }) {
                     <div className='grid grid-cols-4 items-center'>
                         <p>Вес:</p>
                         <div className='col-span-3'>
-                            <Select size="md" label="Выберите вес" onChange={(e) => changeWeight(e)}>
+                            <Select size="md" label="Выберите вес">
                                 {
                                     weightSize.map((item, index) => (
                                         <Option
                                             key={index}
                                             value={item}
-                                            disabled={!data.weight[index]}
                                         >{item}
                                         </Option>
                                     ))
@@ -120,6 +119,7 @@ function CoffeeCard({ data }) {
                             {
                                 -1 === weightSize.indexOf(weight) ? data.priceUser[0] : data.priceUser[weightSize.indexOf(weight)]
                             }
+
                         </span> UZS</Typography>
                 </div>
                 <div className='flex mt-5 items-center justify-between'>
@@ -138,8 +138,8 @@ function CoffeeCard({ data }) {
                     </div> */}
                     {
                         boolBasket ?
-                            <Button variant='outlined' color='red' onClick={()=> navigate('/basket')}> <span><img style={{ display: 'inline-block', marginRight: '5px' }} width={24} height={24} src={cart} alt="" /></span>Перейти</Button> :
-                            <Button variant='outlined' color='red' onClick={addToBasketе}>В корзину</Button>
+                            <Button variant='outlined' color='red' onClick={() => navigate('/basket')}> <span><img style={{ display: 'inline-block', marginRight: '5px' }} width={24} height={24} src={cart} alt="" /></span>Перейти</Button> :
+                            <Button variant='outlined' color='red'>В корзину</Button>
                     }
 
                 </div>
