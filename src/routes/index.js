@@ -18,7 +18,7 @@ import PayDelivery from '../pages/PayDelivery'
 import AboutCoffe from '../pages/AboutCoffee'
 import JsBarista from '../pages/JSBarista'
 import NotFound from '../pages/NotFound'
-import RequireAuth from "../pages/hoc/RequireAuth";
+import RequireAccess from "../pages/hoc/RequireAuth";
 const router = createBrowserRouter(createRoutesFromElements(
     <Route>
         <Route path="/" element={<Layout />}>
@@ -31,10 +31,10 @@ const router = createBrowserRouter(createRoutesFromElements(
             <Route path="basket" element={<Basket />} />
             <Route path="wholeseller-basket" element={<WsBasket />} />
             <Route path="admin" element={
-            <RequireAuth>
-<Admin/>
-            </RequireAuth>
-        } />
+                <RequireAccess>
+                    <Admin />
+                </RequireAccess>
+            } />
             <Route path="about" element={<AboutPage />} />
             <Route path="pay-n-delivery" element={<PayDelivery />} />
             <Route path="about-coffe" element={<AboutCoffe />} />
