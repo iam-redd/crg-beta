@@ -39,7 +39,7 @@ const Home = () => {
               <p className='text-base w-2/3 font-normal text-white mt-5 2xl:text-lg'>Поставки свежеобжаренного кофе и сиропов собственного производства</p>
             </div>
             <div className='py-10'>
-              <Button href={UserProfile} size='md' variant='outlined' color='white' className='font-thin text-xs mr-5 hover:background-white hover:text-white'> В каталог</Button>
+              <Button size='md' variant='outlined' color='white' className='font-thin text-xs mr-5 hover:background-white hover:text-white'> В каталог</Button>
               <Button size='md' variant='outlined' color='white' className='font-thin text-xs'>Кабинет оптовика</Button>
             </div>
           </div>
