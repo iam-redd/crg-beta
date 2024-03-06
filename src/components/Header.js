@@ -7,7 +7,7 @@ import {
   Collapse,
   Badge,
 } from "@material-tailwind/react";
-import { ABOUT_COFFEE, HOME_PAGE, JS_BARISTA, RECIPES, SHOP_USER } from '../utils/consts';
+import { ABOUT_COFFEE, ADMIN, HOME_PAGE, JS_BARISTA, RECIPES, SHOP_USER } from '../utils/consts';
 
 const Header = () => {
   const [openNav, setOpenNav] = React.useState(false);
@@ -36,7 +36,7 @@ const Header = () => {
         color="blue-gray"
         className="text-sm font-semibold hover:text-red-800"
       >
-        <a href={JS_BARISTA} className="flex items-center">
+        <a href={JS_BARISTA} target='blank' className="flex items-center">
           Школа бариста
         </a>
       </Typography>
@@ -69,6 +69,7 @@ const Header = () => {
         <li>Оплата и доставка</li>
         <li>Опт</li>
         <li>Контакты</li>
+        <a href={ADMIN}><li>Админ</li></a>
       </ul>
       <div className='text-md cursor-text text-gray-600 mb-5'>
         Call-центр: +998(99)000-00-00
@@ -89,6 +90,7 @@ const Header = () => {
                 <li className='cursor-pointer ml-5 hover:text-red-600'>Оплата и доставка</li>
                 <li className='cursor-pointer ml-5 hover:text-red-600'>Опт</li>
                 <li className='cursor-pointer ml-5 hover:text-red-600'>Контакты</li>
+                <a href={ADMIN}><li className='cursor-pointer ml-5 hover:text-red-600'>Админ</li></a>
               </ul>
             </div>
           </div>

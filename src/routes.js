@@ -1,6 +1,6 @@
 import About from "./pages/About"
 import AboutCoffee from "./pages/AboutCoffee"
-import Admin from "./pages/Admin"
+import Admin from "./pages/admin/Admin"
 import Basket from "./pages/Basket"
 import Home from "./pages/Home/Home"
 import JSBarista from "./pages/JSBarista"

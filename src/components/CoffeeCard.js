@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
-import { Button, Card, IconButton, Option, Progress, Select, Typography } from '@material-tailwind/react';
+import { Button, Card, Option, Progress, Select, Typography } from '@material-tailwind/react';
 import cart from '../assets/icons/icons8-cart-64.png'
-import url from '../default.json'
-import { useDispatch, useSelector } from 'react-redux'
-import { addTooBasket } from '../store/slices/basketSlice';
-import {useNavigate} from 'react-router-dom'
+/*import img from '../assets/cards/JMB_8162.jpg'*/
+import { useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux';
+import {addTooBasket} from '../../src/store/slices/basketSlice'
+
 function CoffeeCard({ data }) {
     const dispatch = useDispatch()
     const weightSize = ['250гр', '500гр', '1000гр']
-    const amount = (1)
-    const [boolBasket,setBoolBasket] = useState(false)
+    const [boolBasket, setBoolBasket] = useState(false)
+
+    const amount = 1;
     const [pomol, setPomol] = useState(null)
     const [weight, setWeight] = useState(null)
     const basket = useSelector(state => state.basket.basket)
@@ -58,7 +60,7 @@ function CoffeeCard({ data }) {
                 </div>
                 <h2 className='text-center font-bold text-xl'>{data?.name ? data.name : ''}</h2>
                 <div className='flex mt-5'>
-                    <img src={`${url.backendUrl}/${data.img}`} alt='card-img' className='object-cover w-1/2' />
+                  {/* <img src={`${url.backendUrl}/${data.img}`} alt='card-img' className='object-cover w-1/2' />*/}
                     <div className='grid grid-cols-1 grid-rows-8 gap-1 px-3 py-2 text-xs'>
                         <p>
                             Обработка: <span>Мытая</span>
