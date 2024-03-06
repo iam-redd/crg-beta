@@ -1,10 +1,11 @@
 import { Button } from '@material-tailwind/react';
 import React from 'react';
-import movie from '../../assets/kons_img4.jpg'
+//import movie from '../../assets/kons_img4.jpg'
 import schoolImg from '../../assets/kons_img4.jpg'
 import roasterImg from '../../assets/roaster.png'
 import skladImg from '../../assets/sklad.png'
-import CoffeeCard from '../../components/CoffeeCard';
+import CoffeeCard from '../../components/CoffeeCard'
+import UserProfile from '../UserProfile/UserProfile';
 import deliveryIcon from '../../assets/icons/delivery1.svg'
 import cupIcon from '../../assets/icons/cup.svg'
 import starIcon from '../../assets/icons/star.svg'
@@ -25,20 +26,20 @@ const Home = () => {
   return (
     <div>
       <div className="md:h-full md:flex-wrap xl:flex xl:mx-auto xl:max-w-screen-xl 2xl:max-w-screen-2xl ">
-        <div className='bg-white max-w-screen-xl 2xl:max-w-screen-2xl md:w-full relative h-full inset-x-0 top-0 z-0 xl:w-8/12'>
-          <div className='brightness-75'>
+        <div className='bg-white max-w-screen-xl 2xl:max-w-screen-2xl md:w-full h-full inset-x-0 top-0 z-0 xl:w-8/12'>
+          {/*<div className='brightness-75'>
             <video className="h-full inset-x-0 top-0 z-0 object-cover" autoPlay muted loop>
               <source src={movie} type="video/webm" />
               Your browser does not support the video tag.
             </video>
-          </div>
-          <div className='absolute xl:my-20 top-0 xl:mx-14 sm:m-auto'>
-            <div className='my-10'>
+  </div>*/}
+          <div className='top-0 sm:m-auto offer-back'>
+            <div className='py-10'>
               <h1 className='text-3xl w-3/4 font-black text-white 2xl:w-2/3 2xl:text-5xl'>ЖАРИМ КОФЕ КАЖДЫЙ ДЕНЬ</h1>
               <p className='text-base w-2/3 font-normal text-white mt-5 2xl:text-lg'>Поставки свежеобжаренного кофе и сиропов собственного производства</p>
             </div>
-            <div className='my-10'>
-              <Button size='md' variant='outlined' color='white' className='font-thin text-xs mr-5 hover:background-white hover:text-white'> В каталог</Button>
+            <div className='py-10'>
+              <Button href={UserProfile} size='md' variant='outlined' color='white' className='font-thin text-xs mr-5 hover:background-white hover:text-white'> В каталог</Button>
               <Button size='md' variant='outlined' color='white' className='font-thin text-xs'>Кабинет оптовика</Button>
             </div>
           </div>
