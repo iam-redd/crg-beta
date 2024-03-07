@@ -3,7 +3,7 @@ import React from 'react';
 import roasterImg from '../../assets/roaster.png'
 import skladImg from '../../assets/sklad.png'
 import CoffeeCard from '../../components/CoffeeCard'
-import { USER_PROFILE, SHOP_WHOLESELLER, JS_BARISTA } from '../../utils/consts';
+import {SHOP_WHOLESELLER, JS_BARISTA, SHOP_USER } from '../../utils/consts';
 import deliveryIcon from '../../assets/icons/delivery1.svg'
 import cupIcon from '../../assets/icons/cup.svg'
 import starIcon from '../../assets/icons/star.svg'
@@ -18,7 +18,11 @@ const Home = () => {
   if (isSuccess) {
     console.log(data)
   }
-  //const navigate = useNavigate()
+  //let navigate = useNavigate()
+  //const shopRoute = () => {
+  // navigate(SHOP_USER)
+  //}
+
   const basket = useSelector(state => state.basket.basket)
   console.log(basket)
   return (
@@ -38,8 +42,8 @@ const Home = () => {
               <p className='text-base w-2/3 font-normal text-white mt-5 2xl:text-lg'>Поставки свежеобжаренного кофе и сиропов собственного производства</p>
             </div>
             <div className='py-10 mx-10'>
-              <button className='main-button' href={USER_PROFILE}>В каталог</button>
-              <button className='main-button xl:mx-2' href={SHOP_WHOLESELLER}>Кабинет оптовика</button>
+              <a href={SHOP_USER}><button className='main-button'>В каталог</button></a>
+              <a href={SHOP_WHOLESELLER}><button className='main-button xl:mx-2'>Кабинет оптовика</button></a>
             </div>
             </div>
           </div>
@@ -52,7 +56,7 @@ const Home = () => {
               <p className='text-base font-normal text-white mt-5 2xl:text-lg'>Научим готовить вкусный кофе, с любовью</p>
           </div>
           <div className='py-10'>
-            <button className='main-button' href={JS_BARISTA}>JS Barista</button>
+            <a href={JS_BARISTA} target='blank'><button className='main-button' >JS Barista</button></a>
           </div>
           </div>
           </div>

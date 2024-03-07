@@ -19,6 +19,15 @@ const UserProfile = () => {
     }
     return (
         <div>
+
+            <div className='border-1'>
+                <div>
+                    <div>
+
+                    </div>
+                </div>
+            </div>
+
             <div className={styles.header}>
                 {
                     token ? <div
