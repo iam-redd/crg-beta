@@ -23,7 +23,7 @@ const UserProfile = () => {
             <div className='border-1'>
                 <div>
                     <div>
-
+                        Брбалолаааааа
                     </div>
                 </div>
             </div>

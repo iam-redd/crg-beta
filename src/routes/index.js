@@ -31,8 +31,8 @@ const router = createBrowserRouter(createRoutesFromElements(
             `<Route path="shop" element={<ShopUser />} />
             <Route path="shop-wholeseller" element={<ShopWholeseller />} />
             <Route path="user" element={<UserProfile />} />
-            <Route path="user-profile/login" element={<Login />} />
-            <Route path="user-profile/registration" element={<Registration />} />
+            <Route path="user/login" element={<Login />} />
+            <Route path="user/registration" element={<Registration />} />
             <Route path="basket" element={<Basket />} />
             <Route path="wholeseller-basket" element={<WsBasket />} />
             <Route path="admin" element={
