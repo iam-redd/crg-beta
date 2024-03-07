@@ -1,11 +1,9 @@
-import { Button } from '@material-tailwind/react';
 import React from 'react';
 //import movie from '../../assets/kons_img4.jpg'
-import schoolImg from '../../assets/kons_img4.jpg'
 import roasterImg from '../../assets/roaster.png'
 import skladImg from '../../assets/sklad.png'
 import CoffeeCard from '../../components/CoffeeCard'
-import UserProfile from '../UserProfile/UserProfile';
+import { USER_PROFILE, SHOP_WHOLESELLER, JS_BARISTA } from '../../utils/consts';
 import deliveryIcon from '../../assets/icons/delivery1.svg'
 import cupIcon from '../../assets/icons/cup.svg'
 import starIcon from '../../assets/icons/star.svg'
@@ -13,14 +11,14 @@ import teamImg from '../../assets/crg-team.png'
 import instagramIcon from '../../assets/icons/instagram-icon.svg'
 import { useGetAllGoodsQuery } from '../../store/goodsApi';
 import {useSelector} from 'react-redux'
-import { useNavigate } from 'react-router-dom';
+//import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const { data, isSuccess } = useGetAllGoodsQuery()
   if (isSuccess) {
     console.log(data)
   }
-  const navigate = useNavigate()
+  //const navigate = useNavigate()
   const basket = useSelector(state => state.basket.basket)
   console.log(basket)
   return (
@@ -33,32 +31,31 @@ const Home = () => {
               Your browser does not support the video tag.
             </video>
   </div>*/}
-          <div className='top-0 sm:m-auto offer-back'>
-            <div className='py-10'>
+          <div className='top-0 sm:m-auto offer-back '>
+            <div className='darkness'>
+            <div className='py-16 mx-10'>
               <h1 className='text-3xl w-3/4 font-black text-white 2xl:w-2/3 2xl:text-5xl'>ЖАРИМ КОФЕ КАЖДЫЙ ДЕНЬ</h1>
               <p className='text-base w-2/3 font-normal text-white mt-5 2xl:text-lg'>Поставки свежеобжаренного кофе и сиропов собственного производства</p>
             </div>
-            <div className='py-10'>
-              <Button href={UserProfile} size='md' variant='outlined' color='white' className='font-thin text-xs mr-5 hover:background-white hover:text-white'> В каталог</Button>
-              <Button size='md' variant='outlined' color='white' className='font-thin text-xs'>Кабинет оптовика</Button>
+            <div className='py-10 mx-10'>
+              <button className='main-button' href={USER_PROFILE}>В каталог</button>
+              <button className='main-button xl:mx-2' href={SHOP_WHOLESELLER}>Кабинет оптовика</button>
+            </div>
             </div>
           </div>
         </div>
-        <div className='md:w-full xl:w-4/12'>
-          <figure className="relative h-full w-full">
-            <img
-              className="h-full w-full object-cover object-center brightness-75"
-              src={schoolImg}
-              alt="School"
-            />
-            <figcaption className="absolute bottom-20 left-14">
-              <Button size='md' variant='outlined' color='white' onClick={() => navigate('/barista-school')} className='font-thin text-xs'>Тык сюда и тык туда</Button>
-            </figcaption>
-            <div className='absolute top-20 left-14'>
+        <div className='md:w-full xl:w-4/12 offer-bar-back'>
+          <div className='darkness'>
+          <div className=' mx-10'>
+          <div className='py-16'>
               <h1 className='text-3xl w-3/4 font-black text-white 2xl:w-2/3 2xl:text-5xl'>ШКОЛА БАРИСТА</h1>
-              <p className='text-base w-2/3 font-normal text-white mt-5 2xl:text-lg'>Научим готовить вкусный кофе, с любовью</p>
-            </div>
-          </figure>
+              <p className='text-base font-normal text-white mt-5 2xl:text-lg'>Научим готовить вкусный кофе, с любовью</p>
+          </div>
+          <div className='py-10'>
+            <button className='main-button' href={JS_BARISTA}>JS Barista</button>
+          </div>
+          </div>
+          </div>
         </div>
       </div>
       <main>

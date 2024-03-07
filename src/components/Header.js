@@ -7,7 +7,8 @@ import {
   Collapse,
   Badge,
 } from "@material-tailwind/react";
-import { ABOUT_COFFEE, ADMIN, HOME_PAGE, JS_BARISTA, RECIPES, SHOP_USER } from '../utils/consts';
+import { ABOUT_COFFEE, ADMIN, HOME_PAGE, JS_BARISTA, RECIPES, SHOP_USER,} from '../utils/consts';
+import UserProfile from '../pages/UserProfile/UserProfile'
 
 const Header = () => {
   const [openNav, setOpenNav] = React.useState(false);
@@ -323,11 +324,11 @@ const Header = () => {
           <div className="flex items-center gap-4">
             <div className="mr-4 hidden lg:block">{navList}</div>
             <div className="flex items-center gap-x-1 mr-2">
-              <IconButton color='blue-gray' variant='outlined' className=' h-8 w-8 rounded-full mr-3'>
-                <UserIcon className="h-4 w-4" />
+                <IconButton color='blue-gray' variant='outlined' className='h-8 w-8 rounded-full mr-3'>
+                <UserIcon className="h-4 w-4"/>
               </IconButton>
               <Badge content="1" color='blue-gray' withBorder>
-                <IconButton color='blue-gray' className='h-8 w-8 rounded-full'>
+                <IconButton href={SHOP_USER} color='blue-gray' className='h-8 w-8 rounded-full'>
                   <ShoppingCartIcon className="h-4 w-4" />
                 </IconButton>
               </Badge>
