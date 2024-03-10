@@ -9,20 +9,38 @@ const basketSlice = createSlice({
     },
     reducers: {
         addTooBasket(state, { payload }) {
-            if(payload.property){
-                const index = state.allProductsId.indexOf(payload.id)
-                if(state.basket[index].weight === payload.weight){
-                    state.basket[index].amount = state.basket[index].amount + payload.amount
-                }else{
-                    
-                }
-            }else{
-                state.basket.push(payload)
-                state.allProductsId.push(payload.id)
-            }
+            state.basket.push(payload)
+            state.allProductsId.push(payload.id)
+            window.localStorage.setItem('basket', JSON.stringify(state.basket))
+            window.localStorage.setItem('allProductsId', JSON.stringify(state.allProductsId))
+        },
+        getProductsInLocalStorage(state, { payload }) {
+            state.allProductsId = payload.allProductsId
+            state.basket = payload.basket
+        },
+        incrementProduct(state, { payload }) {
+            console.log(payload)
+            state.basket[payload].amount = state.basket[payload].amount + 1
+            window.localStorage.setItem('basket', JSON.stringify(state.basket))
+            window.localStorage.setItem('allProductsId', JSON.stringify(state.allProductsId))
+        },
+        decrementProduct(state, { payload }) {
+            state.basket[payload].amount = state.basket[payload].amount - 1
+            window.localStorage.setItem('basket', JSON.stringify(state.basket))
+            window.localStorage.setItem('allProductsId', JSON.stringify(state.allProductsId))
+        },
+        removeProductFromBasket(state, { payload }) {
+            state.basket.splice(payload,1)
+            state.allProductsId.splice(payload,1)
+            window.localStorage.setItem('basket', JSON.stringify(state.basket))
+            window.localStorage.setItem('allProductsId', JSON.stringify(state.allProductsId))
         },
     },
 })
 
-export const { addTooBasket } = basketSlice.actions;
+export const { addTooBasket,
+    getProductsInLocalStorage,
+    incrementProduct,
+    decrementProduct,
+    removeProductFromBasket} = basketSlice.actions;
 export default basketSlice.reducer

@@ -12,14 +12,12 @@ import starIcon from '../../assets/icons/star.svg'
 import teamImg from '../../assets/crg-team.png'
 import instagramIcon from '../../assets/icons/instagram-icon.svg'
 import { useGetAllGoodsQuery } from '../../store/goodsApi';
-import {useSelector} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import { useNavigate } from 'react-router-dom';
+import { setAllProducts } from '../../store/slices/serviceDataSlice';
 
 const Home = () => {
   const { data, isSuccess } = useGetAllGoodsQuery()
-  if (isSuccess) {
-    console.log(data)
-  }
   const navigate = useNavigate()
   const basket = useSelector(state => state.basket.basket)
   console.log(basket)

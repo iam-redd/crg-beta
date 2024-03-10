@@ -5,16 +5,20 @@ import cart from '../assets/icons/icons8-cart-64.png'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import {addTooBasket} from '../../src/store/slices/basketSlice'
+import url from '../default.json'
 
 function CoffeeCard({ data }) {
     const dispatch = useDispatch()
     const weightSize = ['250гр', '500гр', '1000гр']
-    const [boolBasket, setBoolBasket] = useState(false)
-
+    const basket = useSelector(state => state.basket.basket)
+    const allProductsId = useSelector(state => state.basket.allProductsId)
+    const [boolBasket, setBoolBasket] = useState(
+        allProductsId !== null ? allProductsId.length > 0 ? allProductsId.includes(data._id) : false  :
+         false
+    )
     const amount = 1;
     const [pomol, setPomol] = useState(null)
     const [weight, setWeight] = useState(null)
-    const basket = useSelector(state => state.basket.basket)
     const navigate = useNavigate()
     const changePomol = (val) => {
         const template = basket.filter(product => product.pomol === val)
@@ -47,7 +51,7 @@ function CoffeeCard({ data }) {
         if (weight === null) {
             return console.log('Обьем упаковки не выбран')
         }
-        const info = { id: data._id, amount, weight, pomol }
+        const info = { id: data._id, amount, weight, pomol , price:data.priceUser[weightSize.indexOf(weight)] }
         dispatch(addTooBasket(info))
         setBoolBasket(true)
         return console.log('Добавлен в корзину')
@@ -60,7 +64,7 @@ function CoffeeCard({ data }) {
                 </div>
                 <h2 className='text-center font-bold text-xl'>{data?.name ? data.name : ''}</h2>
                 <div className='flex mt-5'>
-                  {/* <img src={`${url.backendUrl}/${data.img}`} alt='card-img' className='object-cover w-1/2' />*/}
+                  <img src={`${url.backendUrl}/${data.img}`} alt='card-img' className='object-cover w-1/2' />
                     <div className='grid grid-cols-1 grid-rows-8 gap-1 px-3 py-2 text-xs'>
                         <p>
                             Обработка: <span>Мытая</span>
@@ -84,7 +88,7 @@ function CoffeeCard({ data }) {
                         Помол:
                         <div className='col-span-3'>
                             <Select size="md" label="Выберите помол" onChange={(e) => changePomol(e)}>
-                            <Option value='неМолотый'>Не молотый</Option>
+                            <Option value='не-молотый'>Не молотый</Option>
                                 <Option value='turku'>Под турку</Option>
                                 <Option value='mokka'>Под гейзер/Мокка</Option>
                                 <Option value='espresso'>Под Эспрессо</Option>
@@ -116,7 +120,7 @@ function CoffeeCard({ data }) {
                 <div className='mt-5'>
                     <Typography variant='h6'>Цена:
                         <span>{
-                            (-1 === weightSize.indexOf(weight) || 0 === weightSize.indexOf(weight)) && "от "
+                            !weightSize.includes(weight) && "от "
                         }
                             {
                                 -1 === weightSize.indexOf(weight) ? data.priceUser[0] : data.priceUser[weightSize.indexOf(weight)]
