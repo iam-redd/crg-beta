@@ -3,14 +3,14 @@ import React from 'react';
 import roasterImg from '../../assets/roaster.png'
 import skladImg from '../../assets/sklad.png'
 import CoffeeCard from '../../components/CoffeeCard'
-import {SHOP_WHOLESELLER, JS_BARISTA, SHOP_USER } from '../../utils/consts';
+import { SHOP_WHOLESELLER, JS_BARISTA, SHOP_USER } from '../../utils/consts';
 import deliveryIcon from '../../assets/icons/delivery1.svg'
 import cupIcon from '../../assets/icons/cup.svg'
 import starIcon from '../../assets/icons/star.svg'
 import teamImg from '../../assets/crg-team.png'
 import instagramIcon from '../../assets/icons/instagram-icon.svg'
 import { useGetAllGoodsQuery } from '../../store/goodsApi';
-import {useSelector} from 'react-redux'
+import { useSelector } from 'react-redux'
 //import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
@@ -37,28 +37,28 @@ const Home = () => {
   </div>*/}
           <div className='top-0 sm:m-auto offer-back '>
             <div className='darkness'>
-            <div className='py-16 mx-10'>
-              <h1 className='text-3xl w-3/4 font-black text-white 2xl:w-2/3 2xl:text-5xl'>ЖАРИМ КОФЕ КАЖДЫЙ ДЕНЬ</h1>
-              <p className='text-base w-2/3 font-normal text-white mt-5 2xl:text-lg'>Поставки свежеобжаренного кофе и сиропов собственного производства</p>
-            </div>
-            <div className='py-10 mx-10'>
-              <a href={SHOP_USER}><button className='main-button'>В каталог</button></a>
-              <a href={SHOP_WHOLESELLER}><button className='main-button xl:mx-2'>Кабинет оптовика</button></a>
-            </div>
+              <div className='py-16 mx-10'>
+                <h1 className='text-3xl w-3/4 font-black text-white 2xl:w-2/3 2xl:text-5xl'>ЖАРИМ КОФЕ КАЖДЫЙ ДЕНЬ</h1>
+                <p className='text-base w-2/3 font-normal text-white mt-5 2xl:text-lg'>Поставки свежеобжаренного кофе и сиропов собственного производства</p>
+              </div>
+              <div className='py-10 mx-10'>
+                <a href={SHOP_USER}><button className='main-button'>В каталог</button></a>
+                <a href={SHOP_WHOLESELLER}><button className='main-button xl:mx-2'>Кабинет оптовика</button></a>
+              </div>
             </div>
           </div>
         </div>
         <div className='md:w-full xl:w-4/12 offer-bar-back'>
           <div className='darkness'>
-          <div className=' mx-10'>
-          <div className='py-16'>
-              <h1 className='text-3xl w-3/4 font-black text-white 2xl:w-2/3 2xl:text-5xl'>ШКОЛА БАРИСТА</h1>
-              <p className='text-base font-normal text-white mt-5 2xl:text-lg'>Научим готовить вкусный кофе, с любовью</p>
-          </div>
-          <div className='py-10'>
-            <a href={JS_BARISTA} target='blank'><button className='main-button' >JS Barista</button></a>
-          </div>
-          </div>
+            <div className=' mx-10'>
+              <div className='py-16'>
+                <h1 className='text-3xl w-3/4 font-black text-white 2xl:w-2/3 2xl:text-5xl'>ШКОЛА БАРИСТА</h1>
+                <p className='text-base font-normal text-white mt-5 2xl:text-lg'>Научим готовить вкусный кофе, с любовью</p>
+              </div>
+              <div className='py-10'>
+                <a href={JS_BARISTA} target='blank'><button className='main-button' >JS Barista</button></a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -72,9 +72,9 @@ const Home = () => {
               <div className='flex justify-between sm:flex-wrap sm:justify-around md:flex-wrap md:justify-around xl:flex-nowrap'>
                 {
                   isSuccess ? <>
-                  {
-                    data.map((card,index)=> <CoffeeCard key={index} data={card}/> )
-                  }
+                    {
+                      data.map((card, index) => index < 3 && <CoffeeCard key={index} data={card} />)
+                    }
                   </> : <h1>Loading....</h1>
                 }
               </div>

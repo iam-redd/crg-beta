@@ -62,8 +62,8 @@ const UserProfile = () => {
                 {
                     isVisible &&
                     <div className={styles.hrefWrapper}>
-                        <div className={styles.btn}><Link to="/user-profile/login">Воити</Link></div>
-                        <div className={styles.btn}><Link to="/user-profile/registration">Зарегистрироватся</Link></div>
+                        <div className={styles.btn}><Link to="/user/login">Воити</Link></div>
+                        <div className={styles.btn}><Link to="/user/registration">Зарегистрироватся</Link></div>
                     </div>
                 }
             </div>

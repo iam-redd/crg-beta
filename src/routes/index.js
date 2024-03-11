@@ -22,9 +22,6 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route>
         <Route path="/" element={<Layout />}>
             <Route index element={<Main />} />
-            {/* {
-                pages.map((page, index) => <Route path={route[index]} element={<page/>} />)
-            } */}
             `<Route path="shop" element={<ShopUser />} />
             <Route path="shop-wholeseller" element={<ShopWholeseller />} />
             <Route path="user" element={<UserProfile />} />
