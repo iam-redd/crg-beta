@@ -10,8 +10,6 @@ const Admin = () => {
                 <AdminComponent/>
                 </div>
                 <div className='text-xl font-bold text-center col-span-8'>Admin panel</div>
-                
-                
             </div>
         </div>
     );

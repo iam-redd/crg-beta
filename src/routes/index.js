@@ -23,6 +23,7 @@ import CreatePost from "../pages/admin/CreatePost/CreatePost";
 import Settings from "../pages/admin/Settings/Settings";
 import AllUsers from "../pages/admin/AllUsers/AllUsers";
 import AdminLayout from '../pages/admin/Layout/Layout'
+import Catalog from "../pages/admin/Catalog/Catalog";
 const router = createBrowserRouter(createRoutesFromElements(
     <Route>
         <Route path="/" element={<Layout />}>
@@ -39,6 +40,7 @@ const router = createBrowserRouter(createRoutesFromElements(
                 <Route path="create" element={<CreatePost/>}/>
                 <Route path="all-users" element={<AllUsers/>}/>
                 <Route path="settings" element={<Settings/>}/>
+                <Route path="catalog" element={<Catalog/>}/>
             </Route>
             <Route path="about" element={<AboutPage />} />
             <Route path="pay-n-delivery" element={<PayDelivery />} />
