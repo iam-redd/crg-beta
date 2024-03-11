@@ -18,9 +18,6 @@ import PayDelivery from '../pages/PayDelivery'
 import AboutCoffe from '../pages/AboutCoffee'
 import JsBarista from '../pages/JSBarista'
 import NotFound from '../pages/NotFound'
-import RequireAccess from "../hoc/RequireAuth";
-const route = ['shop','shop-wholeseller','user-profile','user-profile/login','user-profile/registration','basket','wholeseller-basket','admin','about','pay-n-delivery','about-coffe','barista-school','*']
-const pages = [ShopUser,ShopWholeseller,UserProfile,Login,Registration,Basket,WsBasket,Admin,AboutPage,PayDelivery,AboutCoffe,JsBarista,NotFound]
 const router = createBrowserRouter(createRoutesFromElements(
     <Route>
         <Route path="/" element={<Layout />}>
@@ -35,11 +32,7 @@ const router = createBrowserRouter(createRoutesFromElements(
             <Route path="user/registration" element={<Registration />} />
             <Route path="basket" element={<Basket />} />
             <Route path="wholeseller-basket" element={<WsBasket />} />
-            <Route path="admin" element={
-                <RequireAccess>
-                    <Admin />
-                </RequireAccess>
-            } />
+            <Route path="admin" element={<Admin />} />
             <Route path="about" element={<AboutPage />} />
             <Route path="pay-n-delivery" element={<PayDelivery />} />
             <Route path="about-coffe" element={<AboutCoffe />} />
