@@ -6,7 +6,9 @@ import { decrementProduct, incrementProduct, removeProductFromBasket } from '../
 function ProductCard({ index }) {
     const basket = useSelector(state => state.basket.basket)
     const dispatch = useDispatch()
-
+    function remove (){
+        dispatch(removeProductFromBasket(index))
+    }
     function decrement() {
         try {
             if (basket[index].amount < 2) {
@@ -30,7 +32,7 @@ function ProductCard({ index }) {
                     <div className={styles.product_container}>
                         <img className={styles.img} src={`${url.backendUrl}/${basket[index]?.img}`} alt="" />
                         <div className="">
-                            <div className="">{basket[index]?.name}</div>
+                            <div className="">{basket[index]?.name + ' ' + basket[index].weight}</div>
                             <div className={styles.btn_wrapper}>
                                 <button
                                     className={styles.btn}
@@ -39,6 +41,9 @@ function ProductCard({ index }) {
                                 <button
                                     className={styles.btn}
                                     onClick={increment}>+</button>
+                                    <button
+                                    className={styles.btn}
+                                    onClick={remove}>Удалить</button>
                             </div>
                         </div>
                     </div> : <></>

@@ -7,13 +7,12 @@ import ProductCard from './ProductCard/ProductCard.js';
 const Basket = () => {
     const allProductsId = useSelector(state => state.basket.allProductsId)
     const basket = useSelector(state => state.basket.basket)
-    console.log(allProductsId)
+    console.log(basket[0]?.amount * +basket[0]?.price.split(' ').join(''))
     const [data, setData] = useState(null)
     async function getFavorites() {
         try {
             const data = await axios.post(`${url.backendUrl}/post/favorites`, { params: allProductsId })
             if (data.status === 200) {
-                console.log(data)
                 setData(basket)
             } else {
                 throw new Error('Произошло ошибка')
@@ -37,7 +36,7 @@ const Basket = () => {
                             {
                                 data.map((product, index) => {
                                     return (
-                                        <ProductCard key={product.name} index={index} />
+                                        <ProductCard key={index} index={index} />
                                     )
                                 })
                             }
