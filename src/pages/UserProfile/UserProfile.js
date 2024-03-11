@@ -18,13 +18,27 @@ const UserProfile = () => {
         setToken(null)
     }
     return (
-        <div>
+        <div className=''>
 
-            <div className='border-1'>
-                <div>
+        <div className='md:h-full md:flex-wrap xl:flex xl:mx-auto xl:max-w-screen-xl 2xl:max-w-screen-2xl'>
+        <div className='border-1 flex'>
+                <div className='w-1/5'>
                     <div>
-                        Брбалолаааааа
+                        <img src='../../assets/crg-team.png' alt='profile img'/> {/* Картинка профиля пользователя */}
                     </div>
+                    <div>
+                        <button className='button-blck'>Изменить</button>
+                    </div>
+                </div>
+                <div>
+                <div>
+                    <div>Имя пользователя</div>
+                    <h3>Abdullajon</h3>
+                </div>
+                <div>
+                    <div>Номер телефона</div>
+                    <h3>+998909927144</h3>
+                </div>
                 </div>
             </div>
 
@@ -53,7 +67,11 @@ const UserProfile = () => {
                     </div>
                 }
             </div>
+
         </div>
+
+            
+    </div>
     );
 };
 
