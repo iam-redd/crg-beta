@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styles from './ProductCard.module.css'
 import url from '../../../default.json'
 import { useDispatch, useSelector } from 'react-redux'
@@ -7,12 +7,16 @@ function ProductCard({ index }) {
     const basket = useSelector(state => state.basket.basket)
     const dispatch = useDispatch()
     function remove (){
-        dispatch(removeProductFromBasket(index))
+        if(window.confirm(`Вы действительно хотите удалить ${basket[index].name} из корзины`)){
+            dispatch(removeProductFromBasket(index))
+        }
     }
     function decrement() {
         try {
             if (basket[index].amount < 2) {
-                dispatch(removeProductFromBasket(index))
+                if(window.confirm(`Вы действительно хотите удалить ${basket[index].name} из корзины`)){
+                    dispatch(removeProductFromBasket(index))
+                }
             } else {
                 dispatch(decrementProduct(index))
             }

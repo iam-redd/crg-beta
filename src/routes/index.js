@@ -18,7 +18,7 @@ import PayDelivery from '../pages/PayDelivery'
 import AboutCoffe from '../pages/AboutCoffee'
 import JsBarista from '../pages/JSBarista'
 import NotFound from '../pages/NotFound'
-import RequireAccess from "../hoc/RequireAuth";
+// import RequireAccess from "../hoc/RequireAuth";
 const router = createBrowserRouter(createRoutesFromElements(
     <Route>
         <Route path="/" element={<Layout />}>

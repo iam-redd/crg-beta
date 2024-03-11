@@ -5,16 +5,14 @@ import schoolImg from '../../assets/kons_img4.jpg'
 import roasterImg from '../../assets/roaster.png'
 import skladImg from '../../assets/sklad.png'
 import CoffeeCard from '../../components/CoffeeCard'
-import UserProfile from '../UserProfile/UserProfile';
 import deliveryIcon from '../../assets/icons/delivery1.svg'
 import cupIcon from '../../assets/icons/cup.svg'
 import starIcon from '../../assets/icons/star.svg'
 import teamImg from '../../assets/crg-team.png'
 import instagramIcon from '../../assets/icons/instagram-icon.svg'
 import { useGetAllGoodsQuery } from '../../store/goodsApi';
-import {useDispatch, useSelector} from 'react-redux'
+import {useSelector} from 'react-redux'
 import { useNavigate } from 'react-router-dom';
-import { setAllProducts } from '../../store/slices/serviceDataSlice';
 
 const Home = () => {
   const { data, isSuccess } = useGetAllGoodsQuery()
@@ -70,7 +68,7 @@ const Home = () => {
                 {
                   isSuccess ? <>
                   {
-                    data.map((card,index)=> <CoffeeCard key={index} data={card}/> )
+                    data.map((card,index)=> <CoffeeCard key={card._id} data={card}/> )
                   }
                   </> : <h1>Loading....</h1>
                 }

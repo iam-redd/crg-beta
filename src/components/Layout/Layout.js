@@ -20,7 +20,6 @@ const Layout = () => {
             const token = window.localStorage.getItem('token')
             if (token) {
                 const data = await axios.get('/auth/me')
-                console.log(data)
             }
 
         } catch (error) {
