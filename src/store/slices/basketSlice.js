@@ -14,33 +14,31 @@ const basketSlice = createSlice({
             window.localStorage.setItem('basket', JSON.stringify(state.basket))
             window.localStorage.setItem('allProductsId', JSON.stringify(state.allProductsId))
         },
-        getProductsInLocalStorage(state, { payload }) {
-            state.allProductsId = payload.allProductsId
+        getProductsFromLocalStorage(state, { payload }) {
             state.basket = payload.basket
+            state.allProductsId = payload.allProductsId
         },
         incrementProduct(state, { payload }) {
-            console.log(payload)
-            state.basket[payload].amount = state.basket[payload].amount + 1
+            state.basket[payload].amount++
             window.localStorage.setItem('basket', JSON.stringify(state.basket))
             window.localStorage.setItem('allProductsId', JSON.stringify(state.allProductsId))
         },
         decrementProduct(state, { payload }) {
-            state.basket[payload].amount = state.basket[payload].amount - 1
+            state.basket[payload].amount--
             window.localStorage.setItem('basket', JSON.stringify(state.basket))
             window.localStorage.setItem('allProductsId', JSON.stringify(state.allProductsId))
         },
         removeProductFromBasket(state, { payload }) {
-            state.basket.splice(payload,1)
-            state.allProductsId.splice(payload,1)
+            state.basket.splice(payload, 1)
             window.localStorage.setItem('basket', JSON.stringify(state.basket))
             window.localStorage.setItem('allProductsId', JSON.stringify(state.allProductsId))
-        },
+        }
     },
 })
 
 export const { addTooBasket,
-    getProductsInLocalStorage,
+    getProductsFromLocalStorage,
     incrementProduct,
     decrementProduct,
-    removeProductFromBasket} = basketSlice.actions;
+    removeProductFromBasket } = basketSlice.actions;
 export default basketSlice.reducer

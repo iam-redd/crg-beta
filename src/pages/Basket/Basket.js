@@ -5,16 +5,17 @@ import url from '../../default.json'
 import { useEffect } from 'react';
 import ProductCard from './ProductCard/ProductCard.js';
 const Basket = () => {
-    const favorites = useSelector(state => state.basket.allProductsId)
-    const [data,setData] = useState(null)
-    // console.log(favorites)
+    const allProductsId = useSelector(state => state.basket.allProductsId)
+    const basket = useSelector(state => state.basket.basket)
+    console.log(allProductsId)
+    const [data, setData] = useState(null)
     async function getFavorites() {
         try {
-            const data = await axios.post(`${url.backendUrl}/post/favorites`, { params: favorites })
-            if(data.status === 200){
-                setData(data.data)
-                // console.log(data.data)
-            }else{
+            const data = await axios.post(`${url.backendUrl}/post/favorites`, { params: allProductsId })
+            if (data.status === 200) {
+                console.log(data)
+                setData(basket)
+            } else {
                 throw new Error('Произошло ошибка')
             }
         } catch (error) {
@@ -23,23 +24,26 @@ const Basket = () => {
 
     }
     useEffect(() => {
-        data === null && favorites.length !== 0 && getFavorites()
-    } );
+        data === null && allProductsId.length > 0 && getFavorites()
+    });
     return (
         <div>
             {
-                data === null ?
-                <div className="">Loading...</div>:
-                <>
+                allProductsId.length > 0 ? <>
                 {
-                    data.map((product)=> {
-                        return(
-                            <ProductCard key={product.name} data={product}/>
-                        )
-                    })
+                    data === null ?
+                        <div className="">Loading...</div> :
+                        <>
+                            {
+                                data.map((product, index) => {
+                                    return (
+                                        <ProductCard key={product.name} index={index} />
+                                    )
+                                })
+                            }
+                        </>
                 }
-                </>
-            }
+            </> : <h2>Корзина поста</h2>}
         </div>
     );
 };

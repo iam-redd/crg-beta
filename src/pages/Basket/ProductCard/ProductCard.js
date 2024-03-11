@@ -3,42 +3,47 @@ import styles from './ProductCard.module.css'
 import url from '../../../default.json'
 import { useDispatch, useSelector } from 'react-redux'
 import { decrementProduct, incrementProduct, removeProductFromBasket } from '../../../store/slices/basketSlice'
-function ProductCard({ data }) {
-    const [temp,setTemp] = useState([])
+function ProductCard({ index }) {
     const basket = useSelector(state => state.basket.basket)
-    const index = basket.findIndex(product => product.id === data._id)
-    const product = basket[index] || {}
     const dispatch = useDispatch()
+
+    function decrement() {
+        try {
+            if (basket[index].amount < 2) {
+                dispatch(removeProductFromBasket(index))
+            } else {
+                dispatch(decrementProduct(index))
+            }
+        }
+        catch (error) {
+            console.log('first error')
+        }
+    }
+
     function increment() {
         dispatch(incrementProduct(index))
     }
-
-    function decrement() {
-        // dispatch(decrementProduct(index))
-        if (false) {
-            dispatch(decrementProduct(index))
-            console.log('decrement')
-        } else {
-            setTemp([...temp,1])
-            dispatch(removeProductFromBasket(index))
-        }
-    }
     return (
-        <div className={styles.product_container}>
-            <img className={styles.img} src={`${url.backendUrl}/${data.img}`} alt="" />
-            <div className="">
-                <div className="">{data.name}</div>
-                <div className={styles.btn_wrapper}>
-                    <button
-                        className={styles.btn}
-                        onClick={decrement}>-</button>
-                    <span>{basket[index].amount}</span>
-                    <button
-                        className={styles.btn}
-                        onClick={increment}>+</button>
-                </div>
-            </div>
-        </div>
+        <>
+            {
+                basket[index]?.amount > 0 ?
+                    <div className={styles.product_container}>
+                        <img className={styles.img} src={`${url.backendUrl}/${basket[index]?.img}`} alt="" />
+                        <div className="">
+                            <div className="">{basket[index]?.name}</div>
+                            <div className={styles.btn_wrapper}>
+                                <button
+                                    className={styles.btn}
+                                    onClick={decrement}>-</button>
+                                <span>{basket[index]?.amount}</span>
+                                <button
+                                    className={styles.btn}
+                                    onClick={increment}>+</button>
+                            </div>
+                        </div>
+                    </div> : <></>
+            }
+        </>
     )
 }
 

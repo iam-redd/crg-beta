@@ -4,7 +4,7 @@ import cart from '../assets/icons/icons8-cart-64.png'
 /*import img from '../assets/cards/JMB_8162.jpg'*/
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
-import {addTooBasket} from '../../src/store/slices/basketSlice'
+import { addTooBasket } from '../../src/store/slices/basketSlice'
 import url from '../default.json'
 
 function CoffeeCard({ data }) {
@@ -13,8 +13,8 @@ function CoffeeCard({ data }) {
     const basket = useSelector(state => state.basket.basket)
     const allProductsId = useSelector(state => state.basket.allProductsId)
     const [boolBasket, setBoolBasket] = useState(
-        allProductsId !== null ? allProductsId.length > 0 ? allProductsId.includes(data._id) : false  :
-         false
+        allProductsId !== null ? allProductsId.length > 0 ? allProductsId.includes(data._id) : false :
+            false
     )
     const amount = 1;
     const [pomol, setPomol] = useState(null)
@@ -23,10 +23,10 @@ function CoffeeCard({ data }) {
     const changePomol = (val) => {
         const template = basket.filter(product => product.pomol === val)
         const template2 = template.filter(product => product.weight === weight)
-        if(basket.length > 0 && template2.length > 0){
+        if (basket.length > 0 && template2.length > 0) {
             console.log(template2)
             setBoolBasket(true)
-        }else{
+        } else {
             setBoolBasket(!true)
         }
         setPomol(val)
@@ -34,10 +34,10 @@ function CoffeeCard({ data }) {
     const changeWeight = (val) => {
         const template = basket.filter(product => product.weight === val)
         const template2 = template.filter(product => product.pomol === pomol)
-        if(basket.length > 0 && template2.length > 0 && data._id === template2[0].id){
+        if (basket.length > 0 && template2.length > 0 && data._id === template2[0].id) {
             console.log(template2)
             setBoolBasket(true)
-        }else{
+        } else {
             setBoolBasket(!true)
         }
         setWeight(val)
@@ -51,7 +51,14 @@ function CoffeeCard({ data }) {
         if (weight === null) {
             return console.log('Обьем упаковки не выбран')
         }
-        const info = { id: data._id, amount, weight, pomol , price:data.priceUser[weightSize.indexOf(weight)] }
+        const info = {
+            id: data._id,
+            amount,
+            weight,
+            pomol,
+            price: data.priceUser[weightSize.indexOf(weight)],
+            name: data.name,
+            img: data.img}
         dispatch(addTooBasket(info))
         setBoolBasket(true)
         return console.log('Добавлен в корзину')
@@ -64,7 +71,7 @@ function CoffeeCard({ data }) {
                 </div>
                 <h2 className='text-center font-bold text-xl'>{data?.name ? data.name : ''}</h2>
                 <div className='flex mt-5'>
-                  <img src={`${url.backendUrl}/${data.img}`} alt='card-img' className='object-cover w-1/2' />
+                    <img src={`${url.backendUrl}/${data.img}`} alt='card-img' className='object-cover w-1/2' />
                     <div className='grid grid-cols-1 grid-rows-8 gap-1 px-3 py-2 text-xs'>
                         <p>
                             Обработка: <span>Мытая</span>
@@ -88,13 +95,13 @@ function CoffeeCard({ data }) {
                         Помол:
                         <div className='col-span-3'>
                             <Select size="md" label="Выберите помол" onChange={(e) => changePomol(e)}>
-                            <Option value='не-молотый'>Не молотый</Option>
+                                <Option value='не-молотый'>Не молотый</Option>
                                 <Option value='turku'>Под турку</Option>
                                 <Option value='mokka'>Под гейзер/Мокка</Option>
                                 <Option value='espresso'>Под Эспрессо</Option>
                                 <Option value='filter'>Под Фильтр</Option>
                                 <Option value='french-press'>Под Френч-пресс</Option>
-                            </Select> 
+                            </Select>
                         </div>
                     </div>
                 </div>
@@ -143,7 +150,7 @@ function CoffeeCard({ data }) {
                     </div> */}
                     {
                         boolBasket ?
-                            <Button variant='outlined' color='red' onClick={()=> navigate('/basket')}> <span><img style={{ display: 'inline-block', marginRight: '5px' }} width={24} height={24} src={cart} alt="" /></span>Перейти</Button> :
+                            <Button variant='outlined' color='red' onClick={() => navigate('/basket')}> <span><img style={{ display: 'inline-block', marginRight: '5px' }} width={24} height={24} src={cart} alt="" /></span>Перейти</Button> :
                             <Button variant='outlined' color='red' onClick={addToBasketе}>В корзину</Button>
                     }
 

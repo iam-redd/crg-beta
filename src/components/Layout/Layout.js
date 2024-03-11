@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useGetAllGoodsQuery } from '../../store/goodsApi';
 import { setAllProducts, setSelectedProducts } from '../../store/slices/serviceDataSlice';
-import { getProductsInLocalStorage } from '../../store/slices/basketSlice';
+import { getProductsFromLocalStorage } from '../../store/slices/basketSlice';
 const Layout = () => {
     const { data, isSuccess } = useGetAllGoodsQuery()
     const dispatch = useDispatch()
@@ -28,14 +28,18 @@ const Layout = () => {
         }
     }
 
+    function productsFromLocalStorage() {
+            dispatch(getProductsFromLocalStorage({allProductsId:allProductsInBasket,basket:productsInBasket}))
+    }
+
     useEffect(() => {
         getMe()
+        if(allProductsInBasket.length > 0 && productsInBasket.length > 0){
+            productsFromLocalStorage()
+        }
         if (isSuccess) {
             dispatch(setAllProducts(data))
             dispatch(setSelectedProducts(data))
-        }
-        if (allProductsInBasket !== null) {
-            dispatch(getProductsInLocalStorage({allProductsId:allProductsInBasket,basket:productsInBasket}))
         }
     });
     return (
