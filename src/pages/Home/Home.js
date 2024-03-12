@@ -11,11 +11,9 @@ import teamImg from '../../assets/crg-team.png'
 import instagramIcon from '../../assets/icons/instagram-icon.svg'
 import { useGetAllGoodsQuery } from '../../store/goodsApi';
 import { useSelector } from 'react-redux'
-//import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const { data, isSuccess } = useGetAllGoodsQuery()
-  const navigate = useNavigate()
   if (isSuccess) {
     console.log(data)
   }
