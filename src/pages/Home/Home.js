@@ -15,14 +15,10 @@ import { useSelector } from 'react-redux'
 
 const Home = () => {
   const { data, isSuccess } = useGetAllGoodsQuery()
+  const navigate = useNavigate()
   if (isSuccess) {
     console.log(data)
   }
-  //let navigate = useNavigate()
-  //const shopRoute = () => {
-  // navigate(SHOP_USER)
-  //}
-
   const basket = useSelector(state => state.basket.basket)
   console.log(basket)
   return (

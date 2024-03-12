@@ -1,0 +1,34 @@
+.product_container{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    /* border: 1px solid black; */
+    margin: 5px 2px;
+    box-shadow: 0 0 5px black;
+    padding: 3px 10px;
+}
+
+.img{
+    width: 120px;
+}
+
+.btn_wrapper{
+    display: flex;
+    align-items: center;
+}
+
+.btn{
+    min-width: 25px;
+    height: 25px;
+    background-color: rgb(132, 129, 129);
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2px;
+}
+
+.btn:last-child{
+    font-size: 10px;
+}
+

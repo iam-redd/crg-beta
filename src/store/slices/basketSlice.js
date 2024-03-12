@@ -9,20 +9,36 @@ const basketSlice = createSlice({
     },
     reducers: {
         addTooBasket(state, { payload }) {
-            if(payload.property){
-                const index = state.allProductsId.indexOf(payload.id)
-                if(state.basket[index].weight === payload.weight){
-                    state.basket[index].amount = state.basket[index].amount + payload.amount
-                }else{
-                    
-                }
-            }else{
-                state.basket.push(payload)
-                state.allProductsId.push(payload.id)
-            }
+            state.basket.push(payload)
+            state.allProductsId.push(payload.id)
+            window.localStorage.setItem('basket', JSON.stringify(state.basket))
+            window.localStorage.setItem('allProductsId', JSON.stringify(state.allProductsId))
         },
+        getProductsFromLocalStorage(state, { payload }) {
+            state.basket = payload.basket
+            state.allProductsId = payload.allProductsId
+        },
+        incrementProduct(state, { payload }) {
+            state.basket[payload].amount++
+            window.localStorage.setItem('basket', JSON.stringify(state.basket))
+            window.localStorage.setItem('allProductsId', JSON.stringify(state.allProductsId))
+        },
+        decrementProduct(state, { payload }) {
+            state.basket[payload].amount--
+            window.localStorage.setItem('basket', JSON.stringify(state.basket))
+            window.localStorage.setItem('allProductsId', JSON.stringify(state.allProductsId))
+        },
+        removeProductFromBasket(state, { payload }) {
+            state.basket.splice(payload, 1)
+            window.localStorage.setItem('basket', JSON.stringify(state.basket))
+            window.localStorage.setItem('allProductsId', JSON.stringify(state.allProductsId))
+        }
     },
 })
 
-export const { addTooBasket } = basketSlice.actions;
+export const { addTooBasket,
+    getProductsFromLocalStorage,
+    incrementProduct,
+    decrementProduct,
+    removeProductFromBasket } = basketSlice.actions;
 export default basketSlice.reducer

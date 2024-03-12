@@ -10,7 +10,7 @@ import ShopWholeseller from '../pages/WS_Shop'
 import UserProfile from '../pages/UserProfile/UserProfile'
 import Login from '../pages/Login/LogIn'
 import Registration from '../pages/Registration/Registration'
-import Basket from '../pages/Basket'
+import Basket from '../pages/Basket/Basket'
 import WsBasket from '../pages/WS_Basket'
 import Admin from '../pages/admin/Admin'
 import AboutPage from '../pages/About'
@@ -46,7 +46,7 @@ const router = createBrowserRouter(createRoutesFromElements(
             <Route path="pay-n-delivery" element={<PayDelivery />} />
             <Route path="about-coffe" element={<AboutCoffe />} />
             <Route path="barista-school" element={<JsBarista />} />
-            <Route path="*" element={<NotFound />} />`
+            <Route path="*" element={<NotFound />} />
         </Route>
     </Route>
 

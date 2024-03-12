@@ -1,0 +1,17 @@
+.total{
+    font-weight: 700;
+}
+
+.totalLine{
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn{
+    width: max-content;
+    padding: 10px 30px;
+    color: #F44336;
+    border: 1px solid #F44336;
+    border-radius: 10px;
+    font-weight: 500;
+}
