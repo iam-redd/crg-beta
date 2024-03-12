@@ -18,19 +18,30 @@ import PayDelivery from '../pages/PayDelivery'
 import AboutCoffe from '../pages/AboutCoffee'
 import JsBarista from '../pages/JSBarista'
 import NotFound from '../pages/NotFound'
-// import RequireAccess from "../hoc/RequireAuth";
+import Monitoring from "../pages/admin/Monitoring/Monitoring";
+import CreatePost from "../pages/admin/CreatePost/CreatePost";
+import Settings from "../pages/admin/Settings/Settings";
+import AllUsers from "../pages/admin/AllUsers/AllUsers";
+import AdminLayout from '../pages/admin/Layout/Layout'
+import Catalog from "../pages/admin/Catalog/Catalog";
 const router = createBrowserRouter(createRoutesFromElements(
     <Route>
         <Route path="/" element={<Layout />}>
             <Route index element={<Main />} />
             <Route path="shop" element={<ShopUser />} />
             <Route path="shop-wholeseller" element={<ShopWholeseller />} />
-            <Route path="user-profile" element={<UserProfile />} />
-            <Route path="user-profile/login" element={<Login />} />
-            <Route path="user-profile/registration" element={<Registration />} />
+            <Route path="user" element={<UserProfile />} />
+            <Route path="user/login" element={<Login />} />
+            <Route path="user/registration" element={<Registration />} />
             <Route path="basket" element={<Basket />} />
             <Route path="wholeseller-basket" element={<WsBasket />} />
-            <Route path="admin" element={<Admin/>} />
+            <Route path="admin" element={<AdminLayout />} >
+                <Route path="monitoring" element={<Monitoring/>}/>
+                <Route path="create" element={<CreatePost/>}/>
+                <Route path="all-users" element={<AllUsers/>}/>
+                <Route path="settings" element={<Settings/>}/>
+                <Route path="catalog" element={<Catalog/>}/>
+            </Route>
             <Route path="about" element={<AboutPage />} />
             <Route path="pay-n-delivery" element={<PayDelivery />} />
             <Route path="about-coffe" element={<AboutCoffe />} />

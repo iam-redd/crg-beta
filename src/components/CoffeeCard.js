@@ -4,9 +4,9 @@ import cart from '../assets/icons/icons8-cart-64.png'
 /*import img from '../assets/cards/JMB_8162.jpg'*/
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
-import { addTooBasket } from '../../src/store/slices/basketSlice'
-import url from '../default.json'
 
+import {addTooBasket} from '../../src/store/slices/basketSlice'
+import url from '../default.json'
 function CoffeeCard({ data }) {
     const dispatch = useDispatch()
     const weightSize = ['250гр', '500гр', '1000гр']

@@ -1,6 +1,36 @@
 .main-button{
-    border: 2px black solid;
+    border: 1px #fff solid;
     width: fit-content;
-    padding: 8px;
-    border-radius: 15px;
+    padding: 10px 24px;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: 500;
+    font-family: 'Proxima Soft', sans-serif;
+    font-size: small;
+    text-transform: uppercase;
+    -webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+    transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+}
+.main-button:hover{
+    box-shadow: 0 0 40px 40px #fff inset;
+    color: #000;
+}
+
+.button-blck {
+    border: 1px #ba181b solid;
+    width: fit-content;
+    padding: 5px 10px;
+    border-radius: 8px;
+    color: #ba181b;
+    font-weight: 400;
+    font-size: small;
+    font-family: 'Proxima Soft', sans-serif;
+    font-size: small;
+    -webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+    transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+}
+
+.button-blck:hover {
+    box-shadow: 0 0 40px 40px #ba181b inset;
+    color: #fff;
 }
