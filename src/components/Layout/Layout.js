@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 import { useGetAllGoodsQuery } from '../../store/goodsApi';
 import { setAllProducts, setSelectedProducts } from '../../store/slices/serviceDataSlice';
 import { getProductsFromLocalStorage } from '../../store/slices/basketSlice';
+import { addData } from '../../store/slices/userSlice';
 const Layout = () => {
     const { data, isSuccess } = useGetAllGoodsQuery()
     const dispatch = useDispatch()
@@ -19,7 +20,9 @@ const Layout = () => {
         try {
             const token = window.localStorage.getItem('token')
             if (token) {
-                const data = await axios.get('/auth/me')
+                const {data} = await axios.get('/auth/me')
+                dispatch(addData({...data,token}))
+                console.log(data)
             }
 
         } catch (error) {

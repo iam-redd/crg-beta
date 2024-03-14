@@ -20,6 +20,7 @@ const LogIn = () => {
             })
             if (data.status === 200) {
                 console.log(data.data)
+                window.localStorage.setItem('token',data.data.token)
                 dispatch(addData(data.data))
                 navigate(-1)
             }

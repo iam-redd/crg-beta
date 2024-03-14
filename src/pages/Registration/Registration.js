@@ -27,6 +27,7 @@ const Registration = () => {
             const data = await axios.post('/auth/register', request)
             if (data.status === 200) {
                 dispatch(addData(data.data))
+                
                 navigate(-1)
             }
             console.log(data)

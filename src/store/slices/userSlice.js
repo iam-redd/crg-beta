@@ -8,8 +8,10 @@ const userSlice = createSlice({
     },
     reducers: {
         addData(state, { payload }) {
+            const token = payload.token
             state.userInfo = payload
-            window.localStorage.setItem('token',payload.token)
+            console.log(token)
+            window.localStorage.setItem('token',token)
         },
         logout(state) {
             state.userInfo = null

@@ -11,16 +11,14 @@ import teamImg from '../../assets/crg-team.png'
 import instagramIcon from '../../assets/icons/instagram-icon.svg'
 import { useGetAllGoodsQuery } from '../../store/goodsApi';
 import { useSelector } from 'react-redux'
-//import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const { data, isSuccess } = useGetAllGoodsQuery()
-  const navigate = useNavigate()
   if (isSuccess) {
     console.log(data)
   }
-  const basket = useSelector(state => state.basket.basket)
-  console.log(basket)
+  // const basket = useSelector(state => state.basket.basket)
+  // console.log(basket)
   return (
     <div>
       <div className="md:h-full md:flex-wrap xl:flex xl:mx-auto xl:max-w-screen-xl 2xl:max-w-screen-2xl ">
