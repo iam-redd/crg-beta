@@ -85,7 +85,6 @@ const Basket = () => {
                                         )
                                     })
                                 }
-                                
                                 <OrderForm />
                                 <div className={styles.totalLine}>
                                     <div>
