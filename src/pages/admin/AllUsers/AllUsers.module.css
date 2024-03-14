@@ -1,0 +1,16 @@
+.td, .th{
+    border: 1px solid black;
+    font-size: 18px;
+}
+
+.td:nth-child(2), .th:nth-child(2){
+    min-width: 200px;
+}
+
+.td{
+    font-weight: 400;
+}
+
+.table{
+    border-collapse: collapse;
+}
