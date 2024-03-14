@@ -1,0 +1,24 @@
+.input{
+    border: 1px solid black;
+    /* display: block; */
+    border-radius: 10px;
+    padding: 0px 10px;
+    font-size: 14px;
+    height: 30px;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    padding: 10px 30px;
+}
+
+.btn{
+    width: max-content;
+    padding: 10px 30px;
+    color: #F44336;
+    border: 1px solid #F44336;
+    border-radius: 10px;
+    font-weight: 500;
+}

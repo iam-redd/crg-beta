@@ -17,8 +17,8 @@ const Home = () => {
   if (isSuccess) {
     console.log(data)
   }
-  const basket = useSelector(state => state.basket.basket)
-  console.log(basket)
+  // const basket = useSelector(state => state.basket.basket)
+  // console.log(basket)
   return (
     <div>
       <div className="md:h-full md:flex-wrap xl:flex xl:mx-auto xl:max-w-screen-xl 2xl:max-w-screen-2xl ">

@@ -35,7 +35,8 @@ const AdminComponent = () => {
                         <ListItemPrefix>
                             <ShoppingBagIcon className="h-5 w-5" />
                         </ListItemPrefix>
-                        <Link to="create">Добавить товар</Link>
+                        <Link to="create">
+                            Добавить товар</Link>
                     </ListItem>
                     <ListItem>
                         <ListItemPrefix>
