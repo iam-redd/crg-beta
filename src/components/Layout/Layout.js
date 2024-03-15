@@ -12,8 +12,8 @@ import { addData } from '../../store/slices/userSlice';
 const Layout = () => {
     const { data, isSuccess } = useGetAllGoodsQuery()
     const dispatch = useDispatch()
-    const allProductsInBasket = JSON.parse(window.localStorage.getItem('allProductsId'))
-    const productsInBasket = JSON.parse(window.localStorage.getItem('basket'))
+    const allProductsInBasket = JSON.parse(window.localStorage.getItem('allProductsId')) || []
+    const productsInBasket = JSON.parse(window.localStorage.getItem('basket')) || []
 
 
     async function getMe() {
@@ -22,7 +22,6 @@ const Layout = () => {
             if (token) {
                 const {data} = await axios.get('/auth/me')
                 dispatch(addData({...data,token}))
-                console.log(data)
             }
 
         } catch (error) {

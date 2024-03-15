@@ -25,7 +25,7 @@ export default function AllUsers() {
       {
         users !== null ? <div className="">
           <table className={styles.table}>
-            <thead>
+            <tbody>
               <tr>
                 <th className={styles.th}>№</th>
                 <th className={styles.th}>Имя</th>
@@ -33,12 +33,10 @@ export default function AllUsers() {
                 <th className={styles.th}>Телефон</th>
                 <th className={styles.th}>Email</th>
               </tr>
-            </thead>
-            <tbody>
               {
                 users.map((user, index) => {
                   return (
-                    <tr key={user.name}>
+                    <tr key={user._id}>
                       <td className={styles.td}>{index + 1}</td>
                       <td className={styles.td}>{user.name}</td>
                       <td className={styles.td}>{user.role}</td>

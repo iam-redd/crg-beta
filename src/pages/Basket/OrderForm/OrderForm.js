@@ -10,7 +10,9 @@ export default function OrderForm() {
 
     async function newOrder(e) {
         e.preventDefault()
-        const {data} = await axios.post('/new-order', { basket })
+        console.log(e.target.comment.value)
+        const comment = e.target.comment.value
+        const {data} = await axios.post('/new-order', { basket ,comment })
         console.log(data)
         if(data.ok){
             console.log('Order created successfully')
@@ -24,8 +26,9 @@ export default function OrderForm() {
             {
                 basket.length > 0 && userInfo !== null ?
                 <form className={styles.form} onSubmit={newOrder}>
-                    <input type="text" className={styles.input} name='name' placeholder='Name' />
-                    <input type="text" className={styles.input} name='email' placeholder='Phone number' />
+                    <textarea className={styles.textarea} name='comment'></textarea>
+                    {/* <input type="text" className={styles.input} name='name' placeholder='Name' /> */}
+                    {/* <input type="text" className={styles.input} name='email' placeholder='Phone number' /> */}
                     <button className={styles.btn}>ЗАКАЗАТЬ</button>
                 </form> : <h3 style={{color:'#F44336'}}>Не авторизованные пользователи не могут заказать</h3>
             }

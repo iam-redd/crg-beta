@@ -10,7 +10,6 @@ const userSlice = createSlice({
         addData(state, { payload }) {
             const token = payload.token
             state.userInfo = payload
-            console.log(token)
             window.localStorage.setItem('token',token)
         },
         logout(state) {
