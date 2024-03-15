@@ -8,11 +8,10 @@ import Main from '../pages/Home/Home'
 import ShopUser from '../pages/Shop/Shop'
 import ShopWholeseller from '../pages/WS_Shop'
 import UserProfile from '../pages/UserProfile/UserProfile'
-import Login from '../pages/Login/LogIn'
-import Registration from '../pages/Registration/Registration'
+import Login from '../pages/UserProfile/Login/LogIn'
+import Registration from '../pages/UserProfile/Registration/Registration'
 import Basket from '../pages/Basket/Basket'
 import WsBasket from '../pages/WS_Basket'
-import Admin from '../pages/admin/Admin'
 import AboutPage from '../pages/About'
 import PayDelivery from '../pages/PayDelivery'
 import AboutCoffe from '../pages/AboutCoffee'
@@ -24,23 +23,26 @@ import Settings from "../pages/admin/Settings/Settings";
 import AllUsers from "../pages/admin/AllUsers/AllUsers";
 import AdminLayout from '../pages/admin/Layout/Layout'
 import Catalog from "../pages/admin/Catalog/Catalog";
+import MyOrders from '../pages/UserProfile/MyOrders/MyOrders'
 const router = createBrowserRouter(createRoutesFromElements(
     <Route>
         <Route path="/" element={<Layout />}>
             <Route index element={<Main />} />
             <Route path="shop" element={<ShopUser />} />
             <Route path="shop-wholeseller" element={<ShopWholeseller />} />
-            <Route path="user" element={<UserProfile />} />
-            <Route path="user/login" element={<Login />} />
-            <Route path="user/registration" element={<Registration />} />
+            <Route path="user" element={<UserProfile />} >
+                <Route path="login" element={<Login />} />
+                <Route path="registration" element={<Registration />} />
+                <Route path="my-orders" element={<MyOrders />} />
+            </Route>
             <Route path="basket" element={<Basket />} />
             <Route path="wholeseller-basket" element={<WsBasket />} />
             <Route path="admin" element={<AdminLayout />} >
-                <Route path="monitoring" element={<Monitoring/>}/>
-                <Route path="create" element={<CreatePost/>}/>
-                <Route path="all-users" element={<AllUsers/>}/>
-                <Route path="settings" element={<Settings/>}/>
-                <Route path="catalog" element={<Catalog/>}/>
+                <Route path="monitoring" element={<Monitoring />} />
+                <Route path="create" element={<CreatePost />} />
+                <Route path="all-users" element={<AllUsers />} />
+                <Route path="settings" element={<Settings />} />
+                <Route path="catalog" element={<Catalog />} />
             </Route>
             <Route path="about" element={<AboutPage />} />
             <Route path="pay-n-delivery" element={<PayDelivery />} />

@@ -9,28 +9,33 @@ export default function OrderForm() {
     const userInfo = useSelector(state => state.user.userInfo)
 
     async function newOrder(e) {
-        e.preventDefault()
-        console.log(e.target.comment.value)
-        const comment = e.target.comment.value
-        const {data} = await axios.post('/new-order', { basket ,comment })
-        console.log(data)
-        if(data.ok){
-            console.log('Order created successfully')
-            dispatch(cancelBasket())
-        }else{
-            console.log('Order not created successfully')
+        try {
+            e.preventDefault()
+            console.log(e.target.comment.value)
+            const comment = e.target.comment.value
+            const data = await axios.post('/new-order', { basket, comment })
+            console.log(data)
+            if (data.status === 200) {
+                console.log(new Date(data.data.createdAt))
+                // console.log('Order created successfully')
+                dispatch(cancelBasket())
+            } else {
+                console.log('Order not created successfully')
+            }
+        } catch (error) {
+            console.log('Что-то пошло не так')
         }
     }
     return (
         <>
             {
                 basket.length > 0 && userInfo !== null ?
-                <form className={styles.form} onSubmit={newOrder}>
-                    <textarea className={styles.textarea} name='comment'></textarea>
-                    {/* <input type="text" className={styles.input} name='name' placeholder='Name' /> */}
-                    {/* <input type="text" className={styles.input} name='email' placeholder='Phone number' /> */}
-                    <button className={styles.btn}>ЗАКАЗАТЬ</button>
-                </form> : <h3 style={{color:'#F44336'}}>Не авторизованные пользователи не могут заказать</h3>
+                    <form className={styles.form} onSubmit={newOrder}>
+                        <textarea className={styles.textarea} name='comment'></textarea>
+                        {/* <input type="text" className={styles.input} name='name' placeholder='Name' /> */}
+                        {/* <input type="text" className={styles.input} name='email' placeholder='Phone number' /> */}
+                        <button className={styles.btn}>ЗАКАЗАТЬ</button>
+                    </form> : <h3 style={{ color: '#F44336' }}>Не авторизованные пользователи не могут заказать</h3>
             }
         </>
     )

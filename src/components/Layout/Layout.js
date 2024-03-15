@@ -20,8 +20,8 @@ const Layout = () => {
         try {
             const token = window.localStorage.getItem('token')
             if (token) {
-                const {data} = await axios.get('/auth/me')
-                dispatch(addData({...data,token}))
+                const { data } = await axios.get('/auth/me')
+                dispatch(addData({ ...data, token }))
             }
 
         } catch (error) {
@@ -30,12 +30,12 @@ const Layout = () => {
     }
 
     function productsFromLocalStorage() {
-            dispatch(getProductsFromLocalStorage({allProductsId:allProductsInBasket,basket:productsInBasket}))
+        dispatch(getProductsFromLocalStorage({ allProductsId: allProductsInBasket, basket: productsInBasket }))
     }
 
     useEffect(() => {
         getMe()
-        if(allProductsInBasket.length > 0 && productsInBasket.length > 0){
+        if (allProductsInBasket.length > 0 && productsInBasket.length > 0) {
             productsFromLocalStorage()
         }
         if (isSuccess) {

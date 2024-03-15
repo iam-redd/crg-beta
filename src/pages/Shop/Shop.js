@@ -1,4 +1,3 @@
-
 import React from 'react';
 import CoffeeCard from '../../components/CoffeeCard';
 import LeftBar from './LeftBar/LeftBar';

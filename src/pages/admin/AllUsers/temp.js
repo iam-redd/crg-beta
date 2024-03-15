@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import * as React from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -8,32 +7,25 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
-import axios from '../../../store/axios'
-import { useEffect } from 'react'
-import { DefaultSpinner } from '../../../components/Spinner'
-import styles from './AllUsers.module.css'
-export default function AllUsers() {
-  const [users, setUsers] = useState(null)
-  async function getAllUsersFunc() {
-    try {
-      const data = await axios.post('/get/all-users')
-      if (data.status === 200) {
-        console.log(data.data)
-        setUsers(data.data)
-      }
-    } catch (error) {
-      console.log(error.message)
-    }
-  }
+function createData(
+  name: string,
+  calories: number,
+  fat: number,
+  carbs: number,
+  protein: number,
+) {
+  return { name, calories, fat, carbs, protein };
+}
 
-  useEffect(() => {
-    users === null && getAllUsersFunc()
-  });
+const rows = [
+  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
+  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
+  createData('Eclair', 262, 16.0, 24, 6.0),
+];
+
+export default function AccessibleTable() {
   return (
-    <div>
-      {
-        users !== null ? <div className="">
-          <TableContainer component={Paper}>
+    <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="caption table">
         <caption>A basic table example with a caption</caption>
         <TableHead>
@@ -46,7 +38,7 @@ export default function AllUsers() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {users.map((row) => (
+          {rows.map((row) => (
             <TableRow key={row.name}>
               <TableCell component="th" scope="row">
                 {row.name}
@@ -60,8 +52,5 @@ export default function AllUsers() {
         </TableBody>
       </Table>
     </TableContainer>
-        </div> : <DefaultSpinner />
-      }
-    </div>
-  )
+  );
 }

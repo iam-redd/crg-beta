@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import styles from './Registration.module.css'
 import ImageUpload from './UploadImage/UploadImage';
-import axios from '../../store/axios'
+import axios from '../../../store/axios'
 import { useDispatch } from 'react-redux'
-import { addData } from '../../store/slices/userSlice'
+import { addData } from '../../../store/slices/userSlice'
 import { useNavigate } from 'react-router-dom';
 // import URL from '../../default.json'
 const Registration = () => {

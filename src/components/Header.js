@@ -8,7 +8,6 @@ import {
   Badge,
 } from "@material-tailwind/react";
 import { ABOUT_COFFEE, ADMIN, BASKET, HOME_PAGE, JS_BARISTA, RECIPES, SHOP_USER, USER_PROFILE,} from '../utils/consts';
-import UserProfile from '../pages/UserProfile/UserProfile'
 
 const Header = () => {
   const [openNav, setOpenNav] = React.useState(false);

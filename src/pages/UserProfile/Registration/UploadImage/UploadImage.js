@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './UploadImage.module.css'
-import axios from '../../../store/axios';
+import axios from '../../../../store/axios';
 
 const ImageUpload = ({ setList }) => {
     const [selectedFile, setSelectedFile] = useState(null);
