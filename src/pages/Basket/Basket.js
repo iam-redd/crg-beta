@@ -69,7 +69,7 @@ const Basket = () => {
                                         )
                                     })
                                 }
-                                <OrderForm />
+                                <OrderForm totalPrice={totalPrice} />
                                 <div className={styles.totalLine}>
                                     <div>
                                         <span className={styles.total}>Итого</span>

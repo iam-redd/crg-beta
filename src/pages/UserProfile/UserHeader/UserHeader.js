@@ -44,7 +44,7 @@ export default function UserHeader() {
       <ul>
         <li><Link to={'/user/my-orders'}>MyOrders</Link></li>
       </ul>
-      <Outlet/>
+      <Outlet />
     </>
   )
 }

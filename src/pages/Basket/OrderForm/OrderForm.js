@@ -3,7 +3,7 @@ import styles from './OrderForm.module.css'
 import axios from '../../../store/axios'
 import { useDispatch, useSelector } from 'react-redux'
 import { cancelBasket } from '../../../store/slices/basketSlice'
-export default function OrderForm() {
+export default function OrderForm({totalPrice}) {
     const dispatch = useDispatch()
     const basket = useSelector(state => state.basket.basket)
     const userInfo = useSelector(state => state.user.userInfo)
@@ -13,7 +13,7 @@ export default function OrderForm() {
             e.preventDefault()
             console.log(e.target.comment.value)
             const comment = e.target.comment.value
-            const data = await axios.post('/new-order', { basket, comment })
+            const data = await axios.post('/new-order', { basket, comment, totalPrice })
             console.log(data)
             if (data.status === 200) {
                 console.log(new Date(data.data.createdAt))
@@ -21,6 +21,7 @@ export default function OrderForm() {
                 dispatch(cancelBasket())
             } else {
                 console.log('Order not created successfully')
+                throw new Error('Order not created successfully')
             }
         } catch (error) {
             console.log('Что-то пошло не так')

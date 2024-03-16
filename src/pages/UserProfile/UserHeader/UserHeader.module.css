@@ -3,6 +3,7 @@
     display: flex;
     justify-content: space-between;
     cursor: pointer;
+    justify-self: flex-start;
 } 
 .btn{
     width: max-content;
