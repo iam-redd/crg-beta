@@ -17,7 +17,6 @@ export default function AllUsers() {
     try {
       const data = await axios.post('/get/all-users')
       if (data.status === 200) {
-        console.log(data.data)
         setUsers(data.data)
       }
     } catch (error) {
@@ -39,13 +38,13 @@ export default function AllUsers() {
           <TableRow>
             <TableCell>Имя</TableCell>
             <TableCell align="right">Статус</TableCell>
-            <TableCell align="right">Телефоон</TableCell>
+            <TableCell align="right">Телефон</TableCell>
             <TableCell align="right">Email</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {users.map((row) => (
-            <TableRow key={row.name}>
+            <TableRow key={row.email}>
               <TableCell component="th" scope="row">
                 {row.name}
               </TableCell>

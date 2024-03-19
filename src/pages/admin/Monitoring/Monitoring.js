@@ -70,6 +70,7 @@ export default function BasicTabs() {
   });
   return (
     <Box sx={{ width: '100%' }}>
+      <h2>Мониторинг</h2>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label="Новые" {...a11yProps(1)} />

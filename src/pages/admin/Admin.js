@@ -9,7 +9,7 @@ const Admin = () => {
                 <div className='col-span-2'>
                 <AdminComponent/>
                 </div>
-                <div className='text-xl font-bold text-center col-span-8'>Admin panel</div>
+                {/* <div className='text-xl font-bold text-center col-span-8'>Admin panel</div> */}
             </div>
         </div>
     );
