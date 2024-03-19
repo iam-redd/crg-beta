@@ -24,6 +24,7 @@
 }
 
 .textarea{
+    max-width: 400px;
     height: 100px !important;
     border: 1px solid black;
     font-size: 16px;

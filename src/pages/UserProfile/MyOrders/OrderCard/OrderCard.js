@@ -17,8 +17,76 @@ export default function OrderCard({ data }) {
       </div>
       <div className={styles.main}>
         <p>Статус: <span className={styles.status}>{data.status}</span></p>
-        <p>Дата заказа: <span className={styles.status}>{data.createdAt}</span></p>
+        <p>Дата заказа: <span className={styles.status}>{data.createdAt.split('').splice(0,10)}</span></p>
         <p>Сумма заказа: <span className={styles.status}>{data.totalPrice}</span></p>
+      </div>
+      <div
+        className={styles.footer}
+        onClick={handleVisible}>
+        <span>
+          {
+            <>
+              {
+                data.listProducts.length
+              }
+              {
+                data.listProducts.length === 1 ? ' товар' :
+                  <>
+                    {
+                      data.listProducts.length < 5 ? ' товара' : ' товаров'
+                    }
+                  </>
+              }
+            </>
+          }
+        </span>
+        <span>
+          {
+            <motion.img
+              src={icon}
+              alt=""
+              className={styles.img}
+              animate={isVisible ? "open" : "closed"}
+              variants={variants}
+            />
+          }
+        </span>
+      </div>
+      <AnimatePresence>
+        {
+          isVisible &&
+          <motion.div
+            initial={{ height: 0 }}
+            animate={{ height: "auto" }}
+            exit={{ height: 0 }}
+            style={{ overflow: 'hidden' }}>
+            <div className={styles.list_wrapper}>
+              {
+                data.listProducts.map((product, index) => {
+                  return (
+                    <Order data={product} key={index} />
+                  )
+                })
+              }
+            </div>
+          </motion.div>
+        }
+      </AnimatePresence>
+    </div>
+
+  )
+}
+
+
+function Order({ data }) {
+  return (
+    <div className={styles.order}>
+      <img src={`${url.backendUrl}/${data.img}`} alt="" />
+      <div className={styles.info}>
+        <p>Найменования: {data.name}</p>
+        <p>Обьём: {data.weight}</p>
+        <p>Цена: {data.price} сум</p>
+        <p>Количество: {data.amount}</p>
       </div>
     </div>
 
