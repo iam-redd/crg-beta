@@ -21,7 +21,7 @@ export default function OrderCard({ data }) {
         <p>Сумма заказа: <span className={styles.status}>{data.totalPrice}</span></p>
       </div>
     </div>
-    
+
   )
 
 }
