@@ -24,6 +24,7 @@ import AllUsers from "../pages/admin/AllUsers/AllUsers";
 import AdminLayout from '../pages/admin/Layout/Layout'
 import Catalog from "../pages/admin/Catalog/Catalog";
 import MyOrders from '../pages/UserProfile/MyOrders/MyOrders'
+import MySettings from "../pages/UserProfile/UserSettings/UserSettings";
 const router = createBrowserRouter(createRoutesFromElements(
     <Route>
         <Route path="/" element={<Layout />}>
@@ -34,6 +35,7 @@ const router = createBrowserRouter(createRoutesFromElements(
                 <Route path="login" element={<Login />} />
                 <Route path="registration" element={<Registration />} />
                 <Route path="my-orders" element={<MyOrders />} />
+                <Route path="settings" element={<MySettings />} />
             </Route>
             <Route path="basket" element={<Basket />} />
             <Route path="wholeseller-basket" element={<WsBasket />} />
