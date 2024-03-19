@@ -16,34 +16,42 @@ export default function UserHeader() {
   }
   return (
     <>
-      <div className={styles.header}>
-        {
-          token ? <div
-            className={styles.btn}
-            onClick={handleLogout}
-          >
-            Выйти из профиля
-          </div> :
-            <div
+      
+          <div className='mx-auto max-w-screen-xl 2xl:max-w-screen-xl w-full'>
+          {
+            token ? <div
               className={styles.btn}
-              onClick={() => handleVisible()}
+              onClick={handleLogout}
             >
-              Воити
+              Выйти из профиля
+            </div> :
+              <div>
+                Вы не авторизованы, войдите в свой аккаунт
+                <div className=''>
+                <button className='button-blck' onClick={() => handleVisible()}>Войти / Зарегистрироватся</button>
+                  
+                </div>
+              </div>
+          }
+        </div>
+        <div>
+          {
+            isVisible &&
+            <div className='max-w-screen-xl 2xl:max-w-screen-xl w-full'>
+              <div className={styles.btn}><Link to="/user/login">Воити</Link></div>
+              <div className={styles.btn}><Link to="/user/registration">Зарегистрироватся</Link></div>
+              <div className={styles.btn}><Link to="/user">Back</Link></div>
             </div>
-        }
-      </div>
-      <div>
-        {
-          isVisible &&
-          <div className={styles.hrefWrapper}>
-            <div className={styles.btn}><Link to="/user/login">Воити</Link></div>
-            <div className={styles.btn}><Link to="/user/registration">Зарегистрироватся</Link></div>
-          </div>
-        }
-      </div>
-      <ul>
-        <li><Link to={'/user/my-orders'}>MyOrders</Link></li>
-      </ul>
+          }
+        </div>
+
+        <div className='mx-auto max-w-screen-xl 2xl:max-w-screen-xl w-full'>
+        <ul>
+          <li className={styles.btn}><Link to={'/user/my-orders'}>Мои покупки</Link></li>
+        </ul>
+        </div>
+      
+      
       <Outlet />
     </>
   )

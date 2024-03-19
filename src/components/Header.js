@@ -324,14 +324,14 @@ const Header = () => {
             <div className="mr-4 hidden lg:block">{navList}</div>
             <div className="flex items-center gap-x-1 mr-2">
                 <a href={USER_PROFILE}>
-                <IconButton color='blue-gray' variant='outlined' className='h-8 w-8 rounded-full mr-3'>
+                <IconButton color='red' variant='outlined' className='h-8 w-8 rounded-full mr-3'>
                   <UserIcon className="h-4 w-4"/>
                 </IconButton>
                 </a>
              
               <a href={BASKET}>
-              <Badge content="1" color='blue-gray' withBorder>
-                <IconButton  color='blue-gray' className='h-8 w-8 rounded-full'>
+              <Badge content="1" color='red' withBorder>
+                <IconButton  color='red' className='h-8 w-8 rounded-full'>
                   <ShoppingCartIcon className="h-4 w-4" />
                 </IconButton>
               </Badge>                
