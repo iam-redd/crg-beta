@@ -24,9 +24,10 @@ export default function MyOrders() {
   });
   return (
     <div>
+      <h2 className='flex justify-center font-bold'>История заказов</h2>
       <div
         className={styles.btnBack}
-        onClick={() => navigate(-1)}>Go Back</div>
+        onClick={() => navigate(-1)}>Назад</div>
       <div>
         {
           data !== null ?
@@ -34,9 +35,11 @@ export default function MyOrders() {
               {
                 data.length > 0 ?
                   <>
+                    <div className='flex flex-col justify-center'>
                     {
                       data.map(order=> <OrderCard key={order._id} data={order}/>)
-                    }</> : <h2>У вас нет еще оформленных заказов</h2>
+                    }
+                      </div></> : <h2>У вас нет еще оформленных заказов</h2>
               }
             </> :
             <DefaultSpinner />

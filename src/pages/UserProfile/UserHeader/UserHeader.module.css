@@ -6,13 +6,51 @@
     justify-self: flex-start;
 } 
 .btn{
-    width: max-content;
-    height: 40px;
-    padding: 3px 10px;
-    border: 1px solid black;
+    border: 1px #ba181b solid;
+    width: fit-content;
+    padding: 5px 10px;
+    border-radius: 8px;
+    color: #ba181b;
+    font-weight: 400;
+    font-size: small;
+    font-family: 'Proxima Soft', sans-serif;
+    -webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+    transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+    justify-content: center;
+    
+}
+.btn:hover{
+    box-shadow: 0 0 40px 40px #ba181b inset;
+    color: #fff;
+    cursor: pointer;
 }
 
 .hrefWrapper{
     align-self: self-end;
 }
-
+.tabs{
+    
+}
+.tabsItem{
+    border-bottom: 1px solid black;
+    
+}
+.tabsItem:hover{
+    font-weight: 600;
+}
+.userImg{
+    width: 100px;
+    height: 100px;
+    border: 1px solid #ba181b;
+    border-radius: 100px;
+}
+.userName, .userMail, .userStatus, .userOrg, .userPhone {
+    font-family: 'Proxima Soft', sans-serif;
+    color: #7d7d7d;
+} 
+span {
+    color: #000;
+}
+.userName{
+    font-weight: 600;
+}

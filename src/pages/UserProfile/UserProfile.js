@@ -4,15 +4,17 @@ import UserHeader from './UserHeader/UserHeader';
 const UserProfile = () => {
 
     return (
-        <div className=''>
-            {/* <div className='md:h-full md:flex-wrap xl:flex xl:mx-auto xl:max-w-screen-xl 2xl:max-w-screen-2xl'> */}
+        
+        <div className='mx-auto max-w-screen-xl 2xl:max-w-screen-xl py-10'>
+            <div className='flex justify-center'>
+            Личный кабинет пользователя!
+            </div>
+            <div className=''>
                 <UserHeader />
-
-
-            {/* </div> */}
-
-
+            </div>
+                
         </div>
+
     );
 };
 

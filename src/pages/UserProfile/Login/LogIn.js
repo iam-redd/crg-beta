@@ -35,22 +35,24 @@ const LogIn = () => {
         }
     }
     return (
-        <div>
+        <div className='w-full'>
             <form
                 onSubmit={handleSubmit}
                 className={styles.form}>
+                    <p>Логин</p>
                 <input
                     type="text"
                     name='email'
                     className={styles.input}
                     defaultValue={'test6@test.ru'} />
+                    <p>Пароль</p>
                 <input
                     type="text"
                     name='password'
                     defaultValue={'123456'}
                     className={styles.input} />
                 <button
-                    className={styles.input}>SUBMIT</button>
+                    className={styles.btn}>Войти</button>
             </form>
         </div>
     );
