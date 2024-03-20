@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {addTooBasket} from '../../src/store/slices/basketSlice'
 import url from '../default.json'
 function CoffeeCard({ data }) {
+    const [type,setType] = useState('error')
     const dispatch = useDispatch()
     const weightSize = ['250гр', '500гр', '1000гр']
     const basket = useSelector(state => state.basket.basket)
@@ -63,6 +64,8 @@ function CoffeeCard({ data }) {
         setBoolBasket(true)
         return console.log('Добавлен в корзину')
     }
+
+    const handleType = ()=> setType('error')
     return (
         <div className='mb-5'>
             <Card className='w-80 h-full border py-5 px-5'>
@@ -94,7 +97,7 @@ function CoffeeCard({ data }) {
                     <div className='grid grid-cols-4 items-center'>
                         Помол:
                         <div className='col-span-3'>
-                            <Select size="md" label="Выберите помол" onChange={(e) => changePomol(e)}>
+                            <Select size="md" label="Выберите помол" onChange={(e) => changePomol(e)} type>
                                 <Option value='не-молотый'>Не молотый</Option>
                                 <Option value='turku'>Под турку</Option>
                                 <Option value='mokka'>Под гейзер/Мокка</Option>
@@ -135,6 +138,7 @@ function CoffeeCard({ data }) {
                         </span> UZS</Typography>
                 </div>
                 <div className='flex mt-5 items-center justify-between'>
+                    <button onClick={handleType}>changeType</button>
                     {/* <div className='flex items-center justify-between'>
                         <IconButton
                             color='red'

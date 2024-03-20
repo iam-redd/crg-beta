@@ -44,7 +44,7 @@ const Layout = () => {
         }
     });
     return (
-        <div>
+        <div className={styles.container}>
             <Header />
             <div>
                 <Outlet />

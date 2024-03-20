@@ -6,6 +6,7 @@
     box-shadow: 2px 1px 5px #7d7d7d;
     border-radius: 15px;
     font-family: 'Proxima Soft', sans-serif;
+    color:#7d7d7d ;
 }
 
 .header{
@@ -19,28 +20,34 @@
     font-family: 'Proxima Soft', sans-serif;
     font-size: 14px;
     padding:0 0 0 15px;
+    color: #7d7d7d;
 }
 
 .status{
     color: green;
 }
 
+.statusRejected{
+    color: #F44336;
+}
+
 .img{
-    max-width: 30px;
-    max-height: 30px;
+    max-width: 20px;
+    max-height: 20px;
     transform: rotate(-180deg);
 }
 
 .footer{
     width: 100%;
     height: 40px;
-    border-top: 1px solid black;
+    border-top: 1px solid #dddddd;
     padding: 0 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 16px;
     cursor: pointer;
+    color: #7d7d7d;
 }
 
 .order{
@@ -62,3 +69,4 @@
 .info{
     width: 400px;
 }
+

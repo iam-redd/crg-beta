@@ -4,17 +4,17 @@ import axios from '../../../../../store/axios'
 
 export default function OrderStatus({ status, id, getAllOrders }) {
     const statusesDb = ['Отказано', 'В ожидании', 'Оформлен', 'В пути', 'Доставлен']
-    const fixIndex = statusesDb.indexOf(status)
-    console.log(fixIndex)
     const allStatuses = ['Отказ', 'Одобрить', 'Отправить', 'Доставлен']
     async function updateStatus(nextStatus) {
-        const request = await axios.patch('/order', {
-            orderId: id,
-            nextStatus
-        })
+        if (status !== nextStatus) {
+            const request = await axios.patch('/order', {
+                orderId: id,
+                nextStatus
+            })
 
-        if (request.status === 200) {
-            getAllOrders()
+            if (request.status === 200) {
+                getAllOrders()
+            }
         }
     }
     return (
@@ -26,17 +26,17 @@ export default function OrderStatus({ status, id, getAllOrders }) {
                 {allStatuses[0]}
             </div>
             <div className={`${styles.btn_wrapper}`}
-            onClick={() => updateStatus('Оформлен')}>
+                onClick={() => updateStatus('Оформлен')}>
                 <div className={styles.btn}>2</div>
                 {allStatuses[1]}
             </div>
             <div className={styles.btn_wrapper}
-            onClick={() => updateStatus('В пути')}>
+                onClick={() => updateStatus('В пути')}>
                 <div className={styles.btn}>3</div>
                 {allStatuses[2]}
             </div>
             <div className={styles.btn_wrapper}
-            onClick={() => updateStatus('Доставлен')}>
+                onClick={() => updateStatus('Доставлен')}>
                 <div className={styles.btn}>4</div>
                 {allStatuses[3]}
             </div>

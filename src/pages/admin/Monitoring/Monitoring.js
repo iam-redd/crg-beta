@@ -47,7 +47,6 @@ function a11yProps(index) {
 
 export default function BasicTabs() {
   const [data, setData] = React.useState(null)
-  console.log(data)
   async function getAllOrders() {
     try {
       const data = await axios.get('/get-all-orders')

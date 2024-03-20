@@ -8,8 +8,10 @@ import {
   Badge,
 } from "@material-tailwind/react";
 import { ABOUT_COFFEE, ADMIN, BASKET, HOME_PAGE, JS_BARISTA, RECIPES, SHOP_USER, USER_PROFILE,} from '../utils/consts';
+import { useSelector } from 'react-redux';
 
 const Header = () => {
+  const productSize = useSelector(state => state.basket.basket)
   const [openNav, setOpenNav] = React.useState(false);
   React.useEffect(() => {
     window.addEventListener(
@@ -330,7 +332,7 @@ const Header = () => {
                 </a>
              
               <a href={BASKET}>
-              <Badge color='red' content='1' placement="bottom-end" withBorder>
+              <Badge color='red' content={productSize.length} placement="bottom-end" withBorder>
                 <IconButton variant='outlined'  color='red' className='h-8 w-8 rounded-full'>
                   <ShoppingCartIcon color='red' className="h-4 w-4" />
                 </IconButton>
