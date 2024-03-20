@@ -9,7 +9,7 @@ module.exports = withMT({
       }
     },
     screens: {
-      'xs': '375px',
+      'xs': 'max-375px',
       'ss': '275px',
     },
   },

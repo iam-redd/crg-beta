@@ -25,12 +25,12 @@ export default function UserHeader() {
           {
             token ? <div className='xs:px-2 sm:flex md:flex xl:flex justify-between max-w-screen-xl 2xl:max-w-screen-xl lg:px-4 lg:py-2'>
               
-            <div className='flex xl:flex lg:flex lg:justify-center lg:items-center xs:justify-between ss:items-center sx:flex-col sm:flex sm:w-full sm:items-start'>
+            <div className='flex xl:flex lg:flex lg:justify-center lg:items-center sm:flex sm:w-full sm:items-start'>
               <div className='flex flex-col items-center'>
                 <div className={styles.userImg}></div>
                 <div className={styles.userName}>Привет, <span>Жавохир</span></div>
               </div>
-              <div className='sm:ml-0 md:ml-10 lg:ml-5 xl:ml-20'>
+              <div className='sm:ml-2 md:ml-10 lg:ml-5 xl:ml-20'>
                 <p>Ваши данные:</p>
                 <div className={styles.userMail}>Почта: <span>Brbalo@main.ru</span></div>
                 <div className={styles.userPhone}>Номер телефона: <span>+99890topomi o'l</span></div>
