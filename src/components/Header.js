@@ -325,16 +325,16 @@ const Header = () => {
             <div className="flex items-center gap-x-1 mr-2">
                 <a href={USER_PROFILE}>
                 <IconButton color='red' variant='outlined' className='h-8 w-8 rounded-full mr-3'>
-                  <UserIcon className="h-4 w-4"/>
+                  <UserIcon color='red' className="h-4 w-4"/>
                 </IconButton>
                 </a>
              
               <a href={BASKET}>
-              <Badge content="1" color='red' withBorder>
-                <IconButton  color='red' className='h-8 w-8 rounded-full'>
-                  <ShoppingCartIcon className="h-4 w-4" />
+              <Badge color='red' content='1' placement="bottom-end" withBorder>
+                <IconButton variant='outlined'  color='red' className='h-8 w-8 rounded-full'>
+                  <ShoppingCartIcon color='red' className="h-4 w-4" />
                 </IconButton>
-              </Badge>                
+              </Badge>
               </a>
             </div>
             <IconButton

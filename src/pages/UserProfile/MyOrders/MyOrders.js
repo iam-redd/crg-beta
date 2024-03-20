@@ -23,11 +23,11 @@ export default function MyOrders() {
     data === null && getMyOrders()
   });
   return (
-    <div>
-      <h2 className='flex justify-center font-bold'>История заказов</h2>
-      <div
+    <div className='xs:px-2'>
+      <h2 className='flex justify-center font-bold my-5 xs:my-3'>История заказов</h2>
+      {/* <div
         className={styles.btnBack}
-        onClick={() => navigate(-1)}>Назад</div>
+        onClick={() => navigate(-1)}>Скрыть</div> */}
       <div>
         {
           data !== null ?

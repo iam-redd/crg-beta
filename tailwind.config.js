@@ -8,6 +8,10 @@ module.exports = withMT({
         'crg-opacity': "url('/src/assets/crg-logo-opacity.svg')",
       }
     },
+    screens: {
+      'xs': '375px',
+      'ss': '275px',
+    },
   },
   plugins: [],
 });

@@ -5,9 +5,8 @@ const UserProfile = () => {
 
     return (
         
-        <div className='mx-auto max-w-screen-xl 2xl:max-w-screen-xl py-10'>
+        <div className='mx-auto max-w-screen-xl 2xl:max-w-screen-xl py-10 lg:py-2 sm:p-3 ss:py-5'>
             <div className='flex justify-center'>
-            Личный кабинет пользователя!
             </div>
             <div className=''>
                 <UserHeader />
