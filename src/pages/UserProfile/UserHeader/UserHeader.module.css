@@ -2,7 +2,7 @@ p, div, span, h2, h3, h4, h5, a, button {
     font-family: 'Proxima Soft', sans-serif;
 }
 span {
-    color: #000;
+    color: #111827;
 }
 .header{
     width: 100% !important;
@@ -62,7 +62,7 @@ span {
     margin-bottom: 5px;
 }
 .userName, .userMail, .userStatus, .userOrg, .userPhone {
-    color: #7d7d7d;
+    color: #9ca3af;
     margin-top: 5px;
     font-size: 14px;
 } 
