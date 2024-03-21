@@ -62,7 +62,7 @@ const Home = () => {
               <h2 className='text-xl font-bold text-center my-10'>НОВИНКИ</h2>
             </div>
             <div className=''>
-              <div className='flex justify-between sm:flex-wrap sm:justify-around md:flex-wrap md:justify-around xl:flex-nowrap'>
+              <div className='flex justify-center lg:justify-between flex-wrap sm:flex-wrap sm:justify-around md:flex-wrap md:justify-around xl:flex-nowrap'>
                 {
                   isSuccess ? <>
                     {
@@ -77,32 +77,32 @@ const Home = () => {
         <div className='mt-10 bg-crg-opacity bg-no-repeat bg-white py-5'>
           <div className='xl:mx-auto xl:max-w-screen-xl 2xl:max-w-screen-xl'>
             <h2 className='text-2xl font-bold text-center'>COFFEE ROASTERY GROUP</h2>
-            <div className='flex w-full items-center'>
-              <div className='flex w-2/5 p-10'>
+            <div className='flex w-full items-center flex-wrap md:flex-nowrap'>
+              <div className='flex w-full md:w-2/5 p-10'>
                 <img src={roasterImg} alt='Roaster' />
               </div>
-              <div className='flex w-3/5 mx-5'>
-                <p className='text-lg sm:text-sm align-top'>Наша компания в сфере HoReCa занимается поставками свежеобжаренного кофе и сиропов собственного производства.
+              <div className='flex w-full text-center md:w-3/5 mx-5'>
+                <p className='md:text-lg text-md align-top'>Наша компания в сфере HoReCa занимается поставками свежеобжаренного кофе и сиропов собственного производства.
                   Мы обжариваем кофе уже более 5 лет на лучшем в мире оборудовании. Каждую партию отслеживаем на специальном оборудовании, что позволяет создавать стабильно качественный продукт. В свободную продажу поступает товар, прошедший строгий контроль качества.
                   <br />*Так же наша компания занимается подготовкой и обучением высококвалифицированных бариста.</p>
               </div>
             </div>
-            <div className='flex w-full items-center'>
-              <div className='flex flex-col w-3/5 mx-5'>
-                <p className='text-lg sm:text-sm mt-5 sm:mt-3'>
+            <div className='flex w-full items-center flex-wrap md:flex-nowrap'>
+              <div className='flex flex-col w-full md:w-3/5 mx-5'>
+                <p className='md:text-lg text-md mt-5 text-center mt-3'>
                   *Большие склады для зеленого и свеже обжаренного кофе.
                 </p>
-                <p className='text-lg sm:text-sm mt-5 sm:mt-3 '>*Несколько видов Европейского обжарочного оборудования.
+                <p className='md:text-lg text-md mt-5 text-center mt-3 '>*Несколько видов Европейского обжарочного оборудования.
                 </p>
-                <p className='text-lg sm:text-sm mt-5 sm:mt-3'>*Высокая стень очистки кофе дистонером. 3-х уровневый контроль качества.
+                <p className='md:text-lg text-md mt-5 text-center mt-3'>*Высокая стень очистки кофе дистонером. 3-х уровневый контроль качества.
                 </p>
               </div>
-              <div className='flex w-2/5 p-10'>
+              <div className='flex w-full md:w-2/5 justify-center p-10 '>
                 <img src={skladImg} alt='sklad' />
               </div>
             </div>
           </div>
-          <div className='grid grid-cols-3 row-auto gap-10 sm:gap-1 sm:text-sm items-top mt-10 xl:mx-auto xl:max-w-screen-xl 2xl:max-w-screen-2xl'>
+          <div className='grid grid-cols-1 lg:grid-cols-3 row-auto gap-1 lg:gap-10 text-md items-top lg:mt-10 xl:mx-auto xl:max-w-screen-xl 2xl:max-w-screen-2xl'>
             <div className='flex-col justify-center text-center items-center p-5'>
               <img src={deliveryIcon} alt='delivert' className='mx-auto py-5' />
               <h2 className='text-2xl font-semibold'>Доставка</h2>
@@ -119,18 +119,18 @@ const Home = () => {
               <p className='my-4'>Жарим кофе семь дней в неделю, отправляем на следующий день после заказа, чтобы вы получали максимально свежий кофе.</p>
             </div>
           </div>
-          <div className='flex p-5 rounded-3xl items-center bg-gray-100 xl:mx-auto xl:max-w-screen-xl 2xl:max-w-screen-2xl mb-10'>
-            <img src={teamImg} alt='Team' className='mx-5' />
-            <div>
+          <div className='flex flex-wrap text-center justify-center p-5 rounded-3xl items-center bg-gray-100 xl:mx-auto xl:max-w-screen-xl 2xl:max-w-screen-2xl mb-10'>
+            <img src={teamImg} alt='Team' className='m-5' />
+            <div className='m-2'>
               <span className='text-lg font-bold'>Подпишись на нас</span>
-              <p className='mt-1 w-4/5 text-sm'>Здесь мы рассказываем о том, что у нас происходит каждый день. О людях, анонсах, процессах, событиях и новых сортах кофе.</p>
+              <p className='mx-auto my-2 md:mt-1 w-4/5 text-md'>Здесь мы рассказываем о том, что у нас происходит каждый день. О людях, анонсах, процессах, событиях и новых сортах кофе.</p>
             </div>
-            <div className=''>
-              <div className='flex'>
+            <div className='flex flex-col justify-center'>
+              <div className='flex mx-auto my-2'>
                 <img src={instagramIcon} alt='instagram' />
                 <a href='https://instagram.com/coffeeroasterygroup?igshid=YTQwZjQ0NmI0OA==' target='blank' className='mx-1' >@coffeeroasterygroup</a>
               </div>
-              <div className='flex mt-2'>
+              <div className='flex mx-auto mt-2'>
                 <img src={instagramIcon} alt='instagram' />
                 <a href='https://instagram.com/jsbarista.uz?igshid=MzRlODBiNWFlZA==' target='blank' className='mx-1' >@jsbarista.uz</a>
               </div>
