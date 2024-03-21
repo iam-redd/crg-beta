@@ -83,7 +83,7 @@ function Order({ data }) {
     <div className={styles.order}>
       <img src={`${url.backendUrl}/${data.img}`} alt="" />
       <div className={styles.info}>
-        <p>Найменования: {data.name}</p>
+        <p>Наименования: {data.name}</p>
         <p>Обьём: {data.weight}</p>
         <p>Цена: {data.price} сум</p>
         <p>Количество: {data.amount}</p>
