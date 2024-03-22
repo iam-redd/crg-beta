@@ -61,7 +61,7 @@ span {
     border-radius: 100px;
     margin-bottom: 5px;
 }
-.userName, .userMail, .userStatus, .userOrg, .userPhone {
+.userName, .userMail, .userAddress, .userOrg, .userPhone {
     color: #9ca3af;
     margin-top: 5px;
     font-size: 14px;
