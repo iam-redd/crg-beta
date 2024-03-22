@@ -12,6 +12,9 @@ function CoffeeCard({ data }) {
     const weightSize = ['250гр', '500гр', '1000гр']
     const basket = useSelector(state => state.basket.basket)
     const allProductsId = useSelector(state => state.basket.allProductsId)
+    const [weightColor,setWeightColor] = useState(false)
+    const [pomolColor,setPomoltColor] = useState(false)
+
     const [boolBasket, setBoolBasket] = useState(
         allProductsId !== null ? allProductsId.length > 0 ? allProductsId.includes(data._id) : false :
             false
@@ -45,10 +48,14 @@ function CoffeeCard({ data }) {
 
 
     function addToBasketе() {
+        setPomoltColor(false)
+        setWeightColor(false)
         if (pomol === null) {
+            setPomoltColor(true)
             return console.log('Помол не выбран')
         }
         if (weight === null) {
+            setWeightColor(true)
             return console.log('Обьем упаковки не выбран')
         }
         const info = {
@@ -95,7 +102,7 @@ function CoffeeCard({ data }) {
                     <div className='grid grid-cols-4 items-center'>
                         Помол:
                         <div className='col-span-3'>
-                            <Select size="md" label="Выберите помол" onChange={(e) => changePomol(e)} type>
+                            <Select size="md" label="Выберите помол" onChange={(e) => changePomol(e)} style={{borderColor: pomolColor ? "red" : ''}}>
                                 <Option value='не-молотый'>Не молотый</Option>
                                 <Option value='turku'>Под турку</Option>
                                 <Option value='mokka'>Под гейзер/Мокка</Option>
@@ -110,7 +117,7 @@ function CoffeeCard({ data }) {
                     <div className='grid grid-cols-4 items-center'>
                         <p>Вес:</p>
                         <div className='col-span-3'>
-                            <Select size="md" label="Выберите вес" onChange={(e) => changeWeight(e)}>
+                            <Select size="md" label="Выберите вес" onChange={(e) => changeWeight(e)} style={{borderColor: weightColor ? "red" : ''}}>
                                 {
                                     weightSize.map((item, index) => (
                                         <Option
