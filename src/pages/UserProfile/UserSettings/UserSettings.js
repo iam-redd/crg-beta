@@ -1,10 +1,14 @@
 import React  from "react";
 
+
 export default function MySettings(){
     return(
         <>
             <div>
-                Settings
+                <h2>Настройки аккаунта</h2>
+                <div>
+                    Имя: 
+                </div>
             </div>
         </>
         

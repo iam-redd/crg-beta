@@ -35,7 +35,7 @@ export default function MyOrders() {
               {
                 data.length > 0 ?
                   <>
-                    <div className='flex flex-col justify-center'>
+                    <div className='flex flex-col justify-center p-2'>
                     {
                       data.map(order=> <OrderCard key={order._id} data={order}/>)
                     }

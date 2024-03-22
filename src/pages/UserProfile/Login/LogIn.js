@@ -4,6 +4,7 @@ import axios from '../../../store/axios'
 import { addData } from '../../../store/slices/userSlice';
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { Drawer } from '@material-tailwind/react';
 
 const LogIn = () => {
     const dispatch = useDispatch()
@@ -36,6 +37,7 @@ const LogIn = () => {
     }
     return (
         <div className='w-full'>
+        
             <form
                 onSubmit={handleSubmit}
                 className={styles.form}>
@@ -54,6 +56,7 @@ const LogIn = () => {
                 <button
                     className={styles.btn}>Войти</button>
             </form>
+            
         </div>
     );
 };
