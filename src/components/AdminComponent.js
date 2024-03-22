@@ -40,9 +40,6 @@ const AdminComponent = () => {
 
     return (
         <div>
-            {
-
-            }
             <IconButton variant="text" size="lg" onClick={openDrawer}>
                 {isDrawerOpen ? (
                 <XMarkIcon className="h-8 w-8 stroke-2" />

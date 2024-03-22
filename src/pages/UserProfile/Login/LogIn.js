@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Login.module.css'
 import axios from '../../../store/axios'
 import { addData } from '../../../store/slices/userSlice';
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { AnimatePresence, motion } from 'framer-motion';
+import { useEffect } from 'react';
 
 const LogIn = () => {
+    const [isVisible, setVisible] = useState(false)
+    const variants = {
+        open: { top: '0px' },
+        closed: { top: '-2000px' },
+
+    }
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const handleSubmit = async (e) => {
@@ -20,9 +28,12 @@ const LogIn = () => {
             })
             if (data.status === 200) {
                 console.log(data.data)
-                window.localStorage.setItem('token',data.data.token)
+                window.localStorage.setItem('token', data.data.token)
                 dispatch(addData(data.data))
-                navigate(-1)
+                setVisible(false)
+                setTimeout(() => {
+                    navigate(-1)
+                }, 2000)
             }
             return null
 
@@ -34,26 +45,43 @@ const LogIn = () => {
             }
         }
     }
+    useEffect(() => {
+        setVisible(true)
+    })
     return (
-        <div className='w-full'>
-            <form
-                onSubmit={handleSubmit}
-                className={styles.form}>
-                    <p>Логин</p>
-                <input
-                    type="text"
-                    name='email'
-                    className={styles.input}
-                    defaultValue={'test6@test.ru'} />
-                    <p>Пароль</p>
-                <input
-                    type="text"
-                    name='password'
-                    defaultValue={'123456'}
-                    className={styles.input} />
-                <button
-                    className={styles.btn}>Войти</button>
-            </form>
+        <div className={styles.container}>
+            <AnimatePresence>
+                {
+                    isVisible && <motion.div
+                        className={`w-full ${styles.wrapper}`}
+                        // animate={isVisible ? "open" : "closed"}
+                        // variants={variants}
+                        // style={{ transitionDuration: 2000 }}
+                        initial={{ top:'-200px' }}
+                        animate={{ top:'0px' }}
+                        exit={{ top: '-200px' }}
+                    >
+                        <form
+                            onSubmit={handleSubmit}
+                            className={styles.form}>
+                            <p>Логин</p>
+                            <input
+                                type="text"
+                                name='email'
+                                className={styles.input}
+                                defaultValue={'test6@test.ru'} />
+                            <p>Пароль</p>
+                            <input
+                                type="text"
+                                name='password'
+                                defaultValue={'123456'}
+                                className={styles.input} />
+                            <button
+                                className={styles.btn}
+                            >Войти</button>
+                        </form>
+                    </motion.div>}
+            </AnimatePresence>
         </div>
     );
 };
