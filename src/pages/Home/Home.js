@@ -43,7 +43,7 @@ const Home = () => {
           </div>
         </div>
         <div className='md:w-full xl:w-4/12 offer-bar-back'>
-          <div className='darkness'>
+          <div className='darkness p-6'>
             <div className=' mx-10'>
               <div className='py-16'>
                 <h1 className='text-3xl text-center w-full md:w-3/4 font-black text-white 2xl:w-2/3 2xl:text-5xl'>ШКОЛА БАРИСТА</h1>
