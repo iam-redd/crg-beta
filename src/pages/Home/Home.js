@@ -10,6 +10,7 @@ import starIcon from '../../assets/icons/star.svg'
 import teamImg from '../../assets/crg-team.png'
 import instagramIcon from '../../assets/icons/instagram-icon.svg'
 import { useGetAllGoodsQuery } from '../../store/goodsApi';
+import TypingText from '../Home/HomeHook'
 
 const Home = () => {
   const { data, isSuccess } = useGetAllGoodsQuery()
@@ -28,15 +29,15 @@ const Home = () => {
               Your browser does not support the video tag.
             </video>
   </div>*/}
-          <div className='top-0 sm:m-auto offer-back '>
-            <div className='darkness'>
-              <div className='py-16 mx-10'>
-                <h1 className='text-3xl w-3/4 font-black text-white 2xl:w-2/3 2xl:text-5xl'>ЖАРИМ КОФЕ КАЖДЫЙ ДЕНЬ</h1>
-                <p className='text-base w-2/3 font-normal text-white mt-5 2xl:text-lg'>Поставки свежеобжаренного кофе и сиропов собственного производства</p>
+          <div className='top-0 sm:m-auto offer-back'>
+            <div className='darkness p-6'>
+              <div className='md:py-16 md:mx-10'>
+                <h1 className='mt-6 text-center text-3xl md:text-3xl w-full font-black text-white 2xl:w-2/3 2xl:text-5xl'><TypingText text="ЖАРИМ КОФЕ КАЖДЫЙ ДЕНЬ" speed={200}/></h1>
+                <p className='text-center md:text-base md:w-2/3 font-normal text-white mt-5 2xl:text-lg'>Поставки свежеобжаренного кофе и сиропов собственного производства</p>
               </div>
-              <div className='py-10 mx-10'>
+              <div className='mt-8 md:py-10 md:mx-10 flex justify-between'>
                 <a href={SHOP_USER}><button className='main-button'>В каталог</button></a>
-                <a href={SHOP_WHOLESELLER}><button className='main-button xl:mx-2'>Кабинет оптовика</button></a>
+                <a href={SHOP_WHOLESELLER}><button className='main-button mx-2'>Кабинет оптовика</button></a>
               </div>
             </div>
           </div>
@@ -45,7 +46,7 @@ const Home = () => {
           <div className='darkness'>
             <div className=' mx-10'>
               <div className='py-16'>
-                <h1 className='text-3xl w-3/4 font-black text-white 2xl:w-2/3 2xl:text-5xl'>ШКОЛА БАРИСТА</h1>
+                <h1 className='text-3xl text-center w-full md:w-3/4 font-black text-white 2xl:w-2/3 2xl:text-5xl'>ШКОЛА БАРИСТА</h1>
                 <p className='text-base font-normal text-white mt-5 2xl:text-lg'>Научим готовить вкусный кофе, с любовью</p>
               </div>
               <div className='py-10'>

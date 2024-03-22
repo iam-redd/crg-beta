@@ -6,7 +6,7 @@ import {
   ArchiveBoxIcon, ArrowLeftStartOnRectangleIcon, ArrowRightEndOnRectangleIcon, Cog6ToothIcon
 } from "@heroicons/react/24/outline";
 import { Link, Outlet } from 'react-router-dom';
-import { Button, List, ListItemSuffix, ListItemPrefix, Card, ListItem, IconButton } from '@material-tailwind/react';
+import { List, ListItemSuffix, ListItemPrefix, Card, ListItem } from '@material-tailwind/react';
 export default function UserHeader() {
   const [token, setToken] = useState(window.localStorage.getItem('token'))
   // const [isVisible, setVisible] = useState(false)
@@ -16,6 +16,7 @@ export default function UserHeader() {
     dispatch(logout())
     setToken(null)
   }
+  console.log(token);
   return (
     <>
       <div>
