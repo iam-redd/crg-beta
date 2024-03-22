@@ -24,6 +24,7 @@ function CoffeeCard({ data }) {
     const [weight, setWeight] = useState(null)
     const navigate = useNavigate()
     const changePomol = (val) => {
+        setPomoltColor(false)
         const template = basket.filter(product => product.pomol === val)
         const template2 = template.filter(product => product.weight === weight)
         if (basket.length > 0 && template2.length > 0) {
@@ -35,6 +36,7 @@ function CoffeeCard({ data }) {
         setPomol(val)
     }
     const changeWeight = (val) => {
+        setWeightColor(false)
         const template = basket.filter(product => product.weight === val)
         const template2 = template.filter(product => product.pomol === pomol)
         if (basket.length > 0 && template2.length > 0 && data._id === template2[0].id) {
