@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styles from './UserHeader.module.css'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '../../../store/slices/userSlice';
 import {
   ArchiveBoxIcon, ArrowLeftStartOnRectangleIcon, Cog6ToothIcon
@@ -9,6 +9,8 @@ import { Link, Outlet } from 'react-router-dom';
 import { Button, List, ListItemSuffix, ListItemPrefix, Card, ListItem } from '@material-tailwind/react';
 export default function UserHeader() {
   const [token, setToken] = useState(window.localStorage.getItem('token'))
+  const userInfo = useSelector(state => state.user.userInfo)
+  console.log(userInfo)
   // const [isVisible, setVisible] = useState(false)
   // const handleVisible = () => setVisible(!isVisible)
   const dispatch = useDispatch()
@@ -20,7 +22,7 @@ export default function UserHeader() {
     <>
       <div>
         {
-          token ? <div className='xs:px-2 sm:flex md:flex xl:flex justify-between max-w-screen-xl 2xl:max-w-screen-xl lg:px-4 lg:py-2'>
+          userInfo ? <div className='xs:px-2 sm:flex md:flex xl:flex justify-between max-w-screen-xl 2xl:max-w-screen-xl lg:px-4 lg:py-2'>
             <div className='flex xl:flex lg:flex lg:justify-center lg:items-center sm:flex sm:w-full sm:items-start'>
               <div className='flex flex-col items-center'>
                 <div className={styles.userImg}></div>

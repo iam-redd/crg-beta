@@ -13,7 +13,7 @@ export default function OrderCardMonitorng({ data, getAllOrders }) {
         open: { transform: 'rotate(-180deg' },
         closed: { transform: 'rotate(0deg' }
     }
-
+    console.log(data)
     return (
         <div className={styles.container}>
             <div className={styles.header}>
@@ -21,7 +21,7 @@ export default function OrderCardMonitorng({ data, getAllOrders }) {
             </div>
             <div className={styles.main}>
                 <p>Статус: <span className={styles.status}>{data.status}</span></p>
-                <p>Дата заказа: <span className={styles.status}>{data.createdAt}</span></p>
+                <p>Дата заказа: <span className={styles.status}>{data.creationDate}</span></p>
                 <p>Сумма заказа: <span className={styles.status}>{data.totalPrice}</span></p>
 
             </div>

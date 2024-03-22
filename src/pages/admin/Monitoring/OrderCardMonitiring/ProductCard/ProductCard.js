@@ -12,7 +12,7 @@ export default function Order({ data, orderId, getAllOrders }) {
                 orderId,
                 productId: data.id,
                 currentAmount: currentAmount,
-                nextAmount: data.amount - amount,
+                nextAmount: data.amount + amount,
                 comment
             })
             const request = await axios.patch('/order/product/amount',
@@ -20,11 +20,11 @@ export default function Order({ data, orderId, getAllOrders }) {
                     orderId,
                     productId: data.id,
                     currentAmount: currentAmount,
-                    nextAmount: data.amount - amount,
+                    nextAmount: data.amount + amount,
                     comment
                 })
             console.log(request)
-            if(request.status === 200){
+            if (request.status === 200) {
                 getAllOrders()
                 setAmount(0)
             }
@@ -56,7 +56,8 @@ export default function Order({ data, orderId, getAllOrders }) {
                 orderId,
                 productId: data.id,
                 amount: data.amount,
-                comment})
+                comment
+            })
             const request = await axios.patch('/order/product',
                 {
                     orderId,
@@ -91,7 +92,7 @@ export default function Order({ data, orderId, getAllOrders }) {
                             className={styles.btn}
                             onClick={decrement}>-</button>
                     }
-                    {+data.amount + amount}
+                    {data.amount + amount}
                     {
                         <button
                             className={styles.btn}
@@ -108,3 +109,6 @@ export default function Order({ data, orderId, getAllOrders }) {
     )
 
 }
+
+
+

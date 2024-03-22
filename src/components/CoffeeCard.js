@@ -8,7 +8,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import {addTooBasket} from '../../src/store/slices/basketSlice'
 import url from '../default.json'
 function CoffeeCard({ data }) {
-    const [type,setType] = useState('error')
     const dispatch = useDispatch()
     const weightSize = ['250гр', '500гр', '1000гр']
     const basket = useSelector(state => state.basket.basket)
@@ -65,7 +64,6 @@ function CoffeeCard({ data }) {
         return console.log('Добавлен в корзину')
     }
 
-    const handleType = ()=> setType('error')
     return (
         <div className='mb-5'>
             <Card className='w-80 h-full border py-5 px-5'>
@@ -138,7 +136,6 @@ function CoffeeCard({ data }) {
                         </span> UZS</Typography>
                 </div>
                 <div className='flex mt-5 items-center justify-between'>
-                    <button onClick={handleType}>changeType</button>
                     {/* <div className='flex items-center justify-between'>
                         <IconButton
                             color='red'
@@ -155,7 +152,10 @@ function CoffeeCard({ data }) {
                     {
                         boolBasket ?
                             <Button variant='outlined' color='red' onClick={() => navigate('/basket')}> <span><img style={{ display: 'inline-block', marginRight: '5px' }} width={24} height={24} src={cart} alt="" /></span>Перейти</Button> :
-                            <Button variant='outlined' color='red' onClick={addToBasketе}>В корзину</Button>
+                            <Button 
+                            variant='outlined' 
+                            color='red' 
+                            onClick={addToBasketе}>В корзину</Button>
                     }
 
                 </div>
