@@ -27,14 +27,15 @@ export default function UserHeader() {
             <div className='flex xl:flex lg:flex lg:justify-center lg:items-center sm:flex sm:w-full sm:items-start'>
               <div className='flex flex-col items-center'>
                 <div className={styles.userImg}></div>
-                <div className={styles.userName}>Привет, <span>Жавохир</span></div>
+                <div className={styles.userName}>Привет, <span>{userInfo.name}</span></div>
               </div>
               <div className='sm:ml-2 md:ml-10 lg:ml-5 xl:ml-20'>
                 <p className='text-gray-400'>Ваши данные:</p>
-                <div className={styles.userMail}>Почта: <span>Brbalo@main.ru</span></div>
-                <div className={styles.userPhone}>Номер телефона: <span>+99890topomi o'l</span></div>
-                <div className={styles.userStatus}>Статус: <span>Admin</span></div>
-                <div className={styles.userOrg}>Организация: <span>Don Coffee</span></div>
+                <div className={styles.userMail}>Почта: <span>{userInfo.email}</span></div>
+                <div className={styles.userPhone}>Номер телефона: <span>{userInfo.phoneNumber}</span></div>
+                <div className={styles.userAddress}>Адрес доставки: <span>{userInfo.address[0]}</span></div>
+                { userInfo.role === 'admin' || userInfo.role === 'superUser' &&
+                  <div className={styles.userOrg}>Организация: <span>Don Coffee</span></div>}
               </div>
             </div>
             <div className={styles.unauto}>

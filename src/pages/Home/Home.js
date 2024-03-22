@@ -29,7 +29,7 @@ const Home = () => {
               Your browser does not support the video tag.
             </video>
   </div>*/}
-          <div className='top-0 sm:m-auto offer-back'>
+          <div className='top-0 h-full sm:m-auto offer-back'>
             <div className='darkness p-6'>
               <div className='md:py-16 md:mx-10'>
                 <h1 className='mt-6 text-center text-3xl md:text-3xl w-full font-black text-white 2xl:w-2/3 2xl:text-5xl'><TypingText text="ЖАРИМ КОФЕ КАЖДЫЙ ДЕНЬ" speed={200}/></h1>
@@ -42,8 +42,8 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className='md:w-full xl:w-4/12 offer-bar-back'>
-          <div className='darkness p-6'>
+        <div className='top-0 md:w-full xl:w-4/12 offer-bar-back'>
+          <div className='darkness h-full p-6'>
             <div className=' mx-10'>
               <div className='py-16'>
                 <h1 className='text-3xl text-center w-full md:w-3/4 font-black text-white 2xl:w-2/3 2xl:text-5xl'>ШКОЛА БАРИСТА</h1>
