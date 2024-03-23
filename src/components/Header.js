@@ -98,7 +98,7 @@ const Header = () => {
           </div>
         </div>
       </>
-      <Navbar className="sticky h-full shadow-sm z-10 mx-auto max-w-screen-xl 2xl:max-w-screen-2xl rounded-none px-4 2xl:px-0 py-2 lg:px-8 lg:py-4">
+      <Navbar className="sticky top-0 h-full shadow-sm z-10 mx-auto max-w-screen-xl 2xl:max-w-screen-2xl rounded-none px-4 2xl:px-0 py-2 lg:px-8 lg:py-4">
         <div className="mb-2 lg:mb-0 flex items-center justify-between text-blue-gray-900">
           <Typography
             as="a"
