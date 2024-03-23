@@ -31,9 +31,7 @@ const LogIn = () => {
                 window.localStorage.setItem('token', data.data.token)
                 dispatch(addData(data.data))
                 setVisible(false)
-                setTimeout(() => {
-                    navigate(-1)
-                }, 2000)
+                navigate(-1)
             }
             return null
 
@@ -56,9 +54,9 @@ const LogIn = () => {
                         className={`w-full ${styles.wrapper}`}
                         // animate={isVisible ? "open" : "closed"}
                         // variants={variants}
-                        // style={{ transitionDuration: 2000 }}
-                        initial={{ top:'-200px' }}
-                        animate={{ top:'0px' }}
+                        style={{ transitionDuration: 1000 }}
+                        initial={{ top: '-200px' }}
+                        animate={{ top: '0px' }}
                         exit={{ top: '-200px' }}
                     >
                         <form
@@ -78,7 +76,7 @@ const LogIn = () => {
                                 className={styles.input} />
                             <button
                                 className={styles.btn}
-                            >Войти</button>
+                            >{ isVisible ? 'Войти' : 'Загрузка...'}</button>
                         </form>
                     </motion.div>}
             </AnimatePresence>

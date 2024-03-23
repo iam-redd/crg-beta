@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import styles from './MyOrders.module.css'
-import { useNavigate } from 'react-router-dom'
 import axios from '../../../store/axios'
 import { DefaultSpinner } from '../../../components/Spinner'
 import OrderCard from './OrderCard/OrderCard'
 export default function MyOrders() {
-  const navigate = useNavigate()
   const [data, setData] = useState(null)
   console.log(data)
   async function getMyOrders() {

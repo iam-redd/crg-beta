@@ -11,6 +11,7 @@ import IssuedOrders from './IssuedOrders/IssuedOrders';
 import OnTheWayOrders from './OnTheWayOrders/OnTheWayOrders';
 import DeliveredOrders from './DeliveredOrders/DeliveredOrders';
 import DeniedOrders from './DeniedOrders/DeniedOrders';
+import { useSelector } from 'react-redux';
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -47,6 +48,7 @@ function a11yProps(index) {
 
 export default function BasicTabs() {
   const [data, setData] = React.useState(null)
+  const userInfo = useSelector(state => state.user.userInfo)
   async function getAllOrders() {
     try {
       const data = await axios.get('/get-all-orders')
@@ -67,37 +69,41 @@ export default function BasicTabs() {
   React.useEffect(() => {
     data === null && getAllOrders()
   });
-  return (
-    <Box sx={{ width: '100%' }}>
-      <h2>Мониторинг</h2>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="Новые" {...a11yProps(1)} />
-          <Tab label="оформленные" {...a11yProps(1)} />
-          <Tab label="в пути" {...a11yProps(2)} />
-          <Tab label="доставленные" {...a11yProps(3)} />
-          <Tab label="отказанные" {...a11yProps(4)} />
-          <Tab label="Все заказы" {...a11yProps(5)} />
-        </Tabs>
+  return (<>
+    {
+      userInfo &&
+      <Box sx={{ width: '100%' }}>
+        <h2>Мониторинг</h2>
+        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+          <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+            <Tab label="Новые" {...a11yProps(1)} />
+            <Tab label="оформленные" {...a11yProps(1)} />
+            <Tab label="в пути" {...a11yProps(2)} />
+            <Tab label="доставленные" {...a11yProps(3)} />
+            <Tab label="отказанные" {...a11yProps(4)} />
+            <Tab label="Все заказы" {...a11yProps(5)} />
+          </Tabs>
+        </Box>
+        <CustomTabPanel value={value} index={0}>
+          <PendingOrders data={data} getAllOrders={getAllOrders} />
+        </CustomTabPanel>
+        <CustomTabPanel value={value} index={1}>
+          <IssuedOrders data={data} getAllOrders={getAllOrders} />
+        </CustomTabPanel>
+        <CustomTabPanel value={value} index={2}>
+          <OnTheWayOrders data={data} getAllOrders={getAllOrders} />
+        </CustomTabPanel>
+        <CustomTabPanel value={value} index={3}>
+          <DeliveredOrders data={data} getAllOrders={getAllOrders} />
+        </CustomTabPanel>
+        <CustomTabPanel value={value} index={4}>
+          <DeniedOrders data={data} getAllOrders={getAllOrders} />
+        </CustomTabPanel>
+        <CustomTabPanel value={value} index={5}>
+          <AllOrders data={data} getAllOrders={getAllOrders} />
+        </CustomTabPanel>
       </Box>
-      <CustomTabPanel value={value} index={0}>
-        <PendingOrders data={data} getAllOrders={getAllOrders}/>
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={1}>
-        <IssuedOrders data={data} getAllOrders={getAllOrders}/>
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={2}>
-        <OnTheWayOrders data={data} getAllOrders={getAllOrders}/>
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={3}>
-        <DeliveredOrders data={data} getAllOrders={getAllOrders}/>
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={4}>
-        <DeniedOrders data={data} getAllOrders={getAllOrders}/>
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={5}>
-        <AllOrders data={data} getAllOrders={getAllOrders}/>
-      </CustomTabPanel>
-    </Box>
+    }
+  </>
   );
 }
