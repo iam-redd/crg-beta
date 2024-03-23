@@ -31,11 +31,11 @@ const Home = () => {
   </div>*/}
           <div className='top-0 h-full sm:m-auto offer-back'>
             <div className='darkness p-6'>
-              <div className='md:py-16 md:mx-10'>
-                <h1 className='mt-6 text-center text-3xl md:text-3xl w-full font-black text-white 2xl:w-2/3 2xl:text-5xl'><TypingText text="ЖАРИМ КОФЕ КАЖДЫЙ ДЕНЬ" speed={200}/></h1>
-                <p className='text-center md:text-base md:w-2/3 font-normal text-white mt-5 2xl:text-lg'>Поставки свежеобжаренного кофе и сиропов собственного производства</p>
+              <div className='md:py-16 md:mx-10 lg:py-10'>
+                <h1 className='mt-6 md:mt-0 text-center text-3xl md:text-start w-full font-black text-white 2xl:w-2/3 2xl:text-5xl'>ЖАРИМ КОФЕ КАЖДЫЙ ДЕНЬ</h1>
+                <p className='text-center md:text-start md:text-xl md:w-2/3 font-normal text-white mt-5 2xl:text-lg'>Поставки свежеобжаренного кофе и сиропов собственного производства</p>
               </div>
-              <div className='mt-8 md:py-10 md:mx-10 flex justify-between'>
+              <div className='mt-8 md:mt-0 lg:mt-0 md:py-10 md:mx-10 flex justify-between md:justify-start'>
                 <a href={SHOP_USER}><button className='main-button'>В каталог</button></a>
                 <a href={SHOP_WHOLESELLER}><button className='main-button mx-2'>Кабинет оптовика</button></a>
               </div>
@@ -45,11 +45,11 @@ const Home = () => {
         <div className='top-0 md:w-full xl:w-4/12 offer-bar-back'>
           <div className='darkness h-full p-6'>
             <div className=' mx-10'>
-              <div className='py-16'>
-                <h1 className='text-3xl text-center w-full md:w-3/4 font-black text-white 2xl:w-2/3 2xl:text-5xl'>ШКОЛА БАРИСТА</h1>
-                <p className='text-base font-normal text-white mt-5 2xl:text-lg'>Научим готовить вкусный кофе, с любовью</p>
+              <div className='py-16 md:py-10'>
+                <h1 className='text-3xl text-center md:text-start w-full md:w-full font-black text-white 2xl:w-full 2xl:text-5xl'>ШКОЛА БАРИСТА</h1>
+                <p className='text-base font-normal md:text-xl text-white mt-5 2xl:text-lg'>Научим готовить вкусный кофе, с любовью</p>
               </div>
-              <div className='py-10'>
+              <div className='py-10 md:py-2 md:mt-6'>
                 <a href={JS_BARISTA} target='blank'><button className='main-button' >JS Barista</button></a>
               </div>
             </div>
@@ -120,18 +120,18 @@ const Home = () => {
               <p className='my-4'>Жарим кофе семь дней в неделю, отправляем на следующий день после заказа, чтобы вы получали максимально свежий кофе.</p>
             </div>
           </div>
-          <div className='flex flex-wrap text-center justify-center p-5 rounded-3xl items-center bg-gray-100 xl:mx-auto xl:max-w-screen-xl 2xl:max-w-screen-2xl mb-10'>
+          <div className='flex flex-wrap md:flex-nowrap text-center md:text-start justify-center p-5 rounded-3xl items-center bg-gray-100 xl:mx-auto xl:max-w-screen-xl 2xl:max-w-screen-2xl mb-10'>
             <img src={teamImg} alt='Team' className='m-5' />
             <div className='m-2'>
               <span className='text-lg font-bold'>Подпишись на нас</span>
-              <p className='mx-auto my-2 md:mt-1 w-4/5 text-md'>Здесь мы рассказываем о том, что у нас происходит каждый день. О людях, анонсах, процессах, событиях и новых сортах кофе.</p>
+              <p className='mx-auto my-2 md:mx-0 md:mt-1 w-4/5 text-md'>Здесь мы рассказываем о том, что у нас происходит каждый день. О людях, анонсах, процессах, событиях и новых сортах кофе.</p>
             </div>
             <div className='flex flex-col justify-center'>
-              <div className='flex mx-auto my-2'>
+              <div className='flex mx-auto my-2 md:mt-0'>
                 <img src={instagramIcon} alt='instagram' />
                 <a href='https://instagram.com/coffeeroasterygroup?igshid=YTQwZjQ0NmI0OA==' target='blank' className='mx-1' >@coffeeroasterygroup</a>
               </div>
-              <div className='flex mx-auto mt-2'>
+              <div className='flex mx-auto mt-2 md:mt-0'>
                 <img src={instagramIcon} alt='instagram' />
                 <a href='https://instagram.com/jsbarista.uz?igshid=MzRlODBiNWFlZA==' target='blank' className='mx-1' >@jsbarista.uz</a>
               </div>
