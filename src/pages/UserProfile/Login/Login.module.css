@@ -1,26 +1,17 @@
 .form{
-    width: min-content;
+    max-width: max-content ;
     align-items: center;
-    border: 1px solid #f0f0f0;
     border-radius: 15px;
-    padding: 10px ;
+    border: 1px solid #c7c7c7;
+    padding: 20px ;
     display: flex;
     flex-direction: column;
-    row-gap: 10px;
+    row-gap: 12px;
+    background-color: #fff;
 }
-
-.input{
-    border: 1px #f1f1f1 solid;
-    width: max-content;
-    padding: 5px 10px;
-    border-radius: 8px;
-    color: #000;
-    font-weight: 400;
-    font-size: small;
+p {
     font-family: 'Proxima Soft', sans-serif;
-    font-size: small;
-    -webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
-    transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+    font-size: 14px;
 }
 .btn{
     border: 1px #ba181b solid;

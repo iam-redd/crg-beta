@@ -24,7 +24,7 @@ export default function UserHeader() {
       <div>
         {
           userInfo ? <div className='xs:px-2 sm:flex md:flex xl:flex justify-between max-w-screen-xl 2xl:max-w-screen-xl lg:px-4 lg:py-2'>
-            <div className='flex xl:flex lg:flex lg:justify-center lg:items-center sm:flex sm:w-full sm:items-start'>
+            <div className='flex justify-between items-center p-2 xl:flex lg:flex lg:justify-center lg:items-center sm:flex sm:w-full'>
               <div className='flex flex-col items-center'>
                 <div className={styles.userImg}></div>
                 <div className={styles.userName}>Привет, <span>{userInfo.name}</span></div>
@@ -39,36 +39,34 @@ export default function UserHeader() {
               </div>
             </div>
             <div className={styles.unauto}>
-              <div className='items-center flex mt-5 justify-center'>
-                <Card className='w-96 xl:w-60'>
-                  <List>
-                    <Link to={'/user/my-orders'}>
-                      <ListItem>
-                        <ListItemPrefix>
-                          <ArchiveBoxIcon className='w-5 h-5' />
-                        </ListItemPrefix>
-                        <ListItemSuffix className='ml-1'>Мои заказы</ListItemSuffix>
-                      </ListItem>
-                    </Link>
-                    <Link to={'/user/settings'}>
-                      <ListItem>
-                        <ListItemPrefix>
-                          <Cog6ToothIcon className='w-5 h-5' />
-                        </ListItemPrefix>
-                        <ListItemSuffix className='ml-1'>Настройки</ListItemSuffix>
-                      </ListItem>
-                    </Link>
-                    <ListItem onClick={handleLogout}>
-                      <Link to={'/user'}>
-                        <ListItemPrefix>
-                          <ArrowLeftStartOnRectangleIcon className='w-5 h-5' />
-                        </ListItemPrefix>
-                        <ListItemSuffix className='ml-1'>Выйти из профиля</ListItemSuffix>
-                      </Link>
-                    </ListItem>
-                  </List>
-                </Card>
-              </div>
+                  <div className='p-2 items-center flex mt-5 md:mt-0 justify-center'>
+                    <Card className='w-96 xl:w-60'>
+                      <List>
+                        <Link to={'/user/my-orders'}>
+                          <ListItem>
+                            <ListItemPrefix>
+                              <ArchiveBoxIcon className='w-5 h-5' />
+                            </ListItemPrefix>
+                            <ListItemSuffix className='ml-1'>Мои заказы</ListItemSuffix>
+                          </ListItem>
+                        </Link>
+                        <Link to={'/user/settings'}>
+                          <ListItem>
+                            <ListItemPrefix>
+                              <Cog6ToothIcon className='w-5 h-5' />
+                            </ListItemPrefix>
+                            <ListItemSuffix className='ml-1'>Настройки</ListItemSuffix>
+                          </ListItem>
+                        </Link>
+                        <ListItem onClick={handleLogout}>
+                          <ListItemPrefix>
+                            <ArrowLeftStartOnRectangleIcon className='w-5 h-5' />
+                          </ListItemPrefix>
+                          <ListItemSuffix className='ml-1'>Выйти из профиля</ListItemSuffix>
+                        </ListItem>
+                      </List>
+                    </Card>
+                  </div>
             </div>
           </div>
             :

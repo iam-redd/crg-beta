@@ -6,6 +6,10 @@ import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect } from 'react';
+import {
+    Input,
+  } from "@material-tailwind/react";
+  import { Link } from 'react-router-dom';
 
 const LogIn = () => {
     const [isVisible, setVisible] = useState(false)
@@ -47,37 +51,53 @@ const LogIn = () => {
         setVisible(true)
     })
     return (
-        <div className={styles.container}>
+        <div className={` m-auto ${styles.container}`}>
             <AnimatePresence>
                 {
                     isVisible && <motion.div
-                        className={`w-full ${styles.wrapper}`}
+                        className={`w-full m-auto ${styles.wrapper}`}
                         // animate={isVisible ? "open" : "closed"}
                         // variants={variants}
-                        style={{ transitionDuration: 1000 }}
-                        initial={{ top: '-200px' }}
-                        animate={{ top: '0px' }}
+                        // style={{ transitionDuration: 2000 }}
+                        initial={{ top:'-200px' }}
+                        animate={{ top:'-150px' }}
                         exit={{ top: '-200px' }}
                     >
+                    
                         <form
                             onSubmit={handleSubmit}
-                            className={styles.form}>
-                            <p>Логин</p>
-                            <input
+                            className={`justify-center m-auto ${styles.form}`}>
+                            <div>
+                            <h2 className='text-center font-bold text-lg'>Авторизация</h2>
+                            <p className='py-4 text-center'>Добро пожаловать, рады вас видеть. <br/> Чтобы войти в свой аккаунт, пожалуйста введите ваши данные.</p>
+
+                            </div>
+                           
+                            <Input 
                                 type="text"
-                                name='email'
+                                label='Ваш логин'
+                                name='email'                               
                                 className={styles.input}
                                 defaultValue={'test6@test.ru'} />
-                            <p>Пароль</p>
-                            <input
-                                type="text"
+                            
+                            <Input
+                                label='Ваш пароль'
                                 name='password'
+                                type='password'
                                 defaultValue={'123456'}
                                 className={styles.input} />
+
+                                <div className='w-full flex justify-between'>
+                                <p className='cursor-pointer'>Забыли пароль?</p>
+                                <Link to='/user/registration'>
+                                    <p className='cursor-pointer'>Регистрация</p>
+                                </Link>
+                                </div>
                             <button
                                 className={styles.btn}
                             >{ isVisible ? 'Войти' : 'Загрузка...'}</button>
                         </form>
+                        
                     </motion.div>}
             </AnimatePresence>
         </div>

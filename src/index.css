@@ -135,10 +135,14 @@ body{
     background-color: #fff;
 }
 
-h2, ul, li, a, button, div{
+*{
     font-family: 'Proxima Soft', sans-serif;
 }
 
-h1, p {
+h1, h2, ul, li, a, button, div{
+    font-family: 'Proxima Soft', sans-serif;
+}
+
+p {
     font-family: 'Montserrat', sans-serif;
 }

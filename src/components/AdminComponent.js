@@ -8,7 +8,6 @@ import {
     Chip,
     Drawer,
     IconButton,
-    Button,
 } from "@material-tailwind/react";
 import {
     PresentationChartBarIcon,
@@ -49,7 +48,7 @@ const AdminComponent = () => {
                 )}
             </IconButton>
 
-            <Drawer open={isDrawerOpen} onClick={closeDrawer}>
+            <Drawer open={isDrawerOpen} onClose={closeDrawer}>
                 <Card d className="h-[calc(100vh-2rem)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5">
                     <div className="mb-2 p-4 text-sm font-thin text-gray-300">
                         Тут происходит волшебство! *вжух
@@ -95,9 +94,7 @@ const AdminComponent = () => {
                             </ListItemPrefix>
                             Log Out
                         </ListItem>
-                        <ListItem>
-                        <Button onClick={closeDrawer}>X</Button>
-                        </ListItem>
+                        
                     </List>
                 </Card>
             </Drawer>
