@@ -25,7 +25,7 @@ export default function OrderStatus({ status, id, getAllOrders, index }) {
         if (status === "В ожидании") {
             bool1 = false
             bool2 = false
-            bool3 = false
+            bool3 = false 
         }
         if (status === "Одобрено") {
 
