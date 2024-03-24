@@ -9,6 +9,7 @@ import {
 } from "@material-tailwind/react";
 import { ABOUT_COFFEE, ADMIN, BASKET, HOME_PAGE, JS_BARISTA, RECIPES, SHOP_USER, USER_PROFILE,} from '../utils/consts';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const productSize = useSelector(state => state.basket.basket)
@@ -71,7 +72,7 @@ const Header = () => {
         <li>Оплата и доставка</li>
         <li>Опт</li>
         <li>Контакты</li>
-        <a href={ADMIN}><li>Админ</li></a>
+          <li><Link to="/admin/monitoring">Админ</Link></li>
       </ul>
       <div className='text-md cursor-text text-gray-600 mb-5'>
         Call-центр: +998(99)000-00-00

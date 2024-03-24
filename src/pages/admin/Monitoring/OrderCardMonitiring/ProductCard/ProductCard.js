@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styles from './ProductCard.module.css'
 import url from '../../../../../default.json'
 import axios from '../../../../../store/axios'
-export default function Order({ data, orderId, getAllOrders }) {
+export default function Order({ data, orderId, getAllOrders , bool }) {
     const [amount, setAmount] = useState(0)
     let currentAmount = data.amount
     async function save() {
@@ -40,9 +40,6 @@ export default function Order({ data, orderId, getAllOrders }) {
             return null
         }
         setAmount((prev) => prev - 1)
-
-        console.log(amount)
-
     }
 
     function increment() {
@@ -63,9 +60,11 @@ export default function Order({ data, orderId, getAllOrders }) {
                     orderId,
                     productId: data.id,
                     amount: data.amount,
-                    comment
+                    comment,
+                    productWeight:data.weight
                 })
             if (request.status === 200) {
+                console.log(request.data)
                 getAllOrders()
             }
         } catch (err) {
@@ -73,7 +72,10 @@ export default function Order({ data, orderId, getAllOrders }) {
         }
     }
     return (
-        <div className={styles.order}>
+        <>
+        {
+            bool ? 
+            <div className={styles.order}>
             <img src={`${url.backendUrl}/${data.img}`} alt="" />
             <div className={styles.info}>
                 <p >Найменования:
@@ -104,7 +106,22 @@ export default function Order({ data, orderId, getAllOrders }) {
                     }
                 </p>
             </div>
+        </div> : 
+        <div className={styles.order}>
+        <img src={`${url.backendUrl}/${data.img}`} alt="" />
+        <div className={styles.info}>
+            <p >Найменования:
+                {data.name}
+            </p>
+            <p>Обьём: {data.weight}
+            </p>
+            <p >Количество: {data?.amount}
+</p>
         </div>
+    </div>
+        }
+        </>
+        
 
     )
 

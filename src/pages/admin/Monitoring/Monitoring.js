@@ -85,22 +85,22 @@ export default function BasicTabs() {
           </Tabs>
         </Box>
         <CustomTabPanel value={value} index={0}>
-          <PendingOrders data={data} getAllOrders={getAllOrders} />
+          <PendingOrders data={data} getAllOrders={getAllOrders} index={0} />
         </CustomTabPanel>
         <CustomTabPanel value={value} index={1}>
-          <IssuedOrders data={data} getAllOrders={getAllOrders} />
+          <IssuedOrders data={data} getAllOrders={getAllOrders} index={1}/>
         </CustomTabPanel>
         <CustomTabPanel value={value} index={2}>
-          <OnTheWayOrders data={data} getAllOrders={getAllOrders} />
+          <OnTheWayOrders data={data} getAllOrders={getAllOrders} index={2}/>
         </CustomTabPanel>
         <CustomTabPanel value={value} index={3}>
-          <DeliveredOrders data={data} getAllOrders={getAllOrders} />
+          <DeliveredOrders data={data} getAllOrders={getAllOrders} index={3}/>
         </CustomTabPanel>
         <CustomTabPanel value={value} index={4}>
-          <DeniedOrders data={data} getAllOrders={getAllOrders} />
+          <DeniedOrders data={data} getAllOrders={getAllOrders} index={4}/>
         </CustomTabPanel>
         <CustomTabPanel value={value} index={5}>
-          <AllOrders data={data} getAllOrders={getAllOrders} />
+          <AllOrders data={data} getAllOrders={getAllOrders} index={5}/>
         </CustomTabPanel>
       </Box>
     }

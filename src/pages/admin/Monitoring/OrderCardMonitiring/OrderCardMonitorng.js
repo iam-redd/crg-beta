@@ -5,15 +5,17 @@ import icon from '../../../../assets/icons/iconbottom.png'
 import url from '../../../../default.json'
 import { AnimatePresence, motion } from 'framer-motion'
 import ProductCard from './ProductCard/ProductCard'
-export default function OrderCardMonitorng({ data, getAllOrders }) {
+export default function OrderCardMonitorng({ data, getAllOrders, index }) {
     const [isVisible, setVisible] = useState(false)
+    const [isVisible2, setVisible2] = useState(false)
+
     const [isVisibleEdit, setVisibleEdit] = useState(false)
     const handleVisible = () => setVisible(!isVisible)
+    const handleVisible2 = () => setVisible2(!isVisible2)
     const variants = {
         open: { transform: 'rotate(-180deg' },
         closed: { transform: 'rotate(0deg' }
     }
-    console.log(data)
     return (
         <div className={styles.container}>
             <div className={styles.header}>
@@ -46,8 +48,6 @@ export default function OrderCardMonitorng({ data, getAllOrders }) {
                     }
                 </span>
                 <span>
-                </span>
-                <span>
                     {
                         <motion.img
                             src={icon}
@@ -63,26 +63,81 @@ export default function OrderCardMonitorng({ data, getAllOrders }) {
                 {
                     isVisible &&
                     <motion.div
+                        className={styles.wrapper}
+                        initial={{ height: 0 }}
+                        animate={{ height: "auto" }}
+                        exit={{ height: 0 }}
+                    >
+                        <div className={styles.list_wrapper}>
+                            {
+                                data.listProducts.map((product, index) => {
+                                    return (
+                                        <ProductCard data={product} key={index} isVisible={isVisibleEdit} orderId={data._id} getAllOrders={getAllOrders} bool={true} />
+                                    )
+                                })
+                            }
+                        </div>
+
+                    </motion.div>
+                }
+
+            </AnimatePresence>
+            {
+                data.rejectedList.length > 0 &&
+                <div className={styles.footer}
+                    onClick={handleVisible2}>
+                    <span>
+
+                        <> Удалённые товары из заказа
+                            {
+                                ' ' + data.rejectedList.length
+                            }
+                            {
+                                data.rejectedList.length === 1 ? ' товар' :
+                                    <>
+                                        {
+                                            data.rejectedList.length < 5 ? ' товара' : ' товаров'
+                                        }
+                                    </>
+                            }
+                        </>
+
+                    </span>
+                    <span>
+                        {
+                            <motion.img
+                                src={icon}
+                                alt=""
+                                className={styles.img}
+                                animate={isVisible2 ? "open" : "closed"}
+                                variants={variants}
+                            />
+                        }
+                    </span>
+                </div>
+            }
+            <AnimatePresence>
+                {
+                    isVisible2 &&
+                    <motion.div
                         initial={{ height: 0 }}
                         animate={{ height: "auto" }}
                         exit={{ height: 0 }}
                         style={{ overflow: 'hidden' }}>
                         <div className={styles.list_wrapper}>
                             {
-                                data.listProducts.map((product, index) => {
+                                data.rejectedList.map((product, index) => {
                                     return (
                                         <ProductCard data={product} key={index} isVisible={isVisibleEdit} orderId={data._id} getAllOrders={getAllOrders} />
                                     )
                                 })
                             }
                         </div>
+
                     </motion.div>
                 }
-                {/* <div className={styles.saveBtnWrapper}>
-                    <div className={styles.btn} onClick={saveChanges}>Сохранить</div>
-                </div> */}
             </AnimatePresence>
-            <OrderStatus status={data.status} getAllOrders={getAllOrders} id={data._id} />
+            <OrderStatus status={data.status} getAllOrders={getAllOrders} id={data._id} index={index} />
         </div>
     )
 }
