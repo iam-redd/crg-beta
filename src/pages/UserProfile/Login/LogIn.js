@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import styles from './Login.module.css'
 import axios from '../../../store/axios'
-import { addData } from '../../../store/slices/userSlice';
-import { useDispatch } from 'react-redux'
+import { addData, logout } from '../../../store/slices/userSlice';
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect } from 'react';
@@ -13,11 +13,7 @@ import {
 
 const LogIn = () => {
     const [isVisible, setVisible] = useState(false)
-    const variants = {
-        open: { top: '0px' },
-        closed: { top: '-2000px' },
-
-    }
+    const userInfo = useSelector(state => state.user.userInfo)
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const handleSubmit = async (e) => {
@@ -35,7 +31,7 @@ const LogIn = () => {
                 window.localStorage.setItem('token', data.data.token)
                 dispatch(addData(data.data))
                 setVisible(false)
-                navigate(-1)
+                navigate('/user')
             }
             return null
 
@@ -49,6 +45,7 @@ const LogIn = () => {
     }
     useEffect(() => {
         setVisible(true)
+        // userInfo !== null && dispatch(logout())
     })
     return (
         <div className={` m-auto ${styles.container}`}>

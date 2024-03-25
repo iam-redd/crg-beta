@@ -3,7 +3,6 @@ import styles from './OrderStatus.module.css'
 import axios from '../../../../../store/axios'
 
 export default function OrderStatus({ status, id, getAllOrders, index }) {
-    console.log(index)
     const statusesDb = ['Отказано', 'В ожидании', 'Оформлен', 'В пути', 'Доставлен']
     const allStatuses = ['Отказ', 'Одобрить', 'Отправить', 'Доставлен']
     let bool0 = true
@@ -22,14 +21,8 @@ export default function OrderStatus({ status, id, getAllOrders, index }) {
         bool3 = false
     }
     if (index === 2) {
-        if (status === "В ожидании") {
-            bool1 = false
-            bool2 = false
-            bool3 = false 
-        }
-        if (status === "Одобрено") {
-
-        }
+            bool3 = false
+        
     }
     if (index === 5) {
         if (status === "В ожидании") {

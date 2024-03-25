@@ -1,49 +1,44 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import styles from './UploadImage.module.css'
 import axios from '../../../../store/axios';
-
-const ImageUpload = ({ setList }) => {
-    const [selectedFile, setSelectedFile] = useState(null);
-    const [uploadPercentage, setUploadProgress] = useState(0);
-
-    const handleFileChange = (event) => {
-        setSelectedFile(event.target.files[0]);
-        setUploadProgress(0);
-    };
-
+import icon from '../../../../assets/icons/uploadImage.png'
+import url from '../../../../default.json'
+import { DefaultSpinner } from '../../../../components/Spinner';
+const ImageUpload = ({ list, setList }) => {
+    const input = useRef()
+    const [isLoading, setLoading] = useState(false)
     const handleUpload = async () => {
         try {
+            setLoading(true)
+            const image = input.current.files[0]
+            console.log(image)
             const formData = new FormData();
-            formData.append('image', selectedFile);
+            formData.append('image', image);
             const response = await axios.post(`/upload `, formData);
             setList(response.data.imagePath)
             console.log(response.data);
         } catch (error) {
             console.error('Error uploading file:', error);
         }
+        setLoading(false)
     };
 
 
     return (
         <div className={styles.upload_container}>
             <div className={styles.title2}>
-                Фото карточки
+                {
+                    list === null ?
+                        <>
+                            {isLoading ?
+                                <DefaultSpinner /> :
+                                <img src={icon} alt="" onClick={() => input.current.click()} />
+                            }
+                        </> :
+                        <img src={`${url.backendUrl}/${list}`} alt="" />
+                }
             </div>
-            <div className={styles.min_text}>
-
-            </div>
-            <input type="file" onChange={handleFileChange} accept='image/*' />
-            <button onClick={handleUpload}>Загрузить</button>
-            {uploadPercentage > 0 && (
-                <div className={styles.progress_container}>
-                    <div
-                        className={styles.progress_bar}
-                        style={{ width: `${uploadPercentage}%`, backgroundColor: '#4caf50' }}
-                    >
-                        {uploadPercentage}
-                    </div>
-                </div>
-            )}
+            <input type="file" onChange={handleUpload} accept='image/*' hidden ref={input} />
         </div>
     );
 };

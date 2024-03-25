@@ -24,11 +24,12 @@
     transition: width 0.3s ease;
 }
 
-.title2{
-    font-size: 16px;
-    font-weight: 600;
-    color: #ACA58E;
-    text-align: start;
+.title2 > img{
+    cursor: pointer;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
 }
 
 .min_text{

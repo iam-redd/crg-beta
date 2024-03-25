@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './Registration.module.css'
 import ImageUpload from './UploadImage/UploadImage';
 import axios from '../../../store/axios'
-import { useDispatch } from 'react-redux'
-import { addData } from '../../../store/slices/userSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { addData, logout } from '../../../store/slices/userSlice'
 import { useNavigate } from 'react-router-dom';
 // import URL from '../../default.json'
 const Registration = () => {
-    const [uploadedImages, setUploadedImages] = useState('')
+    const [uploadedImages, setUploadedImages] = useState(null)
+    const userInfo = useSelector(state => state.user.userInfo)
+    console.log(uploadedImages)
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const handleSubmit = async (e) => {
@@ -41,9 +43,15 @@ const Registration = () => {
             }
         }
     }
+
+    useEffect(() => {
+        // userInfo !== null && dispatch(logout())
+    });
     return (
         <div>
-            <ImageUpload setList={setUploadedImages} />
+            <ImageUpload
+            list={uploadedImages}
+            setList={setUploadedImages} />
             <form
                 onSubmit={handleSubmit}
                 className={styles.form}>

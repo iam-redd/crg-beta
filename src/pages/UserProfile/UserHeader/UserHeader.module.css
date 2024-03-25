@@ -83,6 +83,10 @@ span {
     margin-bottom: 5px;
 }
 
+.userImg{
+    overflow: hidden;
+}
+
 .userName{
     font-weight: 600;
 }
