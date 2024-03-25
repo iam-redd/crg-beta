@@ -39,34 +39,36 @@ export default function UserHeader() {
               </div>
             </div>
             <div className={styles.unauto}>
-                  <div className='p-2 items-center flex mt-5 md:mt-0 justify-center'>
-                    <Card className='w-96 xl:w-60'>
-                      <List>
-                        <Link to={'/user/my-orders'}>
-                          <ListItem>
-                            <ListItemPrefix>
-                              <ArchiveBoxIcon className='w-5 h-5' />
-                            </ListItemPrefix>
-                            <ListItemSuffix className='ml-1'>Мои заказы</ListItemSuffix>
-                          </ListItem>
-                        </Link>
-                        <Link to={'/user/settings'}>
-                          <ListItem>
-                            <ListItemPrefix>
-                              <Cog6ToothIcon className='w-5 h-5' />
-                            </ListItemPrefix>
-                            <ListItemSuffix className='ml-1'>Настройки</ListItemSuffix>
-                          </ListItem>
-                        </Link>
-                        <ListItem onClick={handleLogout}>
-                          <ListItemPrefix>
-                            <ArrowLeftStartOnRectangleIcon className='w-5 h-5' />
-                          </ListItemPrefix>
-                          <ListItemSuffix className='ml-1'>Выйти из профиля</ListItemSuffix>
-                        </ListItem>
-                      </List>
-                    </Card>
-                  </div>
+              <div className='p-2 items-center flex mt-5 md:mt-0 justify-center'>
+                <Card className='w-96 xl:w-60'>
+                  <List>
+                    <Link to={'/user/my-orders'}>
+                      <ListItem>
+                        <ListItemPrefix>
+                          <ArchiveBoxIcon className='w-5 h-5' />
+                        </ListItemPrefix>
+                        <ListItemSuffix className='ml-1'>Мои заказы</ListItemSuffix>
+                      </ListItem>
+                    </Link>
+                    <Link to={'/user/settings'}>
+                      <ListItem>
+                        <ListItemPrefix>
+                          <Cog6ToothIcon className='w-5 h-5' />
+                        </ListItemPrefix>
+                        <ListItemSuffix className='ml-1'>Настройки</ListItemSuffix>
+                      </ListItem>
+                    </Link>
+                    <Link to={'/user'}>
+                      <ListItem onClick={handleLogout}>
+                        <ListItemPrefix>
+                          <ArrowLeftStartOnRectangleIcon className='w-5 h-5' />
+                        </ListItemPrefix>
+                        <ListItemSuffix className='ml-1'>Выйти из профиля</ListItemSuffix>
+                      </ListItem>
+                    </Link>
+                  </List>
+                </Card>
+              </div>
             </div>
           </div>
             :

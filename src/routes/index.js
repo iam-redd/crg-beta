@@ -4,27 +4,29 @@ import {
     Route
 } from "react-router-dom";
 import Layout from "../components/Layout/Layout";
-import Main from '../pages/Home/Home'
-import ShopUser from '../pages/Shop/Shop'
-import ShopWholeseller from '../pages/WS_Shop'
-import UserProfile from '../pages/UserProfile/UserProfile'
-import Login from '../pages/UserProfile/Login/LogIn'
-import Registration from '../pages/UserProfile/Registration/Registration'
-import Basket from '../pages/Basket/Basket'
-import WsBasket from '../pages/WS_Basket'
-import AboutPage from '../pages/About'
-import PayDelivery from '../pages/PayDelivery'
-import AboutCoffe from '../pages/AboutCoffee'
-import JsBarista from '../pages/JSBarista'
-import NotFound from '../pages/NotFound'
-import Monitoring from "../pages/admin/Monitoring/Monitoring";
-import CreatePost from "../pages/admin/CreatePost/CreatePost";
-import Settings from "../pages/admin/Settings/Settings";
-import AllUsers from "../pages/admin/AllUsers/AllUsers";
-import AdminLayout from '../pages/admin/Layout/Layout'
-import Catalog from "../pages/admin/Catalog/Catalog";
-import MyOrders from '../pages/UserProfile/MyOrders/MyOrders'
-import MySettings from "../pages/UserProfile/UserSettings/UserSettings";
+import { lazy } from "react";
+
+const ShopUser = lazy(()=> import ( '../pages/Shop/Shop'))
+const ShopWholeseller = lazy(()=> import ( '../pages/WS_Shop'))
+const UserProfile = lazy(()=> import ( '../pages/UserProfile/UserProfile'))
+const Login = lazy(()=> import ( '../pages/UserProfile/Login/LogIn'))
+const Registration = lazy(()=> import ( '../pages/UserProfile/Registration/Registration'))
+const Basket = lazy(()=> import ( '../pages/Basket/Basket'))
+const WsBasket = lazy(()=> import ( '../pages/WS_Basket'))
+const AboutPage = lazy(()=> import ( '../pages/About'))
+const PayDelivery = lazy(()=> import ( '../pages/PayDelivery'))
+const AboutCoffe = lazy(()=> import ( '../pages/AboutCoffee'))
+const JsBarista = lazy(()=> import ( '../pages/JSBarista'))
+const NotFound = lazy(()=> import ( '../pages/NotFound'))
+const Monitoring = lazy(()=> import ( "../pages/admin/Monitoring/Monitoring"))
+const CreatePost = lazy(()=> import ( "../pages/admin/CreatePost/CreatePost"))
+const Settings = lazy(()=> import ( "../pages/admin/Settings/Settings"))
+const AllUsers = lazy(()=> import ( "../pages/admin/AllUsers/AllUsers"))
+const AdminLayout = lazy(()=> import ( '../pages/admin/Layout/Layout'))
+const Catalog = lazy(()=> import ( "../pages/admin/Catalog/Catalog"))
+const MyOrders = lazy(()=> import ( '../pages/UserProfile/MyOrders/MyOrders'))
+const MySettings = lazy(()=> import ( "../pages/UserProfile/UserSettings/UserSettings"))
+const Main = lazy(() => import('../pages/Home/Home'))
 const router = createBrowserRouter(createRoutesFromElements(
     <Route>
         <Route path="/" element={<Layout />}>

@@ -17,9 +17,9 @@ import {
     InboxIcon,
     PowerIcon,
 } from "@heroicons/react/24/solid";
-import { 
+import {
     Bars3Icon,
-    XMarkIcon, 
+    XMarkIcon,
 } from "@heroicons/react/24/outline";
 
 import { Link } from 'react-router-dom';
@@ -29,22 +29,22 @@ const AdminComponent = () => {
 
     const [open, setOpen] = React.useState(0);
     const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
- 
+
     const handleOpen = (value) => {
-    setOpen(open === value ? 0 : value);
-  };
- 
-  const openDrawer = () => setIsDrawerOpen(true);
-  const closeDrawer = () => setIsDrawerOpen(false);
+        setOpen(open === value ? 0 : value);
+    };
+
+    const openDrawer = () => setIsDrawerOpen(true);
+    const closeDrawer = () => setIsDrawerOpen(false);
 
     return (
         <div>
             <IconButton variant="text" size="lg" onClick={openDrawer}>
                 {isDrawerOpen ? (
-                <XMarkIcon className="h-8 w-8 stroke-2" />
+                    <XMarkIcon className="h-8 w-8 stroke-2" />
                 ) : (
-                <Bars3Icon className="h-8 w-8 stroke-2" />
-                
+                    <Bars3Icon className="h-8 w-8 stroke-2" />
+
                 )}
             </IconButton>
 
@@ -58,20 +58,26 @@ const AdminComponent = () => {
                             <ListItemPrefix>
                                 <PresentationChartBarIcon className="h-5 w-5" />
                             </ListItemPrefix>
-                            <Link to="monitoring">Мониторинг</Link>
+                            <Link
+                                to="monitoring"
+                                onClick={() => setIsDrawerOpen(false)}
+                            >Мониторинг</Link>
                         </ListItem>
                         <ListItem>
                             <ListItemPrefix>
                                 <ShoppingBagIcon className="h-5 w-5" />
                             </ListItemPrefix>
-                            <Link to="create">
+                            <Link to="create"
+                                onClick={() => setIsDrawerOpen(false)}>
                                 Добавить товар</Link>
                         </ListItem>
                         <ListItem>
                             <ListItemPrefix>
                                 <InboxIcon className="h-5 w-5" />
                             </ListItemPrefix>
-                            <Link to="catalog">Каталоги</Link>
+                            <Link to="catalog"
+                                onClick={() => setIsDrawerOpen(false)}
+                            >Каталоги</Link>
                             <ListItemSuffix>
                                 <Chip value="14" size="sm" variant="ghost" color="blue-gray" className="rounded-full" />
                             </ListItemSuffix>
@@ -80,13 +86,19 @@ const AdminComponent = () => {
                             <ListItemPrefix>
                                 <UserCircleIcon className="h-5 w-5" />
                             </ListItemPrefix>
-                            <Link to="all-users">Пользователи</Link>
+                            <Link
+                                to="all-users"
+                                onClick={() => setIsDrawerOpen(false)}
+                            >Пользователи</Link>
                         </ListItem>
                         <ListItem>
                             <ListItemPrefix>
                                 <Cog6ToothIcon className="h-5 w-5" />
                             </ListItemPrefix>
-                            <Link to="settings">Настройки</Link>
+                            <Link
+                                to="settings"
+                                onClick={() => setIsDrawerOpen(false)}
+                            >Настройки</Link>
                         </ListItem>
                         <ListItem>
                             <ListItemPrefix>
@@ -94,7 +106,7 @@ const AdminComponent = () => {
                             </ListItemPrefix>
                             Log Out
                         </ListItem>
-                        
+
                     </List>
                 </Card>
             </Drawer>

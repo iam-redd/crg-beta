@@ -4,12 +4,11 @@ import { DefaultSpinner } from '../../../components/Spinner'
 import OrderCard from './OrderCard/OrderCard'
 export default function MyOrders() {
   const [data, setData] = useState(null)
-  console.log(data)
   async function getMyOrders() {
     try {
       const data = await axios.get('/get-my-orders')
       if (data.status === 200) {
-        setData(data.data)
+        setData(data.data.reverse())
       } else throw new Error('Что-то пошло не так')
     } catch (error) {
       console.log(error.message)

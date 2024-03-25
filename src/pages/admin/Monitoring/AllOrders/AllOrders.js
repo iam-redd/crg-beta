@@ -2,7 +2,7 @@ import React from 'react'
 import { DefaultSpinner } from '../../../../components/Spinner'
 import OrderCardMonitorng from '../OrderCardMonitiring/OrderCardMonitorng'
 
-export default function AllOrders({ data, getAllOrders }) {
+export default function AllOrders({ data, getAllOrders, index }) {
     console.log(data)
     return (
         <>
@@ -13,7 +13,11 @@ export default function AllOrders({ data, getAllOrders }) {
                         {
                             data.map(product => {
                                 return (
-                                    <OrderCardMonitorng key={product._id} data={product} getAllOrders={getAllOrders} />
+                                    <OrderCardMonitorng
+                                        key={product._id}
+                                        data={product}
+                                        getAllOrders={getAllOrders}
+                                        index={index} />
                                 )
                             })
                         }

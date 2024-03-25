@@ -3,12 +3,13 @@ import Footer from '../Footer'
 import { Outlet } from 'react-router-dom';
 import styles from './Layout.module.css'
 import axios from '../../store/axios'
-import { useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useGetAllGoodsQuery } from '../../store/goodsApi';
 import { setAllProducts, setSelectedProducts } from '../../store/slices/serviceDataSlice';
 import { getProductsFromLocalStorage } from '../../store/slices/basketSlice';
 import { addData } from '../../store/slices/userSlice';
+import { DefaultSpinner } from '../Spinner';
 const Layout = () => {
     const { data, isSuccess } = useGetAllGoodsQuery()
     const dispatch = useDispatch()
@@ -47,7 +48,9 @@ const Layout = () => {
         <div className={styles.container}>
             <Header />
             <div>
-                <Outlet />
+                <Suspense fallback={<DefaultSpinner/>}>
+                    <Outlet />
+                </Suspense>
             </div>
             <Footer />
         </div>
