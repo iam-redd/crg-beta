@@ -1,5 +1,7 @@
 
 import React from 'react';
+
+import styles from './LeftBar.module.css'
 import {
     Card,
     Typography,
@@ -26,9 +28,34 @@ export default function LeftBar() {
   const handleOpen = (value) => {
     setOpen(open === value ? 0 : value);
   };
+
+  
     return (
-        <div className='h-screen sticky top-0 w-full'>
-            <Card className="h-full w-full  p-4 shadow-xl shadow-blue-gray-900/5">
+        <div className='h-screen w-full'>
+            <div className='grid grid-flow-row grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6'>
+            
+                <div className={`p-5 ${styles.catcat}`}>
+                
+                Кофе
+                </div>
+                <div className={`p-5 ${styles.catcat}`}>
+                Дрипы
+                </div>
+                <div className={`p-5 ${styles.catcat}`}>
+                Капсулы
+                </div>
+                <div className={`p-5 ${styles.catcat}`}>
+                Чай
+                </div>
+                <div className={`p-5 ${styles.catcat}`}>
+                Аксессуары
+                </div>
+                <div className={`p-5 ${styles.catcat}`}>
+                Химия
+                </div>
+               
+            </div>
+            <Card className="h-full w-full p-4 shadow-xl shadow-blue-gray-900/5">
                 <div className="mb-2 p-4">
                     <Typography variant="h5" color="blue-gray">
                         Каталог

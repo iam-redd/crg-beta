@@ -13,7 +13,7 @@ const Shop = () => {
 
   return (
     <div className='2xl:max-w-screen-2xl m-auto mt-8'>
-      <div className='flex flex-wrap w-full'>
+      <div className=''>
         <LeftBar />
         <div className='grid grid-cols-3 col-span-3 gap-5'>
           <SearchBar/>
