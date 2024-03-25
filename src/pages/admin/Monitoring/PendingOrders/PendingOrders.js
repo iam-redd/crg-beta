@@ -2,7 +2,8 @@ import React from 'react'
 import { DefaultSpinner } from '../../../../components/Spinner'
 import OrderCardMonitorng from '../OrderCardMonitiring/OrderCardMonitorng'
 
-export default function PendingOrders({ data, getAllOrders }) {
+export default function PendingOrders({ data, getAllOrders, index }) {
+    console.log(index)
     return (
         <div>
             {
@@ -11,7 +12,11 @@ export default function PendingOrders({ data, getAllOrders }) {
                         data.map(product => {
                             return (
                                 product.status === 'В ожидании' &&
-                                <OrderCardMonitorng key={product._id} data={product} getAllOrders={getAllOrders} />
+                                <OrderCardMonitorng
+                                    key={product._id}
+                                    data={product}
+                                    getAllOrders={getAllOrders}
+                                    index={index} />
                             )
                         })
                     }</> : <DefaultSpinner />

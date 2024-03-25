@@ -14,9 +14,9 @@ function ProductCard({ index }) {
     function decrement() {
         try {
             if (basket[index].amount < 2) {
-                if(window.confirm(`Вы действительно хотите удалить ${basket[index].name} из корзины`)){
+                // if(window.confirm(`Вы действительно хотите удалить ${basket[index].name} из корзины`)){
                     dispatch(removeProductFromBasket(index))
-                }
+                // }
             } else {
                 dispatch(decrementProduct(index))
             }

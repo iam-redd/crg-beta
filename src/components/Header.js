@@ -8,8 +8,11 @@ import {
   Badge,
 } from "@material-tailwind/react";
 import { ABOUT_COFFEE, ADMIN, BASKET, HOME_PAGE, JS_BARISTA, RECIPES, SHOP_USER, USER_PROFILE,} from '../utils/consts';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
+  const productSize = useSelector(state => state.basket.basket)
   const [openNav, setOpenNav] = React.useState(false);
   React.useEffect(() => {
     window.addEventListener(
@@ -69,7 +72,7 @@ const Header = () => {
         <li>Оплата и доставка</li>
         <li>Опт</li>
         <li>Контакты</li>
-        <a href={ADMIN}><li>Админ</li></a>
+          <li><Link to="/admin/monitoring">Админ</Link></li>
       </ul>
       <div className='text-md cursor-text text-gray-600 mb-5'>
         Call-центр: +998(99)000-00-00
@@ -96,8 +99,8 @@ const Header = () => {
           </div>
         </div>
       </>
-      <Navbar className="sticky h-full shadow-sm z-10 mx-auto max-w-screen-xl 2xl:max-w-screen-2xl rounded-none px-4 2xl:px-0 py-2 lg:px-8 lg:py-4">
-        <div className="flex items-center justify-between text-blue-gray-900">
+      <Navbar className="sticky top-0 h-full shadow-sm z-10 mx-auto max-w-screen-xl 2xl:max-w-screen-2xl rounded-none px-4 2xl:px-0 py-2 lg:px-8 lg:py-4">
+        <div className="mb-2 lg:mb-0 flex items-center justify-between text-blue-gray-900">
           <Typography
             as="a"
             href={HOME_PAGE}
@@ -324,14 +327,14 @@ const Header = () => {
             <div className="mr-4 hidden lg:block">{navList}</div>
             <div className="flex items-center gap-x-1 mr-2">
                 <a href={USER_PROFILE}>
-                <IconButton color='red' variant='outlined' className='h-8 w-8 rounded-full mr-3'>
+                <IconButton color='red' variant='outlined' className='h-8 w-8 rounded-full mr-1'>
                   <UserIcon color='red' className="h-4 w-4"/>
                 </IconButton>
                 </a>
              
               <a href={BASKET}>
-              <Badge color='red' content='1' placement="bottom-end" withBorder>
-                <IconButton variant='outlined'  color='red' className='h-8 w-8 rounded-full'>
+              <Badge color='red' content={productSize.length} className='' placement="bottom-end">
+                <IconButton variant='outlined'  color='red' className='h-9 w-9 rounded-full'>
                   <ShoppingCartIcon color='red' className="h-4 w-4" />
                 </IconButton>
               </Badge>

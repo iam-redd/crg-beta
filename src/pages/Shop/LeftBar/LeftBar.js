@@ -27,8 +27,8 @@ export default function LeftBar() {
     setOpen(open === value ? 0 : value);
   };
     return (
-        <div className='h-screen sticky top-0'>
-            <Card className="h-full w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5">
+        <div className='h-screen sticky top-0 w-full'>
+            <Card className="h-full w-full  p-4 shadow-xl shadow-blue-gray-900/5">
                 <div className="mb-2 p-4">
                     <Typography variant="h5" color="blue-gray">
                         Каталог

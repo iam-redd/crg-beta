@@ -11,9 +11,8 @@ const UserProfile = () => {
             <div className=''>
                 <UserHeader />
             </div>
-                
-        </div>
 
+        </div>
     );
 };
 
