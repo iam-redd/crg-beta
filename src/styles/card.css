@@ -1,0 +1,7 @@
+.card-hover{
+    transition: ease-in-out 0.2s;
+}
+.card-hover:hover{
+    background-color: #f9f9f9;
+    transform: translateY(-3px);
+}
