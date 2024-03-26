@@ -1,4 +1,4 @@
-import { Spinner } from "@material-tailwind/react";
+//import { Spinner } from "@material-tailwind/react";
 import { CirclesWithBar } from 'react-loader-spinner'
 
 export function DefaultSpinner({ width = 80, height = 80 }) {
