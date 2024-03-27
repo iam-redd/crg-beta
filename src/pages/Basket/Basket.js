@@ -78,8 +78,12 @@ const Basket = () => {
                                 </div>
                             </>
                     }
-                </> : <button className={styles.btn}
-                onClick={()=> navigate('/shop')}>Добавить товаров в корзину</button>}
+                </> : 
+            <div  className='flex flex-col items-center'>
+                    <div className='my-10'>У вас пока нет товаров в корзине, можем это исправить кликнув по кнопке снизу</div>
+                <button className={`mb-20 ${styles.btn}`}
+                onClick={()=> navigate('/shop')}>Перейти в магазин</button>
+            </div>}
         </div>
     );
 };
