@@ -4,6 +4,9 @@ import axios from '../../store/axios.js'
 import ProductCard from './ProductCard/ProductCard.js';
 import styles from './Basket.module.css'
 import OrderForm from './OrderForm/OrderForm.js';
+
+import emptyBasket from '../../assets/cart.png'
+
 import { useNavigate } from 'react-router-dom';
 const Basket = () => {
     const allProductsId = useSelector(state => state.basket.allProductsId)
@@ -80,7 +83,8 @@ const Basket = () => {
                     }
                 </> : 
             <div  className='flex flex-col items-center'>
-                    <div className='my-10'>У вас пока нет товаров в корзине, можем это исправить кликнув по кнопке снизу</div>
+                    <div className='opacity-10 pt-10 w-72'><img src={emptyBasket} alt='' className=''/></div>
+                    <div className='my-10 text-center'>У вас пока нет товаров в корзине, можем это исправить кликнув по кнопке снизу</div>
                 <button className={`mb-20 ${styles.btn}`}
                 onClick={()=> navigate('/shop')}>Перейти в магазин</button>
             </div>}
