@@ -20,8 +20,8 @@ export default function LeftBar() {
 
 
   return (
-    <div className='w-full mx-auto md:max-w-screen-xl p-4'>
-      <div className='flex overflow-x-scroll scroll-smooth'>
+    <div className='w-full mx-auto md:max-w-screen-xl p-4 wrappeR'>
+      <div className='flex overflow-x-scroll scroll-smooth wrappeR'>
 
         <div className={`p-5 mb-1 mr-1 flex flex-col items-center ${styles.catcat}`}>
           <img src={beansIcon} className='w-8 h-8 text-center' alt='' />

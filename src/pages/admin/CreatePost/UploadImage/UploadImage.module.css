@@ -1,0 +1,40 @@
+.upload_container {
+    max-width: 400px;
+    margin: 10px auto;
+    padding: 20px;
+    /* border: 1px solid #ccc; */
+    border-radius: 5px;
+    text-align: center;
+}
+
+.progress_container {
+    width: 100%;
+    background-color: #f0f0f0;
+    height: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.progress_bar {
+    height: 100%;
+    line-height: 20px;
+    color: #fff;
+    text-align: center;
+    transition: width 0.3s ease;
+}
+
+.title2 > img{
+    cursor: pointer;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.min_text{
+    font-size: 14px;
+    margin: 10px 0;
+    text-align: start;
+
+}

@@ -146,3 +146,7 @@ h1, h2, ul, li, a, button, div{
 p {
     font-family: 'Montserrat', sans-serif;
 }
+
+.wrappeR::-webkit-scrollbar{
+    display: none;
+}
