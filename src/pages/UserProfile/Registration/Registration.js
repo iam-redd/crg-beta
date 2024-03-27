@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Registration.module.css'
-import ImageUpload from './UploadImage/UploadImage';
+import ImageUpload from '../../../components/UploadImage/UploadImage.js';
 import axios from '../../../store/axios'
 import { useDispatch, useSelector } from 'react-redux'
 import { addData, logout } from '../../../store/slices/userSlice'

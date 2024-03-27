@@ -11,7 +11,9 @@ import axios from '../../../store/axios'
 import { useEffect } from 'react'
 import { DefaultSpinner } from '../../../components/Spinner'
 import styles from './AllUsers.module.css'
+import { useNavigate } from 'react-router-dom';
 export default function AllUsers() {
+  const navigate = useNavigate()
   const [users, setUsers] = useState(null)
   const [isSucccess, setSecccess] = useState(true)
   async function getAllUsersFunc() {
@@ -23,6 +25,7 @@ export default function AllUsers() {
       }
     } catch (error) {
       console.log(error.message)
+      navigate('/')
     }
   }
 
@@ -32,6 +35,9 @@ export default function AllUsers() {
       const request = await axios.patch('/user/level-up', {
         currentUserId: id
       })
+      if(request.status === 403) {
+        console.log('status 404')
+      }
 
       if (request.status === 200) {
         getAllUsersFunc()
@@ -39,6 +45,7 @@ export default function AllUsers() {
       setSecccess(true)
     } catch (error) {
       console.log(error.message)
+
     }
   }
 

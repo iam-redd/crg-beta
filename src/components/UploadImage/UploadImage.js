@@ -1,9 +1,9 @@
 import React, { useRef, useState } from 'react';
 import styles from './UploadImage.module.css'
-import axios from '../../../../store/axios';
-import icon from '../../../../assets/icons/uploadImage.png'
-import url from '../../../../default.json'
-import { DefaultSpinner } from '../../../../components/Spinner';
+import axios from '../../store/axios';
+import icon from '../../assets/icons/uploadImage.png'
+import url from '../.././default.json'
+import { DefaultSpinner } from '../Spinner';
 const ImageUpload = ({ list, setList }) => {
     const input = useRef()
     const [isLoading, setLoading] = useState(false)

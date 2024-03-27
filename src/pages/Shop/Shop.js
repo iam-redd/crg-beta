@@ -4,6 +4,7 @@ import LeftBar from './LeftBar/LeftBar';
 import styles from './Shop.module.css'
 import SearchBar from './SearchBar/SearchBar';
 import { useSelector } from 'react-redux';
+import { DefaultSpinner } from '../../components/Spinner';
 
 const Shop = () => {
   const selectedProducts = useSelector(state => state.service.selectedProducts) || null
@@ -14,17 +15,16 @@ const Shop = () => {
   return (
     <div className='w-full md:max-w-screen-xl 2xl:max-w-screen-2xl m-auto mt-8'>
       <div className=''>
+        <SearchBar />
         <LeftBar />
         <div>
-
-          <SearchBar/>
           <>
             {
               selectedProducts !== null ? <div className={styles.container}>
                 {
                   selectedProducts.map((card) => <CoffeeCard key={card.name} data={card} />)
                 }
-              </div> : <h1>Loading....</h1>
+              </div> : <div className="flex-center"><DefaultSpinner /></div>
             }
           </>
         </div>
