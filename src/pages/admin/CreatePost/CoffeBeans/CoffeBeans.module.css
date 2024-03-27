@@ -1,7 +1,6 @@
 .imageWrapper{
     width: 400px;
     display: flex;
-    border: 1px solid black;
     justify-content: center;
     align-items: center;
 }
@@ -9,9 +8,12 @@
 .btnImg{
     width: 80px;
     height: 80px;
-    border: 1px solid black;
 }
 
-.btn{
-    justify-items: center;
+.inputWrapper{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
 }
+
+

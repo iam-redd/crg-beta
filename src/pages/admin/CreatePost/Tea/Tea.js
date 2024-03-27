@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import styles from './CoffeBeans.module.css'
+import styles from '../CoffeBeans/CoffeBeans.module.css'
 import UploadImage from '../UploadImage/UploadImage'
 import icon from '../../../../assets/icons/addImage.png'
 import axios from '../../../../store/axios'
@@ -10,7 +10,7 @@ import {
 } from "@material-tailwind/react";
 import { useNavigate } from 'react-router-dom'
 
-export default function CoffeBeans() {
+export default function Tea() {
     const [images, setImages] = useState([])
     const [secondImage, setSecondImage] = useState(false)
     const [thirdImage, setThirdImage] = useState(false)

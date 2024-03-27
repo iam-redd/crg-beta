@@ -6,9 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect } from 'react';
-import {
-    Input,
-  } from "@material-tailwind/react";
+import {Input} from "@material-tailwind/react";
   import { Link } from 'react-router-dom';
 
 const LogIn = () => {
