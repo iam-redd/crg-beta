@@ -21,7 +21,7 @@ export default function LeftBar() {
   
     return (
         <div className='w-full mx-auto md:max-w-screen-xl p-4'>
-            <div className='grid grid-flow-row grid-rows-auto grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6'>
+            <div className='flex overflow-hidden overflow-x-auto scroll-smooth'>
             
                 <div className={`p-5 mb-1 mr-1 flex flex-col items-center ${styles.catcat}`}>
                   <img src={beansIcon} className='w-8 h-8 text-center' alt=''/>
