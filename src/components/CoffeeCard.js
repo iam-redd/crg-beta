@@ -88,7 +88,7 @@ function CoffeeCard({ data }) {
                     <img src={`${url.backendUrl}/${data.img}`} alt='card-img' className='object-cover w-1/2' />
                     <div className='grid grid-cols-1 grid-rows-8 gap-1 px-3 py-2 text-xs'>
                         <p>
-                            Обработка: <span>Мытая</span>
+                            Обработка: <span>{data.treatment}</span>
                         </p>
                         <p>Кислотность:</p>
                         <Progress color='red' size='sm' value={data?.acidity ? data.acidity : 0} />
