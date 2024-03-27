@@ -42,7 +42,7 @@ export default function OrderForm({totalPrice}) {
                         disabled={btnBool}>{
                             btnBool ? 'Loading...' : 'ЗАКАЗАТЬ'
                         }</button>
-                    </form> : <h3 style={{ color: '#F44336' }}>Не авторизованные пользователи не могут заказать</h3>
+                    </form> : <p className='text-center' >Для того чтобы оформить свой заказ, пожалуйста войдите в свой аккаунт или зарегистрируйтесь</p>
             }
         </>
     )

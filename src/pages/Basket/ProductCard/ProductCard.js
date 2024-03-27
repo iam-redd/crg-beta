@@ -33,11 +33,11 @@ function ProductCard({ index }) {
         <>
             {
                 basket[index]?.amount > 0 ?
-                    <div className={styles.product_container}>
+                    <div className={`rounded mx-4 my-2 ${styles.product_container}`}>
                         <img className={styles.img} src={`${url.backendUrl}/${basket[index]?.img}`} alt="" />
                         <div className="">
-                            <div className="">{basket[index]?.name + ' ' + basket[index].weight}</div>
-                            <div className={styles.btn_wrapper}>
+                            <div className=''>{basket[index]?.name + ' ' + basket[index].weight}</div>
+                            <div className={`mt-5 ${styles.btn_wrapper}`}>
                                 <button
                                     className={styles.btn}
                                     onClick={decrement}>-</button>
@@ -46,7 +46,7 @@ function ProductCard({ index }) {
                                     className={styles.btn}
                                     onClick={increment}>+</button>
                                     <button
-                                    className={styles.btn}
+                                    className={`ml-2 ${styles.btn}`}
                                     onClick={remove}>Удалить</button>
                             </div>
                         </div>
