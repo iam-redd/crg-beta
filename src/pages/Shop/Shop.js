@@ -30,7 +30,12 @@ const Shop = () => {
           </>
           
         </div>
-        
+        <div>
+          <TeaCard />
+          <TeaCard />
+          <TeaCard />
+          <TeaCard />
+        </div>
       </div>
     </div>
   );

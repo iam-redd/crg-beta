@@ -4,7 +4,7 @@ import { Button, Card, Option, Progress, Select, Typography } from '@material-ta
 const TeaCard = () => {
     return (
         <div className=''>
-            <Card className='w-80 h-full border py-5 px-5 card-hover'>
+            <Card className='w-80 h-auto border py-5 px-5 card-hover'>
                 <div className='flex justify-end py-2 px-4 text-xs'>
                     Топ-недели
                 </div>
@@ -17,50 +17,40 @@ const TeaCard = () => {
                 <div className='mt-5 text-sm'>
                     <p>
                         Описание: <span>
-                            Какой то цай с каким то цаем пипиську поднимет и блаблаблаблаблаблаблаблабалаблабалбалабалабалабалабал
+                            Какой то цай с каким то цаем пипиську поднимет и блаблаблаблаблаблабл аблабалаблабалб алабалабал абалабал
                         </span>
                     </p>
                 </div>
                 
                 <div className='flex justify-between mt-5 text-sm'>
-                    <div className='grid grid-cols-2 items-center'>
+                    <div className='grid grid-cols-4 items-center'>
                         <p>Вес:</p>
                         <div className='col-span-1'>
                             <Select
                                 size="md"
                                 label="Выберите вес"
                                 >
-                                
-                                    
-                                        <Option>
-                                            50 гр
-                                        </Option>
-                                        <Option>100 гр</Option>
-                                    
-                                
+                                <Option>50 гр</Option>
+                                <Option>100 гр</Option>
                             </Select>
                         </div>
                     </div>
                     
                 </div>
+                <div className='flex justify-between mt-2 text-sm'>
                 <div className='grid grid-cols-4 items-center'>
-                        <p>Упаковка: </p>
+                        <p>Упа-ка: </p>
                         <div className='col-span-3'>
                             <Select
-                                size="md"
+                                size="sm"
                                 label="Выберите вес"
                                 >
-                                
-                                    
-                                        <Option>
-                                            Крафт пакет
-                                        </Option>
+                                        <Option>Крафт пакет</Option>
                                         <Option>Картон</Option>
                                         <Option>Алюминь</Option>
-                                    
-                                
                             </Select>
                         </div>
+                    </div>
                     </div>
                 <div className='mt-5'>
                     <Typography variant='h6'>Цена: 
@@ -85,6 +75,13 @@ const TeaCard = () => {
                                 variant='outlined'
                                 color='red'
                                 onClick={''}>В корзину</Button>
+
+                                <Button
+                                variant='outlined'
+                                color='red'
+                                onClick={''}
+                                >
+                                Подробно</Button>
 
                 </div>
             </Card>
