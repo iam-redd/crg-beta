@@ -1,7 +1,8 @@
 import React from 'react';
 import CoffeeCard from '../../components/CoffeeCard';
 import LeftBar from './LeftBar/LeftBar';
-import styles from './Shop.module.css'
+import TeaCard from '../../components/TeaCard';
+import styles from './Shop.module.css';
 import SearchBar from './SearchBar/SearchBar';
 import { useSelector } from 'react-redux';
 import { DefaultSpinner } from '../../components/Spinner';
@@ -27,7 +28,9 @@ const Shop = () => {
               </div> : <div className="flex-center"><DefaultSpinner /></div>
             }
           </>
+          
         </div>
+        
       </div>
     </div>
   );

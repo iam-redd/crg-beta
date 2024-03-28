@@ -1,17 +1,18 @@
 .catcat{
-    border: 1px solid #ba181b;
+    border: 1px dashed #161A1D;
     text-align: center;
     min-width: 153px;
     cursor: pointer;
     transition: transform 1s ease-in-out;
     transform-origin: 0 0 0;
-    color: #ba181b;
+    color: #161A1D;
+    border-radius: 15px;
 }
 
 .catcat:hover{
-    background-color: #f1f1f1;
+    background-color: #d3d3d3;
 }
 .catcatBck{
-    background-color: #f9f9f9;
+    background-color: #fff;
 }
 
