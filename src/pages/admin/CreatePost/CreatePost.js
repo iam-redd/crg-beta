@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import CoffeBeans from './CoffeBeans/CoffeBeans';
 import Tea from './Tea/Tea'
+import Other from './Other/Other';
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -53,10 +54,7 @@ export default function BasicTabs() {
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label="Кофе в зёрнах" {...a11yProps(0)} />
           <Tab label="Чай" {...a11yProps(1)} />
-          <Tab label="Кофе в капсулах" {...a11yProps(2)} />
-          <Tab label="Сироп" {...a11yProps(3)} />
-          <Tab label="Химия" {...a11yProps(4)} />
-          <Tab label="Аксеcсуар" {...a11yProps(5)} />
+          <Tab label="Другое" {...a11yProps(2)} />
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
@@ -66,16 +64,7 @@ export default function BasicTabs() {
         <Tea/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
-        Item Three
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={3}>
-        Item Four
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={4}>
-        Item Five
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={5}>
-        Item Six
+        <Other/>
       </CustomTabPanel>
     </Box>
   );

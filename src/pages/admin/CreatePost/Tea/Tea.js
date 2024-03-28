@@ -24,33 +24,26 @@ export default function Tea() {
                 priceUser: [],
                 priceWS: [],
                 img: images,
-                type: 'coffe-beans',
-                sort: e.target.sort.value,
-                region: e.target.region.value,
-                weight: [],
-                roast: e.target.roast.value,
-                scores: e.target.scores.value,
-                acidity: e.target.acidity.value,
-                density: e.target.density.value,
-                treatment: e.target.treatment.value,
-                description: e.target.description.value
+                type: 'tea',
+                description: e.target.description.value,
+                package:[]
             }
 
-            e.target.price1.value !== '' && options.priceUser.push(totalCost(e.target.price3.value))
-            e.target.price2.value !== '' && options.priceUser.push(totalCost(e.target.price3.value))
+            e.target.price1.value !== '' && options.priceUser.push(totalCost(e.target.price1.value))
+            e.target.price2.value !== '' && options.priceUser.push(totalCost(e.target.price2.value))
             e.target.price3.value !== '' && options.priceUser.push(totalCost(e.target.price3.value))
 
             e.target.priceWs1.value !== '' && options.priceWS.push(totalCost(e.target.priceWs1.value))
             e.target.priceWs2.value !== '' && options.priceWS.push(totalCost(e.target.priceWs2.value))
             e.target.priceWs3.value !== '' && options.priceWS.push(totalCost(e.target.priceWs3.value))
 
-            e.target.weight1.checked ? options.weight.push(true) : options.weight.push(false)
-            e.target.weight2.checked ? options.weight.push(true) : options.weight.push(false)
-            e.target.weight3.checked ? options.weight.push(true) : options.weight.push(false)
+            e.target.weight1.checked ? options.package.push(true) : options.package.push(false)
+            e.target.weight2.checked ? options.package.push(true) : options.package.push(false)
+            e.target.weight3.checked ? options.package.push(true) : options.package.push(false)
 
             console.log(options)
 
-            const request = await axios.post('/post/create/coffe', options)
+            const request = await axios.post('/post/create/tea', options)
 
             console.log(request)
             navigate('/shop')
@@ -78,42 +71,6 @@ export default function Tea() {
                     label='Названия'
                     name='name'
                     className={styles.input} />
-                <Input
-                    type="text"
-                    label='Сорт'
-                    name='sort'
-                    className={styles.input} />
-                <Input
-                    type="text"
-                    label='Регион'
-                    name='region'
-                    className={styles.input} />
-                <Input
-                    type="text"
-                    label='Kислотность'
-                    name='acidity'
-                    className={styles.input} />
-                <Input
-                    type="text"
-                    label='Плотность'
-                    name='density'
-                    className={styles.input} />
-                <Input
-                    type="text"
-                    label='Обжарка'
-                    name='roast'
-                    className={styles.input} />
-                <Input
-                    type="text"
-                    label='Оценка'
-                    name='scores'
-                    className={styles.input} />
-                <Input
-                    type="text"
-                    label='Обработка'
-                    name='treatment'
-                    className={styles.input} />
-
                 <div className="">Цена для пользователей</div>
                 <div className="flex">
                     <Input
@@ -150,20 +107,20 @@ export default function Tea() {
                         name='priceWs3'
                         className={styles.input} />
                 </div>
-                <div className="">Обьём</div>
+                <div className="">Упаковка</div>
                 <div className="flex">
                     <Checkbox
                         color="red"
-                        label="250гр"
+                        label="Алюминиевая"
                         defaultChecked
                         name='weight1' />
                     <Checkbox
                         color="red"
-                        label="500гр"
+                        label="Картонная"
                         name='weight2' />
                     <Checkbox
                         color="red"
-                        label="1000гр"
+                        label="Крафт пакет"
                         name='weight3' />
                 </div>
                 <div class="relative w-full min-w-[200px]">

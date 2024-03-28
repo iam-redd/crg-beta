@@ -1,23 +1,22 @@
 import React from 'react';
 import { Button, Card, Option, Progress, Select, Typography } from '@material-tailwind/react';
-
-const TeaCard = () => {
+import url from '.././default.json'
+const TeaCard = ({data}) => {
     return (
         <div className=''>
             <Card className='w-80 h-auto border py-5 px-5 card-hover'>
                 <div className='flex justify-end py-2 px-4 text-xs'>
                     Топ-недели
                 </div>
-                <h2 className='text-center font-bold text-xl'>Название чая</h2>
+                <h2 className='text-center font-bold text-xl'>{data.name}</h2>
                 <p className='text-center text-xs'>Черный чай или зеленый</p>
                 <div className='flex mt-5'>
-                    <img src='' alt='card-img' className='object-cover w-full' />
-                    Фото
+                    <img src={`${url.backendUrl}/${data.img}`} alt='card-img' className='object-cover w-full' />
                 </div>
                 <div className='mt-5 text-sm'>
                     <p>
                         Описание: <span>
-                            Какой то цай с каким то цаем пипиську поднимет и блаблаблаблаблаблабл аблабалаблабалб алабалабал абалабал
+                            {data.description}
                         </span>
                     </p>
                 </div>
@@ -74,12 +73,11 @@ const TeaCard = () => {
                     <Button
                                 variant='outlined'
                                 color='red'
-                                onClick={''}>В корзину</Button>
+                                >В корзину</Button>
 
                                 <Button
                                 variant='outlined'
                                 color='red'
-                                onClick={''}
                                 >
                                 Подробно</Button>
 
