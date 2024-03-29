@@ -1,19 +1,22 @@
 import React, { useState } from 'react'
-import styles from './CoffeBeans.module.css'
+import styles from '../CoffeBeans/CoffeBeans.module.css'
 import UploadImage from '../UploadImage/UploadImage'
 import icon from '../../../../assets/icons/addImage.png'
 import axios from '../../../../store/axios'
 import {
     Input,
-    Checkbox,
+    Select,
+    Option,
     Button
 } from "@material-tailwind/react";
 import { useNavigate } from 'react-router-dom'
 
-export default function CoffeBeans() {
+export default function Other() {
     const [images, setImages] = useState([])
     const [secondImage, setSecondImage] = useState(false)
     const [thirdImage, setThirdImage] = useState(false)
+    const [selectValue, setValue] = useState(null)
+
     const navigate = useNavigate()
 
     async function onSubmit(e) {
@@ -24,33 +27,16 @@ export default function CoffeBeans() {
                 priceUser: [],
                 priceWS: [],
                 img: images,
-                type: 'coffe-beans',
-                sort: e.target.sort.value,
-                region: e.target.region.value,
-                weight: [],
-                roast: e.target.roast.value,
-                scores: e.target.scores.value,
-                acidity: e.target.acidity.value,
-                density: e.target.density.value,
-                treatment: e.target.treatment.value,
-                description: e.target.description.value
+                type: selectValue,
+                description: e.target.description.value,
             }
 
             e.target.price1.value !== '' && options.priceUser.push(totalCost(e.target.price1.value))
-            e.target.price2.value !== '' && options.priceUser.push(totalCost(e.target.price2.value))
-            e.target.price3.value !== '' && options.priceUser.push(totalCost(e.target.price3.value))
-
             e.target.priceWs1.value !== '' && options.priceWS.push(totalCost(e.target.priceWs1.value))
-            e.target.priceWs2.value !== '' && options.priceWS.push(totalCost(e.target.priceWs2.value))
-            e.target.priceWs3.value !== '' && options.priceWS.push(totalCost(e.target.priceWs3.value))
-
-            e.target.weight1.checked ? options.weight.push(true) : options.weight.push(false)
-            e.target.weight2.checked ? options.weight.push(true) : options.weight.push(false)
-            e.target.weight3.checked ? options.weight.push(true) : options.weight.push(false)
 
             console.log(options)
 
-            const request = await axios.post('/post/create/coffe', options)
+            const request = await axios.post('/post/create/other', options)
 
             console.log(request)
             navigate('/shop')
@@ -78,93 +64,28 @@ export default function CoffeBeans() {
                     label='Названия'
                     name='name'
                     className={styles.input} />
-                <Input
-                    type="text"
-                    label='Сорт'
-                    name='sort'
-                    className={styles.input} />
-                <Input
-                    type="text"
-                    label='Регион'
-                    name='region'
-                    className={styles.input} />
-                <Input
-                    type="text"
-                    label='Kислотность'
-                    name='acidity'
-                    className={styles.input} />
-                <Input
-                    type="text"
-                    label='Плотность'
-                    name='density'
-                    className={styles.input} />
-                <Input
-                    type="text"
-                    label='Обжарка'
-                    name='roast'
-                    className={styles.input} />
-                <Input
-                    type="text"
-                    label='Оценка'
-                    name='scores'
-                    className={styles.input} />
-                <Input
-                    type="text"
-                    label='Обработка'
-                    name='treatment'
-                    className={styles.input} />
-
-                <div className="">Цена для пользователей</div>
+                {/* <div className="">Цена для пользователей</div> */}
                 <div className="flex">
                     <Input
                         type="text"
-                        label='Цена 1'
+                        label='Цена для пользователей'
                         name='price1'
                         className={styles.input} />
                     <Input
                         type="text"
-                        label='Цена 2'
-                        name='price2'
-                        className={styles.input} />
-                    <Input
-                        type="text"
-                        label='Цена 3'
-                        name='price3'
-                        className={styles.input} />
-                </div>
-                <div className="">Цена для оптовиков</div>
-                <div className="flex">
-                    <Input
-                        type="text"
-                        label='Цена 1'
+                        label='Цена для оптовиков'
                         name='priceWs1'
                         className={styles.input} />
-                    <Input
-                        type="text"
-                        label='Цена 2'
-                        name='priceWs2'
-                        className={styles.input} />
-                    <Input
-                        type="text"
-                        label='Цена 3'
-                        name='priceWs3'
-                        className={styles.input} />
-                </div>
-                <div className="">Обьём</div>
-                <div className="flex">
-                    <Checkbox
-                        color="red"
-                        label="250гр"
-                        defaultChecked
-                        name='weight1' />
-                    <Checkbox
-                        color="red"
-                        label="500гр"
-                        name='weight2' />
-                    <Checkbox
-                        color="red"
-                        label="1000гр"
-                        name='weight3' />
+                    <Select
+                        size="md"
+                        label="Тип товара"
+                        name='type'
+                        onChange={(e) => setValue(e)}>
+                        <Option value='syrup'>Сироп</Option>
+                        <Option value='accessory'>Аксессуар</Option>
+                        <Option value='chemistry'>Химия</Option>
+                        <Option value='coffee-capsule'>Кофе в капсуле</Option>
+                    </Select>
                 </div>
                 <div class="relative w-full min-w-[200px]">
                     <textarea

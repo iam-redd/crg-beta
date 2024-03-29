@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import CoffeeCard from '../../components/CoffeeCard';
 import LeftBar from './LeftBar/LeftBar';
 import TeaCard from '../../components/TeaCard';
@@ -9,22 +9,26 @@ import { DefaultSpinner } from '../../components/Spinner';
 import AnyCard from '../../components/AnyCard';
 
 const Shop = () => {
-  const selectedProducts = useSelector(state => state.service.selectedProducts) || null
-  if (selectedProducts !== null) {
-    console.log(selectedProducts)
-  }
+  const selectedProducts = useSelector(state => state.service.selectedProducts)
+  const [data,setData] = useState(null)
+  console.log(data)
+
+
+  useEffect(() => {
+    data === null && setData(selectedProducts)
+  });
 
   return (
     <div className='w-full md:max-w-screen-xl 2xl:max-w-screen-2xl m-auto mt-8'>
       <div className=''>
         <SearchBar />
-        <LeftBar />
+        <LeftBar data={selectedProducts} setData={setData} />  
         <div>
           <>
             {
-              selectedProducts !== null ? <div className={styles.container}>
+              data !== null ? <div className={styles.container}>
                 {
-                  selectedProducts.map((card) => <CoffeeCard key={card.name} data={card} />)
+                  data.map((card) => <CoffeeCard key={card.name} data={card} />)
                 }
               </div> : <div className="flex-center"><DefaultSpinner /></div>
             }
@@ -32,7 +36,7 @@ const Shop = () => {
           
         </div>
         <div>
-          <TeaCard />
+         <TeaCard />
           <AnyCard />
         </div>
       </div>
