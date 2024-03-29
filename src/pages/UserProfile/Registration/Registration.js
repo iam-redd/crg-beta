@@ -52,7 +52,7 @@ const Registration = () => {
     });
     return (
         <div className='relative'>
-            <div className={`absolute -top-32 flex w-full`}>
+            <div className={`absolute -top-72 sm:-top-36 md:-top-48 flex w-full`}>
                 <div className={`items-center justify-center m-auto ${styles.bordered}`}>
                 <div className='flex items-center'>
                     Загрузите аватарку
