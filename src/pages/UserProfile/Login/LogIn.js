@@ -81,13 +81,16 @@ const LogIn = () => {
 
                                 <div className='w-full flex justify-between'>
                                 <p className='cursor-pointer'>Забыли пароль?</p>
-                                <Link to='/user/registration'>
-                                    <p className='cursor-pointer'>Регистрация</p>
-                                </Link>
+                                
                                 </div>
+                            <div className='flex w-full justify-around'>
                             <button
-                                className={styles.btn}
-                            >{ isVisible ? 'Войти' : 'Загрузка...'}</button>
+                            className={styles.btn}
+                        >{ isVisible ? 'Войти' : 'Загрузка...'}</button>
+                        <Link to='/user/registration'>
+                                <p className='cursor-pointer'>Регистрация</p>
+                            </Link>
+                            </div>
                         </form>
                         
                     </motion.div>}

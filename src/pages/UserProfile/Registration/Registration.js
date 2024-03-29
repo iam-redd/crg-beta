@@ -5,6 +5,9 @@ import axios from '../../../store/axios'
 import { useDispatch, useSelector } from 'react-redux'
 import { addData, logout } from '../../../store/slices/userSlice'
 import { useNavigate } from 'react-router-dom';
+
+import { Link } from 'react-router-dom';
+
 // import URL from '../../default.json'
 const Registration = () => {
     const [uploadedImages, setUploadedImages] = useState(null)
@@ -48,52 +51,70 @@ const Registration = () => {
         // userInfo !== null && dispatch(logout())
     });
     return (
-        <div>
-            <ImageUpload
-            list={uploadedImages}
-            setList={setUploadedImages} />
-            <form
-                onSubmit={handleSubmit}
-                className={styles.form}>
-                <input
-                    type="text"
-                    name='name'
-                    className={styles.input}
-                    defaultValue={'kadyrzhan'}
-                    placeholder='name' />
-                <input
-                    type="text"
-                    name='email'
-                    defaultValue={'test6@test.ru'}
-                    className={styles.input}
-                    placeholder='email' />
-                <input
-                    type="text"
-                    name='phoneNumber'
-                    className={styles.input}
-                    defaultValue={'+998999994923'}
-                    placeholder='phone' />
-                <input
-                    type="text"
-                    name='address'
-                    className={styles.input}
-                    defaultValue={'gulsanam 48'}
-                    placeholder='adres' />
-                <input
-                    type="text"
-                    name='telegram'
-                    className={styles.input}
-                    defaultValue={'kadyrzhan_23'}
-                    placeholder='telegram' />
-                <input
-                    type="text"
-                    name='password'
-                    className={styles.input}
-                    defaultValue={'123466'}
-                    placeholder='password' />
-                <button
-                    className={styles.input}>SUBMIT</button>
-            </form>
+        <div className='relative'>
+            <div className={`absolute -top-32 flex w-full`}>
+                <div className={`items-center justify-center m-auto ${styles.bordered}`}>
+                <div className='flex items-center'>
+                    Загрузите аватарку
+                    <ImageUpload
+                list={uploadedImages}
+
+                setList={setUploadedImages} />
+                </div>
+                
+                <form
+                    onSubmit={handleSubmit}
+                    className={styles.form}>
+                    <input
+                        type="text"
+                        name='name'
+                        className={styles.input}
+                        defaultValue={'kadyrzhan'}
+                        placeholder='name' />
+                    <input
+                        type="text"
+                        name='email'
+                        defaultValue={'test6@test.ru'}
+                        className={styles.input}
+                        placeholder='email' />
+                    <input
+                        type="text"
+                        name='phoneNumber'
+                        className={styles.input}
+                        defaultValue={'+998999994923'}
+                        placeholder='phone' />
+                    <input
+                        type="text"
+                        name='address'
+                        className={styles.input}
+                        defaultValue={'gulsanam 48'}
+                        placeholder='adres' />
+                    <input
+                        type="text"
+                        name='telegram'
+                        className={styles.input}
+                        defaultValue={'kadyrzhan_23'}
+                        placeholder='telegram' />
+                    <input
+                        type="text"
+                        name='password'
+                        className={styles.input}
+                        defaultValue={'123466'}
+                        placeholder='password' />
+                    <div>
+                        <button
+                        className={` ${styles.input}`}>Зарегистрироваться
+                        </button>
+                        <div className='flex w-full justify-between'>
+                        <p>Уже есть аккаунт?</p>
+                        <Link to='/user/login'>
+                                    <p className='cursor-pointer'>Войти</p>
+                        </Link>
+                        </div>
+                    </div>
+                </form>
+                </div>
+            </div>
         </div>
     );
 };

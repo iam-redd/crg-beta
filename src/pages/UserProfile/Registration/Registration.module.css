@@ -9,3 +9,10 @@
 .input{
     border: 1px solid black;
 }
+
+.bordered{
+    border: 1px solid #000;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 15px;
+}
