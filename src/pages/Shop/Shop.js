@@ -6,6 +6,7 @@ import styles from './Shop.module.css';
 import SearchBar from './SearchBar/SearchBar';
 import { useSelector } from 'react-redux';
 import { DefaultSpinner } from '../../components/Spinner';
+import AnyCard from '../../components/AnyCard';
 
 const Shop = () => {
   const selectedProducts = useSelector(state => state.service.selectedProducts) || null
@@ -32,9 +33,7 @@ const Shop = () => {
         </div>
         <div>
           <TeaCard />
-          <TeaCard />
-          <TeaCard />
-          <TeaCard />
+          <AnyCard />
         </div>
       </div>
     </div>
