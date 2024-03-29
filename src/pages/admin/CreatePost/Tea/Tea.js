@@ -71,7 +71,6 @@ export default function Tea() {
                     label='Названия'
                     name='name'
                     className={styles.input} />
-                <div className="">Цена для пользователей</div>
                 <div className="flex">
                     <Input
                         type="text"
