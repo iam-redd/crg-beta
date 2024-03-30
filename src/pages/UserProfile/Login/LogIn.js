@@ -88,7 +88,7 @@ const LogIn = () => {
                             className={styles.btn}
                         >{ isVisible ? 'Войти' : 'Загрузка...'}</button>
                         <Link to='/user/registration'>
-                                <p className='cursor-pointer'>Регистрация</p>
+                                <p className='cursor-pointer '>Регистрация</p>
                             </Link>
                             </div>
                         </form>
