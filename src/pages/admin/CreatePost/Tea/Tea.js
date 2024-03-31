@@ -110,8 +110,7 @@ export default function Tea() {
                 <div className="flex">
                     <Checkbox
                         color="red"
-                        label="Алюминиевая"
-                        defaultChecked
+                        label="Крафт пакет"
                         name='weight1' />
                     <Checkbox
                         color="red"
@@ -119,7 +118,8 @@ export default function Tea() {
                         name='weight2' />
                     <Checkbox
                         color="red"
-                        label="Крафт пакет"
+                        label="Алюминиевая"
+                        defaultChecked
                         name='weight3' />
                 </div>
                 <div class="relative w-full min-w-[200px]">

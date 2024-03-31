@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import CoffeeCard from '../../components/CoffeeCard';
 import LeftBar from './LeftBar/LeftBar';
-import TeaCard from '../../components/TeaCard';
 import styles from './Shop.module.css';
 import SearchBar from './SearchBar/SearchBar';
 import { useSelector } from 'react-redux';
 import { DefaultSpinner } from '../../components/Spinner';
-
+import ProductCard from '../../components/ProductCard';
 
 const Shop = () => {
   const selectedProducts = useSelector(state => state.service.selectedProducts)
@@ -33,10 +31,6 @@ const Shop = () => {
               </div> : <div className="flex-center"><DefaultSpinner /></div>
             }
           </>
-
-        </div>
-        <div>
-
         </div>
       </div>
     </div>

@@ -8,6 +8,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addTooBasket } from '../../src/store/slices/basketSlice'
 import url from '../default.json'
 function CoffeeCard({ data }) {
+    const userInfo = useSelector(state => state.user.userInfo)
+    console.log(userInfo)
     const dispatch = useDispatch()
     const weightSize = ['250гр', '500гр', '1000гр']
     const basket = useSelector(state => state.basket.basket)
@@ -16,7 +18,8 @@ function CoffeeCard({ data }) {
     const [pomolColor, setPomoltColor] = useState(false)
 
     const [boolBasket, setBoolBasket] = useState(
-        allProductsId !== null ? allProductsId.length > 0 ? allProductsId.includes(data._id) : false :
+        allProductsId !== null ?
+            allProductsId.length > 0 ? allProductsId.includes(data._id) : false :
             false
     )
     const amount = 1;
@@ -112,8 +115,7 @@ function CoffeeCard({ data }) {
                                 label="Выберите помол"
                                 onChange={(e) => changePomol(e)}
                                 style={{ borderColor: pomolColor ? "red" : '' }}
-                                onClick={handlePomolColor}
-                            >
+                                onClick={handlePomolColor}>
                                 <Option value='не-молотый'>Не молотый</Option>
                                 <Option value='turku'>Под турку</Option>
                                 <Option value='mokka'>Под гейзер/Мокка</Option>
@@ -154,24 +156,26 @@ function CoffeeCard({ data }) {
                             !weightSize.includes(weight) && "от "
                         }
                             {
-                                -1 === weightSize.indexOf(weight) ? data.priceUser[0] : data.priceUser[weightSize.indexOf(weight)]
+                                userInfo !== null && userInfo.role === 'superUser' ?
+                                    <>
+                                        {
+                                            // -1 === weightSize.indexOf(weight) ?
+                                                // data.priceSW[0] :
+                                                // data.priceWS[weightSize.indexOf(weight)]
+                                        }
+                                    </> :
+                                    <>
+                                        {
+                                            -1 === weightSize.indexOf(weight) ?
+                                                data.priceUser[0] :
+                                                data.priceUser[weightSize.indexOf(weight)]
+                                        }
+                                    </>
+
                             }
                         </span> UZS</Typography>
                 </div>
                 <div className='flex mt-5 items-center justify-between'>
-                    {/* <div className='flex items-center justify-between'>
-                        <IconButton
-                            color='red'
-                            className=' w-8 h-8'
-                            // onClick={() => setAmount(amount === 1 ? 1 : amount - 1)}
-                        >-</IconButton>
-                        <span className='mx-2'>{amount}</span>
-                        <IconButton
-                            color='red'
-                            className=' w-8 h-8'
-                            // onClick={() => setAmount(amount + 1)}
-                            >+</IconButton>
-                    </div> */}
                     {
                         boolBasket ?
                             <Button variant='outlined' color='red' onClick={() => navigate('/basket')}> <span><img style={{ display: 'inline-block', marginRight: '5px' }} width={24} height={24} src={cart} alt="" /></span>Перейти</Button> :
