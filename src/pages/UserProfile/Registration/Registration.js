@@ -7,6 +7,7 @@ import { addData, logout } from '../../../store/slices/userSlice'
 import { useNavigate } from 'react-router-dom';
 
 import { Link } from 'react-router-dom';
+import { Input } from '@material-tailwind/react';
 
 // import URL from '../../default.json'
 const Registration = () => {
@@ -54,7 +55,7 @@ const Registration = () => {
         <div className='relative'>
             <div className={`absolute -top-72 sm:-top-36 md:-top-48 flex w-full`}>
                 <div className={`items-center justify-center m-auto ${styles.bordered}`}>
-                <div className='flex items-center'>
+                <div className='flex items-center text-sm'>
                     Загрузите аватарку
                     <ImageUpload
                 list={uploadedImages}
@@ -65,48 +66,74 @@ const Registration = () => {
                 <form
                     onSubmit={handleSubmit}
                     className={styles.form}>
-                    <input
-                        type="text"
-                        name='name'
-                        className={styles.input}
-                        defaultValue={'kadyrzhan'}
-                        placeholder='name' />
-                    <input
-                        type="text"
-                        name='email'
-                        defaultValue={'test6@test.ru'}
-                        className={styles.input}
-                        placeholder='email' />
-                    <input
-                        type="text"
-                        name='phoneNumber'
-                        className={styles.input}
-                        defaultValue={'+998999994923'}
-                        placeholder='phone' />
-                    <input
-                        type="text"
-                        name='address'
-                        className={styles.input}
-                        defaultValue={'gulsanam 48'}
-                        placeholder='adres' />
-                    <input
-                        type="text"
-                        name='telegram'
-                        className={styles.input}
-                        defaultValue={'kadyrzhan_23'}
-                        placeholder='telegram' />
-                    <input
-                        type="text"
-                        name='password'
-                        className={styles.input}
-                        defaultValue={'123466'}
-                        placeholder='password' />
-                    <div>
+                    <div className='gap-1 sm:flex'>
+                        <Input                            
+                            type="text"
+                            name='name' 
+                            placeholder='Василий Пупкин'                     
+                            // defaultValue={'kadyrzhan'}
+                            label='Имя и фамилия' 
+                        />
+                        <Input
+                            type="text"
+                            name='email'
+                            placeholder='empty@empty.com'
+                            //defaultValue={'test6@test.ru'}
+                            label='Электронная почта' 
+                        />
+                    </div>
+                    <div className='gap-1 sm:flex'>
+                        <Input
+                            type="text"
+                            name='phoneNumber'
+                            placeholder='+998 99 999 99 99'                        
+                            //defaultValue={'+998999994923'}
+                            label='Номер телефона' 
+                        />
+                        <Input
+                            type="text"
+                            name='address'
+                            placeholder='город, район, улица, дом, квартира'
+                            //defaultValue={'gulsanam 48'}
+                            label='Адрес' 
+                        />
+                    </div>
+                    <div className='gap-1 sm:flex'>
+                        <Input
+                            type="text"
+                            name='telegram'
+                            placeholder='@username'
+                            //defaultValue={'kadyrzhan_23'}
+                            label='Телеграм @username'
+                        />
+                        <Input
+                            type='text'
+                            name='org'
+                            placeholder='Название организации'
+                            label='Организация'
+                        />
+                    </div>
+                    <div className='gap-1 sm:flex'>
+                        <Input
+                            type="password"
+                            name='password'
+                            label='Пароль'
+                            //defaultValue={'123466'}
+                            placeholder='Придумайте пароль' 
+                        />
+                        <Input 
+                            type='password'
+                            name='password try'
+                            label='Повторите пароль'
+                            placeholder='Повторите пароль' 
+                        />
+                    </div>
+                    <div className='flex flex-col m-auto items-center'>
                         <button
-                        className={` ${styles.input}`}>Зарегистрироваться
+                        className={` ${styles.btn}`}>Зарегистрироваться
                         </button>
-                        <div className='flex w-full justify-between'>
-                        <p>Уже есть аккаунт?</p>
+                        <div className='flex w-full mt-2 text-sm'>
+                        <p className='mr-1'>Уже есть аккаунт?</p>
                         <Link to='/user/login'>
                                     <p className='cursor-pointer'>Войти</p>
                         </Link>
