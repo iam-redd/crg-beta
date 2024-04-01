@@ -4,7 +4,10 @@
 
 .totalLine{
     display: flex;
-    justify-content: space-between;
+    margin: 1.1em;
+    padding: 0.5em;
+    justify-content: end;
+    border-top: 1px solid #f1f1f1;
 }
 
 .btn{

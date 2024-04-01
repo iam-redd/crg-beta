@@ -31,8 +31,8 @@ const Home = () => {
           <div className='top-0 h-full sm:m-auto offer-back'>
             <div className='darkness p-6'>
               <div className='md:py-16 md:mx-10 lg:py-10'>
-                <h1 className='mt-6 md:mt-0 text-center text-2xl sm:text-4xl md:text-start w-full font-black text-white 2xl:w-2/3 2xl:text-5xl'>ЖАРИМ КОФЕ КАЖДЫЙ ДЕНЬ</h1>
-                <p className='text-center text-sm md:text-start md:text-md md:w-2/3 font-normal text-white mt-5 2xl:text-md'>Поставки свежеобжаренного кофе и сиропов собственного производства</p>
+                <h1 className='mt-6 md:mt-0 text-2xl sm:text-4xl md:text-start w-full font-black text-white 2xl:w-2/3 2xl:text-5xl'>ЖАРИМ КОФЕ КАЖДЫЙ ДЕНЬ</h1>
+                <p className='text-sm md:text-start md:text-md md:w-2/3 font-normal text-white mt-5 2xl:text-md'>Поставки свежеобжаренного кофе и сиропов собственного производства</p>
               </div>
               <div className='mt-8 md:mt-0 lg:mt-0 md:py-10 md:mx-10 flex justify-between md:justify-start'>
                 <a href={SHOP_USER}><button className='main-button'>В каталог</button></a>
@@ -45,8 +45,8 @@ const Home = () => {
           <div className='darkness h-full p-6 md:p-6'>
             <div className=' md:mx-10'>
               <div className='md:py-16 md:py-10'>
-                <h1 className='text-3oxl text-center md:text-start w-full md:w-full font-black text-white 2xl:w-full 2xl:text-5xl'>ШКОЛА БАРИСТА</h1>
-                <p className='text-base font-normal md:text-md text-white mt-5 2xl:text-lg'>Научим готовить вкусный кофе, с любовью</p>
+                <h1 className='text-2xl md:text-3xl md:text-start w-full md:w-full font-black text-white 2xl:w-full 2xl:text-5xl'>ШКОЛА БАРИСТА</h1>
+                <p className='text-sm sm:text-base font-normal md:text-md text-white mt-5 2xl:text-lg'>Научим готовить вкусный кофе, с любовью</p>
               </div>
               <div className='py-4 md:py-2 md:mt-2'>
                 <a href={JS_BARISTA} target='blank'><button className='main-button' >JS Barista</button></a>
