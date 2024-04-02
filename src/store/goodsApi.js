@@ -1,8 +1,8 @@
 import { createApi , fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-
+import url from '../default.json'
 export const goodsApi = createApi({
     reducerPath:"goodsApi",
-    baseQuery:fetchBaseQuery({baseUrl:"http://localhost:4444/"}),
+    baseQuery:fetchBaseQuery({baseUrl:`${url}/`}),
     endpoints:(build)=> ({
         getAllGoods: build.query({
             query:()=> `post/getAll`
