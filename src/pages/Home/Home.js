@@ -20,7 +20,7 @@ const Home = () => {
   // console.log(basket)
   return (
     <div>
-      <div className="md:h-full md:flex-wrap xl:flex xl:mx-auto xl:max-w-screen-xl 2xl:max-w-screen-2xl ">
+      <div className="md:h-full sm:flex-wrap xl:flex xl:mx-auto xl:max-w-screen-xl 2xl:max-w-screen-2xl ">
         <div className='bg-white max-w-screen-xl 2xl:max-w-screen-2xl md:w-full h-full inset-x-0 top-0 z-0 xl:w-8/12'>
           {/*<div className='brightness-75'>
             <video className="h-full inset-x-0 top-0 z-0 object-cover" autoPlay muted loop>
@@ -32,7 +32,7 @@ const Home = () => {
             <div className='darkness p-6'>
               <div className='md:py-16 md:mx-10 lg:py-10'>
                 <h1 className='mt-6 md:mt-0 text-2xl sm:text-4xl md:text-start w-full font-black text-white 2xl:w-2/3 2xl:text-5xl'>ЖАРИМ КОФЕ КАЖДЫЙ ДЕНЬ</h1>
-                <p className='text-sm md:text-start md:text-md md:w-2/3 font-normal text-white mt-5 2xl:text-md'>Поставки свежеобжаренного кофе и сиропов собственного производства</p>
+                <p className='text-sm md:text-start md:text-md md:w-2/3 font-normal text-white mt-5 2xl:text-lg'>Поставки свежеобжаренного кофе и сиропов собственного производства</p>
               </div>
               <div className='mt-8 md:mt-0 lg:mt-0 md:py-10 md:mx-10 flex justify-between md:justify-start'>
                 <a href={SHOP_USER}><button className='main-button'>В каталог</button></a>
@@ -44,11 +44,11 @@ const Home = () => {
         <div className='top-0 md:w-full xl:w-4/12 offer-bar-back'>
           <div className='darkness h-full p-6 md:p-6'>
             <div className=' md:mx-10'>
-              <div className='md:py-16 md:py-10'>
+              <div className='md:py-16 lg:py-10'>
                 <h1 className='text-2xl md:text-3xl md:text-start w-full md:w-full font-black text-white 2xl:w-full 2xl:text-5xl'>ШКОЛА БАРИСТА</h1>
                 <p className='text-sm sm:text-base font-normal md:text-md text-white mt-5 2xl:text-lg'>Научим готовить вкусный кофе, с любовью</p>
               </div>
-              <div className='py-4 md:py-2 md:mt-2'>
+              <div className='py-4 md:py-2 md:mt-2 lg:pt-6 md:pt-4 xl:pt-0 2xl:pt-8'>
                 <a href={JS_BARISTA} target='blank'><button className='main-button' >JS Barista</button></a>
               </div>
             </div>
@@ -62,11 +62,11 @@ const Home = () => {
               <h2 className='text-xl font-bold text-center my-6 sm:my-10'>НОВИНКИ</h2>
             </div>
             <div className=''>
-              <div className='flex justify-center gap-4 lg:justify-between flex-wrap sm:flex-wrap sm:justify-around md:flex-wrap md:justify-around xl:flex-nowrap'>
+              <div className='flex pb-4 overflow-scroll snap-x snap-mandatory justify-start gap-4 flex-nowrap'>
                 {
                   isSuccess ? <>
                     {
-                      data.map((card, index) => index < 3 && <CoffeeCard key={index} data={card} />)
+                      data.map((card, index) => index < 6 && <CoffeeCard className='snap-always' key={index} data={card} />)
                     }
                   </> : <h1>Loading....</h1>
                 }
