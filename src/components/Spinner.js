@@ -1,12 +1,12 @@
 //import { Spinner } from "@material-tailwind/react";
-import { CirclesWithBar } from 'react-loader-spinner'
+import { CirclesWithBar , TailSpin } from 'react-loader-spinner'
 
 export function DefaultSpinner({ width = 80, height = 80 }) {
   // return <Spinner />
-  return <CirclesWithBar
+  return <div className='flex justify-center mx-auto w-full'><TailSpin
     height={`${height}`}
     width={`${width}`}
-    color="#4fa94d"
+    color="#FF0000"
     outerCircleColor="#4fa94d"
     innerCircleColor="#4fa94d"
     barColor="#4fa94d"
@@ -15,4 +15,5 @@ export function DefaultSpinner({ width = 80, height = 80 }) {
     wrapperClass=""
     visible={true}
   />
+  </div>
 }

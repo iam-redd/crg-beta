@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addTooBasket } from '../../src/store/slices/basketSlice'
 import url from '../default.json'
 function CoffeeCard({ data }) {
+    const width = window.innerWidth
     const userInfo = useSelector(state => state.user.userInfo)
     const dispatch = useDispatch()
     const weightSize = ['250гр', '500гр', '1000гр']

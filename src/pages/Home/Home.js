@@ -10,6 +10,7 @@ import starIcon from '../../assets/icons/star.svg'
 import teamImg from '../../assets/crg-team.png'
 import instagramIcon from '../../assets/icons/instagram-icon.svg'
 import { useGetAllGoodsQuery } from '../../store/goodsApi';
+import {DefaultSpinner} from '../../components/Spinner'
 
 const Home = () => {
   const { data, isSuccess } = useGetAllGoodsQuery()
@@ -68,7 +69,7 @@ const Home = () => {
                     {
                       data.map((card, index) => index < 6 && <CoffeeCard className='snap-always' key={index} data={card} />)
                     }
-                  </> : <h1>Loading....</h1>
+                  </> : <DefaultSpinner/>
                 }
               </div>
             </div>

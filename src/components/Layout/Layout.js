@@ -47,7 +47,7 @@ const Layout = () => {
     return (
         <div className={styles.container}>
             <Header />
-            <div>
+            <div className='flex justify-center mx-auto w-full'>
                 <Suspense fallback={<DefaultSpinner/>}>
                     <Outlet />
                 </Suspense>
