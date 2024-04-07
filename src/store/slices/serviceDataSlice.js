@@ -29,5 +29,5 @@ const serviceData = createSlice({
     },
 })
 
-export const { setSearchValue ,setAllProducts ,setSelectedProducts} = serviceData.actions;
+export const { setSearchValue ,setAllProducts ,setSelectedProducts , cancelSelectedProducts} = serviceData.actions;
 export default serviceData.reducer

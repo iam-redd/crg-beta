@@ -10,7 +10,7 @@ import accessorieIcon from '../../../assets/icons/coffee-grinder.png'
 import chemieIcon from '../../../assets/icons/clean.png'
 import teaIcon from '../../../assets/icons/tea.png'
 import { useDispatch, useSelector } from 'react-redux';
-import { setSelectedProducts } from '../../../store/slices/serviceDataSlice';
+import { cancelSelectedProducts, setSelectedProducts } from '../../../store/slices/serviceDataSlice';
 
 
 export default function LeftBar() {
@@ -33,7 +33,7 @@ export default function LeftBar() {
       <div className='flex overflow-x-scroll scroll-smooth wrappeR'>
         <div
           className={`p-5 mb-1 mr-1 flex flex-col items-center ${styles.catcat}`}
-          onClick={() => selectedProducts !== null ? filter('coffe-beans') : null}>
+          onClick={() => selectedProducts !== null ? dispatch(cancelSelectedProducts()) : null}>
           <img src={beansIcon} className='w-8 h-8 text-center' alt='' />
           <div>
             Всё
