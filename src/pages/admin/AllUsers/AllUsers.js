@@ -78,7 +78,7 @@ export default function AllUsers() {
                       <TableCell align="right">
                         <div className={styles.role}>
                           {row.role}
-                          {row.role !== 'start' || row.role !== 'superUser' &&
+                          { row.role === 'user' &&
                             <button
                               className={styles.btn}
                               onClick={() => isSucccess && levelUp(id)}>

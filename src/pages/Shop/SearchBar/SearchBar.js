@@ -8,17 +8,21 @@ export default function SearchBar() {
   const allProducts = useSelector(state => state.service.allProducts)
   const searchValue = useSelector(state => state.service.searchValue)
   function searchItem(value) {
+    console.log(value)
     const a = allProducts.reduce((acc, product, index) => {
       const temp = product.name.split(' ')
 
       const bool = temp.filter((name) => {
         return !name.trim().toLowerCase().search(searchValue)
       })
-      if(bool.length > 0) return  [...acc,product]
-      else return acc
+      if (bool.length > 0) return [...acc, product]
+      else {
+        return acc
+      }
     }, [])
     dispatch(setSearchValue(value))
     dispatch(setSelectedProducts(a))
+    console.log(a)
   }
   return (
     <div className="p-2 col-span-3 flex justify-between my-3">

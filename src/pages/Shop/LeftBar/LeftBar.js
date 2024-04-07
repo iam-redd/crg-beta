@@ -9,26 +9,39 @@ import capsuleIcon from '../../../assets/icons/capsule.png'
 import accessorieIcon from '../../../assets/icons/coffee-grinder.png'
 import chemieIcon from '../../../assets/icons/clean.png'
 import teaIcon from '../../../assets/icons/tea.png'
+import { useDispatch, useSelector } from 'react-redux';
+import { setSelectedProducts } from '../../../store/slices/serviceDataSlice';
 
 
-export default function LeftBar({ data, setData }) {
+export default function LeftBar() {
   const [open, setOpen] = React.useState(0);
+  const dispatch = useDispatch()
+  const allProducts = useSelector(state => state.service.allProducts)
+  const selectedProducts = useSelector(state => state.service.selectedProducts)
 
   const handleOpen = (value) => {
     setOpen(open === value ? 0 : value);
   };
 
   const filter = (value) => {
-    setData(data.filter(product => product.type === value))
+    const temp = allProducts.filter(product => product.type === value)
+    dispatch(setSelectedProducts(temp))
   }
 
   return (
     <div className={`${styles.catcatBck} w-full mx-auto md:max-w-screen-xl p-4 wrappeR`}>
       <div className='flex overflow-x-scroll scroll-smooth wrappeR'>
-
         <div
           className={`p-5 mb-1 mr-1 flex flex-col items-center ${styles.catcat}`}
-          onClick={() => data !== null ? filter('coffe-beans') : null}>
+          onClick={() => selectedProducts !== null ? filter('coffe-beans') : null}>
+          <img src={beansIcon} className='w-8 h-8 text-center' alt='' />
+          <div>
+            Всё
+          </div>
+        </div>
+        <div
+          className={`p-5 mb-1 mr-1 flex flex-col items-center ${styles.catcat}`}
+          onClick={() => selectedProducts !== null ? filter('coffe-beans') : null}>
           <img src={beansIcon} className='w-8 h-8 text-center' alt='' />
           <div>
             Кофе
@@ -42,7 +55,7 @@ export default function LeftBar({ data, setData }) {
         </div>
         <div
           className={`p-5 mb-1 mr-1 flex flex-col items-center ${styles.catcat}`}
-          onClick={() => data !== null ? filter('coffee-capsule') : null}>
+          onClick={() => selectedProducts !== null ? filter('coffee-capsule') : null}>
           <img src={capsuleIcon} className='w-8 h-8 text-center' alt='' />
           <div>
             Капсулы
@@ -51,7 +64,7 @@ export default function LeftBar({ data, setData }) {
 
         <div
           className={`p-5 mb-1 mr-1 flex flex-col items-center ${styles.catcat}`}
-          onClick={() => data !== null ? filter('tea') : null}>
+          onClick={() => selectedProducts !== null ? filter('tea') : null}>
           <img src={teaIcon} className='w-8 h-8 text-center' alt='' />
           <div>
             Чай
@@ -59,7 +72,7 @@ export default function LeftBar({ data, setData }) {
         </div>
         <div
           className={`p-5 mb-1 mr-1 flex flex-col items-center ${styles.catcat}`}
-          onClick={() => data !== null ? filter('syrup') : null}>
+          onClick={() => selectedProducts !== null ? filter('syrup') : null}>
           <img src={syrupIcon} className='w-8 h-8 text-center' alt='' />
           <div>
             Сиропы
@@ -68,7 +81,7 @@ export default function LeftBar({ data, setData }) {
 
         <div
           className={`p-5 mb-1 mr-1 flex flex-col items-center ${styles.catcat}`}
-          onClick={() => data !== null ? filter('accessories') : null}>
+          onClick={() => selectedProducts !== null ? filter('accessories') : null}>
           <img src={accessorieIcon} className='w-8 h-8 text-center' alt='' />
           <div>
             Аксессуары
@@ -77,7 +90,7 @@ export default function LeftBar({ data, setData }) {
 
         <div
           className={`p-5 mb-1 mr-1 flex flex-col items-center ${styles.catcat}`}
-          onClick={() => data !== null ? filter('chemistry') : null}>
+          onClick={() => selectedProducts !== null ? filter('chemistry') : null}>
           <img src={chemieIcon} className='w-8 h-8 text-center' alt='' />
           <div>
             Химия

@@ -80,9 +80,9 @@ function CoffeeCard({ data }) {
 
     const handleWeightColor = () => setWeightColor(false)
     const handlePomolColor = () => setPomoltColor(false)
-
+    
     return (
-        <div className=''>
+        <div className='' style={{width:`${width < 420 ? '90%' : 'auto'}`}}>
             <Card className='w-80 md:w-72 h-full border py-5 px-5 card-hover'>
                 <div className='flex justify-end py-2 px-4 text-xs'>
                     Топ-недели
@@ -90,7 +90,7 @@ function CoffeeCard({ data }) {
                 <h2 className='text-center font-bold text-xl'>{data?.name ? data.name : ''}</h2>
                 <p className='text-xs flex text-red-200 justify-center'>{data.roast}</p> {/*Вытаскиваем с базы для эспрессо или фильтра*/}
                 <div className='flex mt-5'>
-                    <img src={`${url.backendUrl}/${data.img}`} alt='card-img' className='object-cover w-1/3' />
+                    <img src={`${url.backendUrl}/${data.img[0]}`} alt='card-img' className='object-cover w-1/3' />
                     <div className='grid grid-cols-1 grid-rows-8 gap-1 px-3 py-2 text-xs'>
                         <p>
                             Обработка: <span>{data.treatment}</span>

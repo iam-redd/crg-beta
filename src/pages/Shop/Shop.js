@@ -8,25 +8,22 @@ import ProductCard from '../../components/ProductCard';
 
 const Shop = () => {
   const selectedProducts = useSelector(state => state.service.selectedProducts)
-  const [data, setData] = useState(null)
-  console.log(data)
-
-
+  const [data, setData] = useState(false)
   useEffect(() => {
-    data === null && setData(selectedProducts)
+    selectedProducts !== null && setData(true)
   });
 
   return (
     <div className='w-full md:max-w-screen-xl 2xl:max-w-screen-2xl m-auto mt-8'>
       <div className=''>
         <SearchBar />
-        <LeftBar data={selectedProducts} setData={setData} />
+        <LeftBar/>
         <div>
           <>
             {
-              data !== null ? <div className={styles.container}>
+              data ? <div className={styles.container}>
                 {
-                  data.map((card) => <ProductCard key={card.name} data={card} />)
+                  selectedProducts.map((card) => <ProductCard key={card.name} data={card} />)
                 }
               </div> : <div className="flex-center"><DefaultSpinner /></div>
             }

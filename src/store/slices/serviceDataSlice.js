@@ -11,7 +11,7 @@ const serviceData = createSlice({
     reducers: {
         setSearchValue(state, { payload }) {
             state.searchValue = payload.trim().toLowerCase()
-            // state.selectedProducts = state.allProducts.filter((product)=> !product.name.trim().toLowerCase().search(state.searchValue))
+            state.selectedProducts = state.allProducts.filter((product)=> !product.name.trim().toLowerCase().search(state.searchValue))
         },
         setAllProducts(state, { payload }) {
             state.allProducts = payload
@@ -23,8 +23,8 @@ const serviceData = createSlice({
                 state.selectedProducts = payload
             }
         },
-        filterAllProducts(state, { payload }) {
-
+        cancelSelectedProducts(state) {
+            state.selectedProducts = state.allProducts
         }
     },
 })
