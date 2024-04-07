@@ -70,9 +70,17 @@ export default function OrderCardMonitorng({ data, getAllOrders, index }) {
                     >
                         <div className={styles.list_wrapper}>
                             {
-                                data.listProducts.map((product, index) => {
+                                data.listProducts.map((product, x) => {
                                     return (
-                                        <ProductCard data={product} key={index} isVisible={isVisibleEdit} orderId={data._id} getAllOrders={getAllOrders} bool={true} />
+                                        <ProductCard
+                                            data={product}
+                                            key={x}
+                                            isVisible={isVisibleEdit}
+                                            orderId={data._id}
+                                            getAllOrders={getAllOrders}
+                                            bool={true}
+                                            index={index}
+                                        />
                                     )
                                 })
                             }

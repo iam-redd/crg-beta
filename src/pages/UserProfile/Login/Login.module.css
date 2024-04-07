@@ -40,3 +40,10 @@ p {
     position: absolute;
     display: flex;
 }
+
+
+@media (max-width:420px){
+    .form{
+        width: 90%;
+    }
+}

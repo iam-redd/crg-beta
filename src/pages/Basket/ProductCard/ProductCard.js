@@ -6,17 +6,16 @@ import { decrementProduct, incrementProduct, removeProductFromBasket } from '../
 function ProductCard({ index }) {
     const basket = useSelector(state => state.basket.basket)
     const dispatch = useDispatch()
-    function remove (){
-        if(window.confirm(`Вы действительно хотите удалить ${basket[index].name} из корзины`)){
+    function remove() {
+        if (window.confirm(`Вы действительно хотите удалить ${basket[index].name} из корзины`)) {
             dispatch(removeProductFromBasket(index))
         }
     }
     function decrement() {
         try {
-            if (basket[index].amount < 2) {
-                // if(window.confirm(`Вы действительно хотите удалить ${basket[index].name} из корзины`)){
-                    dispatch(removeProductFromBasket(index))
-                // }
+            if (basket[index].amount === 1) {
+                console.log('-----')
+                return remove()
             } else {
                 dispatch(decrementProduct(index))
             }
@@ -36,7 +35,17 @@ function ProductCard({ index }) {
                     <div className={`rounded mx-4 my-2 ${styles.product_container}`}>
                         <img className={styles.img} src={`${url.backendUrl}/${basket[index]?.img}`} alt="" />
                         <div className="">
-                            <div className=''>{basket[index]?.name + ' ' + basket[index].weight}</div>
+
+                            <div className=''>{basket[index]?.name}
+                                <>
+                                    {
+                                        basket[index].type === 'coffe-beans'&& <>
+                                            {
+                                                ' ' + basket[index].weight
+                                            }
+                                        </>
+                                    }
+                                </></div>
                             <div className={`mt-5 ${styles.btn_wrapper}`}>
                                 <button
                                     className={styles.btn}
@@ -45,7 +54,7 @@ function ProductCard({ index }) {
                                 <button
                                     className={styles.btn}
                                     onClick={increment}>+</button>
-                                    <button
+                                <button
                                     className={`ml-2 ${styles.btn}`}
                                     onClick={remove}>Удалить</button>
                             </div>

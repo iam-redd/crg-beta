@@ -34,7 +34,7 @@ export default function OrderForm({totalPrice}) {
             {
                 basket.length > 0 && userInfo !== null ?
                     <form className={styles.form} onSubmit={newOrder}>
-                        <textarea className={styles.textarea} name='comment'></textarea>
+                        <textarea className={styles.textarea} name='comment' placeholder='Комментария для заказа'></textarea>
                         {/* <input type="text" className={styles.input} name='name' placeholder='Name' /> */}
                         {/* <input type="text" className={styles.input} name='email' placeholder='Phone number' /> */}
                         <button 

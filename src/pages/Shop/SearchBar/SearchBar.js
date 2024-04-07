@@ -22,7 +22,7 @@ export default function SearchBar() {
   }
   return (
     <div className="p-2 col-span-3 flex justify-between my-3">
-      {/* <Input icon={<MagnifyingGlassIcon className="h-5 w-5 hidden" />} className='hidden' />*/} 
+      {/* <Input icon={<MagnifyingGlassIcon className="h-5 w-5 hidden" />} className='hidden' />*/}
       <Input icon={<MagnifyingGlassIcon className="h-5 w-5" />} onInput={(e) => searchItem(e.target.value)} label="Поиск по товарам" />
     </div>
   )

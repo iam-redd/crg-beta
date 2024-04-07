@@ -17,13 +17,13 @@ export default function OrderCard({ data }) {
       </div>
       <div className={styles.main}>
         <p>Статус: <span className={data.status !== 'Отказано' ? styles.status : styles.statusRejected}>{data.status}</span></p>
-        <p>Дата заказа: <span className={styles.status}>{data.createdAt.split('').splice(0,10)}</span></p>
+        <p>Дата заказа: <span className={styles.status}>{data.createdAt.split('').splice(0, 10)}</span></p>
         <p>Сумма заказа: <span className={styles.status}>{data.totalPrice}</span></p>
       </div>
       <div
         className={styles.footer}
         onClick={handleVisible}>
-        <span style={{color:'#7d7d7d'}}>
+        <span style={{ color: '#7d7d7d' }}>
           {
             <>
               {
@@ -73,7 +73,6 @@ export default function OrderCard({ data }) {
         }
       </AnimatePresence>
     </div>
-
   )
 }
 

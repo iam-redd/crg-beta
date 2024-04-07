@@ -79,13 +79,11 @@ const Basket = () => {
                                 </div>
                                 </div>
                                 <div>
-                                    
                                 </div>
                                 <OrderForm totalPrice={totalPrice} />
-                                
                             </>
                     }
-                </> : 
+                </> :
             <div  className='flex flex-col items-center'>
                     <div className='opacity-10 pt-10 w-72'><img src={emptyBasket} alt='' className=''/></div>
                     <div className='my-10 text-center'>У вас пока нет товаров в корзине, можем это исправить кликнув по кнопке снизу</div>

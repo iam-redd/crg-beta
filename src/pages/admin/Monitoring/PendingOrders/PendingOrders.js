@@ -3,7 +3,6 @@ import { DefaultSpinner } from '../../../../components/Spinner'
 import OrderCardMonitorng from '../OrderCardMonitiring/OrderCardMonitorng'
 
 export default function PendingOrders({ data, getAllOrders, index }) {
-    console.log(index)
     return (
         <div>
             {

@@ -17,8 +17,14 @@
     transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
 }
 .bordered{
-    border: 1px solid #000;
+    border: 1px solid #C7C7C7;
     padding: 20px;
     background-color: #fff;
     border-radius: 15px;
+}
+
+@media (max-width:420px) {
+    .form{
+        width: 90%;
+    }
 }
