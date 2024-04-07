@@ -33,7 +33,7 @@ const Home = () => {
             <div className='darkness p-6'>
               <div className='md:py-16 md:mx-10 lg:py-10'>
                 <h1 className='mt-6 md:mt-0 text-2xl sm:text-4xl md:text-start w-full font-black text-white 2xl:w-2/3 2xl:text-5xl'>ЖАРИМ КОФЕ КАЖДЫЙ ДЕНЬ</h1>
-                <p className='text-sm md:text-start md:text-md md:w-2/3 font-normal text-white mt-5 2xl:text-lg'>Поставки свежеобжаренного кофе и сиропов собственного производства</p>
+                <p className='text-sm md:text-start md:text-md md:w-2/3 font-normal text-white mt-5 2xl:text-lg lg:text-lg'>Поставки свежеобжаренного кофе и сиропов собственного производства</p>
               </div>
               <div className='mt-8 md:mt-0 lg:mt-0 md:py-10 md:mx-10 flex justify-between md:justify-start'>
                 <a href={SHOP_USER}><button className='main-button'>В каталог</button></a>
@@ -63,7 +63,7 @@ const Home = () => {
               <h2 className='text-xl font-bold text-center my-6 sm:my-10'>НОВИНКИ</h2>
             </div>
             <div className=''>
-              <div className='flex pb-4 overflow-scroll snap-x snap-mandatory justify-start gap-4 flex-nowrap'>
+              <div className='flex pb-4 overflow-x-scroll scroll-smooth wrappeR snap-x snap-mandatory justify-start gap-4 flex-nowrap'>
                 {
                   isSuccess ? <>
                     {
@@ -83,19 +83,19 @@ const Home = () => {
                 <img src={roasterImg} alt='Roaster' />
               </div>
               <div className='flex w-full text-center md:w-3/5 mx-5'>
-                <p className='md:text-lg text-md align-top'>Наша компания в сфере HoReCa занимается поставками свежеобжаренного кофе и сиропов собственного производства.
+                <p className='xl:text-lg 2xl:text-lg md:text-md text-sm align-top'>Наша компания в сфере HoReCa занимается поставками свежеобжаренного кофе и сиропов собственного производства.
                   Мы обжариваем кофе уже более 5 лет на лучшем в мире оборудовании. Каждую партию отслеживаем на специальном оборудовании, что позволяет создавать стабильно качественный продукт. В свободную продажу поступает товар, прошедший строгий контроль качества.
                   <br />*Так же наша компания занимается подготовкой и обучением высококвалифицированных бариста.</p>
               </div>
             </div>
             <div className='flex w-full items-center flex-wrap md:flex-nowrap'>
               <div className='flex flex-col w-full md:w-3/5 mx-5'>
-                <p className='md:text-lg text-md mt-5 text-center mt-3'>
+                <p className='md:text-md text-sm xl:text-lg 2xl:text-lg md:mt-5 text-center mt-3'>
                   *Большие склады для зеленого и свеже обжаренного кофе.
                 </p>
-                <p className='md:text-lg text-md mt-5 text-center mt-3 '>*Несколько видов Европейского обжарочного оборудования.
+                <p className='md:text-md text-sm xl:text-lg 2xl:text-lg md:mt-5 text-center mt-3 '>*Несколько видов Европейского обжарочного оборудования.
                 </p>
-                <p className='md:text-lg text-md mt-5 text-center mt-3'>*Высокая стень очистки кофе дистонером. 3-х уровневый контроль качества.
+                <p className='md:text-md text-sm xl:text-lg 2xl:text-lg md:mt-5 text-center mt-3'>*Высокая стень очистки кофе дистонером. 3-х уровневый контроль качества.
                 </p>
               </div>
               <div className='flex w-full md:w-2/5 justify-center p-10 '>
