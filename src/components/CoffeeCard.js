@@ -83,7 +83,7 @@ function CoffeeCard({ data }) {
 
     return (
         <div className=''>
-            <Card className='w-80 h-full border py-5 px-5 card-hover'>
+            <Card className='w-80 md:w-72 h-full border py-5 px-5 card-hover'>
                 <div className='flex justify-end py-2 px-4 text-xs'>
                     Топ-недели
                 </div>
@@ -110,9 +110,9 @@ function CoffeeCard({ data }) {
                     </p>
                 </div>
                 <div className='flex justify-between items-center mt-4 text-sm'>
-                    <div className='grid grid-cols-4 items-center'>
+                    <div className='grid grid-cols-5 items-center'>
                         Помол:
-                        <div className='col-span-3'>
+                        <div className='col-span-3 w-auto'>
                             <Select size="md"
                                 label="Выберите помол"
                                 onChange={(e) => changePomol(e)}
@@ -129,7 +129,7 @@ function CoffeeCard({ data }) {
                     </div>
                 </div>
                 <div className='flex justify-between mt-5 text-sm'>
-                    <div className='grid grid-cols-4 items-center'>
+                    <div className='grid grid-cols-5 items-center'>
                         <p>Вес:</p>
                         <div className='col-span-3'>
                             <Select
