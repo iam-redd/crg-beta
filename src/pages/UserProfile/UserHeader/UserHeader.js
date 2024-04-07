@@ -9,17 +9,13 @@ import url from '../../../default.json'
 import { Link, Outlet } from 'react-router-dom';
 import { List, ListItemSuffix, ListItemPrefix, Card, ListItem } from '@material-tailwind/react';
 export default function UserHeader() {
-  const [token, setToken] = useState(window.localStorage.getItem('token'))
+  const [_, setToken] = useState(window.localStorage.getItem('token'))
   const userInfo = useSelector(state => state.user.userInfo)
-  console.log(userInfo)
-  // const [isVisible, setVisible] = useState(false)
-  // const handleVisible = () => setVisible(!isVisible)
   const dispatch = useDispatch()
   const handleLogout = () => {
     dispatch(logout())
     setToken(null)
   }
-  console.log(token);
   return (
     <>
       <div>
@@ -114,37 +110,8 @@ export default function UserHeader() {
                 </div>
               </div>
             </div>
-          // <div className='mx-auto max-w-screen-xl flex justify-between'>
-          //   <div className='flex justify-start items-center'>
-          //     <div className='flex flex-col items-center'>
-          //       <div className={styles.userImgD}></div>
-          //       <div className={styles.userNameD}>Привет, Жавохир</div>
-          //     </div>
-          //     <div className='ml-20'>
-
-          //       <div className={styles.userMailD}>Почта:Brbalo@main.ru</div>
-          //       <div className={styles.userPhoneD}>Номер телефона:+99890topomi o'l</div>
-          //       <div className={styles.userStatusD}>Статус:Admin</div>
-          //       <div className={styles.userOrgD}>Организация:Don Coffee</div>
-          //     </div>
-          //   </div>
-          //   <div className={styles.tabs}>
-
-          //     <p className='flex text-center'>Вы не авторизованы, <br />войдите в свой аккаунт</p>
-          //     <div className=''>
-          //       <div className={styles.btn}><Link to="/user/login">Войти</Link></div>
-          //     </div>
-
-          //   </div>
-
-          // </div>
         }
       </div>
-
-
-
-
-
       <Outlet />
     </>
   )

@@ -9,14 +9,13 @@ import { addTooBasket } from '../../src/store/slices/basketSlice'
 import url from '../default.json'
 function CoffeeCard({ data }) {
     const userInfo = useSelector(state => state.user.userInfo)
-    console.log(userInfo)
     const dispatch = useDispatch()
     const weightSize = ['250гр', '500гр', '1000гр']
     const basket = useSelector(state => state.basket.basket)
-    const allProductsId = useSelector(state => state.basket.allProductsId)
     const [weightColor, setWeightColor] = useState(false)
     const [pomolColor, setPomoltColor] = useState(false)
-
+    
+    const allProductsId = useSelector(state => state.basket.allProductsId)
     const [boolBasket, setBoolBasket] = useState(
         allProductsId !== null ?
             allProductsId.length > 0 ? allProductsId.includes(data._id) : false :
@@ -68,9 +67,10 @@ function CoffeeCard({ data }) {
             amount,
             weight,
             pomol,
-            price: data.priceUser[weightSize.indexOf(weight)],
+            price: userInfo !== null && userInfo.role === 'superUser' ? data.priceWS[weightSize.indexOf(weight)] : data.priceUser[weightSize.indexOf(weight)],
             name: data.name,
-            img: data.img
+            img: data.img,
+            type: data.type,
         }
         dispatch(addTooBasket(info))
         setBoolBasket(true)
@@ -87,7 +87,7 @@ function CoffeeCard({ data }) {
                     Топ-недели
                 </div>
                 <h2 className='text-center font-bold text-xl'>{data?.name ? data.name : ''}</h2>
-                <p className='text-xs flex text-red-200 justify-center'>Под эспрессо</p> {/*Вытаскиваем с базы для эспрессо или фильтра*/}
+                <p className='text-xs flex text-red-200 justify-center'>{data.roast}</p> {/*Вытаскиваем с базы для эспрессо или фильтра*/}
                 <div className='flex mt-5'>
                     <img src={`${url.backendUrl}/${data.img}`} alt='card-img' className='object-cover w-1/3' />
                     <div className='grid grid-cols-1 grid-rows-8 gap-1 px-3 py-2 text-xs'>
@@ -160,9 +160,9 @@ function CoffeeCard({ data }) {
                                 userInfo !== null && userInfo.role === 'superUser' ?
                                     <>
                                         {
-                                            // -1 === weightSize.indexOf(weight) ?
-                                                // data.priceSW[0] :
-                                                // data.priceWS[weightSize.indexOf(weight)]
+                                            -1 === weightSize.indexOf(weight) ?
+                                                data.priceWS[0] :
+                                                data.priceWS[weightSize.indexOf(weight)]
                                         }
                                     </> :
                                     <>

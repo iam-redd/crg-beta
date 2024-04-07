@@ -1,32 +1,58 @@
 import React, { useState } from 'react';
-import { Button, Card, Option, Progress, Select, Typography } from '@material-tailwind/react';
+import { Button, Card, Option, Select, Typography } from '@material-tailwind/react';
 import url from '.././default.json'
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import cart from '../assets/icons/icons8-cart-64.png'
+import { addTooBasket } from '../store/slices/basketSlice';
 const TeaCard = ({ data }) => {
     const packages = ['Крафт-пакет', 'Картонная', 'Альюминиевая']
+    const [packageColor, setPackageColor] = useState(false)
     const userInfo = useSelector(state => state.user.userInfo)
     const [packageValue, setPackageValue] = useState(null)
     const [packageIndex, setIndex] = useState(0)
     const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+    const allProductsId = useSelector(state => state.basket.allProductsId)
+    const [boolBasket, setBoolBasket] = useState(
+        allProductsId !== null ?
+            allProductsId.length > 0 ? allProductsId.includes(data._id) : false :
+            false
+    )
+
+
     const changePackage = (val) => {
         const index = packages.indexOf(val)
         setPackageValue(val)
         setIndex(prev => index)
+    }
+
+
+    function addToBasketе() {
+        setIndex(0)
+        setPackageColor(false)
         if (packageValue === null) {
+            setPackageColor(true)
             return console.log('Упаковка не выбран')
         }
 
         const info = {
             id: data._id,
             amount: 1,
+            price: userInfo !== null && userInfo.role === 'superUser' ? data.priceWS[packages.indexOf(packageValue)] : data.priceUser[packages.indexOf(packageValue)],
+            package: packageValue,
+            name:data.name,
+            img: data.img,
+            type: data.type,
         }
+
+        console.log(info)
+        dispatch(addTooBasket(info))
+        setBoolBasket(true)
     }
 
-
-    function addToBasketе() {
-        setPackageValue(null)
-        setIndex(0)
-    }
+    const handlePackageColor = () => setPackageColor(false)
     return (
         <div className=''>
             <Card className='w-80 h-full border py-5 px-5 card-hover'>
@@ -53,6 +79,8 @@ const TeaCard = ({ data }) => {
                                 size="sm"
                                 label="Выберите упа-ку"
                                 onChange={(e) => changePackage(e)}
+                                onClick={() => handlePackageColor()}
+                                style={{ borderColor: packageColor ? "red" : '' }}
                             >
                                 {
                                     packages.map((item, index) => {
@@ -72,35 +100,32 @@ const TeaCard = ({ data }) => {
                         }
                             {
                                 userInfo !== null && userInfo.role === 'superUser' ?
-                                <>
-                                        {/* {
+                                    <>
+                                        {
                                             packageValue === null && packageIndex === 0 ?
-                                                data.priceSW[0] :
+                                                data.priceWS[0] !== '0' ? data.priceWS[0] : data.priceWS[1] !== '0' ? data.priceWS[1] : data.priceWS[2]   :
                                                 data.priceWS[packages.indexOf(packageValue)]
-                                        } */}
+                                        }
                                     </> :
                                     <>
-                                    {/* {
-                                        packageValue === null && packageIndex === 0 ?
-                                            data.priceUser[0] :
-                                            data.priceUser[packages.indexOf(packageValue)]
-                                    } */}
-                                </>
+                                        {
+                                            packageValue === null && packageIndex === 0 ?
+                                                data.priceUser[0] !== '0' ? data.priceUser[0] : data.priceUser[1] !== '0' ? data.priceUser[1] : data.priceUser[2]  :
+                                                data.priceUser[packages.indexOf(packageValue)]
+                                        }
+                                    </>
                             }
                         </span>UZS</Typography>
                 </div>
                 <div className='flex mt-5 items-center justify-between'>
-                    <Button
-                        variant='outlined'
-                        color='red'
-                    >В корзину</Button>
-
-                    <Button
-                        variant='outlined'
-                        color='red'
-                    >
-                        Подробно</Button>
-
+                    {
+                        boolBasket ?
+                            <Button variant='outlined' color='red' onClick={() => navigate('/basket')}> <span><img style={{ display: 'inline-block', marginRight: '5px' }} width={24} height={24} src={cart} alt="" /></span>Перейти</Button> :
+                            <Button
+                                variant='outlined'
+                                color='red'
+                                onClick={addToBasketе}>В корзину</Button>
+                    }
                 </div>
             </Card>
         </div>

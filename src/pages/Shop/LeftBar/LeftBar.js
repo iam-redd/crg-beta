@@ -28,7 +28,7 @@ export default function LeftBar({ data, setData }) {
 
         <div
           className={`p-5 mb-1 mr-1 flex flex-col items-center ${styles.catcat}`}
-          onClick={() => filter('coffe-beans')}>
+          onClick={() => data !== null ? filter('coffe-beans') : null}>
           <img src={beansIcon} className='w-8 h-8 text-center' alt='' />
           <div>
             Кофе
@@ -40,44 +40,44 @@ export default function LeftBar({ data, setData }) {
             Дрипы
           </div>
         </div>
-        <div 
-        className={`p-5 mb-1 mr-1 flex flex-col items-center ${styles.catcat}`}
-        onClick={()=> filter('coffee-capsule')}>
+        <div
+          className={`p-5 mb-1 mr-1 flex flex-col items-center ${styles.catcat}`}
+          onClick={() => data !== null ? filter('coffee-capsule') : null}>
           <img src={capsuleIcon} className='w-8 h-8 text-center' alt='' />
           <div>
             Капсулы
           </div>
         </div>
 
-        <div 
-        className={`p-5 mb-1 mr-1 flex flex-col items-center ${styles.catcat}`}
-        onClick={()=> filter('tea')}>
+        <div
+          className={`p-5 mb-1 mr-1 flex flex-col items-center ${styles.catcat}`}
+          onClick={() => data !== null ? filter('tea') : null}>
           <img src={teaIcon} className='w-8 h-8 text-center' alt='' />
           <div>
             Чай
           </div>
         </div>
-        <div 
-        className={`p-5 mb-1 mr-1 flex flex-col items-center ${styles.catcat}`}
-        onClick={()=> filter('syrup')}>
+        <div
+          className={`p-5 mb-1 mr-1 flex flex-col items-center ${styles.catcat}`}
+          onClick={() => data !== null ? filter('syrup') : null}>
           <img src={syrupIcon} className='w-8 h-8 text-center' alt='' />
           <div>
             Сиропы
           </div>
         </div>
 
-        <div 
-        className={`p-5 mb-1 mr-1 flex flex-col items-center ${styles.catcat}`}
-        onClick={()=> filter('accessories')}>
+        <div
+          className={`p-5 mb-1 mr-1 flex flex-col items-center ${styles.catcat}`}
+          onClick={() => data !== null ? filter('accessories') : null}>
           <img src={accessorieIcon} className='w-8 h-8 text-center' alt='' />
           <div>
             Аксессуары
           </div>
         </div>
 
-        <div 
-        className={`p-5 mb-1 mr-1 flex flex-col items-center ${styles.catcat}`}
-        onClick={()=> filter('chemistry')}>
+        <div
+          className={`p-5 mb-1 mr-1 flex flex-col items-center ${styles.catcat}`}
+          onClick={() => data !== null ? filter('chemistry') : null}>
           <img src={chemieIcon} className='w-8 h-8 text-center' alt='' />
           <div>
             Химия

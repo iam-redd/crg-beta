@@ -30,6 +30,7 @@ const basketSlice = createSlice({
         },
         removeProductFromBasket(state, { payload }) {
             state.basket.splice(payload, 1)
+            state.allProductsId.splice(payload, 1)
             window.localStorage.setItem('basket', JSON.stringify(state.basket))
             window.localStorage.setItem('allProductsId', JSON.stringify(state.allProductsId))
         },
