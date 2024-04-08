@@ -3,6 +3,7 @@ import React from 'react';
 import styles from './LeftBar.module.css'
 
 import beansIcon from '../../../assets/icons/beans.png'
+import allGoods from '../../../assets/icons/all.png'
 import dripIcon from '../../../assets/icons/coffee-drip.png'
 import syrupIcon from '../../../assets/icons/syrup.png'
 import capsuleIcon from '../../../assets/icons/capsule.png'
@@ -34,7 +35,7 @@ export default function LeftBar() {
         <div
           className={`p-5 mb-1 mr-1 flex flex-col items-center ${styles.catcat}`}
           onClick={() => selectedProducts !== null ? dispatch(cancelSelectedProducts()) : null}>
-          <img src={beansIcon} className='w-8 h-8 text-center' alt='' />
+          <img src={allGoods} className='w-8 h-8 text-center' alt='' />
           <div>
             Всё
           </div>

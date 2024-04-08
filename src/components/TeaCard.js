@@ -61,11 +61,11 @@ const TeaCard = ({ data }) => {
                 </div>
                 <h2 className='text-center font-bold text-xl'>{data.name}</h2>
                 <p className='text-center text-xs'>Черный чай или зеленый</p>
-                <div className='flex mt-5'>
+                <div className='flex mt-5 bg-cover'>
                     <img src={`${url.backendUrl}/${data.img}`} alt='card-img' className='object-cover w-full' />
                 </div>
                 <div className='mt-5 text-sm'>
-                    <p>
+                    <p className='line-clamp-3'>
                         Описание: <span>
                             {data.description}
                         </span>
