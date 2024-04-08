@@ -10,7 +10,7 @@ import starIcon from '../../assets/icons/star.svg'
 import teamImg from '../../assets/crg-team.png'
 import instagramIcon from '../../assets/icons/instagram-icon.svg'
 import { useGetAllGoodsQuery } from '../../store/goodsApi';
-import {DefaultSpinner} from '../../components/Spinner'
+import { DefaultSpinner } from '../../components/Spinner'
 
 const Home = () => {
   const { data, isSuccess } = useGetAllGoodsQuery()
@@ -62,7 +62,19 @@ const Home = () => {
             <div>
               <h2 className='text-xl font-bold text-center my-6 sm:my-10'>НОВИНКИ</h2>
             </div>
-            
+            <div className=''>
+              <div className='flex pb-4 overflow-scroll snap-x snap-mandatory justify-start gap-4 flex-nowrap wrappeR'>
+                <div className='flex pb-4 overflow-x-scroll scroll-smooth wrappeR snap-x snap-mandatory justify-start gap-4 flex-nowrap'>
+                  {
+                    isSuccess ? <>
+                      {
+                        data.map((card, index) => index < 6 && <CoffeeCard className='snap-always' key={index} data={card} />)
+                      }
+                    </> : <DefaultSpinner />
+                  }
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div className='mt-10 bg-crg-opacity bg-no-repeat bg-white py-5'>
