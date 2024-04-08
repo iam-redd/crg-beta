@@ -7,7 +7,8 @@ import styles from './CoffeCard.module.css'
 import { addTooBasket } from '../../store/slices/basketSlice'
 import { ReactSpoiler } from 'react-simple-spoiler'
 
-import url from '../default.json'
+import url from '../../default.json'
+
 function CoffeeCard({ data }) {
     const userInfo = useSelector(state => state.user.userInfo)
     const dispatch = useDispatch()
