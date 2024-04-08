@@ -5,3 +5,7 @@
     background-color: #f9f9f9;
     transform: translateY(-3px);
 }
+.spoiler-size{
+    font-size: small;
+    color: #4b5563;
+}

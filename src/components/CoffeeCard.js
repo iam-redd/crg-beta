@@ -5,6 +5,8 @@ import cart from '../assets/icons/icons8-cart-64.png'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 
+import { ReactSpoiler } from 'react-simple-spoiler'
+
 import { addTooBasket } from '../../src/store/slices/basketSlice'
 import url from '../default.json'
 function CoffeeCard({ data }) {
@@ -87,8 +89,8 @@ function CoffeeCard({ data }) {
                 <div className='flex justify-end py-2 px-4 text-xs'>
                     Топ-недели
                 </div>
-                <h2 className='text-center font-bold text-xl line-clamp-1'>{data?.name ? data.name : ''}</h2>
-                <p className='text-xs flex text-red-200 justify-center rounded border-2 border-red-200 mx-auto p-1 my-2'>{data.roast}</p> {/*Вытаскиваем с базы для эспрессо или фильтра*/}
+                <h2 className='text-center font-bold text-xl line-clamp-2'>{data?.name ? data.name : ''}</h2>
+                <p className='text-xs flex text-red-200 justify-center rounded border border-red-200 mx-auto p-1 my-2'>{data.roast}</p> {/*Вытаскиваем с базы для эспрессо или фильтра*/}
                 <div className='flex mt-5 h-32'>
                     <img src={`${url.backendUrl}/${data.img[0]}`} alt='card-img' className='object-cover w-1/3' />
                     <div className='grid grid-cols-1 grid-rows-8 gap-1 px-3 py-2 text-xs'>
@@ -103,11 +105,20 @@ function CoffeeCard({ data }) {
                     </div>
                 </div>
                 <div className='mt-5 text-sm'>
-                    <p className='line-clamp-2 hover:line-clamp-none text-justify text-sm sm:text-md md:text-md lg:text-md xl:text-md 2xl:text-md'>
+                    <ReactSpoiler 
+                    noOfLines={2}
+                    lineHeight={7}
+                    showMoreComponent={<p className='spoiler-size'>еще...</p>}
+                    showLessComponent={<p className='spoiler-size'>Скрыть</p>}
+                    toggleContainerStyle = {{ color: '#ba181b' }}
+                    collapsedSize={40}
+                    >
+                        <p className='text-justify text-sm sm:text-md md:text-md lg:text-md xl:text-md 2xl:text-md'>
                         Описание: <span>
-                            {data?.description ? data.description : ''}
+                        {data?.description ? data.description : ''}
                         </span>
-                    </p>
+                        </p>
+                    </ReactSpoiler>
                 </div>
                 <div className='flex justify-between items-center mt-4 text-sm'>
                     <div className='grid grid-cols-5 items-center'>
