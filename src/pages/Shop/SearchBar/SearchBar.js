@@ -9,6 +9,7 @@ export default function SearchBar() {
   const searchValue = useSelector(state => state.service.searchValue)
   function searchItem(value) {
     console.log(value)
+    dispatch(setSearchValue(value))
     const a = allProducts.reduce((acc, product, index) => {
       const temp = product.name.split(' ')
 
@@ -20,7 +21,6 @@ export default function SearchBar() {
         return acc
       }
     }, [])
-    dispatch(setSearchValue(value))
     dispatch(setSelectedProducts(a))
     console.log(a)
   }

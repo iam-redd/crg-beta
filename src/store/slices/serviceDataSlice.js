@@ -18,13 +18,17 @@ const serviceData = createSlice({
         },
         setSelectedProducts(state, { payload }) {
             if(state.searchValue === ''){
-                state.selectedProducts = state.allProducts
+                cancelSelectedProducts()
             }else{
                 state.selectedProducts = payload
             }
         },
-        cancelSelectedProducts(state) {
-            state.selectedProducts = state.allProducts
+        cancelSelectedProducts(state,{ payload }) {
+            if(payload){
+                state.selectedProducts = payload
+            }else{
+                state.selectedProducts = state.allProducts
+            }
         }
     },
 })

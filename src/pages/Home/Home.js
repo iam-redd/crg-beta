@@ -63,7 +63,7 @@ const Home = () => {
               <h2 className='text-xl font-bold text-center my-6 sm:my-10'>НОВИНКИ</h2>
             </div>
             <div className=''>
-              <div className='flex pb-4 overflow-scroll snap-x snap-mandatory justify-start gap-4 flex-nowrap'>
+              <div className='flex pb-4 overflow-scroll snap-x snap-mandatory justify-start gap-4 flex-nowrap wrappeR'>
                 {
                   isSuccess ? <>
                     {

@@ -11,7 +11,7 @@ export const store = configureStore({
         basket: basketSlice,
         user:userSlice,
         service:serviceDataSlice,
-        forAmin:forAdmin
+        forAdmin:forAdmin
     },
     middleware:(getDefaultMiddleware)=>getDefaultMiddleware().concat(goodsApi.middleware)
 })

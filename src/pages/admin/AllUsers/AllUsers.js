@@ -12,15 +12,21 @@ import { useEffect } from 'react'
 import { DefaultSpinner } from '../../../components/Spinner'
 import styles from './AllUsers.module.css'
 import { useNavigate } from 'react-router-dom';
+import SearchBar from './searchBar/SearchBar';
+import { useDispatch, useSelector } from 'react-redux';
+import { editAllUsers, setCurrentUser } from '../../../store/slices/forAdmin';
 export default function AllUsers() {
   const navigate = useNavigate()
-  const [users, setUsers] = useState(null)
   const [isSucccess, setSecccess] = useState(true)
+  const [isLoading, setLoading] = useState(true)
+  const selectedUsers = useSelector(state => state.forAdmin.selectedUsers)
+  const dispatch = useDispatch()
   async function getAllUsersFunc() {
     try {
       const data = await axios.post('/get/all-users')
       if (data.status === 200) {
-        setUsers(data.data)
+        dispatch(editAllUsers(data.data))
+        setLoading(false)
         console.log(data.data)
       }
     } catch (error) {
@@ -35,7 +41,7 @@ export default function AllUsers() {
       const request = await axios.patch('/user/level-up', {
         currentUserId: id
       })
-      if(request.status === 403) {
+      if (request.status === 403) {
         console.log('status 404')
       }
 
@@ -50,12 +56,15 @@ export default function AllUsers() {
   }
 
   useEffect(() => {
-    users === null && getAllUsersFunc()
+    selectedUsers === null && getAllUsersFunc()
+    selectedUsers !== null && setLoading(false)
   });
+
   return (
     <div>
       {
-        users !== null ? <div className="">
+        !isLoading ? <div className="">
+          <SearchBar />
           <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="caption table">
               <caption>A basic table example with a caption</caption>
@@ -68,23 +77,29 @@ export default function AllUsers() {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {users.map((row) => {
+                {selectedUsers.map((row) => {
                   const id = row._id
                   return (
-                    <TableRow key={row.email}>
-                      <TableCell component="th" scope="row">
+                    <TableRow key={row.email} >
+                      <TableCell
+                        component="th"
+                        scope="row"
+                        style={{ cursor: 'pointer' }}
+                        onClick={() => {
+                          dispatch(setCurrentUser(row))
+                          navigate(`/admin/all-users/${id}`)
+                        }}>
                         {row.name}
                       </TableCell>
                       <TableCell align="right">
                         <div className={styles.role}>
                           {row.role}
-                          { row.role === 'user' &&
+                          {row.role === 'user' &&
                             <button
                               className={styles.btn}
+                              disabled={!isSucccess}
                               onClick={() => isSucccess && levelUp(id)}>
-                              {
-                                isSucccess ? 'Поднять' : 'Загрузка'
-                              }
+                              Поднять
                             </button>}
                         </div>
                       </TableCell>

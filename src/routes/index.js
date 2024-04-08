@@ -22,11 +22,13 @@ const Monitoring = lazy(()=> import ( "../pages/admin/Monitoring/Monitoring"))
 const CreatePost = lazy(()=> import ( "../pages/admin/CreatePost/CreatePost"))
 const Settings = lazy(()=> import ( "../pages/admin/Settings/Settings"))
 const AllUsers = lazy(()=> import ( "../pages/admin/AllUsers/AllUsers"))
+const User = lazy(() => import('../pages/admin/AllUsers/UserInfo/UserInfo.js'))
 const AdminLayout = lazy(()=> import ( '../pages/admin/Layout/Layout'))
 const Catalog = lazy(()=> import ( "../pages/admin/Catalog/Catalog"))
 const MyOrders = lazy(()=> import ( '../pages/UserProfile/MyOrders/MyOrders'))
 const MySettings = lazy(()=> import ( "../pages/UserProfile/UserSettings/UserSettings"))
 const Main = lazy(() => import('../pages/Home/Home'))
+
 const router = createBrowserRouter(createRoutesFromElements(
     <Route>
         <Route path="/" element={<Layout />}>
@@ -45,6 +47,7 @@ const router = createBrowserRouter(createRoutesFromElements(
                 <Route path="monitoring" element={<Monitoring />} />
                 <Route path="create" element={<CreatePost />} />
                 <Route path="all-users" element={<AllUsers />} />
+                <Route path="all-users/:id" element={<User />} />
                 <Route path="settings" element={<Settings />} />
                 <Route path="catalog" element={<Catalog />} />
             </Route>

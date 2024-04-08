@@ -25,7 +25,7 @@ export default function LeftBar() {
 
   const filter = (value) => {
     const temp = allProducts.filter(product => product.type === value)
-    dispatch(setSelectedProducts(temp))
+    dispatch(cancelSelectedProducts(temp))
   }
 
   return (

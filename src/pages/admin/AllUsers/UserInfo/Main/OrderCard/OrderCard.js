@@ -1,22 +1,26 @@
 import React, { useState } from 'react'
-import styles from './OrderCardMonitoring.module.css'
-import OrderStatus from './OrderStatus/OrderStatus'
-import icon from '../../../../assets/icons/iconbottom.png'
+import styles from '../../../../../../pages/admin/Monitoring/OrderCardMonitiring/OrderCardMonitoring.module.css'
+import icon from '../../../../../../assets/icons/iconbottom.png'
 import { AnimatePresence, motion } from 'framer-motion'
-import ProductCard from './ProductCard/ProductCard'
+import ProductCard from '../../../../../../pages/admin/Monitoring/OrderCardMonitiring/ProductCard/ProductCard'
 export default function OrderCardMonitorng({ data, getAllOrders, index }) {
     const [isVisible, setVisible] = useState(false)
     const [isVisible2, setVisible2] = useState(false)
 
-    const [isVisibleEdit, setVisibleEdit] = useState(false)
+    const [isVisibleEdit] = useState(false)
     const handleVisible = () => setVisible(!isVisible)
     const handleVisible2 = () => setVisible2(!isVisible2)
     const variants = {
         open: { transform: 'rotate(-180deg' },
         closed: { transform: 'rotate(0deg' }
     }
+    const style = {
+        fontSize:'16px',
+        lineHeight:'20px',
+        fontWeight:'400'
+    }
     return (
-        <div className={styles.container}>
+        <div className={styles.container} style={style}>
             <div className={styles.header}>
                 ID {data._id}
             </div>
@@ -144,7 +148,6 @@ export default function OrderCardMonitorng({ data, getAllOrders, index }) {
                     </motion.div>
                 }
             </AnimatePresence>
-            <OrderStatus status={data.status} getAllOrders={getAllOrders} id={data._id} index={index} />
         </div>
     )
 }
