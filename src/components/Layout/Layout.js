@@ -46,8 +46,10 @@ const Layout = () => {
     });
     return (
         <div className={styles.container}>
-            <Header />
-            <div>
+            <div className='fixed w-full z-10 lg:flex md:flex xl:flex'>
+                <Header />
+            </div>
+            <div className='mt-24'>
                 <Suspense fallback={<DefaultSpinner/>}>
                     <Outlet />
                 </Suspense>
