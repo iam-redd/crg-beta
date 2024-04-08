@@ -1,21 +1,19 @@
 import React, { useState } from 'react';
 import { Button, Card, Option, Progress, Select, Typography } from '@material-tailwind/react';
-import cart from '../assets/icons/icons8-cart-64.png'
-/*import img from '../assets/cards/JMB_8162.jpg'*/
+import cart from '../../assets/icons/icons8-cart-64.png'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
-
-import { addTooBasket } from '../../src/store/slices/basketSlice'
-import url from '../default.json'
+import styles from './CoffeCard.module.css'
+import { addTooBasket } from '../../store/slices/basketSlice'
+import url from '../../default.json'
 function CoffeeCard({ data }) {
-    const width = window.innerWidth
     const userInfo = useSelector(state => state.user.userInfo)
     const dispatch = useDispatch()
     const weightSize = ['250гр', '500гр', '1000гр']
     const basket = useSelector(state => state.basket.basket)
     const [weightColor, setWeightColor] = useState(false)
     const [pomolColor, setPomoltColor] = useState(false)
-    
+
     const allProductsId = useSelector(state => state.basket.allProductsId)
     const [boolBasket, setBoolBasket] = useState(
         allProductsId !== null ?
@@ -75,14 +73,14 @@ function CoffeeCard({ data }) {
         }
         dispatch(addTooBasket(info))
         setBoolBasket(true)
-        return console.log('Добавлен в корзину')
+        return
     }
 
     const handleWeightColor = () => setWeightColor(false)
     const handlePomolColor = () => setPomoltColor(false)
-    
+
     return (
-        <div className='' style={{width:`${width < 420 ? '90%' : 'auto'}`}}>
+        <div className={styles.container}>
             <Card className='w-80 md:w-72 h-full border py-5 px-5 card-hover'>
                 <div className='flex justify-end py-2 px-4 text-xs'>
                     Топ-недели

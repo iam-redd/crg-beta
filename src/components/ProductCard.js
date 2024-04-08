@@ -1,5 +1,5 @@
 import React from 'react'
-import CoffeeCard from './CoffeeCard'
+import CoffeeCard from './CoffeCard/CoffeeCard'
 import TeaCard from './TeaCard'
 import AnyCard from './AnyCard'
 export default function ProductCard({data}) {

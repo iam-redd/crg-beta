@@ -47,12 +47,12 @@ const Layout = () => {
     return (
         <div className={styles.container}>
             <Header />
-            <div>
+            <div className={styles.main}>
                 <Suspense fallback={<DefaultSpinner/>}>
                     <Outlet />
                 </Suspense>
             </div>
-            <Footer />
+            <Footer className={styles.footer} />
         </div>
     );
 }

@@ -9,7 +9,7 @@ export default function Main() {
     async function getUserOrders() {
         const request = await axios.get(`/user-orders/${id}`)
         console.log(request)
-        setData(request.data)
+        setData(request.data.reverse())
     }
 
     useEffect(() => {

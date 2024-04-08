@@ -5,10 +5,10 @@ import beansIcon from '../../../../assets/icons/beans.png'
 import dripIcon from '../../../../assets/icons/coffee-drip.png'
 import styles from '../../../Shop/LeftBar/LeftBar.module.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { cancelSelectedUsers, setSelectedUsers, setSelectedValue } from '../../../../store/slices/forAdmin'
+import {  setSelectedUsers} from '../../../../store/slices/forAdmin'
 export default function SearchBar() {
     const allUsers = useSelector(state => state.forAdmin.allUsers)
-    const searchValue = useSelector(state => state.forAdmin.selectedValue)
+    // const searchValue = useSelector(state => state.forAdmin.selectedValue)
     // const selectedUsers = useSelector(state => state.forAdmin.selectedUsers)
     const dispatch = useDispatch()
     function filter(value = '') {
