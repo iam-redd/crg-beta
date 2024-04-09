@@ -75,7 +75,7 @@ const Registration = () => {
         <div className='relative'>
             <div className={`absolute -top-72 sm:-top-36 md:-top-48 flex w-full`}>
                 <div className={`items-center justify-center m-auto ${styles.bordered}`}>
-                    <div className='flex items-center text-sm'>
+                    <div className='flex justify-center items-center text-sm'>
                         Загрузите аватарку
                         <ImageUpload
                             list={uploadedImages}
@@ -85,7 +85,7 @@ const Registration = () => {
                     <form
                         onSubmit={handleSubmit}
                         className={styles.form}>
-                        <div className='gap-1 sm:flex'>
+                        <div className='grid gap-2 sm:flex'>
                             <Input
                                 type="text"
                                 name='name'
@@ -101,7 +101,7 @@ const Registration = () => {
                                 label='Электронная почта'
                             />
                         </div>
-                        <div className='gap-1 sm:flex'>
+                        <div className='grid gap-2 sm:flex'>
                             <Input
                                 type="text"
                                 name='phoneNumber'
@@ -117,7 +117,7 @@ const Registration = () => {
                                 label='Адрес'
                             />
                         </div>
-                        <div className='gap-1 sm:flex'>
+                        <div className='grid gap-2 sm:flex'>
                             <Input
                                 type="text"
                                 name='telegram'
@@ -132,7 +132,7 @@ const Registration = () => {
                                 label='Организация'
                             />
                         </div>
-                        <div className='gap-1 sm:flex'>
+                        <div className='grid gap-2 sm:flex'>
                             <Input
                                 type="password"
                                 name='password'
@@ -145,6 +145,7 @@ const Registration = () => {
                                 name='password_try'
                                 label='Повторите пароль'
                                 placeholder='Повторите пароль'
+                                
                             />
                         </div>
                         {   loginError &&

@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import styles from './UploadImage.module.css'
 import axios from '../../../../store/axios';
-import icon from '../../../../assets/icons/uploadImage.png'
+import icon from '../../../../assets/icons/addImage.png'
 import url from '../../../../default.json'
 import { DefaultSpinner } from '../../../../components/Spinner';
 const ImageUpload = ({ list, setList }) => {
@@ -35,7 +35,7 @@ const ImageUpload = ({ list, setList }) => {
                                 <img src={icon} alt="" onClick={() => input.current.click()} />
                             }
                         </> :
-                        <img src={`${url.backendUrl}/${list}`} alt="" />
+                        <img src={`${url.backendUrl}/${list}`} alt=''/>
                 }
             </div>
             <input type="file" onChange={handleUpload} accept='image/*' hidden ref={input} />
