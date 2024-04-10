@@ -108,7 +108,7 @@ export default function Order({ data, orderId, getAllOrders, bool, index }) {
                         </div>
                     </div> :
                     <div className={styles.order}>
-                        <img src={`${url.backendUrl}/${data.img}`} alt="" />
+                        <img src={`${url.backendUrl}/${data.img}`} className={styles.img} alt="" />
                         <div className={styles.info}>
                             <p >Найменования:
                                 {data.name}

@@ -1,6 +1,6 @@
 .order{
     width: 100%;
-    min-height: 100px;
+    min-height: 125px;
     /* border-bottom: 1px solid black; */
     display: flex;
     flex-wrap: wrap;
@@ -26,7 +26,7 @@
 
 .img{
     width: 125px;
-    height: auto;
+    height: 125px;
 }
 
 .btn{
@@ -58,4 +58,4 @@
     .container{
         min-height: auto;
     }
-}   
+}  

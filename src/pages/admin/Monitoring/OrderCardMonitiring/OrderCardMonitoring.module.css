@@ -85,3 +85,7 @@
 .wrapper{
     overflow: hidden;
 }
+
+.status{
+    color: green;
+}

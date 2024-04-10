@@ -19,6 +19,7 @@ export default function OrderCard({ data }) {
         <p>Статус: <span className={data.status !== 'Отказано' ? styles.status : styles.statusRejected}>{data.status}</span></p>
         <p>Дата заказа: <span className={styles.status}>{data.createdAt.split('').splice(0, 10)}</span></p>
         <p>Сумма заказа: <span className={styles.status}>{data.totalPrice}</span></p>
+        <p>Способ оплаты: <span className={styles.status}>{data.paymentMethod}</span></p>
       </div>
       <div
         className={styles.footer}

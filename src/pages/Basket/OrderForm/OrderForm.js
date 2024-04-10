@@ -50,12 +50,10 @@ export default function OrderForm({ totalPrice }) {
                                 onChange={(e) => changePay(e)}
                                 style={{ borderColor: pomolColor ? "red" : '' }}
                                 onClick={handlePomolColor}>
-                                <Option value='не-молотый'>Не молоть</Option>
-                                <Option value='turku'>Под турку</Option>
-                                <Option value='mokka'>Под гейзер/Мокка</Option>
-                                <Option value='espresso'>Под Эспрессо</Option>
-                                <Option value='filter'>Под Фильтр</Option>
-                                <Option value='french-press'>Под Френч-пресс</Option>
+                                <Option value='Наличными'>Наличными</Option>
+                                <Option value='Uzcard'>Uzcard</Option>
+                                <Option value='Humo'>Humo</Option>
+                                <Option value='Перечислением'>Перечислением</Option>
                             </Select>
                         </div>
                         <textarea className={styles.textarea} name='comment' placeholder='Комментария для заказа'></textarea>
