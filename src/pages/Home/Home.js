@@ -64,11 +64,11 @@ const Home = () => {
             </div>
             <div className=''>
               <div className='flex pb-4 overflow-scroll snap-x snap-mandatory justify-start gap-4 flex-nowrap wrappeR'>
-                <div className='flex pb-4 overflow-x-scroll scroll-smooth wrappeR snap-x snap-mandatory justify-start gap-4 flex-nowrap'>
+                <div className='px-2 lg:px-0 flex pb-4 overflow-x-scroll scroll-smooth snap-x snap-mandatory justify-start gap-4 flex-nowrap'>
                   {
                     isSuccess ? <>
                       {
-                        data.map((card, index) => index < 6 && <CoffeeCard className='snap-always' key={index} data={card} />)
+                        data.map((card, index) => index < 6 && <CoffeeCard key={index} data={card} />)
                       }
                     </> : <DefaultSpinner />
                   }
