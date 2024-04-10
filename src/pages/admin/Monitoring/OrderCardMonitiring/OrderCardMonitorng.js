@@ -8,7 +8,7 @@ export default function OrderCardMonitorng({ data, getAllOrders, index }) {
     const [isVisible, setVisible] = useState(false)
     const [isVisible2, setVisible2] = useState(false)
 
-    const [isVisibleEdit, setVisibleEdit] = useState(false)
+    const [isVisibleEdit] = useState(false)
     const handleVisible = () => setVisible(!isVisible)
     const handleVisible2 = () => setVisible2(!isVisible2)
     const variants = {
@@ -94,7 +94,6 @@ export default function OrderCardMonitorng({ data, getAllOrders, index }) {
                 <div className={styles.footer}
                     onClick={handleVisible2}>
                     <span>
-
                         <> Удалённые товары из заказа
                             {
                                 ' ' + data.rejectedList.length
@@ -108,7 +107,6 @@ export default function OrderCardMonitorng({ data, getAllOrders, index }) {
                                     </>
                             }
                         </>
-
                     </span>
                     <span>
                         {

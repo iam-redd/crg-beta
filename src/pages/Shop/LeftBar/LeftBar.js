@@ -11,18 +11,18 @@ import accessorieIcon from '../../../assets/icons/coffee-grinder.png'
 import chemieIcon from '../../../assets/icons/clean.png'
 import teaIcon from '../../../assets/icons/tea.png'
 import { useDispatch, useSelector } from 'react-redux';
-import { cancelSelectedProducts, setSelectedProducts } from '../../../store/slices/serviceDataSlice';
+import { cancelSelectedProducts } from '../../../store/slices/serviceDataSlice';
 
 
 export default function LeftBar() {
-  const [open, setOpen] = React.useState(0);
+  // const [open, setOpen] = React.useState(0);
   const dispatch = useDispatch()
   const allProducts = useSelector(state => state.service.allProducts)
   const selectedProducts = useSelector(state => state.service.selectedProducts)
 
-  const handleOpen = (value) => {
-    setOpen(open === value ? 0 : value);
-  };
+  // const handleOpen = (value) => {
+  //   setOpen(open === value ? 0 : value);
+  // };
 
   const filter = (value) => {
     const temp = allProducts.filter(product => product.type === value)
@@ -88,7 +88,6 @@ export default function LeftBar() {
             Аксессуары
           </div>
         </div>
-
         <div
           className={`p-5 mb-1 mr-1 flex flex-col items-center ${styles.catcat}`}
           onClick={() => selectedProducts !== null ? filter('chemistry') : null}>

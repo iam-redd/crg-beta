@@ -6,8 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import styles from './CoffeCard.module.css'
 import { addTooBasket } from '../../store/slices/basketSlice'
 import { ReactSpoiler } from 'react-simple-spoiler'
-
-import url from '../default.json'
+import url from '../../default.json'
 function CoffeeCard({ data }) {
     const userInfo = useSelector(state => state.user.userInfo)
     const dispatch = useDispatch()
@@ -109,7 +108,7 @@ function CoffeeCard({ data }) {
                     showMoreComponent={<p className='spoiler-size'>еще...</p>}
                     showLessComponent={<p className='spoiler-size'>Скрыть</p>}
                     toggleContainerStyle = {{ color: '#ba181b' }}
-                    collapsedSize={40}
+                    collapsedSize={85}
                     >
                         <p className='text-justify text-sm sm:text-md md:text-md lg:text-md xl:text-md 2xl:text-md'>
                         Описание: <span>

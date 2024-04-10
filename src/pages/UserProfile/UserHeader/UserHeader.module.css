@@ -1,17 +1,28 @@
-p, div, span, h2, h3, h4, h5, a, button {
+p,
+div,
+span,
+h2,
+h3,
+h4,
+h5,
+a,
+button {
     font-family: 'Proxima Soft', sans-serif;
 }
+
 span {
     color: #111827;
 }
-.header{
+
+.header {
     width: 100% !important;
     display: flex;
     justify-content: space-between;
     cursor: pointer;
     justify-self: flex-start;
-} 
-.btn{
+}
+
+.btn {
     border: 1px #ba181b solid;
     width: fit-content;
     padding: 5px 10px;
@@ -24,29 +35,33 @@ span {
     justify-content: center;
     margin-top: 15px;
 }
-.btn:hover{
+
+.btn:hover {
     box-shadow: 0 0 40px 40px #ba181b inset;
     color: #fff;
     cursor: pointer;
 }
-.tabs{
+
+.tabs {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
 }
 
-.hrefWrapper{
+.hrefWrapper {
     align-self: self-end;
 }
-.tabsItem{
+
+.tabsItem {
     border-bottom: 1px solid black;
-    margin-bottom: 10px; 
+    margin-bottom: 10px;
     padding: 5px;
     font-size: 14px;
 
 }
-.tabsItem:hover{
+
+.tabsItem:hover {
     box-shadow: 0 0 40px 40px #ba181b inset;
     color: #fff;
     border-radius: 10px;
@@ -54,27 +69,38 @@ span {
     -webkit-transition: box-shadow 200ms ease-in-out, color 200ms ease-in-out;
     transition: box-shadow 200ms ease-in-out, color 200ms ease-in-out;
 }
-.userImg{
+
+.userImg {
     width: 80px;
     height: 80px;
     border: 1px solid #ba181b;
     border-radius: 100px;
     margin-bottom: 5px;
 }
-.userName, .userMail, .userAddress, .userOrg, .userPhone {
+
+.userName,
+.userMail,
+.userAddress,
+.userOrg,
+.userPhone {
     color: #9ca3af;
     margin-top: 5px;
     font-size: 14px;
-} 
+}
 
-.userNameD, .userMailD, .userStatusD, .userOrgD, .userPhoneD {
+.userNameD,
+.userMailD,
+.userStatusD,
+.userOrgD,
+.userPhoneD {
     color: #c7c7c7;
     border: 1px solid #c7c7c7;
     margin-top: 5px;
     border-radius: 10px;
     background-color: #c7c7c7;
 }
-.userImgD{
+
+.userImgD {
     width: 80px;
     height: 80px;
     border: 1px solid #c7c7c7;
@@ -83,24 +109,25 @@ span {
     margin-bottom: 5px;
 }
 
-.userImg{
+.userImg {
     overflow: hidden;
 }
 
-.userName{
+.userName {
     font-weight: 600;
 }
 
-.logout{
+.logout {
     font-size: 14px;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     width: fit-content;
     cursor: pointer;
     margin: 60px 15px 15px auto;
     border-radius: 15px;
     padding: 10px;
 }
-.logout:hover{
+
+.logout:hover {
     background-color: #c7c7c7;
 }

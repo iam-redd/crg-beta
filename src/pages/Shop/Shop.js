@@ -11,19 +11,19 @@ const Shop = () => {
   const [data, setData] = useState(false)
   useEffect(() => {
     selectedProducts !== null && setData(true)
-  });
+  }, [selectedProducts]);
 
   return (
     <div className='w-full md:max-w-screen-xl 2xl:max-w-screen-2xl m-auto mt-8'>
       <div className=''>
         <SearchBar />
-        <LeftBar/>
+        <LeftBar />
         <div>
           <>
             {
               data ? <div className={styles.container}>
                 {
-                  selectedProducts.map((card) => <ProductCard key={card.name} data={card} />)
+                  selectedProducts.map((card) => <ProductCard key={card._id} data={card} />)
                 }
               </div> : <div className="flex-center"><DefaultSpinner /></div>
             }

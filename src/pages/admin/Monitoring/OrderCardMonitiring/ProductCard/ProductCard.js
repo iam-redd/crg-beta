@@ -76,7 +76,7 @@ export default function Order({ data, orderId, getAllOrders, bool, index }) {
             {
                 bool ?
                     <div className={styles.order}>
-                        <img src={`${url.backendUrl}/${data.img}`} alt="" />
+                        <img className={styles.img} src={`${url.backendUrl}/${data.img}`} alt=""  />
                         <div className={styles.info}>
                             <p >Найменования:
                                 {data.name}
@@ -88,7 +88,7 @@ export default function Order({ data, orderId, getAllOrders, bool, index }) {
                             <p>Обьём: {data.weight}
                             </p>
                             <p>Цена: {data.price}сум</p>
-                            <p style={{ display: 'flex' }}>Количество: 
+                            <p style={{ display: 'flex' }}>Количество:
                                 {
                                     index === 0 && <button
                                         className={styles.btn}
