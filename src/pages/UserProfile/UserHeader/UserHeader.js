@@ -35,8 +35,8 @@ export default function UserHeader() {
                 <div className={styles.userMail}>Почта: <span>{userInfo.email}</span></div>
                 <div className={styles.userPhone}>Номер телефона: <span>{userInfo.phoneNumber}</span></div>
                 <div className={styles.userAddress}>Адрес доставки: <span>{userInfo.address[0]}</span></div>
-                {userInfo.role === 'admin' || userInfo.role === 'superUser' &&
-                  <div className={styles.userOrg}>Организация: <span>Don Coffee</span></div>}
+                {(userInfo.role === 'admin' || userInfo.role === 'superUser') &&
+                  <div className={styles.userOrg}>Организация: {userInfo.organization}</div>}
               </div>
             </div>
             <div className={styles.unauto}>

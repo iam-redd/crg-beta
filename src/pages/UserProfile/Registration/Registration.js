@@ -33,7 +33,9 @@ const Registration = () => {
                 email: e.target.email.value,
                 password: e.target.password.value,
                 avatarUrl: uploadedImages,
-                address: [e.target.address.value]
+                address: [e.target.address.value],
+                telegram: e.target.telegram.value,
+                organization: e.target.organization.value //Не работает??
             }
             console.log(request)
 
@@ -131,7 +133,7 @@ const Registration = () => {
                             />
                             <Input
                                 type='text'
-                                name='org'
+                                name='organization'
                                 placeholder='Название организации'
                                 label='Организация'
                             />
