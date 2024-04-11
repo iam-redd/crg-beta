@@ -1,21 +1,12 @@
 import { useState } from 'react'
 import * as React from 'react';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
 import axios from '../../../store/axios'
 import { useEffect } from 'react'
 import { DefaultSpinner } from '../../../components/Spinner'
-import styles from './AllUsers.module.css'
 import { useNavigate } from 'react-router-dom';
 import SearchBar from './searchBar/SearchBar';
 import { useDispatch, useSelector } from 'react-redux';
 import { editAllUsers, setCurrentUser } from '../../../store/slices/forAdmin';
-import { UserPlusIcon } from "@heroicons/react/24/solid";
 import {
   Card,
   CardHeader,
@@ -25,11 +16,6 @@ import {
   CardFooter,
   Avatar,
 } from "@material-tailwind/react";
-import outlined from '@material-tailwind/react/theme/components/timeline/timelineIconColors/outlined';
-
-
-
-
 
 export default function AllUsers() {
 
@@ -224,15 +210,7 @@ export default function AllUsers() {
         </div>
       </CardFooter>
     </Card>
-
-
-
-
-
-
-
-
-        </div>
+    </div>
         : <DefaultSpinner />
       }
     </div>
