@@ -109,7 +109,7 @@ function CoffeeCard({ data }) {
                     showMoreComponent={<p className='spoiler-size'>еще...</p>}
                     showLessComponent={<p className='spoiler-size'>Скрыть</p>}
                     toggleContainerStyle = {{ color: '#ba181b' }}
-                    collapsedSize={85}
+                    collapsedSize={60}
                     >
                         <p className='text-justify text-sm sm:text-md md:text-md lg:text-md xl:text-md 2xl:text-md'>
                         Описание: <span>
