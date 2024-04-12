@@ -5,6 +5,8 @@ import ProductCard from './ProductCard/ProductCard.js';
 import styles from './Basket.module.css'
 import OrderForm from './OrderForm/OrderForm.js';
 
+import {Input, Button, Checkbox, Typography} from '@material-tailwind/react'
+
 import emptyBasket from '../../assets/cart.png'
 
 import { useNavigate } from 'react-router-dom';
@@ -12,6 +14,10 @@ const Basket = () => {
     const allProductsId = useSelector(state => state.basket.allProductsId)
     const basket = useSelector(state => state.basket.basket)
     const [totalPrice, setTotalPrice] = useState(0)
+
+    const [promocode, setPromocode] = React.useState("");
+  const onChange = ({ target }) => setPromocode(target.value);
+
     const [data, setData] = useState(null)
     const navigate = useNavigate()
     async function getFavorites() {
@@ -65,6 +71,7 @@ const Basket = () => {
                         data === null ?
                             <div className="">Loading...</div> :
                             <>
+                            <div className='text-xl font-bold text-center my-6 lg:my-10'>Корзина</div>
                                 {
                                     data.map((_, index) => {
                                         return (
@@ -72,13 +79,73 @@ const Basket = () => {
                                         )
                                     })
                                 }
-                                <div className={`flex ${styles.totalLine}`}>
+                                <div className={`flex-col ${styles.totalLine}`}>
                                 <div>
-                                    <span className={styles.total}>Итого:</span>
-                                    &nbsp;&nbsp;{totalPrice} сум
+                                    
+                                    <div className="relative flex w-full max-w-[24rem]">
+                                        <Input
+                                            type="text"
+                                            label="Промокод"
+                                            value={promocode}
+                                            onChange={onChange}
+                                            className="pr-20"
+                                            containerProps={{
+                                            className: "min-w-0",
+                                            }}
+                                        />
+                                        <Button
+                                            size="sm"
+                                            variant='outlined'
+                                            color={promocode ? "gray" : "blue-gray"}
+                                            disabled={!promocode}
+                                            className="!absolute right-1 top-1 rounded"
+                                        >
+                                            Применить
+                                        </Button>
+                                    </div>
+                                    <div>Сумма заказа: </div>
+                                    <div>Скидка:  </div>
+                                </div>
+                                <div>
+                                    <span className='font-bold text-lg'>Итого к оплате:</span>
+                                    <span className='border-b '>{totalPrice} сум</span>
                                 </div>
                                 </div>
                                 <div>
+                                <Checkbox
+                                    label={
+                                        <Typography color="blue-gray" className="flex text-sm">
+                                        Согласен с условиями
+                                        <Typography
+                                            as="a"
+                                            href="#"
+                                            color="blue-gray"
+                                            className="font-sm text-sm border-b transition-colors hover:text-red-500"
+                                        >
+                                            &nbsp; обработки персональных данных
+                                        </Typography>
+                                        ,
+                                        <Typography
+                                            as="a"
+                                            href="#"
+                                            color="blue-gray"
+                                            className="font-sm text-sm border-b transition-colors hover:text-red-500"
+                                        >
+                                            &nbsp;Доставки
+                                        </Typography>
+                                        ,
+                                        <Typography
+                                            as="a"
+                                            href="#"
+                                            color="blue-gray"
+                                            className="font-sm text-sm border-b transition-colors hover:text-red-500"
+                                        >
+                                            &nbsp;Публичной оферты
+                                        </Typography>
+                                        .
+                                        </Typography>
+                                    }
+                                />
                                 </div>
                                 <OrderForm totalPrice={totalPrice} />
                             </>

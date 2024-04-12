@@ -150,3 +150,26 @@ p {
 .wrappeR::-webkit-scrollbar{
     display: none;
 }
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+ 
+/* Track */
+::-webkit-scrollbar-track {
+    background: #d3d3d3;
+    border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgba(229, 56, 59, 0.5);
+    border-radius: 5px;
+}
+ 
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(229, 56, 59, 0.9);
+}

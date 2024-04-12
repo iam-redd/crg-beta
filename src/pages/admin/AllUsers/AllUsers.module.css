@@ -15,22 +15,6 @@
     border-collapse: collapse;
 }
 
-
-.btn{
-    min-width: 25px;
-    max-width: max-content;
-    height: 25px;
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 2px;
-    padding: 0 5px;
-    border: 1px solid #F44336;
-    color: #FF0000;
-    font-size: 16px;
-}
-
 .role{
     display: flex;
     column-gap: 10px;

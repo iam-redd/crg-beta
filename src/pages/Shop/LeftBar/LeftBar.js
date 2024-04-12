@@ -30,8 +30,8 @@ export default function LeftBar() {
   }
 
   return (
-    <div className={`${styles.catcatBck} w-full mx-auto md:max-w-screen-xl p-4 wrappeR`}>
-      <div className='flex overflow-x-scroll scroll-smooth wrappeR'>
+    <div className={`${styles.catcatBck} w-full mx-auto 2xl:mx-0 md:max-w-screen-xl p-4 m-4 wrappeR`}>
+      <div className='flex overflow-x-scroll scroll-smooth lg:wrappeR 2xl:w-max pb-4'>
         <div
           className={`p-5 mb-1 mr-1 flex flex-col items-center ${styles.catcat}`}
           onClick={() => selectedProducts !== null ? dispatch(cancelSelectedProducts()) : null}>

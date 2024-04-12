@@ -49,7 +49,7 @@ const Home = () => {
                 <h1 className='text-2xl md:text-3xl md:text-start w-full md:w-full font-black text-white 2xl:w-full 2xl:text-5xl'>ШКОЛА БАРИСТА</h1>
                 <p className='text-sm sm:text-base font-normal md:text-md text-white mt-5 2xl:text-lg'>Научим готовить вкусный кофе, с любовью</p>
               </div>
-              <div className='py-4 md:py-2 md:mt-2 lg:pt-6 md:pt-4 xl:pt-0 2xl:pt-8'>
+              <div className='py-4 md:py-2 md:mt-2 lg:pt-6 md:pt-4 xl:pt-3 2xl:pt-10'>
                 <a href={JS_BARISTA} target='blank'><button className='main-button' >JS Barista</button></a>
               </div>
             </div>
@@ -64,11 +64,11 @@ const Home = () => {
             </div>
             <div className=''>
               <div className='flex pb-4 overflow-scroll snap-x snap-mandatory justify-start gap-4 flex-nowrap wrappeR'>
-                <div className='flex pb-4 overflow-x-scroll scroll-smooth wrappeR snap-x snap-mandatory justify-start gap-4 flex-nowrap'>
+                <div className='px-2 lg:px-0 flex pb-4 overflow-x-scroll scroll-smooth snap-x snap-mandatory justify-start gap-4 flex-nowrap'>
                   {
                     isSuccess ? <>
                       {
-                        data.map((card, index) => index < 6 && <CoffeeCard className='snap-always' key={index} data={card} />)
+                        data.map((card, index) => index < 6 && <CoffeeCard key={index} data={card} />)
                       }
                     </> : <DefaultSpinner />
                   }

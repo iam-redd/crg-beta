@@ -55,7 +55,7 @@ const TeaCard = ({ data }) => {
     const handlePackageColor = () => setPackageColor(false)
     return (
         <div className=''>
-            <Card className='w-80 h-full border py-5 px-5 card-hover'>
+            <Card className='w-80 md:w-72 h-full border py-5 px-5 card-hover sna'>
                 <div className='flex justify-end py-2 px-4 text-xs'>
                     Топ-недели
                 </div>

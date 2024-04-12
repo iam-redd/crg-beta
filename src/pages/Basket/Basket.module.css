@@ -1,5 +1,6 @@
 .total{
     font-weight: 700;
+    font-size: 18px;
 }
 
 .totalLine{
@@ -11,10 +12,15 @@
 }
 
 .btn{
-    width: max-content;
-    padding: 10px 30px;
-    color: #F44336;
-    border: 1px solid #F44336;
-    border-radius: 10px;
-    font-weight: 500;
+    border: 1px #000 solid;
+    width: fit-content;
+    padding: 5px 10px;
+    border-radius: 8px;
+    color: #000;
+    font-weight: 400;
+    font-size: small;
+    font-family: 'Proxima Soft', sans-serif;
+    font-size: small;
+    -webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+    transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
 }
