@@ -23,14 +23,14 @@ export default function Main() {
                         {
                             data.length > 0 ?
                                 <>
-                                    <div className="" style={{ lineHeight: '35px' }}>История заказов пользователья</div>
+                                    <div className='my-10' style={{ lineHeight: '35px' }}>История заказов пользователья</div>
                                     <>
                                         {
                                             data.map(order => <OrderCard data={order} />)
                                         }
                                     </>
                                 </> :
-                                <div className="" style={{ lineHeight: '35px' }}>История заказов пусто</div>}
+                                <div className='my-10' style={{ lineHeight: '35px' }}>История заказов пусто</div>}
                     </> :
                     <DefaultSpinner />
             }

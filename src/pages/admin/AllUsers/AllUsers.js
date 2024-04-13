@@ -64,6 +64,7 @@ export default function AllUsers() {
     selectedUsers === null && getAllUsersFunc()
     selectedUsers !== null && setLoading(false)
   });
+  console.log(selectedUsers);
 
   return (
     <div>
@@ -124,6 +125,7 @@ export default function AllUsers() {
                           navigate(`/admin/all-users/${id}`)
                         }}
                         />
+                        
                         <div className="flex flex-col">
                           <Typography
                             variant="small"
@@ -214,6 +216,7 @@ export default function AllUsers() {
         : <DefaultSpinner />
       }
     </div>
+    
   )
 }
 

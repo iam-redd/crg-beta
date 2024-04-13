@@ -15,20 +15,21 @@ export default function OrderCardMonitorng({ data, getAllOrders, index }) {
         closed: { transform: 'rotate(0deg' }
     }
     const style = {
-        fontSize:'16px',
+        fontSize:'14px',
         lineHeight:'20px',
         fontWeight:'400'
     }
     return (
-        <div className={styles.container} style={style}>
+        <div className='w-full h-auto text-start border shadow-md rounded-2xl border-blue-gray-900 mb-4' style={style}>
             <div className={styles.header}>
-                ID {data._id}
+                Номер заказа
             </div>
-            <div className={styles.main}>
-                <p>Статус: <span className={styles.status}>{data.status}</span></p>
+            <div className='flex flex-col gap-2 m-4 text-sm'>
+                <p>Статус:{data.status === 'Доставлено' ? <span className='text-xs bg-green-100 rounded-full p-1 ml-2'>{data.status}</span> : <span className='text-xs bg-blue-gray-100 rounded-full p-1 ml-2'>{data.status}</span>}
+                </p>
                 <p>Дата заказа: <span className={styles.status}>{data.creationDate}</span></p>
                 <p>Сумма заказа: <span className={styles.status}>{data.totalPrice}</span></p>
-
+                <p>ID {data._id}</p>
             </div>
             <div
                 className={styles.footer}

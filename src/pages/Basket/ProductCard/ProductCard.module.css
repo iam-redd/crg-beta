@@ -1,26 +1,28 @@
 .product_container{
     display: flex;
     max-width: 100%;
-    justify-content: space-between;
-    box-shadow: 0 0 3px #c1c1c1;
-    padding: 5px;
+    border-bottom: 1px solid gray;
+    padding: 20px 5px;
     align-self: center;
 }
 
 .img{
-    width: 120px;
+    width: 20%;
+    border-radius: 15px;
+    margin: 0 20px;
 }
 
 .btn_wrapper{
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: end;
 }
 
 .btn{
     border: 1px #ba181b solid;
     width: fit-content;
     padding: 5px 10px;
+    margin: 0 5px;
     border-radius: 8px;
     color: #ba181b;
     font-weight: 400;
