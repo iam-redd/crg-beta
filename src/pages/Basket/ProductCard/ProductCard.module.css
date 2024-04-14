@@ -7,9 +7,18 @@
 }
 
 .img{
-    width: 20%;
+    
     border-radius: 15px;
     margin: 0 20px;
+    transition: 1s;
+}
+.resize{
+    display: inline-block;
+    overflow: hidden;
+    width: 20%;
+}
+.img:hover{
+    transform: scale(1.3);
 }
 
 .btn_wrapper{
