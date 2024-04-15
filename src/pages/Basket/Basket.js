@@ -111,43 +111,20 @@ const Basket = () => {
                                     <span className='border-b '>{totalPrice} сум</span>
                                 </div>
                                 </div>
-                                <div>
-                                <Checkbox
+                                <div className='flex'>
+                                <Checkbox 
                                     label={
-                                        <Typography color="blue-gray" className="flex text-sm">
-                                        Согласен с условиями
-                                        <Typography
-                                            as="a"
-                                            href="#"
-                                            color="blue-gray"
-                                            className="font-sm text-sm border-b transition-colors hover:text-red-500"
-                                        >
-                                            &nbsp; обработки персональных данных
-                                        </Typography>
-                                        ,
-                                        <Typography
-                                            as="a"
-                                            href="#"
-                                            color="blue-gray"
-                                            className="font-sm text-sm border-b transition-colors hover:text-red-500"
-                                        >
-                                            &nbsp;Доставки
-                                        </Typography>
-                                        ,
-                                        <Typography
-                                            as="a"
-                                            href="#"
-                                            color="blue-gray"
-                                            className="font-sm text-sm border-b transition-colors hover:text-red-500"
-                                        >
-                                            &nbsp;Публичной оферты
-                                        </Typography>
-                                        .
-                                        </Typography>
+                                        <span className='text-sm '> Согласен с условиями
+                                        <a href=' # '>&nbsp;обработки персональных данных</a>
+                                        <a href=' # '>&nbsp;Доставки</a>
+                                        <a href='# '>&nbsp;Публичной оферты</a>
+                                        </span>
                                     }
                                 />
                                 </div>
+                                
                                 <OrderForm totalPrice={totalPrice} />
+                                
                             </>
                     }
                 </> :

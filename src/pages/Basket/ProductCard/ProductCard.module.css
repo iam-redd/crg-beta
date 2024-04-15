@@ -7,15 +7,13 @@
 }
 
 .img{
-    
-    border-radius: 15px;
-    margin: 0 20px;
+    width: 100%;
+    border-radius: 10px;
     transition: 1s;
 }
 .resize{
     display: inline-block;
     overflow: hidden;
-    width: 20%;
 }
 .img:hover{
     transform: scale(1.3);

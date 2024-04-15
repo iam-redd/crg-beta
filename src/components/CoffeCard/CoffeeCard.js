@@ -83,7 +83,7 @@ function CoffeeCard({ data }) {
 
     return (
         <div className={styles.container}>
-            <Card className='w-80 md:w-72 h-full border py-5 px-5 card-hover snap-center'>
+            <Card className='w-80 md:w-80 h-full border py-5 px-5 card-hover snap-center'>
                 <div className='flex justify-end py-2 px-4 text-xs'>
                     Топ-недели
                 </div>
