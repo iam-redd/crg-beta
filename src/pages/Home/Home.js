@@ -37,7 +37,7 @@ const Home = () => {
               </div>
               <div className='mt-8 md:mt-0 lg:mt-0 md:py-10 md:mx-10 flex justify-between md:justify-start'>
                 <a href={SHOP_USER}><button className='main-button'>В каталог</button></a>
-                <a href={SHOP_WHOLESELLER}><button className='main-button mx-2'>Кабинет оптовика</button></a>
+                <a href={SHOP_WHOLESELLER}><button className='main-button mx-2'>Личный кабинет</button></a>
               </div>
             </div>
           </div>
