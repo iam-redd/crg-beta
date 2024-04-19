@@ -16,6 +16,8 @@ import {
   CardFooter,
   Avatar,
 } from "@material-tailwind/react";
+import icon from '../../../assets/icons/user.png'
+import url from '../../../default.json'
 
 export default function AllUsers() {
 
@@ -59,6 +61,8 @@ export default function AllUsers() {
 
     }
   }
+
+  !isLoading && selectedUsers[0].avatarUrl !== '' && console.log(`${url.backendUrl}/${selectedUsers[0].avatarUrl}`)
 
   useEffect(() => {
     selectedUsers === null && getAllUsersFunc()
@@ -115,10 +119,11 @@ export default function AllUsers() {
                   : "p-4 border-b border-blue-gray-50";
  
                 return (
+                 
                   <tr>
                     <td className={classes}>
                       <div className="flex items-center gap-3">
-                        <Avatar src={row.avatarUrl} alt={row.name} size="sm" 
+                        <Avatar src={ row.avatarUrl !== '' ? `${url.backendUrl}/${row.avatarUrl}` : icon} alt={row.name} size="sm" 
                         className='cursor-pointer'
                         onClick={() => {
                           dispatch(setCurrentUser(row))
