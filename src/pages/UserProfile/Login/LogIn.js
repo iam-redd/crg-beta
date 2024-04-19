@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import styles from './Login.module.css'
 import axios from '../../../store/axios'
-import { addData, logout } from '../../../store/slices/userSlice';
-import { useDispatch, useSelector } from 'react-redux'
+import { addData } from '../../../store/slices/userSlice';
+import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect } from 'react';
@@ -16,7 +16,7 @@ const LogIn = () => {
     // const userInfo = useSelector(state => state.user.userInfo)
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const [errorMessage,setMessage] = useState('')
+    const [errorMessage, setMessage] = useState('')
     const handleSubmit = async (e) => {
         try {
             e.preventDefault()
@@ -36,18 +36,18 @@ const LogIn = () => {
                 setVisible(false)
                 navigate('/user')
             }
-            if(data.status === 403 || data.status === 404) {
+            if (data.status === 403 || data.status === 404) {
                 setLogin(true)
             }
             return null
 
         } catch (error) {
             const status = error.response.status
-            if(status === 403 || status === 404) {
+            if (status === 403 || status === 404) {
                 handleError('Неверный логин или пароль')
-            }else if (status === 500){
+            } else if (status === 500) {
                 handleError('Не удалось авторизоватся')
-            }else{
+            } else {
                 handleError(error.message)
             }
         }
@@ -73,37 +73,36 @@ const LogIn = () => {
                         // variants={variants}
                         // style={{ transitionDuration: 2000 }}
                         initial={{ top: '-500px' }}
-                        animate={{ top: width < 400 ? '-400px':  '-150px' }}
+                        animate={{ top: width < 400 ? '-400px' : '-150px' }}
                         exit={{ top: '-200px' }}
                     >
 
                         <form
                             onSubmit={handleSubmit}
+
                             className={` m-auto ${styles.form}`}>
                                 <p 
                                 className="flex px-4 text-end cursor-pointer justify-end text-red-500"
                                 onClick={()=> navigate('/user')}
                                 >Закрыть</p>
+
                             <div>
                                 <h2 className='text-center font-bold text-lg'>Авторизация</h2>
                                 <p className='py-4 text-center'>Добро пожаловать, рады вас видеть. <br /> Чтобы войти в свой аккаунт, пожалуйста введите ваши данные.</p>
-
                             </div>
-
                             <Input
                                 type="text"
                                 label='Ваш логин'
                                 name='email'
                                 className={styles.input}
                                 defaultValue={'test6@test.ru'} />
-
                             <Input
                                 label='Ваш пароль'
                                 name='password'
                                 type='password'
                                 defaultValue={'123456'}
                                 className={styles.input} />
-                            {   loginError &&
+                            {loginError &&
                                 <Typography
                                     variant="small"
                                     color="gray"
@@ -124,10 +123,8 @@ const LogIn = () => {
                                     <p className="text-red-500">{errorMessage}</p>
                                 </Typography>
                             }
-
                             <div className='w-full flex justify-between'>
                                 <p className='cursor-pointer'>Забыли пароль?</p>
-
                             </div>
                             <div className='flex w-full justify-around'>
                                 <button

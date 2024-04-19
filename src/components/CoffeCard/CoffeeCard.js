@@ -72,6 +72,7 @@ function CoffeeCard({ data }) {
             name: data.name,
             img: data.img,
             type: data.type,
+            roast:data.roast
         }
         dispatch(addTooBasket(info))
         setBoolBasket(true)
