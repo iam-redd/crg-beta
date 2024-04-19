@@ -78,9 +78,9 @@ const Registration = () => {
             <div className={`absolute -top-72 sm:-top-36 md:-top-48 flex w-full`}>
                 <div className={`items-center justify-center m-auto ${styles.bordered}`}>
                     <p
-                        className="px-4 text-end text-red-500"
+                        className="px-4 text-end text-red-500 cursor-pointer"
                         onClick={() => navigate('/user')}
-                    >Назад</p>
+                    >Закрыть</p>
                     <div className='flex justify-center items-center text-sm'>
                         Загрузите аватарку
                         <ImageUpload
