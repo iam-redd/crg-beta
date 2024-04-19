@@ -73,7 +73,7 @@ const LogIn = () => {
                         // variants={variants}
                         // style={{ transitionDuration: 2000 }}
                         initial={{ top: '-500px' }}
-                        animate={{ top: width < 400 ? '-400px':  '-250px' }}
+                        animate={{ top: width < 400 ? '-400px':  '-150px' }}
                         exit={{ top: '-200px' }}
                     >
 
