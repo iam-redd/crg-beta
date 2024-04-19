@@ -3,7 +3,7 @@ import React from 'react';
 import roasterImg from '../../assets/roaster.png'
 import skladImg from '../../assets/sklad.png'
 import CoffeeCard from '../../components/CoffeCard/CoffeeCard'
-import { SHOP_WHOLESELLER, JS_BARISTA, SHOP_USER } from '../../utils/consts';
+import { SHOP_WHOLESELLER, JS_BARISTA, SHOP_USER, USER_PROFILE } from '../../utils/consts';
 import deliveryIcon from '../../assets/icons/delivery1.svg'
 import cupIcon from '../../assets/icons/cup.svg'
 import starIcon from '../../assets/icons/star.svg'
@@ -37,7 +37,7 @@ const Home = () => {
               </div>
               <div className='mt-8 md:mt-0 lg:mt-0 md:py-10 md:mx-10 flex justify-between md:justify-start'>
                 <a href={SHOP_USER}><button className='main-button'>В каталог</button></a>
-                <a href={SHOP_WHOLESELLER}><button className='main-button mx-2'>Личный кабинет</button></a>
+                <a href={USER_PROFILE}><button className='main-button mx-2'>Личный кабинет</button></a>
               </div>
             </div>
           </div>

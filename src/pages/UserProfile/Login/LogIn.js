@@ -64,11 +64,11 @@ const LogIn = () => {
         // userInfo !== null && dispatch(logout())
     })
     return (
-        <div className={` m-auto ${styles.container}`}>
+        <div className={`m-auto ${styles.container}`}>
             <AnimatePresence>
                 {
                     isVisible && <motion.div
-                        className={`w-full m-auto ${styles.wrapper}`}
+                        className={` md:-top-48 flex w-full m-auto ${styles.wrapper}`}
                         // animate={isVisible ? "open" : "closed"}
                         // variants={variants}
                         // style={{ transitionDuration: 2000 }}
