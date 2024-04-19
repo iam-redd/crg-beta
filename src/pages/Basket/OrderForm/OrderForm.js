@@ -43,8 +43,9 @@ export default function OrderForm({ totalPrice }) {
         <>
             {
                 basket.length > 0 && userInfo !== null ?
-                    <form className={styles.form} onSubmit={newOrder}>
-                        <div className='col-span-3 w-auto'>
+                    <form className={` ${styles.form}`} onSubmit={newOrder}>
+                    <span className='text-center sm:text-start'>Способ оплаты</span>    
+                    <div className='col-span-3 w-auto'>
                             <Select size="md"
                                 label="Выберите способ оплаты"
                                 onChange={(e) => changePay(e)}

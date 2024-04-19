@@ -2,8 +2,12 @@ import React, { useEffect, useState } from 'react'
 import styles from '../../../../UserProfile/UserHeader/UserHeader.module.css'
 import axios from '../../../../../store/axios'
 import url from '../../../../../default.json'
-import { useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
+
+import { Breadcrumbs } from "@material-tailwind/react";
+
 export default function UserInfo() {
+  const navigate = useNavigate()
   const { id } = useParams()
   const [userInfo, setInfo] = useState(null)
 
@@ -24,6 +28,24 @@ export default function UserInfo() {
   });
   return (
     <div>
+    <Breadcrumbs
+      className='bg-white'
+    >
+     <Link 
+     className='opacity-60'
+     onClick={() => {
+      navigate(`/admin`)
+     }}>Админ панель</Link>
+     <Link 
+     className='opacity-60'
+     onClick={() => {
+      navigate(`/admin/all-users`)
+     }}>Пользователи</Link>
+     {userInfo !== null ? <span>{userInfo.name}</span> 
+    :
+    <span></span>
+    }
+    </Breadcrumbs>
       {
         userInfo !== null ? <div className='xs:px-2 sm:flex md:flex xl:flex justify-between max-w-screen-xl 2xl:max-w-screen-xl lg:px-4 lg:py-2'>
           <div className='flex justify-between items-center p-2 xl:flex lg:flex lg:justify-center lg:items-center sm:flex sm:w-full'>
