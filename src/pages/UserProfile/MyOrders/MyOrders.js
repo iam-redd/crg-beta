@@ -35,7 +35,7 @@ export default function MyOrders() {
                     {
                       data.map(order=> <OrderCard key={order._id} data={order}/>)
                     }
-                      </div></> : <h2>У вас нет еще оформленных заказов</h2>
+                      </div></> : <h2 className='text-center'>У вас нет еще оформленных заказов</h2>
               }
             </> :
             <DefaultSpinner />
