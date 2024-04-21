@@ -81,7 +81,7 @@ const Basket = () => {
                                     })
                                 }
                                 <div className={`flex-col ${styles.totalLine}`}>
-                                <div>
+                                {/*<div>
                                     <div className="relative flex w-full max-w-[24rem]">
                                         <Input
                                             type="text"
@@ -102,26 +102,16 @@ const Basket = () => {
                                         >
                                             Применить
                                         </Button>
-                                    </div>
+                                        </div>
                                     <div>Сумма заказа: </div>
                                     <div>Скидка:  </div>
-                                </div>
+                                </div>*/}
                                 <div>
-                                    <span className='font-bold text-lg'>Итого к оплате:</span>
+                                    <span className='font-bold text-lg px-4 lg:px-8'>Итого к оплате:</span>
                                     <span className='border-b '>{totalPrice} сум</span>
                                 </div>
                                 </div>
-                                <div className='flex'>
-                                <Checkbox 
-                                    label={
-                                        <span className='text-sm '> Согласен с условиями
-                                        <a href=' # '>&nbsp;обработки персональных данных</a>
-                                        <a href=' # '>&nbsp;Доставки</a>
-                                        <a href='# '>&nbsp;Публичной оферты</a>
-                                        </span>
-                                    }
-                                />
-                                </div>
+                                
                                 
                                 <OrderForm totalPrice={totalPrice} />
                                 

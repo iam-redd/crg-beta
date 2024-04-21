@@ -34,7 +34,7 @@ function ProductCard({ index }) {
             {
                 basket[index]?.amount > 0 ?
                     <div className={`rounded mx-4 my-2 ${styles.product_container}`}>
-                        <div className={` w-2/4 lg:w-2/3 md:w-2/5 sm:w-3/5 ${styles.resize}`}><img className={styles.img} src={`${url.backendUrl}/${basket[index]?.img}`} alt="" /></div>
+                        <div className={`w-2/4 lg:w-1/5 md:w-2/5 sm:w-3/5 ${styles.resize}`}><img className={styles.img} src={`${url.backendUrl}/${basket[index]?.img}`} alt="" /></div>
                         <div className='ml-4'>
 
                             <div className='text-md font-bold'>{basket[index]?.name}</div>

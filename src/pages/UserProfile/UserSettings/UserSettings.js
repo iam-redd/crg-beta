@@ -5,7 +5,7 @@ import { Outlet } from 'react-router-dom';
 import url from '../../../default.json'
 
 import styles from './UserSettings.module.css'
-import { Button, Input } from '@material-tailwind/react';
+import { Button, Input, Select, Option } from '@material-tailwind/react';
 
 export default function MySettings() {
     const userInfo = useSelector(state => state.user.userInfo)
@@ -51,12 +51,36 @@ export default function MySettings() {
                                     <Input label="Адрес" defaultValue={userInfo.address} name="address" />
                                 </div>
                                 {userInfo.role === 'superUser' ?
-                                    <div>
+                                    <div className="flex flex-col gap-2">
                                         <div>
-                                            Организация: {userInfo.organization}
+                                            <Input label="Организация:" defaultValue={userInfo.userOrganizatsion} />
                                         </div>
-                                        <div>
-                                            Менеджер:
+                                        <div className="flex items-center gap-2">
+                                            <div className="flex-1">
+                                            <Input label="Адрес организации:" />
+                                            </div>
+                                            <Button size="sm" variant="outlined" className="flex-none">+</Button>
+                                        </div>
+                                        <div className="w-72 text-sm mt-2">
+                                        Выберите вашего менеджера
+                                         <Select size="md" >
+                                            <Option >
+                                                <img 
+                                                    src=""    
+                                                    alt="manager"
+                                                />
+                                                Manager 1
+                                            </Option>
+                                            <Option >
+                                                <img 
+                                                    src=""    
+                                                    alt="manager"
+                                                />
+                                                Manager 2
+                                            </Option>
+                                            
+                                         </Select>
+                                            
                                         </div>
                                     </div>
                                     :

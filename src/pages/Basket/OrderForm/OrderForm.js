@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styles from './OrderForm.module.css'
 import axios from '../../../store/axios'
-import { Option, Select } from '@material-tailwind/react';
+import { Checkbox, Option, Select } from '@material-tailwind/react';
 import { useDispatch, useSelector } from 'react-redux'
 import { cancelBasket } from '../../../store/slices/basketSlice'
 export default function OrderForm({ totalPrice }) {
@@ -43,7 +43,7 @@ export default function OrderForm({ totalPrice }) {
         <>
             {
                 basket.length > 0 && userInfo !== null ?
-                    <form className={` ${styles.form}`} onSubmit={newOrder}>
+                    <form className={`px-6 py-2 lg:px-8  ${styles.form}`} onSubmit={newOrder}>
                     <span className='text-center sm:text-start'>Способ оплаты</span>    
                     <div className='col-span-3 w-auto'>
                             <Select size="md"
@@ -57,6 +57,19 @@ export default function OrderForm({ totalPrice }) {
                                 
                             </Select>
                         </div>
+                        <div className='flex'>
+                                <Checkbox 
+                                    checked={btnBool} 
+                                    onChange={() => setBtnBool(!btnBool)}
+                                    label={
+                                        <span className='text-sm '> Согласен с условиями
+                                        <a href=' # '>&nbsp;обработки персональных данных</a>
+                                        <a href=' # '>&nbsp;Доставки</a>
+                                        <a href='# '>&nbsp;Публичной оферты</a>
+                                        </span>
+                                    }
+                                />
+                                </div>
                         <textarea className={styles.textarea} name='comment' placeholder='Комментария для заказа'></textarea>
                         {/* <input type="text" className={styles.input} name='name' placeholder='Name' /> */}
                         {/* <input type="text" className={styles.input} name='email' placeholder='Phone number' /> */}
