@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './Registration.module.css'
 import ImageUpload from './UploadImage/UploadImage';
 import axios from '../../../store/axios'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { addData } from '../../../store/slices/userSlice'
 import { Input, Typography } from "@material-tailwind/react"
 import { useNavigate } from 'react-router-dom';
@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 // import URL from '../../default.json'
 const Registration = () => {
     const [uploadedImages, setUploadedImages] = useState(null)
-    const userInfo = useSelector(state => state.user.userInfo)
+    // const userInfo = useSelector(state => state.user.userInfo)
     const [loginError, setLogin] = useState(false)
     const [errorMessage, setMessage] = useState('')
     console.log(uploadedImages)

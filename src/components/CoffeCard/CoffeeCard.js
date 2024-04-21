@@ -72,7 +72,7 @@ function CoffeeCard({ data }) {
             name: data.name,
             img: data.img,
             type: data.type,
-            roast:data.roast
+            roast: data.roast
         }
         dispatch(addTooBasket(info))
         setBoolBasket(true)
@@ -104,18 +104,18 @@ function CoffeeCard({ data }) {
                     </div>
                 </div>
                 <div className='mt-5 text-sm'>
-                    <ReactSpoiler 
-                    noOfLines={2}
-                    lineHeight={7}
-                    showMoreComponent={<p className='spoiler-size'>еще...</p>}
-                    showLessComponent={<p className='spoiler-size'>Скрыть</p>}
-                    toggleContainerStyle = {{ color: '#ba181b' }}
-                    collapsedSize={60}
+                    <ReactSpoiler
+                        noOfLines={2}
+                        lineHeight={7}
+                        showMoreComponent={<p className='spoiler-size'>еще...</p>}
+                        showLessComponent={<p className='spoiler-size'>Скрыть</p>}
+                        toggleContainerStyle={{ color: '#ba181b' }}
+                        collapsedSize={60}
                     >
                         <p className='text-justify text-sm sm:text-md md:text-md lg:text-md xl:text-md 2xl:text-md'>
-                        Описание: <span>
-                        {data?.description ? data.description : ''}
-                        </span>
+                            Описание: <span>
+                                {data?.description ? data.description : ''}
+                            </span>
                         </p>
                     </ReactSpoiler>
                 </div>
@@ -129,11 +129,11 @@ function CoffeeCard({ data }) {
                                 style={{ borderColor: pomolColor ? "red" : '' }}
                                 onClick={handlePomolColor}>
                                 <Option value='не-молотый'>Не молоть</Option>
-                                <Option value='turku'>Под турку</Option>
-                                <Option value='mokka'>Под гейзер/Мокка</Option>
-                                <Option value='espresso'>Под Эспрессо</Option>
-                                <Option value='filter'>Под Фильтр</Option>
-                                <Option value='french-press'>Под Френч-пресс</Option>
+                                <Option value='Под турку'>Под турку</Option>
+                                <Option value='Под гейзер/Мокка'>Под гейзер/Мокка</Option>
+                                <Option value='Под Эспрессо'>Под Эспрессо</Option>
+                                <Option value='Под Фильтр'>Под Фильтр</Option>
+                                <Option value='Под Френч-пресс'>Под Френч-пресс</Option>
                             </Select>
                         </div>
                     </div>

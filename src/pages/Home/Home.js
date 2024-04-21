@@ -3,7 +3,7 @@ import React from 'react';
 import roasterImg from '../../assets/roaster.png'
 import skladImg from '../../assets/sklad.png'
 import CoffeeCard from '../../components/CoffeCard/CoffeeCard'
-import { SHOP_WHOLESELLER, JS_BARISTA, SHOP_USER, USER_PROFILE } from '../../utils/consts';
+import { JS_BARISTA, SHOP_USER, USER_PROFILE } from '../../utils/consts';
 import deliveryIcon from '../../assets/icons/delivery1.svg'
 import cupIcon from '../../assets/icons/cup.svg'
 import starIcon from '../../assets/icons/star.svg'
