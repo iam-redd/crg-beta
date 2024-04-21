@@ -21,17 +21,21 @@ export default function UserHeader() {
       <div>
         {
           userInfo ? <div className='xs:px-2 sm:flex md:flex xl:flex justify-between max-w-screen-xl 2xl:max-w-screen-xl lg:px-4 lg:py-2'>
-            <div className='flex justify-between items-center p-2 xl:flex lg:flex lg:justify-center lg:items-center sm:flex sm:w-full'>
+            <div className='flex flex-wrap justify-around sm:justify-center text-center md:text-start items-center p-2 xl:flex lg:flex lg:justify-center lg:items-center sm:flex sm:w-full'>
               <div className='flex flex-col items-center'>
                 <div className={styles.userImg}>
                   {
                     userInfo.avatarUrl !== '' ? <img src={`${url.backendUrl}/${userInfo.avatarUrl}`} alt="" /> : <span></span>
                   }
                 </div>
-                <div className={styles.userName}>Привет, <span>{userInfo.name}</span></div>
               </div>
-              <div className='sm:ml-2 md:ml-10 lg:ml-5 xl:ml-20'>
-                <p className='text-gray-400'>Ваши данные:</p>
+              <div className='sm:ml-4 md:ml-4 lg:ml-5 xl:ml-10'>
+                <div className="flex gap-2 items-center flex-wrap justify-end sm:justify-start p-2">
+                <span className="text-lg font-bold text-blue-gray-900">{userInfo.name}</span>
+                <div className={`rounded-full border px-2 my-auto border-green-500 font-bold text-green-900 text-sm`}>
+                {userInfo.role === 'user' ? 'Розница' : 'ОПТ'}
+                </div>
+                </div>
                 <div className={styles.userMail}>Почта: <span>{userInfo.email}</span></div>
                 <div className={styles.userPhone}>Номер телефона: <span>{userInfo.phoneNumber}</span></div>
                 <div className={styles.userAddress}>Адрес доставки: <span>{userInfo.address[0]}</span></div>
@@ -40,8 +44,8 @@ export default function UserHeader() {
               </div>
             </div>
             <div className={styles.unauto}>
-              <div className='p-2 items-center flex mt-5 md:mt-0 justify-center'>
-                <Card className='w-96 xl:w-60'>
+              <div className='p-2 items-center flex justify-center'>
+                <Card className='w-96 sm:w-56 xl:w-60'>
                   <List>
                     <Link to={'/user/my-orders'}>
                       <ListItem>
