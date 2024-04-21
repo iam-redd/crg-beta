@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ButtonGroup, Button} from '@material-tailwind/react'
+import { Button} from '@material-tailwind/react'
 
 
 const AdminComponent = () => {

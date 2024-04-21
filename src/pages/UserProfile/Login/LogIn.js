@@ -62,7 +62,7 @@ const LogIn = () => {
     useEffect(() => {
         setVisible(true)
         // userInfo !== null && dispatch(logout())
-    })
+    },[setVisible])
     return (
         <div className={`m-auto ${styles.container}`}>
             <AnimatePresence>

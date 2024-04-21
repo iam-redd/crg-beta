@@ -67,8 +67,8 @@ export default function AllUsers() {
   useEffect(() => {
     selectedUsers === null && getAllUsersFunc()
     selectedUsers !== null && setLoading(false)
-  });
-  console.log(selectedUsers);
+  },[selectedUsers, getAllUsersFunc]);
+  // console.log(selectedUsers);
 
   return (
     <div>

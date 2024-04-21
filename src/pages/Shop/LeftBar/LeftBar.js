@@ -82,7 +82,8 @@ export default function LeftBar() {
 
         <div
           className={`p-5 mb-1 mr-1 flex flex-col items-center ${styles.catcat}`}
-          onClick={() => selectedProducts !== null ? filter('accessories') : null}>
+          // onClick={() => selectedProducts !== null ? filter('accessories') : null}
+          >
           <img src={accessorieIcon} className='w-8 h-8 text-center' alt='' />
           <div>
             Аксессуары

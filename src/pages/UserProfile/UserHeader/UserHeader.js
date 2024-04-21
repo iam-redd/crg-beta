@@ -9,7 +9,7 @@ import url from '../../../default.json'
 import { Link, Outlet } from 'react-router-dom';
 import { List, ListItemSuffix, ListItemPrefix, Card, ListItem } from '@material-tailwind/react';
 export default function UserHeader() {
-  const [_, setToken] = useState(window.localStorage.getItem('token'))
+  const [, setToken] = useState(window.localStorage.getItem('token'))
   const userInfo = useSelector(state => state.user.userInfo)
   const dispatch = useDispatch()
   const handleLogout = () => {

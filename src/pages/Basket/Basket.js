@@ -5,11 +5,12 @@ import ProductCard from './ProductCard/ProductCard.js';
 import styles from './Basket.module.css'
 import OrderForm from './OrderForm/OrderForm.js';
 
-import {Input, Button, Checkbox, Typography} from '@material-tailwind/react'
+import {Input, Button, Checkbox} from '@material-tailwind/react'
 
 import emptyBasket from '../../assets/cart.png'
 
 import { useNavigate } from 'react-router-dom';
+import { DefaultSpinner } from '../../components/Spinner.js';
 const Basket = () => {
     const allProductsId = useSelector(state => state.basket.allProductsId)
     const basket = useSelector(state => state.basket.basket)
@@ -69,7 +70,7 @@ const Basket = () => {
                 allProductsId.length > 0 ? <>
                     {
                         data === null ?
-                            <div className="">Loading...</div> :
+                            <div className=""><DefaultSpinner/></div> :
                             <>
                             <div className='text-xl font-bold text-center my-6 lg:my-10'>Корзина</div>
                                 {
@@ -81,7 +82,6 @@ const Basket = () => {
                                 }
                                 <div className={`flex-col ${styles.totalLine}`}>
                                 <div>
-                                    
                                     <div className="relative flex w-full max-w-[24rem]">
                                         <Input
                                             type="text"
