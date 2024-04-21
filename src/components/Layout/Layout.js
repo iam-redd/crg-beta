@@ -47,7 +47,7 @@ const Layout = () => {
     return (
         <div className={styles.container}>
             <Header />
-            <div className={`min-h-svh`}>
+            <div className={`min-h-svh ${styles.main}`}>
                 <Suspense fallback={<DefaultSpinner/>}>
                     <Outlet />
                 </Suspense>
