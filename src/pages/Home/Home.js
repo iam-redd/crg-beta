@@ -17,8 +17,7 @@ const Home = () => {
   if (isSuccess) {
     console.log(data)
   }
-  // const basket = useSelector(state => state.basket.basket)
-  // console.log(basket)
+
   return (
     <div>
       <div className="md:h-full sm:flex-wrap xl:flex xl:mx-auto xl:max-w-screen-xl 2xl:max-w-screen-2xl ">
@@ -128,7 +127,7 @@ const Home = () => {
               <span className='text-lg font-bold'>Подпишись на нас</span>
               <p className='mx-auto my-2 md:mx-0 md:mt-1 w-4/5 text-md'>Здесь мы рассказываем о том, что у нас происходит каждый день. О людях, анонсах, процессах, событиях и новых сортах кофе.</p>
             </div>
-            <div className='flex flex-col justify-center'>
+            <div className='flex flex-col justify-center lg:mr-4'>
               <div className='flex mx-auto my-2 md:mt-0'>
                 <img src={instagramIcon} alt='instagram' />
                 <a href='https://instagram.com/coffeeroasterygroup?igshid=YTQwZjQ0NmI0OA==' target='blank' className='mx-1' >@coffeeroasterygroup</a>
