@@ -128,7 +128,7 @@ function CoffeeCard({ data }) {
                                 onChange={(e) => changePomol(e)}
                                 style={{ borderColor: pomolColor ? "red" : '' }}
                                 onClick={handlePomolColor}
-                                value={userInfo.role === 'superUser' ? 'В зёрнах' : ''}
+                                // value={userInfo.role === 'superUser' ? {"1"} : {''}}
                                 >
                                 <Option value='В зёрнах'>В зёрнах</Option>
                                 <Option value='Под турку'>Под турку</Option>
