@@ -104,35 +104,32 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div className='grid grid-cols-1 lg:grid-cols-3 row-auto gap-1 lg:gap-10 text-md items-top lg:mt-10 xl:mx-auto xl:max-w-screen-xl 2xl:max-w-screen-2xl'>
-            <div className='flex-col justify-center text-center items-center p-5'>
-              <img src={deliveryIcon} alt='delivert' className='mx-auto py-5' />
-              <h2 className='text-2xl font-semibold'>Доставка</h2>
-              <p className='my-4'>Бесплатно по г.Ташкенту с 12:00 и в течении дня, с понедельника по субботу при заказе на сумму выше 350.000</p>
+          <div className='grid grid-cols-1 my-4 sm:grid-cols-3 row-auto gap-1 md:gap-2 md:px-2 px-1 lg:gap-10 text-md items-top lg:mt-10 xl:mx-auto xl:max-w-screen-xl 2xl:max-w-screen-2xl'>
+            <div className='mx-6 sm:mx-0 border-2 rounded-xl flex-col justify-center text-center items-center p-5'>
+              <h2 className='text-xl font-semibold'>Доставка</h2>
+              <p className='xl:text-lg 2xl:text-lg md:text-md text-sm my-4'>Бесплатно по г.Ташкенту с 12:00 и в течении дня, с понедельника по субботу при заказе на сумму выше 350.000</p>
             </div>
-            <div className='flex-col justify-center text-center items-center p-5'>
-              <img src={starIcon} alt='star' className='mx-auto py-5' />
-              <h2 className='text-2xl font-semibold'>Качество</h2>
-              <p className='my-4'>Мы поддерживаем микроклимат на складе для зеленого кофе, используем лучшие в мире ростеры Probat, проверяем каждую партию кофе колориметрами. А после обжарки дополнительно очищаем.</p>
+            <div className='mx-6 sm:mx-0 border-2 rounded-xl flex-col justify-center text-center items-center p-5'>
+              <h2 className='text-xl font-semibold'>Качество</h2>
+              <p className='xl:text-lg 2xl:text-lg md:text-md text-sm my-4'>Мы поддерживаем микроклимат на складе для зеленого кофе, используем лучшие в мире ростеры Probat, проверяем каждую партию кофе колориметрами. А после обжарки дополнительно очищаем.</p>
             </div>
-            <div className='flex-col justify-center text-center items-center p-5'>
-              <img src={cupIcon} alt='cup' className='mx-auto py-5' />
-              <h2 className='text-2xl font-semibold'>Every day regular</h2>
-              <p className='my-4'>Жарим кофе семь дней в неделю, отправляем на следующий день после заказа, чтобы вы получали максимально свежий кофе.</p>
+            <div className='mx-6 sm:mx-0 border-2 rounded-xl flex-col justify-center text-center items-center p-5'>
+              <h2 className='text-xl font-semibold'>Жарим каждый день</h2>
+              <p className='xl:text-lg 2xl:text-lg md:text-md text-sm my-4'>Жарим кофе семь дней в неделю, отправляем на следующий день после заказа, чтобы вы получали максимально свежий кофе.</p>
             </div>
           </div>
           <div className='flex flex-wrap md:flex-nowrap text-center md:text-start justify-center p-5 rounded-3xl items-center bg-gray-100 xl:mx-auto xl:max-w-screen-xl 2xl:max-w-screen-2xl mb-10'>
-            <img src={teamImg} alt='Team' className='m-5' />
-            <div className='m-2'>
+            <img src={teamImg} alt='Team' className='' />
+            <div className='mx-4'>
               <span className='text-lg font-bold'>Подпишись на нас</span>
-              <p className='mx-auto my-2 md:mx-0 md:mt-1 w-4/5 text-md'>Здесь мы рассказываем о том, что у нас происходит каждый день. О людях, анонсах, процессах, событиях и новых сортах кофе.</p>
+              <p className='mx-auto my-2 md:mx-0 md:mt-1 w-fit xl:text-lg 2xl:text-lg md:text-md text-sm'>Здесь мы рассказываем о том, что у нас происходит каждый день. О людях, анонсах, процессах, событиях и новых сортах кофе.</p>
             </div>
-            <div className='flex flex-col justify-center lg:mr-4'>
-              <div className='flex mx-auto my-2 md:mt-0'>
+            <div className='text-sm mr-4'>
+              <div className='flex my-2 md:mt-0'>
                 <img src={instagramIcon} alt='instagram' />
                 <a href='https://instagram.com/coffeeroasterygroup?igshid=YTQwZjQ0NmI0OA==' target='blank' className='mx-1' >@coffeeroasterygroup</a>
               </div>
-              <div className='flex mx-auto mt-2 md:mt-0'>
+              <div className='flex mt-2 md:mt-0'>
                 <img src={instagramIcon} alt='instagram' />
                 <a href='https://instagram.com/jsbarista.uz?igshid=MzRlODBiNWFlZA==' target='blank' className='mx-1' >@jsbarista.uz</a>
               </div>

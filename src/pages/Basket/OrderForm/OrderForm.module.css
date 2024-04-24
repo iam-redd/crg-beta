@@ -29,3 +29,10 @@
     font-size: 16px;
     padding: 5px;
 }
+.texttip{
+    display: inline-block;
+    max-width: calc(100%-34px);
+    font-size: 12px;
+    vertical-align: top;
+    line-height: 17px;
+}

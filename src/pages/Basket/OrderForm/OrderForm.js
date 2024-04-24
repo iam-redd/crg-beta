@@ -43,7 +43,7 @@ export default function OrderForm({ totalPrice }) {
         <>
             {
                 basket.length > 0 && userInfo !== null ?
-                    <form className={`px-6 py-2 lg:px-8  ${styles.form}`} onSubmit={newOrder}>
+                    <form className={`py-2  ${styles.form}`} onSubmit={newOrder}>
                     <span className='text-center sm:text-start'>Способ оплаты</span>    
                     <div className='col-span-3 w-auto'>
                             <Select size="md"
@@ -61,14 +61,12 @@ export default function OrderForm({ totalPrice }) {
                                 <Checkbox 
                                     checked={btnBool} 
                                     onChange={() => setBtnBool(!btnBool)}
-                                    label={
-                                        <span className='text-sm '> Согласен с условиями
-                                        <a href=' # '>&nbsp;обработки персональных данных</a>
-                                        <a href=' # '>&nbsp;Доставки</a>
-                                        <a href='# '>&nbsp;Публичной оферты</a>
-                                        </span>
-                                    }
                                 />
+                                <span className={styles.texttip}> Согласен с условиями
+                                        <a href=' # '>обработки персональных данных</a>,
+                                        <a href=' # '>Доставки</a> и
+                                        <a href='# '>Публичной оферты</a>
+                                        </span>
                                 </div>
                         <textarea className={styles.textarea} name='comment' placeholder='Комментария для заказа'></textarea>
                         {/* <input type="text" className={styles.input} name='name' placeholder='Name' /> */}

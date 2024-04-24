@@ -73,6 +73,8 @@ const Basket = () => {
                             <div className=""><DefaultSpinner/></div> :
                             <>
                             <div className='text-xl font-bold text-center my-6 lg:my-10'>Корзина</div>
+                                <div className='flex '>
+                                <div className=''>
                                 {
                                     data.map((_, index) => {
                                         return (
@@ -80,42 +82,25 @@ const Basket = () => {
                                         )
                                     })
                                 }
-                                <div className={`flex-col ${styles.totalLine}`}>
-                                {/*<div>
-                                    <div className="relative flex w-full max-w-[24rem]">
-                                        <Input
-                                            type="text"
-                                            label="Промокод"
-                                            value={promocode}
-                                            onChange={onChange}
-                                            className="pr-20"
-                                            containerProps={{
-                                            className: "min-w-0",
-                                            }}
-                                        />
-                                        <Button
-                                            size="sm"
-                                            variant='outlined'
-                                            color={promocode ? "gray" : "blue-gray"}
-                                            disabled={!promocode}
-                                            className="!absolute right-1 top-1 rounded"
-                                        >
-                                            Применить
-                                        </Button>
-                                        </div>
-                                    <div>Сумма заказа: </div>
-                                    <div>Скидка:  </div>
-                                </div>*/}
+                                </div>
                                 <div>
-                                    <span className='font-bold text-lg px-4 lg:px-8'>Итого к оплате:</span>
+                                <div className={`flex-col`}>
+                                
+                                <div>
+                                    <span className='font-bold text-lg'>Итого к оплате:</span>
                                     <span className='border-b '>{totalPrice} сум</span>
                                 </div>
                                 </div>
                                 
                                 
                                 <OrderForm totalPrice={totalPrice} />
+                                </div>
+                                
+                                </div>
                                 
                             </>
+
+                            
                     }
                 </> :
             <div  className='flex flex-col items-center'>
