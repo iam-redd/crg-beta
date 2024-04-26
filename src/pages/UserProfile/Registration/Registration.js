@@ -22,7 +22,14 @@ const Registration = () => {
         try {
             e.preventDefault()
             setLogin(false)
-
+            if(e.target.name.value.trim() === ''){
+                handleError('Имя обязательная поля')
+                return
+            }
+            if(e.target.phoneNumber.value.trim() === ''){
+                handleError('Номер телефона обязательная поля')
+                return
+            }
             if (e.target.password.value !== e.target.password_try.value) {
                 handleError('Пароли введенное вами не совпадает')
                 return
