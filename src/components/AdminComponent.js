@@ -21,7 +21,7 @@ const AdminComponent = () => {
         <Link to='all-users'>
             <Button color='blue-gray' variant='outlined'>Пользователи</Button>
         </Link>
-        </div>            
+        </div>
         </div>
     );
 };
