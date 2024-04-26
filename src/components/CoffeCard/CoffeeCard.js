@@ -23,7 +23,7 @@ function CoffeeCard({ data }) {
             false
     )
     const amount = 1;
-    const [pomol, setPomol] = useState(null)
+    const [pomol, setPomol] = useState('В зёрнах')
     const [weight, setWeight] = useState(null)
     const navigate = useNavigate()
     const changePomol = (val) => {
@@ -127,8 +127,9 @@ function CoffeeCard({ data }) {
                                 label="Выберите помол"
                                 onChange={(e) => changePomol(e)}
                                 style={{ borderColor: pomolColor ? "red" : '' }}
-                                onClick={handlePomolColor}>
-                                <Option value='не-молотый'>Не молоть</Option>
+                                onClick={handlePomolColor}
+                                value='В зёрнах'>
+                                <Option value='В зёрнах'>В зёрнах</Option>
                                 <Option value='Под турку'>Под турку</Option>
                                 <Option value='Под гейзер/Мокка'>Под гейзер/Мокка</Option>
                                 <Option value='Под Эспрессо'>Под Эспрессо</Option>

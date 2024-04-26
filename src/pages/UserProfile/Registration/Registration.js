@@ -30,13 +30,13 @@ const Registration = () => {
             const request = {
                 name: e.target.name.value,
                 phoneNumber: e.target.phoneNumber.value,
-                email: e.target.email.value,
                 password: e.target.password.value,
                 avatarUrl: uploadedImages,
                 address: [e.target.address.value],
                 telegram: e.target.telegram.value,
                 organization: e.target.organization.value //Не работает??
             }
+            if(e.target.email.value !== '')  request.email = e.target.email.value
             console.log(request)
 
 
@@ -49,6 +49,7 @@ const Registration = () => {
             console.log(data)
         } catch (error) {
             const res = error.response
+            console.log(error)
             if (res?.data[0]) {
                 handleError(res?.data[0].msg)
             } else if (res.status === 400) {
@@ -56,10 +57,7 @@ const Registration = () => {
             } else if (res.status === 500) {
                 handleError('Не удалось авторизоватся')
             } else if (res?.status === 401) {
-                handleError('Email уже зарегистрирован')
-            }
-            else if (res?.request?.status === 401) {
-                handleError('Email уже зарегистрирован')
+                handleError(res.data.message)
             } else {
                 handleError(error.message)
             }
@@ -96,14 +94,14 @@ const Registration = () => {
                                 type="text"
                                 name='name'
                                 placeholder='Василий Пупкин'
-                                // defaultValue={'kadyrzhan'}
+                                defaultValue={'kadyrzhan'}
                                 label='Имя и фамилия'
                             />
                             <Input
                                 type="text"
                                 name='email'
                                 placeholder='empty@empty.com'
-                                //defaultValue={'test6@test.ru'}
+                                defaultValue={'test@test.ru'}
                                 label='Электронная почта'
                             />
                         </div>
@@ -112,14 +110,14 @@ const Registration = () => {
                                 type="text"
                                 name='phoneNumber'
                                 placeholder='+998 99 999 99 99'
-                                //defaultValue={'+998999994923'}
+                                defaultValue={'+998999994923'}
                                 label='Номер телефона'
                             />
                             <Input
                                 type="text"
                                 name='address'
                                 placeholder='город, район, улица, дом, квартира'
-                                //defaultValue={'gulsanam 48'}
+                                defaultValue={'gulsanam 48'}
                                 label='Адрес'
                             />
                         </div>
@@ -128,7 +126,7 @@ const Registration = () => {
                                 type="text"
                                 name='telegram'
                                 placeholder='@username'
-                                //defaultValue={'kadyrzhan_23'}
+                                defaultValue={'kadyrzhan_23'}
                                 label='Телеграм @username'
                             />
                             <Input
@@ -143,7 +141,7 @@ const Registration = () => {
                                 type="password"
                                 name='password'
                                 label='Пароль'
-                                //defaultValue={'123466'}
+                                defaultValue={'123456'}
                                 placeholder='Придумайте пароль'
                             />
                             <Input
@@ -151,7 +149,7 @@ const Registration = () => {
                                 name='password_try'
                                 label='Повторите пароль'
                                 placeholder='Повторите пароль'
-                                
+                                defaultValue={'123456'}
                             />
                         </div>
                         {loginError &&

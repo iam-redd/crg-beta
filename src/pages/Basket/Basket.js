@@ -94,7 +94,7 @@ const Basket = () => {
                                             }}
                                         />
                                         <Button
-                                            size="sm"
+                                            size="md"
                                             variant='outlined'
                                             color={promocode ? "gray" : "blue-gray"}
                                             disabled={!promocode}

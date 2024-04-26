@@ -31,14 +31,36 @@ export default function UserHeader() {
               </div>
               <div className='sm:ml-4 md:ml-4 lg:ml-5 xl:ml-10'>
                 <div className="flex gap-2 items-center flex-wrap justify-end sm:justify-start p-2">
-                <span className="text-lg font-bold text-blue-gray-900">{userInfo.name}</span>
-                <div className={`rounded-full border px-2 my-auto border-green-500 font-bold text-green-900 text-sm`}>
-                {userInfo.role === 'user' ? 'Розница' : 'ОПТ'}
-                </div>
+                  <span className="text-lg font-bold text-blue-gray-900">{userInfo.name}</span>
+                  {userInfo.role === 'user' ?
+                    <div className={`rounded-full border px-2 my-auto border-red-500 font-bold text-red-700 text-sm`}>
+                      Розница
+                    </div> :
+                    <>
+                      {
+                        userInfo.role === 'superUser' ? <div className={`rounded-full border px-2 my-auto border-green-500 font-bold text-green-900  text-sm`}>
+                          ОПТ
+                        </div> : <div className={`rounded-full border px-2 my-auto border-amber-400 font-bold text-yellow-900  text-sm`}>
+                          {userInfo.role}
+                        </div>
+                      }
+                    </>
+                  }
                 </div>
                 <div className={styles.userMail}>Почта: <span>{userInfo.email}</span></div>
                 <div className={styles.userPhone}>Номер телефона: <span>{userInfo.phoneNumber}</span></div>
-                <div className={styles.userAddress}>Адрес доставки: <span>{userInfo.address[0]}</span></div>
+                {
+                  userInfo.address.length === 1 ? <div className={styles.userAddress}>Адрес доставки: <span>{userInfo.address[0]}</span></div> :
+                    <div className={styles.userAddress}>Адрес доставки:
+                      <ul>
+                        {
+                          userInfo.address.map(address => <li><span>{address}</span></li>)
+                        }
+                      </ul>
+                      <span>{userInfo.address[0]}</span>
+                    </div>
+                }
+
                 {(userInfo.role === 'admin' || userInfo.role === 'superUser') &&
                   <div className={styles.userOrg}>Организация: {userInfo.organization}</div>}
               </div>

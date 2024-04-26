@@ -21,7 +21,7 @@ import url from '../../../default.json'
 
 export default function AllUsers() {
 
-  const TABLE_HEAD = ["Пользователь", "Контакты", "Статус"];
+  const TABLE_HEAD = ["Пользователь", "Контакты", "Статус",'Состояния'];
 
   const navigate = useNavigate()
   const [isSucccess, setSecccess] = useState(true)
@@ -42,8 +42,24 @@ export default function AllUsers() {
     }
   }
 
+  async function block (id,bool){
+    try{const response = await axios.patch(`${bool ? '/unlock-user  ': '/block-user'}`,{
+      user:id
+    })
+
+    if(response.status === 200){
+      getAllUsersFunc()
+    }}
+    catch(err){
+      console.log(err)
+    }
+  }
+
+  
+
   async function levelUp(id) {
     try {
+      console.log( id)
       setSecccess(false)
       const request = await axios.patch('/user/level-up', {
         currentUserId: id
@@ -67,8 +83,8 @@ export default function AllUsers() {
   useEffect(() => {
     selectedUsers === null && getAllUsersFunc()
     selectedUsers !== null && setLoading(false)
-  },[selectedUsers, getAllUsersFunc]);
-  // console.log(selectedUsers);
+  }, [selectedUsers, getAllUsersFunc]);
+  console.log(selectedUsers);
 
   return (
     <div>
@@ -195,6 +211,20 @@ export default function AllUsers() {
                                     ДАТЬ ОПТ
                                   </button> : <Button variant='outlined' size='sm' disabled={true}>УЖЕ ОПТ</Button>}
                               </div>
+                            </td>
+                            <td className={classes}>
+                              { row.role !== 'admin' && <div className="w-max">
+                                {row.isActive  ?
+                                  <div 
+                                  className={`rounded-full border px-2 my-auto border-red-500 font-bold text-red-900  cursor-pointer text-sm`}
+                                  onClick={()=> block(id,false)}>
+                                  Заблокировать
+                                </div> : <div 
+                                className={`rounded-full border px-2 my-auto border-amber-400 font-bold text-yellow-900 cursor-pointer text-sm`}
+                                onClick={()=> block(id,true)}>
+                                  Активировать
+                                </div>}
+                              </div>}
                             </td>
                           </tr>
                         );
