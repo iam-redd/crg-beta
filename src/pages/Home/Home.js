@@ -11,9 +11,11 @@ import teamImg from '../../assets/crg-team.png'
 import instagramIcon from '../../assets/icons/instagram-icon.svg'
 import { useGetAllGoodsQuery } from '../../store/goodsApi';
 import { DefaultSpinner } from '../../components/Spinner'
+import { useSelector } from 'react-redux';
 
 const Home = () => {
   const { data, isSuccess } = useGetAllGoodsQuery()
+  const allProducts = useSelector(state => state.service.allProducts)
   if (isSuccess) {
     console.log(data)
   }
@@ -66,9 +68,9 @@ const Home = () => {
               <div className='flex pb-4 overflow-scroll snap-x snap-mandatory justify-start gap-4 flex-nowrap wrappeR'>
                 <div className='px-2 lg:px-0 flex pb-4 overflow-x-scroll scroll-smooth snap-x snap-mandatory justify-start gap-4 flex-nowrap'>
                   {
-                    isSuccess ? <>
+                    allProducts !== null ? <>
                       {
-                        data.map((card, index) => index < 6 && <CoffeeCard key={index} data={card} />)
+                        allProducts.map((card, index) => card.topList && <CoffeeCard key={index} data={card} />)
                       }
                     </> : <DefaultSpinner />
                   }

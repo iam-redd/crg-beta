@@ -26,7 +26,8 @@ export default function Tea() {
                 img: images,
                 type: 'tea',
                 description: e.target.description.value,
-                package:[]
+                package:[],
+                tags:e.target.tags.value.split(',').map(element => element.trim().toLowerCase())
             }
 
             e.target.price1.value !== '' && options.priceUser.push(totalCost(e.target.price1.value))
@@ -122,6 +123,12 @@ export default function Tea() {
                         defaultChecked
                         name='weight3' />
                 </div>
+                <Input
+                    type="text"
+                    label='Тэги через запятую ( , )'
+                    name='tags'
+                    required
+                    className={styles.input} />
                 <div class="relative w-full min-w-[200px]">
                     <textarea
                         class="peer h-full min-h-[100px] w-full resize-none rounded-[7px] border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:resize-none disabled:border-0 disabled:bg-blue-gray-50"

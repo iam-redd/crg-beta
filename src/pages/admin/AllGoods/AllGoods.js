@@ -1,30 +1,23 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Card from './Card/Card';
 import styles from './AllGoods.module.css'
-import url from '../../../default.json'
-import icon from '../../../assets/icons/user.png'
 import axios from '../../../store/axios'
 import { ToastContainer, toast } from 'react-toastify';
 import {
     Typography,
-    Select,
-    Option
 } from "@material-tailwind/react";
 import { setAllProducts } from '../../../store/slices/serviceDataSlice';
 
 const AllGoods = () => {
-    const TABLE_HEAD = ['№', 'Названия', 'Обьём', 'Топ', 'Стоп-лист', 'Удалить']
-    const optionCoffe = ['250гр', '500гр', '1000гр']
+    const TABLE_HEAD = ['№', 'Названия', 'Топ', 'Стоп-лист', 'Удалить']
     const allProducts = useSelector(state => state.service.allProducts)
     const dispatch = useDispatch()
     const notify = (text, type) => {
-        if(type === 'error'){
+        if (type === 'error') {
             toast.error(text, 'error')
-        }else{
+        } else {
             toast.success(text, 'error')
         }
-
     };
     const deleteProduct = async (id) => {
         try {
@@ -43,8 +36,57 @@ const AllGoods = () => {
             notify('Не получилось удалит товар', 'error')
         }
     }
+
+    const addInTop = async (id) => {
+        try {
+            const res = await axios.patch('/post/add-in-top', { postId: id })
+
+            if (res.status === 200) {
+                dispatch(setAllProducts(res.data))
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const deleteFromTop = async (id) => {
+        try {
+            const res = await axios.patch('/post/delete-from-top', { postId: id })
+
+            if (res.status === 200) {
+                dispatch(setAllProducts(res.data))
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const addInStop = async (id) => {
+        try {
+            const res = await axios.patch('/post/add-in-stop', { postId: id })
+
+            if (res.status === 200) {
+                dispatch(setAllProducts(res.data))
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const deleteFromStop = async (id) => {
+        try {
+            const res = await axios.patch('/post/delete-from-stop', { postId: id })
+
+            if (res.status === 200) {
+                dispatch(setAllProducts(res.data))
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
     return (
         <div className={styles.wrapper}>
+            <h2>Все товары</h2>
             <table className="w-full min-w-max table-auto text-left">
                 <thead>
                     <tr>
@@ -74,38 +116,35 @@ const AllGoods = () => {
                                     <td>{product.name}</td>
                                     <td>
                                         {
-                                            product.type === 'syrup' || product.type === 'syrup' || product.type === 'chemistry' || product.type === 'coffee-capsule' ?
-                                                <p>1шт</p> :
-                                                <>
-                                                    {
-                                                        product.type === 'tea' ?
-                                                            <Select
-                                                                size="md"
-                                                                label="Тип товара">
-                                                                <Option></Option>
-                                                            </Select> :
-                                                            <Select
-                                                                size="md"
-                                                                label="Тип товара">
-                                                                {
-                                                                    product.weight.map((bool, index) => <Option
-                                                                        value={optionCoffe[index]}
-                                                                        disabled={!bool}
-                                                                    >
-                                                                        {optionCoffe[index]}
-                                                                    </Option>)
-                                                                }
-                                                            </Select>
-                                                    }
-                                                </>
+                                            product.topList? <button
+                                                className='text-red-700 hover:text-white border border-red-400 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-bolder rounded-lg text-xs px-3 py-2 text-center me-2 mb-2 dark:red-green-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-800'
+                                                onClick={() => deleteFromTop(product._id)}
+                                            >
+                                                Из топа
+                                            </button> :
+                                                <button
+                                                    onClick={() => addInTop(product._id)}
+                                                    className='text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-bolder rounded-lg text-xs px-3 py-2 text-center me-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800'
+                                                >
+                                                    В топ
+                                                </button>
                                         }
-
                                     </td>
                                     <td>
-                                        <button className='text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-bolder rounded-lg text-xs px-3 py-2 text-center me-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800'>В топ</button>
-                                    </td>
-                                    <td>
-
+                                    {
+                                            product.stopList? <button
+                                                className='text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-bolder rounded-lg text-xs px-3 py-2 text-center me-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800'
+                                                onClick={() => deleteFromStop(product._id)}
+                                            >
+                                                Из стопа
+                                            </button> :
+                                                <button
+                                                    onClick={() => addInStop(product._id)}
+                                                    className='text-red-700 hover:text-white border border-red-400 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-bolder rounded-lg text-xs px-3 py-2 text-center me-2 mb-2 dark:red-green-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-800'
+                                                >
+                                                    В стоп
+                                                </button>
+                                        }
                                     </td>
                                     <td>
                                         <button
@@ -135,7 +174,7 @@ const AllGoods = () => {
                 </>
             } */}
             <ToastContainer
-            autoClose={3000} />
+                autoClose={3000} />
         </div>
     );
 };
