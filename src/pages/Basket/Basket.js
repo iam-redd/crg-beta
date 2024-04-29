@@ -73,6 +73,8 @@ const Basket = () => {
                             <div className=""><DefaultSpinner/></div> :
                             <>
                             <div className='text-xl font-bold text-center my-6 lg:my-10'>Корзина</div>
+                                <div className='flex '>
+                                <div className=''>
                                 {
                                     data.map((_, index) => {
                                         return (
@@ -107,25 +109,23 @@ const Basket = () => {
                                     <div>Скидка:  </div>
                                 </div>
                                 <div>
+                                <div className={`flex-col`}>
+                                
+                                <div>
                                     <span className='font-bold text-lg'>Итого к оплате:</span>
                                     <span className='border-b '>{totalPrice} сум</span>
                                 </div>
                                 </div>
-                                <div className='flex'>
-                                <Checkbox 
-                                    label={
-                                        <span className='text-sm '> Согласен с условиями
-                                        <a href=' # '>&nbsp;обработки персональных данных</a>
-                                        <a href=' # '>&nbsp;Доставки</a>
-                                        <a href='# '>&nbsp;Публичной оферты</a>
-                                        </span>
-                                    }
-                                />
-                                </div>
+                                
                                 
                                 <OrderForm totalPrice={totalPrice} />
+                                </div>
+                                
+                                </div>
                                 
                             </>
+
+                            
                     }
                 </> :
             <div  className='flex flex-col items-center'>

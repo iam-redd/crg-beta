@@ -130,6 +130,8 @@ function CoffeeCard({ data }) {
                                 style={{ borderColor: pomolColor ? "red" : '' }}
                                 onClick={handlePomolColor}
                                 value='В зёрнах'>
+                                // value={userInfo.role === 'superUser' ? {"1"} : {''}}
+                                >
                                 <Option value='В зёрнах'>В зёрнах</Option>
                                 <Option value='Под турку'>Под турку</Option>
                                 <Option value='Под гейзер/Мокка'>Под гейзер/Мокка</Option>
