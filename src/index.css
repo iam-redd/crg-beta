@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+
+/* // "backendUrl":"https://crg-1126b7a61fae.herokuapp.com" */
+
+
 @font-face {
     font-family: 'Proxima Soft';
     src:url('assets/fonts/ProximaSoft-SemiBold.woff2') format('woff2'),

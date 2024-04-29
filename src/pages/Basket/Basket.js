@@ -82,6 +82,31 @@ const Basket = () => {
                                         )
                                     })
                                 }
+                                <div className={`flex-col ${styles.totalLine}`}>
+                                <div>
+                                    <div className="relative flex w-full max-w-[24rem]">
+                                        <Input
+                                            type="text"
+                                            label="Промокод"
+                                            value={promocode}
+                                            onChange={onChange}
+                                            className="pr-20"
+                                            containerProps={{
+                                            className: "min-w-0",
+                                            }}
+                                        />
+                                        <Button
+                                            size="md"
+                                            variant='outlined'
+                                            color={promocode ? "gray" : "blue-gray"}
+                                            disabled={!promocode}
+                                            className="!absolute right-1 top-1 rounded"
+                                        >
+                                            Применить
+                                        </Button>
+                                    </div>
+                                    <div>Сумма заказа: </div>
+                                    <div>Скидка:  </div>
                                 </div>
                                 <div>
                                 <div className={`flex-col`}>
