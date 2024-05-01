@@ -36,7 +36,7 @@ export default function MySettings() {
                             </div>
                             <div className="flex flex-col gap-2 p-4 md:p-0">
                                 <div className="flex">
-                                    <Input size="sm" label="Имя:" defaultValue={userInfo.name} name="name" />
+                                    <Input size="md" label="Имя:" defaultValue={userInfo.name} name="name" />
                                 </div>
                                 <div>
                                     <Input label="Email:" defaultValue={userInfo.email} name="email" />
