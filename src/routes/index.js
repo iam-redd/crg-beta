@@ -22,6 +22,7 @@ const Monitoring = lazy(()=> import ( "../pages/admin/Monitoring/Monitoring"))
 const CreatePost = lazy(()=> import ( "../pages/admin/CreatePost/CreatePost"))
 const Settings = lazy(()=> import ( "../pages/admin/Settings/Settings"))
 const AllUsers = lazy(()=> import ( "../pages/admin/AllUsers/AllUsers"))
+const AllGoods = lazy(()=> import ( "../pages/admin/AllGoods/AllGoods.js"))
 const User = lazy(() => import('../pages/admin/AllUsers/UserInfo/UserInfo.js'))
 const AdminLayout = lazy(()=> import ( '../pages/admin/Layout/Layout'))
 const Catalog = lazy(()=> import ( "../pages/admin/Catalog/Catalog"))
@@ -50,6 +51,7 @@ const router = createBrowserRouter(createRoutesFromElements(
                 <Route path="all-users/:id" element={<User />} />
                 <Route path="settings" element={<Settings />} />
                 <Route path="catalog" element={<Catalog />} />
+                <Route path="all-goods" element={<AllGoods />} />
             </Route>
             <Route path="about" element={<AboutPage />} />
             <Route path="pay-n-delivery" element={<PayDelivery />} />

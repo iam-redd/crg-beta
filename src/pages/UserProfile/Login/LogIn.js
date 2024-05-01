@@ -42,6 +42,7 @@ const LogIn = () => {
             return null
 
         } catch (error) {
+            console.log(error)
             const status = error.response.status
             if (status === 403 || status === 404) {
                 handleError('Неверный логин или пароль')

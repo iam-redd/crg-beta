@@ -21,7 +21,7 @@ import url from '../../../default.json'
 
 export default function AllUsers() {
 
-  const TABLE_HEAD = ["Пользователь", "Контакты", "Статус"];
+  const TABLE_HEAD = ["Пользователь", "Контакты", "Статус",'Состояния'];
 
   const navigate = useNavigate()
   const [isSucccess, setSecccess] = useState(true)
@@ -42,8 +42,24 @@ export default function AllUsers() {
     }
   }
 
+  async function block (id,bool){
+    try{const response = await axios.patch(`${bool ? '/unlock-user  ': '/block-user'}`,{
+      user:id
+    })
+
+    if(response.status === 200){
+      getAllUsersFunc()
+    }}
+    catch(err){
+      console.log(err)
+    }
+  }
+
+  
+
   async function levelUp(id) {
     try {
+      console.log( id)
       setSecccess(false)
       const request = await axios.patch('/user/level-up', {
         currentUserId: id
@@ -62,13 +78,13 @@ export default function AllUsers() {
     }
   }
 
-  !isLoading && selectedUsers[0].avatarUrl !== '' && console.log(`${url.backendUrl}/${selectedUsers[0].avatarUrl}`)
+  // !isLoading && selectedUsers[0].avatarUrl !== '' && console.log(`${url.backendUrl}/${selectedUsers[0].avatarUrl}`)
 
-  useEffect(() => {
+  useEffect(() => { 
     selectedUsers === null && getAllUsersFunc()
     selectedUsers !== null && setLoading(false)
-  },[selectedUsers, getAllUsersFunc]);
-  // console.log(selectedUsers);
+  }, [selectedUsers, getAllUsersFunc]);
+  console.log(selectedUsers);
 
   return (
     <div>
@@ -195,6 +211,20 @@ export default function AllUsers() {
                                     ДАТЬ ОПТ
                                   </button> : <Button variant='outlined' size='sm' disabled={true}>УЖЕ ОПТ</Button>}
                               </div>
+                            </td>
+                            <td className={classes}>
+                              { row.role !== 'admin' && <div className="w-max">
+                                {row.isActive  ?
+                                  <div 
+                                  className={`text-red-700 hover:text-white border border-red-400 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-bolder rounded-lg text-xs px-3 py-2 text-center me-2 mb-2 dark:red-green-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-800`}
+                                  onClick={()=> block(id,false)}>
+                                  Заблокировать
+                                </div> : <div 
+                                className={`text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-bolder rounded-lg text-xs px-3 py-2 text-center me-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800`}
+                                onClick={()=> block(id,true)}>
+                                  Активировать
+                                </div>}
+                              </div>}
                             </td>
                           </tr>
                         );

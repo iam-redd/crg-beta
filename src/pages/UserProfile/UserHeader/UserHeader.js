@@ -42,11 +42,21 @@ export default function UserHeader() {
                 </div>
               
               }
-                
                 </div>
                 <div className={styles.userMail}>Почта: <span>{userInfo.email}</span></div>
                 <div className={styles.userPhone}>Номер телефона: <span>{userInfo.phoneNumber}</span></div>
-                <div className={styles.userAddress}>Адрес доставки: <span>{userInfo.address[0]}</span></div>
+                {
+                  userInfo.address.length === 1 ? <div className={styles.userAddress}>Адрес доставки: <span>{userInfo.address[0]}</span></div> :
+                    <div className={styles.userAddress}>Адрес доставки:
+                      <ul>
+                        {
+                          userInfo.address.map(address => <li><span>{address}</span></li>)
+                        }
+                      </ul>
+                      <span>{userInfo.address[0]}</span>
+                    </div>
+                }
+
                 {(userInfo.role === 'admin' || userInfo.role === 'superUser') &&
                   <div className={styles.userOrg}>Организация: {userInfo.org}</div>}
               </div>

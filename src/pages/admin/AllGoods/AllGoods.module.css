@@ -1,0 +1,26 @@
+.wrapper{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 10px;
+    font-size: 16px;
+    color: #616161;
+    font-weight: 500;
+}
+
+.tr{
+    max-height: 40px;
+}
+.trImage{
+    width: 80px;
+    transition: all 0.5s ease;
+}
+
+.trImage:hover{
+    transform: scale(3.5);
+}
+
+h2{
+    text-align: center;
+}
+
