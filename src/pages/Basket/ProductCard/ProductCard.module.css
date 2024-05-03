@@ -7,6 +7,12 @@
     align-self: center;
 }
 
+.name{
+    display: flex;
+    justify-content: space-between;
+    /* min-width: 500px; */
+}
+
 .img{
     width: 100%;
     border-radius: 10px;

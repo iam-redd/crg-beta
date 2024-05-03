@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Card, Typography } from '@material-tailwind/react';
 import url from '../default.json'
+import styles from './CoffeCard/CoffeCard.module.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import cart from '../assets/icons/icons8-cart-64.png'
@@ -33,8 +34,9 @@ const AnyCard = ({ data }) => {
     return (
         <div className=''>
             <Card className='w-80 md:w-72 h-full border py-5 px-5 card-hover'>
-                <div className='flex justify-end py-2 px-4 text-xs'>
-                    Топ-недели
+            <div className={styles.header}>
+                    <span className='text-xs text-red-700'>{data.stopList && 'Нет в наличии'}</span>
+                    <span className='text-xs'>{data.topList && 'Топ-недели'}</span>
                 </div>
                 <h2 className='text-center font-bold text-xl'>{data.name}</h2>
                 <p className='text-center text-xs'>Сироп или химия</p>

@@ -72,7 +72,8 @@ function CoffeeCard({ data }) {
             name: data.name,
             img: data.img,
             type: data.type,
-            roast: data.roast
+            roast: data.roast,
+            stopList:data.stopList
         }
         dispatch(addTooBasket(info))
         setBoolBasket(true)
@@ -86,7 +87,7 @@ function CoffeeCard({ data }) {
         <div className={styles.container}>
             <Card className='w-80 md:w-80 h-full border py-5 px-5 card-hover snap-center'>
             <div className={styles.header}>
-                    <span className='text-xs text-red-700'>{data.stopList && 'В стопе'}</span>
+                    <span className='text-xs text-red-700'>{data.stopList && 'Нет в наличии'}</span>
                     <span className='text-xs'>{data.topList && 'Топ-недели'}</span>
                 </div>
                 <h2 className='text-center font-bold text-xl line-clamp-2'>{data?.name ? data.name : ''}</h2>

@@ -8,8 +8,8 @@ import { Typography } from "@material-tailwind/react";
 
 export default function OrderForm({ totalPrice }) {
     const [btnBool, setBtnBool] = useState(false)
-    const [isError,setError] = useState(false)
-    const [errorMessage,setMessage] = useState('')
+    const [isError, setError] = useState(false)
+    const [errorMessage, setMessage] = useState('')
     const dispatch = useDispatch()
     const basket = useSelector(state => state.basket.basket)
     const userInfo = useSelector(state => state.user.userInfo)
@@ -23,15 +23,27 @@ export default function OrderForm({ totalPrice }) {
                 // setPomoltColor(true)
                 setMessage('Способ оплаты не выбран')
                 setError(true)
+                setBtnBool(false)
+
                 return
             }
-            if(!userInfo.isActive){
+            if (!userInfo.isActive) {
                 setMessage('Вы заблокированы обратитесь к администрацию')
                 setError(true)
+                setBtnBool(false)
+
                 return
             }
-            setBtnBool(true)
             const comment = e.target.comment.value
+
+            const productBool = basket.filter(product => product.stopList)
+            if (productBool.length > 0) {
+                setMessage(`${productBool[0].name} нет в наличии`)
+                setError(true)
+                setBtnBool(false)
+
+                return
+            }
             const data = await axios.post('/new-order', { basket, comment, totalPrice, paymentMethod })
             console.log(data)
             if (data.status === 200) {
@@ -39,7 +51,6 @@ export default function OrderForm({ totalPrice }) {
                 // console.log('Order created successfully')
                 dispatch(cancelBasket())
             } else {
-                console.log('Order not created successfully')
                 throw new Error('Order not created successfully')
             }
         } catch (error) {
@@ -56,8 +67,8 @@ export default function OrderForm({ totalPrice }) {
             {
                 basket.length > 0 && userInfo !== null ?
                     <form className={`py-2  ${styles.form}`} onSubmit={newOrder}>
-                    <span className='text-center sm:text-start'>Способ оплаты</span>    
-                    <div className='col-span-3 w-auto'>
+                        <span className='text-center sm:text-start'>Способ оплаты</span>
+                        <div className='col-span-3 w-auto'>
                             <Select size="md"
                                 label="Выберите способ оплаты"
                                 onChange={(e) => changePay(e)}
@@ -69,38 +80,38 @@ export default function OrderForm({ totalPrice }) {
                             </Select>
                         </div>
                         <div className='flex'>
-                                <Checkbox 
-                                    checked={btnBool} 
-                                    onChange={() => setBtnBool(!btnBool)}
-                                />
-                                <span className={styles.texttip}> Согласен с условиями
-                                        <a href=' # '>обработки персональных данных</a>,
-                                        <a href=' # '>Доставки</a> и
-                                        <a href='# '>Публичной оферты</a>
-                                        </span>
-                                </div>
+                            <Checkbox
+                                // onChange={btnBool}
+                            // onChange={() => setBtnBool(!btnBool)}
+                            />
+                            <span className={styles.texttip}> Согласен с условиями
+                                <a href=' # '>обработки персональных данных</a>,
+                                <a href=' # '>Доставки</a> и
+                                <a href='# '>Публичной оферты</a>
+                            </span>
+                        </div>
                         <textarea className={styles.textarea} name='comment' placeholder='Комментария для заказа'></textarea>
                         {
                             isError &&
                             <Typography
-                                    variant="small"
-                                    color="gray"
-                                    className="mt-2 flex items-center gap-1 font-normal"
+                                variant="small"
+                                color="gray"
+                                className="mt-2 flex items-center gap-1 font-normal"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor"
+                                    className="-mt-px h-4 w-4"
                                 >
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 24 24"
-                                        fill="currentColor"
-                                        className="-mt-px h-4 w-4"
-                                    >
-                                        <path
-                                            fillRule="evenodd"
-                                            d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm8.706-1.442c1.146-.573 2.437.463 2.126 1.706l-.709 2.836.042-.02a.75.75 0 01.67 1.34l-.04.022c-1.147.573-2.438-.463-2.127-1.706l.71-2.836-.042.02a.75.75 0 11-.671-1.34l.041-.022zM12 9a.75.75 0 100-1.5.75.75 0 000 1.5z"
-                                            clipRule="evenodd"
-                                        />
-                                    </svg>
-                                    <p className="text-red-500">{errorMessage}</p>
-                                </Typography>
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm8.706-1.442c1.146-.573 2.437.463 2.126 1.706l-.709 2.836.042-.02a.75.75 0 01.67 1.34l-.04.022c-1.147.573-2.438-.463-2.127-1.706l.71-2.836-.042.02a.75.75 0 11-.671-1.34l.041-.022zM12 9a.75.75 0 100-1.5.75.75 0 000 1.5z"
+                                        clipRule="evenodd"
+                                    />
+                                </svg>
+                                <p className="text-red-500">{errorMessage}</p>
+                            </Typography>
                         }
                         {/* <input type="text" className={styles.input} name='name' placeholder='Name' /> */}
                         {/* <input type="text" className={styles.input} name='email' placeholder='Phone number' /> */}
@@ -114,3 +125,6 @@ export default function OrderForm({ totalPrice }) {
         </>
     )
 }
+
+
+

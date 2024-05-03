@@ -1,23 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import axios from '../../store/axios.js'
 import ProductCard from './ProductCard/ProductCard.js';
 import styles from './Basket.module.css'
 import OrderForm from './OrderForm/OrderForm.js';
 
-import {Input, Button, Checkbox} from '@material-tailwind/react'
 
 import emptyBasket from '../../assets/cart.png'
 
 import { useNavigate } from 'react-router-dom';
 import { DefaultSpinner } from '../../components/Spinner.js';
+import { updateStopList } from '../../store/slices/basketSlice.js';
 const Basket = () => {
     const allProductsId = useSelector(state => state.basket.allProductsId)
+    const allProducts = useSelector(state => state.service.allProducts)
+    const dispatch = useDispatch()
     const basket = useSelector(state => state.basket.basket)
     const [totalPrice, setTotalPrice] = useState(0)
 
     const [promocode, setPromocode] = React.useState("");
-  const onChange = ({ target }) => setPromocode(target.value);
+    const onChange = ({ target }) => setPromocode(target.value);
 
     const [data, setData] = useState(null)
     const navigate = useNavigate()
@@ -60,8 +62,22 @@ const Basket = () => {
         str = str.reverse().join('')
         setTotalPrice(str)
     }
+
+    function updateStatusGoods(goods) {
+        let statuses = []
+        basket.map((product) => {
+            allProducts.filter(good => {
+                if (product.id === good._id) {
+                    statuses.push(good.stopList)
+                }
+            })
+        })
+        dispatch(updateStopList(statuses))
+
+    }
     useEffect(() => {
         data === null && allProductsId.length > 0 && getFavorites()
+        data === null && allProducts !== null && updateStatusGoods(allProducts)
         basket.length > 0 && totalCost()
     });
     return (
@@ -70,45 +86,38 @@ const Basket = () => {
                 allProductsId.length > 0 ? <>
                     {
                         data === null ?
-                            <div className=""><DefaultSpinner/></div> :
+                            <div className=""><DefaultSpinner /></div> :
                             <>
-                            <div className='text-xl font-bold text-center my-6 lg:my-10'>Корзина</div>
+                                <div className='text-xl font-bold text-center my-6 lg:my-10'>Корзина</div>
                                 <div className='flex '>
-                                <div className=''>
-                                {
-                                    data.map((_, index) => {
-                                        return (
-                                            <ProductCard key={index} index={index} />
-                                        )
-                                    })
-                                }
+                                    <div className=''>
+                                        {
+                                            data.map((_, index) => {
+                                                return (
+                                                    <ProductCard key={index} index={index} />
+                                                )
+                                            })
+                                        }
+                                    </div>
+                                    <div>
+                                        <div className={`flex-col`}>
+                                            <div>
+                                                <span className='font-bold text-lg'>Итого к оплате:</span>
+                                                <span className='border-b '>{totalPrice} сум</span>
+                                            </div>
+                                        </div>
+                                        <OrderForm totalPrice={totalPrice} />
+                                    </div>
                                 </div>
-                                <div>
-                                <div className={`flex-col`}>
-                                
-                                <div>
-                                    <span className='font-bold text-lg'>Итого к оплате:</span>
-                                    <span className='border-b '>{totalPrice} сум</span>
-                                </div>
-                                </div>
-                                
-                                
-                                <OrderForm totalPrice={totalPrice} />
-                                </div>
-                                
-                                </div>
-                                
                             </>
-
-                            
                     }
                 </> :
-            <div  className='flex flex-col items-center'>
-                    <div className='opacity-10 pt-10 w-72'><img src={emptyBasket} alt='' className=''/></div>
-                    <div className='my-10 text-center'>У вас пока нет товаров в корзине, можем это исправить кликнув по кнопке снизу</div>
-                <button className={`mb-20 ${styles.btn}`}
-                onClick={()=> navigate('/shop')}>Перейти в магазин</button>
-            </div>}
+                    <div className='flex flex-col items-center'>
+                        <div className='opacity-10 pt-10 w-72'><img src={emptyBasket} alt='' className='' /></div>
+                        <div className='my-10 text-center'>У вас пока нет товаров в корзине, можем это исправить кликнув по кнопке снизу</div>
+                        <button className={`mb-20 ${styles.btn}`}
+                            onClick={() => navigate('/shop')}>Перейти в магазин</button>
+                    </div>}
         </div>
     );
 };
