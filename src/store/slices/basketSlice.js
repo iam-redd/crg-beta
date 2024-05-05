@@ -39,7 +39,12 @@ const basketSlice = createSlice({
             state.allProductsId = []
             window.localStorage.setItem('basket', JSON.stringify(state.basket))
             window.localStorage.setItem('allProductsId', JSON.stringify(state.allProductsId))
-        }
+        },
+        updateStopList(state, { payload }) {
+            console.log(payload)
+            state.basket.map((product,index)=> product.stopList = payload[index])
+            window.localStorage.setItem('basket', JSON.stringify(state.basket))
+        },
     },
 })
 
@@ -48,5 +53,6 @@ export const { addTooBasket,
     incrementProduct,
     decrementProduct,
     removeProductFromBasket,
-    cancelBasket } = basketSlice.actions;
+    cancelBasket,
+    updateStopList } = basketSlice.actions;
 export default basketSlice.reducer
