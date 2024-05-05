@@ -1,7 +1,7 @@
 .catcat{
-    border: 1px dashed #161A1D;
+    border: 1px solid #161a1d5e;
     text-align: center;
-    min-width: 153px;
+    min-width: 152px;
     cursor: pointer;
     transition: transform 1s ease-in-out;
     transform-origin: 0 0 0;
