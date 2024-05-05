@@ -23,7 +23,6 @@ function ProductCard({ index }) {
             console.log('first error')
         }
     }
-    // console.log(basket[index]);
 
     function increment() {
         dispatch(incrementProduct(index))
@@ -44,7 +43,7 @@ function ProductCard({ index }) {
                                 </span>
                             </div>
                             {(basket[index].type === 'tea' || 'coffee-beans') &&
-                                <p>---{basket[index].tags}</p>
+                                <p>---{basket[index].package}</p>
                             }
                             {basket[index].type === 'coffe-beans' &&
                                 <div className='flex flex-col'>
