@@ -41,7 +41,6 @@ const basketSlice = createSlice({
             window.localStorage.setItem('allProductsId', JSON.stringify(state.allProductsId))
         },
         updateStopList(state, { payload }) {
-            console.log(payload)
             state.basket.map((product,index)=> product.stopList = payload[index])
             window.localStorage.setItem('basket', JSON.stringify(state.basket))
         },

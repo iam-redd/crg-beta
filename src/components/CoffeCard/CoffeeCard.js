@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { Button, Card, Option, Progress, Select, Typography } from '@material-tailwind/react';
+import React, { useEffect, useState } from 'react';
+import { Button, Card, Option, Progress, Select, Typography, IconButton } from '@material-tailwind/react';
 import cart from '../../assets/icons/icons8-cart-64.png'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './CoffeCard.module.css'
-import { addTooBasket } from '../../store/slices/basketSlice'
+import { addTooBasket, decrementProduct, incrementProduct } from '../../store/slices/basketSlice'
 import { ReactSpoiler } from 'react-simple-spoiler'
 import url from '../../default.json'
 
@@ -22,7 +22,8 @@ function CoffeeCard({ data }) {
             allProductsId.length > 0 ? allProductsId.includes(data._id) : false :
             false
     )
-    const amount = 1;
+    const index = boolBasket ? allProductsId.indexOf(data._id) : 0
+    const [amount, setAmount] = useState(1);
     const [pomol, setPomol] = useState('В зёрнах')
     const [weight, setWeight] = useState(null)
     const navigate = useNavigate()
@@ -30,11 +31,13 @@ function CoffeeCard({ data }) {
         setPomoltColor(false)
         const template = basket.filter(product => product.pomol === val)
         const template2 = template.filter(product => product.weight === weight)
-        if (basket.length > 0 && template2.length > 0) {
+        if (basket.length > 0 && template2.length > 0 && data._id === template2[0].id) {
             console.log(template2)
+            setAmount(template2[0].amount)
             setBoolBasket(true)
         } else {
             setBoolBasket(!true)
+            setAmount(1)
         }
         setPomol(val)
     }
@@ -44,9 +47,12 @@ function CoffeeCard({ data }) {
         const template2 = template.filter(product => product.pomol === pomol)
         if (basket.length > 0 && template2.length > 0 && data._id === template2[0].id) {
             console.log(template2)
+            setAmount(template2[0].amount)
             setBoolBasket(true)
+
         } else {
             setBoolBasket(!true)
+            setAmount(1)
         }
         setWeight(val)
     }
@@ -73,20 +79,58 @@ function CoffeeCard({ data }) {
             img: data.img,
             type: data.type,
             roast: data.roast,
-            stopList:data.stopList
+            stopList: data.stopList
         }
         dispatch(addTooBasket(info))
         setBoolBasket(true)
         return
     }
+    function decrement() {
+        try {
+            if (amount === 1) {
+                return
+            } else {
+                setAmount((prev) => prev = prev - 1)
+                if (boolBasket) {
+                    dispatch(decrementProduct(index))
+                }
+            }
+        }
+        catch (error) {
+            console.log('first error')
+        }
+    }
+
+    function increment() {
+        setAmount((prev) => prev = prev + 1)
+        if (boolBasket) {
+            dispatch(incrementProduct(index))
+        }
+    }
 
     const handleWeightColor = () => setWeightColor(false)
     const handlePomolColor = () => setPomoltColor(false)
+    useEffect(() => {
+        // if(boolBasket) {
+        //     setAmount(basket[index].amount)
+        // }
+        // boolBasket && setAmount(basket[index].amount)
+        const template = basket.filter(product => product.pomol === pomol)
+        const template2 = template.filter(product => product.weight === '250гр')
+        if (basket.length > 0 && template2.length > 0) {
+            console.log(template2)
+            setAmount(template2[0].amount)
+            setBoolBasket(true)
+        } else {
+            setBoolBasket(!true)
+            setAmount(1)
+        }
+    }, []);
 
     return (
         <div className={styles.container}>
             <Card className='w-80 md:w-80 h-full border py-5 px-5 card-hover snap-center'>
-            <div className={styles.header}>
+                <div className={styles.header}>
                     <span className='text-xs text-red-700'>{data.stopList && 'Нет в наличии'}</span>
                     <span className='text-xs'>{data.topList && 'Топ-недели'}</span>
                 </div>
@@ -131,8 +175,8 @@ function CoffeeCard({ data }) {
                                 style={{ borderColor: pomolColor ? "red" : '' }}
                                 onClick={handlePomolColor}
                                 value='В зёрнах'
-                                // value={userInfo.role === 'superUser' ? {"1"} : {''}}
-                                >
+                            // value={userInfo.role === 'superUser' ? {"1"} : {''}}
+                            >
                                 <Option value='В зёрнах'>В зёрнах</Option>
                                 <Option value='Под турку'>Под турку</Option>
                                 <Option value='Под гейзер/Мокка'>Под гейзер/Мокка</Option>
@@ -192,7 +236,7 @@ function CoffeeCard({ data }) {
                             }
                         </span> UZS</Typography>
                 </div>
-                <div className='flex mt-5 items-center justify-between'>
+                {/* <div className='flex mt-5 items-center justify-between'>
                     {
                         boolBasket ?
                             <Button variant='outlined' color='red' onClick={() => navigate('/basket')}> <span><img style={{ display: 'inline-block', marginRight: '5px' }} width={24} height={24} src={cart} alt="" /></span>Перейти</Button> :
@@ -200,6 +244,54 @@ function CoffeeCard({ data }) {
                                 variant='outlined'
                                 color='red'
                                 onClick={addToBasketе}>В корзину</Button>
+                    }
+
+                </div> */}
+                <div className='flex mt-5 items-center justify-between'>
+                    {
+
+                        boolBasket ?
+                            <>
+                                <div className='flex items-center justify-between'>
+                                    <IconButton
+                                        color='red'
+                                        className=' w-8 h-8'
+                                        onClick={decrement}>
+                                        -
+                                    </IconButton>
+                                    <span className='mx-2'>{amount}</span>
+                                    <IconButton
+                                        color='red'
+                                        className=' w-8 h-8'
+                                        onClick={increment}>
+                                        +
+                                    </IconButton>
+                                </div>
+                                <Button variant='outlined' color='red' onClick={() => navigate('/basket')}>
+                                    <span><img style={{ display: 'inline-block', marginRight: '5px' }} width={24} height={24} src={cart} alt="" />
+                                    </span>Перейти</Button>
+                            </> :
+                            <>
+                                <div className='flex items-center justify-between'>
+                                    <IconButton
+                                        color='red'
+                                        className=' w-8 h-8'
+                                        onClick={decrement}>
+                                        -
+                                    </IconButton>
+                                    <span className='mx-2'>{amount}</span>
+                                    <IconButton
+                                        color='red'
+                                        className=' w-8 h-8'
+                                        onClick={increment}>
+                                        +
+                                    </IconButton>
+                                </div>
+                                <Button
+                                    variant='outlined'
+                                    color='red'
+                                    onClick={addToBasketе}>В корзину</Button>
+                            </>
                     }
 
                 </div>
