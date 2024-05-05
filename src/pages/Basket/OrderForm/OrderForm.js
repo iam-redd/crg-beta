@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import styles from './OrderForm.module.css'
 import axios from '../../../store/axios'
-import { Checkbox, Option, Select } from '@material-tailwind/react';
+import { Button, Checkbox, Option, Select } from '@material-tailwind/react';
 import { useDispatch, useSelector } from 'react-redux'
 import { cancelBasket } from '../../../store/slices/basketSlice'
 import { Typography } from "@material-tailwind/react";
 
 export default function OrderForm({ totalPrice }) {
     const [btnBool, setBtnBool] = useState(false)
+    const [checkBool, setCheckBool] = useState(false)
     const [isError, setError] = useState(false)
     const [errorMessage, setMessage] = useState('')
     const dispatch = useDispatch()
@@ -67,8 +68,8 @@ export default function OrderForm({ totalPrice }) {
             {
                 basket.length > 0 && userInfo !== null ?
                     <form className={`py-2  ${styles.form}`} onSubmit={newOrder}>
-                        <span className='text-center sm:text-start'>Способ оплаты</span>
-                        <div className='col-span-3 w-auto'>
+                    <div className='p-2 rounded bg-gray-100'>    
+                    <div className='col-span-3 w-auto'>
                             <Select size="md"
                                 label="Выберите способ оплаты"
                                 onChange={(e) => changePay(e)}
@@ -79,17 +80,18 @@ export default function OrderForm({ totalPrice }) {
                                 <Option value='Другое'>Другое</Option>
                             </Select>
                         </div>
-                        <div className='flex'>
-                            <Checkbox
-                                // onChange={btnBool}
-                            // onChange={() => setBtnBool(!btnBool)}
-                            />
-                            <span className={styles.texttip}> Согласен с условиями
-                                <a href=' # '>обработки персональных данных</a>,
-                                <a href=' # '>Доставки</a> и
-                                <a href='# '>Публичной оферты</a>
-                            </span>
-                        </div>
+                    </div>
+                        <div className='flex items-center gap-1'>
+                                <Checkbox 
+                                    checked={checkBool} 
+                                    onChange={() => setBtnBool(!checkBool)}
+                                />
+                                <span className={styles.texttip}> Согласен с условиями
+                                        <a href=' # '>обработки персональных данных</a>,
+                                        <a href=' # '>Доставки</a> и
+                                        <a href='# '>Публичной оферты</a>
+                                        </span>
+                                </div>
                         <textarea className={styles.textarea} name='comment' placeholder='Комментария для заказа'></textarea>
                         {
                             isError &&
@@ -115,11 +117,12 @@ export default function OrderForm({ totalPrice }) {
                         }
                         {/* <input type="text" className={styles.input} name='name' placeholder='Name' /> */}
                         {/* <input type="text" className={styles.input} name='email' placeholder='Phone number' /> */}
-                        <button
-                            className={styles.btn}
-                            disabled={btnBool}>{
-                                btnBool ? 'Loading...' : 'ЗАКАЗАТЬ'
-                            }</button>
+                        <Button
+                            color='red'
+                            variant='outlined'
+                            disabled={!btnBool}>{
+                                btnBool ? 'ЗАКАЗАТЬ' : 'ЗАКАЗАТЬ'
+                            }</Button>
                     </form> : <p className='text-center' >Для того чтобы оформить свой заказ, пожалуйста войдите в свой аккаунт или зарегистрируйтесь</p>
             }
         </>

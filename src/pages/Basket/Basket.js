@@ -88,27 +88,32 @@ const Basket = () => {
                         data === null ?
                             <div className=""><DefaultSpinner /></div> :
                             <>
-                                <div className='text-xl font-bold text-center my-6 lg:my-10'>Корзина</div>
-                                <div className='flex '>
-                                    <div className=''>
-                                        {
-                                            data.map((_, index) => {
-                                                return (
-                                                    <ProductCard key={index} index={index} />
-                                                )
-                                            })
-                                        }
-                                    </div>
-                                    <div>
-                                        <div className={`flex-col`}>
-                                            <div>
-                                                <span className='font-bold text-lg'>Итого к оплате:</span>
-                                                <span className='border-b '>{totalPrice} сум</span>
-                                            </div>
-                                        </div>
-                                        <OrderForm totalPrice={totalPrice} />
-                                    </div>
+                            <div className='text-xl font-bold text-center my-6 lg:my-10'>Корзина</div>
+                                <div className='flex flex-col md:flex-row'>
+                                <div className=''>
+                                {
+                                    data.map((_, index) => {
+                                        return (
+                                            <ProductCard key={index} index={index} />
+                                        )
+                                    })
+                                }
                                 </div>
+                                <div className='p-8 md:p-2'>
+                                <div className={`flex-col`}>
+                                
+                                <div>
+                                    <span className='font-bold text-lg'>Итого к оплате:</span>
+                                    <span className='border-b '>{totalPrice} сум</span>
+                                </div>
+                                </div>
+                                
+                                
+                                <OrderForm totalPrice={totalPrice} />
+                                </div>
+                                
+                                </div>
+                                
                             </>
                     }
                 </> :
