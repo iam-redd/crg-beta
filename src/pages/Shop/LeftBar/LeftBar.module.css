@@ -12,6 +12,9 @@
 .catcat:hover{
     background-color: #d3d3d3;
 }
+.tabActive{
+    background-color: #d3d3d3;
+}
 .catcatBck{
     background-color: #fff;
 }
