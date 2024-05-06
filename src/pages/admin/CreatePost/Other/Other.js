@@ -84,6 +84,7 @@ export default function Other() {
                         <Option value='accessory'>Аксессуар</Option>
                         <Option value='chemistry'>Химия</Option>
                         <Option value='coffee-capsule'>Кофе в капсуле</Option>
+                        <Option value='drip'>Дрип-кофе</Option>
                     </Select>
                 </div>
                 <Input

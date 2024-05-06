@@ -52,7 +52,8 @@ export default function LeftBar() {
             Кофе
           </div>
         </div>
-        <div className={`p-5 mb-1 mr-1 flex flex-col items-center ${styles.catcat}`}>
+        <div className={`p-5 mb-1 mr-1 flex flex-col items-center ${styles.catcat} ${tabActive === 'drip' && styles.tabActive}`}
+          onClick={() => selectedProducts !== null ? filter('drip') : null}>
           <img src={dripIcon} className='w-8 h-8 text-center' alt='' />
           <div>
             Дрипы
@@ -86,7 +87,7 @@ export default function LeftBar() {
 
         <div
           className={`p-5 mb-1 mr-1 flex flex-col items-center ${styles.catcat} ${tabActive === 'accessories' && styles.tabActive}`}
-        onClick={() => selectedProducts !== null ? filter('accessories') : null}
+          onClick={() => selectedProducts !== null ? filter('accessories') : null}
         >
           <img src={accessorieIcon} className='w-8 h-8 text-center' alt='' />
           <div>
