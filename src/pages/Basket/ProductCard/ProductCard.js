@@ -3,6 +3,11 @@ import styles from './ProductCard.module.css'
 import url from '../../../default.json'
 import { useDispatch, useSelector } from 'react-redux'
 import { decrementProduct, incrementProduct, removeProductFromBasket } from '../../../store/slices/basketSlice'
+import { IconButton } from '@mui/material'
+import DeleteIcon from '@mui/icons-material/Delete';
+import AddIcon from '@mui/icons-material/Add';
+import { red } from '@mui/material/colors'
+
 function ProductCard({ index }) {
     const basket = useSelector(state => state.basket.basket)
     const dispatch = useDispatch()
@@ -63,18 +68,21 @@ function ProductCard({ index }) {
                                     className={styles.btn}
                                     onClick={decrement}>-</button>
                                 <span>{basket[index]?.amount}</span>
+                                <IconButton 
                                 <button
                                     className={styles.btn}
-                                    onClick={increment}>+</button>
-                                <button
-                                    className={`ml-2 ${styles.btn}`}
-                                    onClick={remove}>Удалить</button>
+                                    onClick={increment}>+
+                                </button>
+                                <IconButton onClick={remove} aria-label="delete" size="large">
+                                <DeleteIcon sx={{ color: red[600] }} />
+                                </IconButton>
                             </div>
                         </div>
                     </div> : <></>
             }
         </>
     )
+    
 }
 
 export default ProductCard
