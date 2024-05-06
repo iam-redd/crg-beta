@@ -16,14 +16,20 @@ import { cancelSelectedProducts } from '../../../store/slices/serviceDataSlice';
 
 export default function LeftBar() {
   const dispatch = useDispatch()
-  const [ tabActive, setTabActive] = useState(null)
+  const [tabActive, setTabActive] = useState(null)
   const allProducts = useSelector(state => state.service.allProducts)
   const selectedProducts = useSelector(state => state.service.selectedProducts)
 
   const filter = (value) => {
-    const temp = allProducts.filter(product => product.type === value)
-    dispatch(cancelSelectedProducts(temp))
-    setTabActive(value)
+    console.log(value)
+    if (value === null) {
+      dispatch(cancelSelectedProducts(allProducts))
+      setTabActive(value)
+    } else {
+      const temp = allProducts.filter(product => product.type === value)
+      dispatch(cancelSelectedProducts(temp))
+      setTabActive(value)
+    }
   }
 
   return (
@@ -32,17 +38,14 @@ export default function LeftBar() {
         <div
 
           className={`p-5 mb-1 mr-1 flex flex-col items-center ${styles.catcat} ${tabActive === null && styles.tabActive}`}
-          onClick={() => selectedProducts !== null ? () => {
-            dispatch(cancelSelectedProducts())
-            setTabActive(null)
-          } : null}>
+          onClick={() => selectedProducts !== null ? filter(null) : null}>
           <img src={allGoods} className='w-8 h-8 text-center' alt='' />
           <div>
             Всё
           </div>
         </div>
         <div
-          className={`p-5 mb-1 mr-1 flex flex-col items-center ${styles.catcat} ${tabActive === 'coffee-beans' && styles.tabActive}`}
+          className={`p-5 mb-1 mr-1 flex flex-col items-center ${styles.catcat} ${tabActive === 'coffe-beans' && styles.tabActive}`}
           onClick={() => selectedProducts !== null ? filter('coffe-beans') : null}>
           <img src={beansIcon} className='w-8 h-8 text-center' alt='' />
           <div>
@@ -83,8 +86,8 @@ export default function LeftBar() {
 
         <div
           className={`p-5 mb-1 mr-1 flex flex-col items-center ${styles.catcat}`}
-          // onClick={() => selectedProducts !== null ? filter('accessories') : null}
-          >
+        // onClick={() => selectedProducts !== null ? filter('accessories') : null}
+        >
           <img src={accessorieIcon} className='w-8 h-8 text-center' alt='' />
           <div>
             Аксессуары
