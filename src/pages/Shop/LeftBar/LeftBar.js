@@ -59,7 +59,7 @@ export default function LeftBar() {
           </div>
         </div>
         <div
-          className={`p-5 mb-1 mr-1 flex flex-col items-center ${styles.catcat}`}
+          className={`p-5 mb-1 mr-1 flex flex-col items-center ${styles.catcat} ${tabActive === 'coffee-capsule' && styles.tabActive}`}
           onClick={() => selectedProducts !== null ? filter('coffee-capsule') : null}>
           <img src={capsuleIcon} className='w-8 h-8 text-center' alt='' />
           <div>
@@ -68,7 +68,7 @@ export default function LeftBar() {
         </div>
 
         <div
-          className={`p-5 mb-1 mr-1 flex flex-col items-center ${styles.catcat}`}
+          className={`p-5 mb-1 mr-1 flex flex-col items-center ${styles.catcat} ${tabActive === 'tea' && styles.tabActive}`}
           onClick={() => selectedProducts !== null ? filter('tea') : null}>
           <img src={teaIcon} className='w-8 h-8 text-center' alt='' />
           <div>
@@ -76,7 +76,7 @@ export default function LeftBar() {
           </div>
         </div>
         <div
-          className={`p-5 mb-1 mr-1 flex flex-col items-center ${styles.catcat}`}
+          className={`p-5 mb-1 mr-1 flex flex-col items-center ${styles.catcat} ${tabActive === 'syrup' && styles.tabActive}`}
           onClick={() => selectedProducts !== null ? filter('syrup') : null}>
           <img src={syrupIcon} className='w-8 h-8 text-center' alt='' />
           <div>
@@ -85,8 +85,8 @@ export default function LeftBar() {
         </div>
 
         <div
-          className={`p-5 mb-1 mr-1 flex flex-col items-center ${styles.catcat}`}
-        // onClick={() => selectedProducts !== null ? filter('accessories') : null}
+          className={`p-5 mb-1 mr-1 flex flex-col items-center ${styles.catcat} ${tabActive === 'accessories' && styles.tabActive}`}
+        onClick={() => selectedProducts !== null ? filter('accessories') : null}
         >
           <img src={accessorieIcon} className='w-8 h-8 text-center' alt='' />
           <div>
@@ -94,7 +94,7 @@ export default function LeftBar() {
           </div>
         </div>
         <div
-          className={`p-5 mb-1 mr-1 flex flex-col items-center ${styles.catcat}`}
+          className={`p-5 mb-1 mr-1 flex flex-col items-center ${styles.catcat} ${tabActive === 'chemistry' && styles.tabActive}`}
           onClick={() => selectedProducts !== null ? filter('chemistry') : null}>
           <img src={chemieIcon} className='w-8 h-8 text-center' alt='' />
           <div>
