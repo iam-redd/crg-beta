@@ -17,6 +17,7 @@ import { cancelSelectedProducts } from '../../../store/slices/serviceDataSlice';
 export default function LeftBar() {
   // const [open, setOpen] = React.useState(0);
   const dispatch = useDispatch()
+  const [ tabActive, setTabActive] = useState(null)
   const allProducts = useSelector(state => state.service.allProducts)
   const selectedProducts = useSelector(state => state.service.selectedProducts)
 
@@ -27,21 +28,25 @@ export default function LeftBar() {
   const filter = (value) => {
     const temp = allProducts.filter(product => product.type === value)
     dispatch(cancelSelectedProducts(temp))
+    setTabActive(value)
   }
 
   return (
     <div className={`${styles.catcatBck} w-full mx-auto 2xl:mx-0 md:max-w-screen-xl p-4 m-4 wrappeR`}>
       <div className='flex overflow-x-scroll scroll-smooth lg:wrappeR 2xl:w-max pb-4'>
         <div
-          className={`p-5 mb-1 mr-1 flex flex-col items-center ${styles.catcat}`}
-          onClick={() => selectedProducts !== null ? dispatch(cancelSelectedProducts()) : null}>
+          className={`p-5 mb-1 mr-1 flex flex-col items-center ${styles.catcat} ${tabActive === null && styles.tabActive}`}
+          onClick={() => selectedProducts !== null ? () => {
+            dispatch(cancelSelectedProducts())
+            setTabActive(null)
+          } : null}>
           <img src={allGoods} className='w-8 h-8 text-center' alt='' />
           <div>
             Всё
           </div>
         </div>
         <div
-          className={`p-5 mb-1 mr-1 flex flex-col items-center ${styles.catcat}`}
+          className={`p-5 mb-1 mr-1 flex flex-col items-center ${styles.catcat} ${tabActive === 'coffee-beans' && styles.tabActive}`}
           onClick={() => selectedProducts !== null ? filter('coffe-beans') : null}>
           <img src={beansIcon} className='w-8 h-8 text-center' alt='' />
           <div>
