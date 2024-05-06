@@ -10,11 +10,14 @@ import { setAllProducts, setSelectedProducts } from '../../store/slices/serviceD
 import { getProductsFromLocalStorage } from '../../store/slices/basketSlice';
 import { addData } from '../../store/slices/userSlice';
 import { DefaultSpinner } from '../Spinner';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Layout = () => {
     const { data, isSuccess } = useGetAllGoodsQuery()
     const dispatch = useDispatch()
     const allProductsInBasket = JSON.parse(window.localStorage.getItem('allProductsId')) || []
     const productsInBasket = JSON.parse(window.localStorage.getItem('basket')) || []
+    const notifyError = (text) => toast.error(text);
 
 
     async function getMe() {
@@ -23,10 +26,15 @@ const Layout = () => {
             if (token) {
                 const { data } = await axios.get('/auth/me')
                 dispatch(addData({ ...data, token }))
+            }else{
+                return null
             }
 
         } catch (error) {
             console.log(error)
+            if (error.response.status === 404) {
+                notifyError('Не получилось авторизоватся')
+            }
         }
     }
 
@@ -48,7 +56,8 @@ const Layout = () => {
         <div className={styles.container}>
             <Header />
             <div className={`min-h-svh`}>
-                <Suspense fallback={<DefaultSpinner/>}>
+                <Suspense fallback={<DefaultSpinner />}>
+                    <ToastContainer />
                     <Outlet />
                 </Suspense>
             </div>

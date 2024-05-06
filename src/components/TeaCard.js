@@ -6,36 +6,32 @@ import { useNavigate } from 'react-router-dom';
 import cart from '../assets/icons/icons8-cart-64.png'
 import { addTooBasket, decrementProduct, incrementProduct } from '../store/slices/basketSlice';
 import styles from './CoffeCard/CoffeCard.module.css'
+import { toast } from 'react-toastify';
 const TeaCard = ({ data }) => {
     const packages = ['Крафт-пакет', 'Картонная', 'Альюминиевая']
     const [packageColor, setPackageColor] = useState(false)
     const basket = useSelector(state => state.basket.basket)
-    const allProductsId = useSelector(state => state.basket.allProductsId)
-    const [boolBasket, setBoolBasket] = useState(
-        allProductsId !== null ?
-            allProductsId.length > 0 ? allProductsId.includes(data._id) : false :
-            false
-    )
-    console.log(boolBasket)
-    const index = boolBasket ? allProductsId.indexOf(data._id) : 0
+    const [boolBasket, setBoolBasket] = useState(false)
     const userInfo = useSelector(state => state.user.userInfo)
+    const [index, setIndex] = useState(null)
     const [packageValue, setPackageValue] = useState(null)
-    const [packageIndex, setIndex] = useState(0)
+    const [packageIndex, setPackageIndex] = useState(0)
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const [amount, setAmount] = useState(1)
-
+    const notifyError = (text) => toast.error(text);
     const changePackage = (val) => {
         console.log(val)
         const template = basket.filter(product => product.package === val)
         console.log(template)
         const index = packages.indexOf(val)
         setPackageValue(val)
-        setIndex(prev => index)
-        if(template.length > 0) {
+        setPackageIndex(prev => index)
+        if (template.length > 0) {
             setAmount(template[0].amount)
+            setIndex(template[0].index)
             setBoolBasket(true)
-        }else{
+        } else {
             setBoolBasket(false)
             setAmount(1)
         }
@@ -43,10 +39,11 @@ const TeaCard = ({ data }) => {
 
 
     function addToBasketе() {
-        setIndex(0)
+        setPackageIndex(0)
         setPackageColor(false)
         if (packageValue === null) {
             setPackageColor(true)
+            notifyError('Выберите упаковку')
             return console.log('Упаковка не выбран')
         }
 
@@ -60,19 +57,31 @@ const TeaCard = ({ data }) => {
             type: data.type,
         }
 
-        console.log(info)
         dispatch(addTooBasket(info))
+        setIndex(basket.length)
         setBoolBasket(true)
     }
     function increment() {
-        setAmount((prev) => prev = prev + 1)
-        if (boolBasket) {
-            dispatch(incrementProduct(index))
+        try {
+            if (index === null) {
+                return notifyError('Товар не выбран')
+            }
+            if (boolBasket) {
+                setAmount((prev) => prev = prev + 1)
+                dispatch(incrementProduct(index))
+            }
+        } catch (error) {
+            notifyError(error)
         }
     }
-
     function decrement() {
         try {
+            if (!boolBasket) {
+                return notifyError('Сначала добавте товар в корзину')
+            }
+            if (index === null) {
+                return notifyError('Товар не выбран')
+            }
             if (amount === 1) {
                 return
             } else {
@@ -89,8 +98,12 @@ const TeaCard = ({ data }) => {
 
     const handlePackageColor = () => setPackageColor(false)
     useEffect(() => {
-        if (boolBasket) {
-            setAmount(basket[index].amount)
+        
+        const template = basket.filter(product => product.id === data._id)
+        const template2 = template.filter(product => product.package === packageValue)
+        console.log(template2)
+        if (basket.length > 0 && template2.length > 0) {
+            setIndex(template2[0].index)
         }
         // boolBasket && setAmount(basket[index].amount)
     }, []);

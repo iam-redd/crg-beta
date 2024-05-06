@@ -12,6 +12,7 @@ import instagramIcon from '../../assets/icons/instagram-icon.svg'
 import { useGetAllGoodsQuery } from '../../store/goodsApi';
 import { DefaultSpinner } from '../../components/Spinner'
 import { useSelector } from 'react-redux';
+import ProductCard from '../../components/ProductCard';
 
 const Home = () => {
   const { data, isSuccess } = useGetAllGoodsQuery()
@@ -69,7 +70,7 @@ const Home = () => {
                   {
                     allProducts !== null ? <>
                       {
-                        allProducts.map((card, index) => card.topList && <CoffeeCard key={index} data={card} />)
+                        allProducts.map((card, index) => card.topList && <ProductCard key={index} data={card} />)
                       }
                     </> : <DefaultSpinner />
                   }

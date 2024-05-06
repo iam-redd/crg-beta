@@ -10,6 +10,7 @@ const basketSlice = createSlice({
     reducers: {
         addTooBasket(state, { payload }) {
             state.basket.push(payload)
+            state.basket[state.basket.length - 1].index = state.basket.length - 1
             state.allProductsId.push(payload.id)
             window.localStorage.setItem('basket', JSON.stringify(state.basket))
             window.localStorage.setItem('allProductsId', JSON.stringify(state.allProductsId))
@@ -19,6 +20,7 @@ const basketSlice = createSlice({
             state.allProductsId = payload.allProductsId
         },
         incrementProduct(state, { payload }) {
+            console.log(payload)
             state.basket[payload].amount++
             window.localStorage.setItem('basket', JSON.stringify(state.basket))
             window.localStorage.setItem('allProductsId', JSON.stringify(state.allProductsId))

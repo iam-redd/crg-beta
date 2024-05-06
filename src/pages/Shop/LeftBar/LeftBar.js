@@ -15,14 +15,9 @@ import { cancelSelectedProducts } from '../../../store/slices/serviceDataSlice';
 
 
 export default function LeftBar() {
-  // const [open, setOpen] = React.useState(0);
   const dispatch = useDispatch()
   const allProducts = useSelector(state => state.service.allProducts)
   const selectedProducts = useSelector(state => state.service.selectedProducts)
-
-  // const handleOpen = (value) => {
-  //   setOpen(open === value ? 0 : value);
-  // };
 
   const filter = (value) => {
     const temp = allProducts.filter(product => product.type === value)
@@ -34,7 +29,10 @@ export default function LeftBar() {
       <div className='flex overflow-x-scroll scroll-smooth lg:wrappeR 2xl:w-max pb-4'>
         <div
           className={`p-5 mb-1 mr-1 flex flex-col items-center ${styles.catcat}`}
-          onClick={() => selectedProducts !== null ? dispatch(cancelSelectedProducts()) : null}>
+          onClick={() => selectedProducts !== null ? ()=> {
+            dispatch(cancelSelectedProducts())
+            
+           } : null}>
           <img src={allGoods} className='w-8 h-8 text-center' alt='' />
           <div>
             Всё

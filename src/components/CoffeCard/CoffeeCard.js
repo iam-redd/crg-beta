@@ -7,25 +7,22 @@ import styles from './CoffeCard.module.css'
 import { addTooBasket, decrementProduct, incrementProduct } from '../../store/slices/basketSlice'
 import { ReactSpoiler } from 'react-simple-spoiler'
 import url from '../../default.json'
+import { toast } from 'react-toastify';
 
-function CoffeeCard({ data }) {
+
+function CoffeeCard({ data = {} }) {
     const userInfo = useSelector(state => state.user.userInfo)
     const dispatch = useDispatch()
     const weightSize = ['250гр', '500гр', '1000гр']
     const basket = useSelector(state => state.basket.basket)
     const [weightColor, setWeightColor] = useState(false)
     const [pomolColor, setPomoltColor] = useState(false)
-
-    const allProductsId = useSelector(state => state.basket.allProductsId)
-    const [boolBasket, setBoolBasket] = useState(
-        allProductsId !== null ?
-            allProductsId.length > 0 ? allProductsId.includes(data._id) : false :
-            false
-    )
-    const index = boolBasket ? allProductsId.indexOf(data._id) : 0
+    const [boolBasket, setBoolBasket] = useState(false)
+    const [index, setIndex] = useState(null)
     const [amount, setAmount] = useState(1);
     const [pomol, setPomol] = useState('В зёрнах')
     const [weight, setWeight] = useState(null)
+    const notifyError = (text) => toast.error(text);
     const navigate = useNavigate()
     const changePomol = (val) => {
         setPomoltColor(false)
@@ -36,7 +33,7 @@ function CoffeeCard({ data }) {
             setAmount(template2[0].amount)
             setBoolBasket(true)
         } else {
-            setBoolBasket(!true)
+            setBoolBasket(false)
             setAmount(1)
         }
         setPomol(val)
@@ -45,13 +42,14 @@ function CoffeeCard({ data }) {
         setWeightColor(false)
         const template = basket.filter(product => product.weight === val)
         const template2 = template.filter(product => product.pomol === pomol)
-        if (basket.length > 0 && template2.length > 0 && data._id === template2[0].id) {
-            console.log(template2)
-            setAmount(template2[0].amount)
+        const template3 = template2.filter(product => product.id === data._id)
+        if (basket.length > 0 && template3.length > 0 ) {
+            setIndex(template3[0].index)
+            setAmount(template3[0].amount)
             setBoolBasket(true)
 
         } else {
-            setBoolBasket(!true)
+            setBoolBasket(false)
             setAmount(1)
         }
         setWeight(val)
@@ -63,10 +61,13 @@ function CoffeeCard({ data }) {
         setWeightColor(false)
         if (pomol === null) {
             setPomoltColor(true)
+            notifyError('Выберите помол')
             return console.log('Помол не выбран')
+
         }
         if (weight === null) {
             setWeightColor(true)
+            notifyError('Выберите обьём упаковки')
             return console.log('Обьем упаковки не выбран')
         }
         const info = {
@@ -83,14 +84,19 @@ function CoffeeCard({ data }) {
         }
         dispatch(addTooBasket(info))
         setBoolBasket(true)
-        return
     }
     function decrement() {
         try {
+            if(!boolBasket){
+                return notifyError('Сначала добавте товар в корзину')
+            }
+            if(index === null){
+                return notifyError('Товар не выбран')
+            }
             if (amount === 1) {
                 return
             } else {
-                setAmount((prev) => prev = prev - 1)
+                setAmount(amount - 1)
                 if (boolBasket) {
                     dispatch(decrementProduct(index))
                 }
@@ -102,9 +108,18 @@ function CoffeeCard({ data }) {
     }
 
     function increment() {
-        setAmount((prev) => prev = prev + 1)
-        if (boolBasket) {
-            dispatch(incrementProduct(index))
+        try {
+            if(!boolBasket){
+                return notifyError('Сначала добавте товар в корзину')
+            }
+            if(index === null){
+                return notifyError('Товар не выбран')}
+            if (boolBasket) {
+                setAmount(amount + 1)
+                dispatch(incrementProduct(index))
+            }
+        } catch (error) {
+            console.log(error)
         }
     }
 
@@ -116,16 +131,16 @@ function CoffeeCard({ data }) {
         // }
         // boolBasket && setAmount(basket[index].amount)
         const template = basket.filter(product => product.pomol === pomol)
-        const template2 = template.filter(product => product.weight === '250гр')
-        if (basket.length > 0 && template2.length > 0) {
-            console.log(template2)
-            setAmount(template2[0].amount)
+        let template2 = template.filter(product => product.weight === weight)
+        const template3 = template2.filter(product => product.id === data._id)
+        if (basket.length > 0 && template3.length > 0) {
             setBoolBasket(true)
+            setIndex(template3[0].index)
         } else {
-            setBoolBasket(!true)
+            setBoolBasket(false)
             setAmount(1)
         }
-    }, []);
+    }, [pomol, basket , weight ,data]);
 
     return (
         <div className={styles.container}>

@@ -20,6 +20,7 @@ export default function OrderForm({ totalPrice }) {
         try {
             e.preventDefault()
             setError(false)
+            console.log('click')
             if (paymentMethod === null) {
                 // setPomoltColor(true)
                 setMessage('Способ оплаты не выбран')
@@ -55,7 +56,8 @@ export default function OrderForm({ totalPrice }) {
                 throw new Error('Order not created successfully')
             }
         } catch (error) {
-            console.log('Что-то пошло не так')
+
+            console.log(error)
         }
         setBtnBool(false)
     }
@@ -118,9 +120,11 @@ export default function OrderForm({ totalPrice }) {
                         {/* <input type="text" className={styles.input} name='name' placeholder='Name' /> */}
                         {/* <input type="text" className={styles.input} name='email' placeholder='Phone number' /> */}
                         <Button
+                        type='submit'
                             color='red'
                             variant='outlined'
-                            disabled={!btnBool}>{
+                            disabled={!btnBool}
+                            >{
                                 btnBool ? 'ЗАКАЗАТЬ' : 'ЗАКАЗАТЬ'
                             }</Button>
                     </form> : <p className='text-center' >Для того чтобы оформить свой заказ, пожалуйста войдите в свой аккаунт или зарегистрируйтесь</p>
