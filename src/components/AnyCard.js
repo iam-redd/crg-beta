@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Card, IconButton, Typography } from '@material-tailwind/react';
+import { Card } from '@material-tailwind/react';
 import url from '../default.json'
 import styles from './CoffeCard/CoffeCard.module.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import cart from '../assets/icons/icons8-cart-64.png'
 import { addTooBasket, decrementProduct, incrementProduct } from '../store/slices/basketSlice';
+import { AddBox, IndeterminateCheckBox } from '@mui/icons-material';
+import { red } from '@mui/material/colors';
+
+import { Button, IconButton, Typography } from '@mui/material';
+
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
+
 const AnyCard = ({ data }) => {
     const userInfo = useSelector(state => state.user.userInfo)
     const basket = useSelector(state => state.basket.basket)
@@ -132,47 +139,33 @@ const AnyCard = ({ data }) => {
                     {
 
                         boolBasket ?
-                            <>
-                                <div className='flex items-center justify-between'>
-                                    <IconButton
-                                        color='red'
-                                        className=' w-8 h-8'
-                                        onClick={decrement}>
-                                        -
-                                    </IconButton>
-                                    <span className='mx-2'>{amount}</span>
-                                    <IconButton
-                                        color='red'
-                                        className=' w-8 h-8'
-                                        onClick={increment}>
-                                        +
-                                    </IconButton>
-                                </div>
-                                <Button variant='outlined' color='red' onClick={() => navigate('/basket')}>
-                                    <span><img style={{ display: 'inline-block', marginRight: '5px' }} width={24} height={24} src={cart} alt="" />
-                                    </span>Перейти</Button>
-                            </> :
-                            <>
-                                <div className='flex items-center justify-between'>
-                                    <IconButton
-                                        color='red'
-                                        className=' w-8 h-8'
-                                        onClick={decrement}>
-                                        -
-                                    </IconButton>
-                                    <span className='mx-2'>{amount}</span>
-                                    <IconButton
-                                        color='red'
-                                        className=' w-8 h-8'
-                                        onClick={increment}>
-                                        +
-                                    </IconButton>
-                                </div>
-                                <Button
-                                    variant='outlined'
-                                    color='red'
-                                    onClick={addToBasketе}>В корзину</Button>
-                            </>
+                        <>
+                        <div className='flex items-center justify-between'>
+                        <IconButton onClick={decrement}>
+                            <IndeterminateCheckBox fontSize='inherit' sx={{ color: red[500] }}/>
+                        </IconButton>
+                        <span>{basket[index]?.amount}</span>
+                        <IconButton onClick={increment}>
+                            <AddBox fontSize='inherit' sx={{ color: red[500] }}/>
+                        </IconButton>
+                        </div>
+                        
+                        
+                        <Button startIcon={<ShoppingCartCheckoutIcon/>} variant='text' size='medium' color='error' onClick={() => navigate('/basket')}>
+                        <Typography variant='body1' fontWeight={500} fontSize={13}>Перейти</Typography>
+                        </Button>
+                    </> :
+                    <>
+                      
+                        <Button
+                            startIcon={<AddShoppingCartIcon fontSize='inherit'/>}
+                            variant='outlined'
+                            size='medium'
+                            color='error'
+                            onClick={addToBasketе}>
+                                <Typography variant='body1' fontWeight={500} fontSize={13}>Добавить</Typography>
+                        </Button>
+                    </>
                     }
                 </div>
             </Card>

@@ -5,7 +5,6 @@ import ProductCard from './ProductCard/ProductCard.js';
 import styles from './Basket.module.css'
 import OrderForm from './OrderForm/OrderForm.js';
 
-
 import emptyBasket from '../../assets/cart.png'
 
 import { useNavigate } from 'react-router-dom';
@@ -81,7 +80,7 @@ const Basket = () => {
         basket.length > 0 && totalCost()
     });
     return (
-        <div>
+        <div className='xl:mx-auto xl:max-w-screen-xl 2xl:max-w-screen-2xl'>
             {
                 allProductsId.length > 0 ? <>
                     {

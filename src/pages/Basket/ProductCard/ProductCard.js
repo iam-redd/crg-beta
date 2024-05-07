@@ -5,8 +5,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { decrementProduct, incrementProduct, removeProductFromBasket } from '../../../store/slices/basketSlice'
 import { IconButton } from '@mui/material'
 import DeleteIcon from '@mui/icons-material/Delete';
-import AddIcon from '@mui/icons-material/Add';
 import { red } from '@mui/material/colors'
+import { AddBox, IndeterminateCheckBox } from '@mui/icons-material'
 
 function ProductCard({ index }) {
     const basket = useSelector(state => state.basket.basket)
@@ -36,10 +36,11 @@ function ProductCard({ index }) {
         <>
             {
                 basket[index]?.amount > 0 ?
-                    <div className={`rounded mx-4 my-2 ${styles.product_container}`}>
+                    <div className={`rounded mx-4 my-2 flex ${styles.product_container}`}>
                         <div className={`w-2/4 lg:w-1/5 md:w-2/5 sm:w-3/5 ${styles.resize}`}><img className={styles.img} src={`${url.backendUrl}/${basket[index]?.img}`} alt="" /></div>
-                        <div className='ml-4'>
-                            <div className={``}>
+                        <div className='ml-4 xl:ml-10 flex flex-auto flex-col md:flex-row'>
+                            <div>
+                            <div className={`font-bold`}>
                                 <span>{basket[index]?.name } </span>
                                 <span className='text-sm font-medium text-red-700'>
                                     {
@@ -47,6 +48,8 @@ function ProductCard({ index }) {
                                     }
                                 </span>
                             </div>
+                            <div className='flex flex-row justify-between'>
+                            <div className=''>
                             {(basket[index].type === 'tea' || 'coffee-beans') &&
                                 <p>---{basket[index].package}</p>
                             }
@@ -63,21 +66,26 @@ function ProductCard({ index }) {
                                     </span>
                                 </div>
                             }
-                            <div className={`mt-5 ${styles.btn_wrapper}`}>
-                                <button
-                                    className={styles.btn}
-                                    onClick={decrement}>-</button>
+                            </div>
+                            
+                            </div>
+                            </div>
+                            <div className={`mt-5 items-center w-max flex-auto flex justify-end md:flex-start`}>
+                                <IconButton onClick={decrement}>
+                                    <IndeterminateCheckBox sx={{ color: red[300] }}/>
+                                </IconButton>
                                 <span>{basket[index]?.amount}</span>
-                                <IconButton 
-                                <button
-                                    className={styles.btn}
-                                    onClick={increment}>+
-                                </button>
+                                <IconButton onClick={increment}>
+                                    <AddBox sx={{ color: red[300] }}/>
+                                </IconButton>
+                                
                                 <IconButton onClick={remove} aria-label="delete" size="large">
                                 <DeleteIcon sx={{ color: red[600] }} />
                                 </IconButton>
+                                
                             </div>
                         </div>
+                        
                     </div> : <></>
             }
         </>

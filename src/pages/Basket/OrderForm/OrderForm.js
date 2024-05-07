@@ -85,7 +85,7 @@ export default function OrderForm({ totalPrice }) {
                     </div>
                         <div className='flex items-center gap-1'>
                                 <Checkbox 
-                                    checked={checkBool} 
+                                    checked={checkBool}
                                     onChange={() => setBtnBool(!checkBool)}
                                 />
                                 <span className={styles.texttip}> Согласен с условиями
