@@ -8,6 +8,8 @@ import {
 import url from '../../../default.json'
 import { Link, Outlet } from 'react-router-dom';
 import { List, ListItemSuffix, ListItemPrefix, Card, ListItem, Chip } from '@material-tailwind/react';
+import { RegForm } from '../Registration/RegForm';
+import { LogForm } from '../Login/LogForm';
 export default function UserHeader() {
   const [, setToken] = useState(window.localStorage.getItem('token'))
   const userInfo = useSelector(state => state.user.userInfo)
@@ -126,6 +128,23 @@ export default function UserHeader() {
                           Войти
                         </ListItem>
                       </Link>
+                      <ListItem>
+                          <ListItemPrefix>
+
+                            <ArrowRightEndOnRectangleIcon className='w-5 h-5' />
+
+                          </ListItemPrefix>
+                          <LogForm/>
+                        </ListItem>
+                        <ListItem>
+                        <ListItemPrefix>
+
+                          <ArrowRightEndOnRectangleIcon className='w-5 h-5' />
+
+                        </ListItemPrefix>
+                        <RegForm/>
+                      </ListItem>
+                      
 
                     </List>
                   </Card>
