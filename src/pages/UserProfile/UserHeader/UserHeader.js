@@ -136,17 +136,7 @@ export default function UserHeader() {
                           </ListItemPrefix>
                           <LogForm/>
                         </ListItem>
-                        <ListItem>
-                        <ListItemPrefix>
-
-                          <ArrowRightEndOnRectangleIcon className='w-5 h-5' />
-
-                        </ListItemPrefix>
-                        <RegForm/>
-                      </ListItem>
-                      
-
-                    </List>
+                        </List>
                   </Card>
                 </div>
               </div>

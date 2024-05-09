@@ -128,7 +128,7 @@ export function LogForm() {
               Еще нет аккаунта?
               <Typography
                 as="a"
-                href={<RegForm />}
+                Link to = {<RegForm />}
                 variant="small"
                 color="blue-gray"
                 className="ml-1 font-bold"
