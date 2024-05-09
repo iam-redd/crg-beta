@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './OrderStatus.module.css'
 import axios from '../../../../../store/axios'
+import { toast } from 'react-toastify'
 
 export default function OrderStatus({ status, id, getAllOrders, index }) {
     const statusesDb = ['Отказано', 'В ожидании', 'Оформлен', 'В пути', 'Доставлен']
     const allStatuses = ['Отказ', 'Одобрить', 'Отправить', 'Доставлен']
+    const [isLoading, setLoading] = useState(false)
+    const notifyError = (text) => toast.error(text);
     let bool0 = true
     let bool1 = true
     let bool2 = true
@@ -68,38 +71,50 @@ export default function OrderStatus({ status, id, getAllOrders, index }) {
 
 
     async function updateStatus(nextStatus) {
-        console.log('+++++')
-        if (status !== nextStatus) {
-            const request = await axios.patch('/order', {
-                orderId: id,
-                nextStatus
-            })
+        try {
+            console.log('click')
+            setLoading(true)
+            if (status !== nextStatus) {
+                const request = await axios.patch('/order', {
+                    orderId: id,
+                    nextStatus
+                })
 
-            if (request.status === 200) {
-                getAllOrders()
+                if (request.status === 200) {
+                    getAllOrders()
+                }
+                setLoading(false)
             }
+        } catch (e) {
+            setLoading(false)
+            console.log(e)
+            if(e.response.status === 404){
+                notifyError(e.response.data.message)
+
+            }
+
         }
     }
     return (
         <div className={styles.container}>
             <div
                 className={`${styles.colorRed} ${styles.btn_wrapper} ${!bool0 && styles.opacity}`}
-                onClick={() => bool0 && updateStatus('Отказано')}>
+                onClick={() => bool0 && !isLoading && updateStatus('Отказано')}>
                 <div className={styles.btn_}>1</div>
                 {allStatuses[0]}
             </div>
             <div className={`${styles.btn_wrapper} ${!bool1 && styles.opacity}`}
-                onClick={() => bool1 && updateStatus('Оформлен')}>
+                onClick={() => bool1 && !isLoading && updateStatus('Оформлен')}>
                 <div className={styles.btn}>2</div>
                 {allStatuses[1]}
             </div>
             <div className={`${styles.btn_wrapper} ${!bool2 && styles.opacity}`}
-                onClick={() => bool2 && updateStatus('В пути')}>
+                onClick={() => bool2 && !isLoading && updateStatus('В пути')}>
                 <div className={styles.btn}>3</div>
                 {allStatuses[2]}
             </div>
             <div className={`${styles.btn_wrapper} ${!bool3 && styles.opacity}`}
-                onClick={() => bool3 && updateStatus('Доставлен')}>
+                onClick={() => bool3 && !isLoading && updateStatus('Доставлен')}>
                 <div className={styles.btn}>4</div>
                 {allStatuses[3]}
             </div>

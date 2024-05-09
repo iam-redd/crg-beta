@@ -83,7 +83,7 @@ const AnyCard = ({ data }) => {
         } else {
             setBoolBasket(false)
         }
-    }, []);
+    }, [data._id,basket]);
 
     return (
         <div className=''>

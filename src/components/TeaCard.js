@@ -106,7 +106,7 @@ const TeaCard = ({ data }) => {
             setIndex(template2[0].index)
         }
         // boolBasket && setAmount(basket[index].amount)
-    }, []);
+    }, [basket,data._id,packageValue]);
     return (
         <div className=''>
             <Card className='w-80 md:w-72 h-full border py-5 px-5 card-hover sna'>
