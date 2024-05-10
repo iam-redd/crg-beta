@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Option, Progress, Select, } from '@material-tailwind/react';
-import {  Button, IconButton, Typography } from '@mui/material';
+import { Card, Option, Progress, Select, Button, Typography } from '@material-tailwind/react';
+import { IconButton } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './CoffeCard.module.css'
@@ -262,6 +262,7 @@ function CoffeeCard({ data = {} }) {
                         boolBasket ?
                             <Button variant='outlined' color='red' onClick={() => navigate('/basket')}> <span><img style={{ display: 'inline-block', marginRight: '5px' }} width={24} height={24} src={cart} alt="" /></span>Перейти</Button> :
                             <Button
+                                
                                 variant='outlined'
                                 color='red'
                                 onClick={addToBasketе}>В корзину</Button>
@@ -284,20 +285,20 @@ function CoffeeCard({ data = {} }) {
                                 </div>
                                 
                                 
-                                <Button startIcon={<ShoppingCartCheckoutIcon/>} variant='text' size='medium' color='error' onClick={() => navigate('/basket')}>
-                                <Typography variant='body1' fontWeight={500} fontSize={13}>Перейти</Typography>
+                                <Button variant='outlined' size='sm' color='blue-gray' onClick={() => navigate('/basket')}>
+                                <h3>Перейти</h3>
                                 </Button>
                                 
                             </> :
                             <>
                               
                                 <Button
-                                    startIcon={<AddShoppingCartIcon fontSize='inherit'/>}
-                                    variant='outlined'
-                                    size='medium'
-                                    color='error'
+                                    className='font-medium'
+                                    color="red"
+                                    variant='gradient'
+                                    size='sm'
                                     onClick={addToBasketе}>
-                                        <Typography variant='body1' fontWeight={500} fontSize={13}>Добавить</Typography>
+                                        <h3>В корзину</h3>
                                 </Button>
                             </>
                     }
