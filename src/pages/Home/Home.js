@@ -65,8 +65,8 @@ const Home = () => {
               <h2 className='text-xl font-bold text-center my-6 sm:my-10'>НОВИНКИ</h2>
             </div>
             <div className=''>
-              <div className='flex pb-4 overflow-scroll snap-x snap-mandatory justify-start gap-4 flex-nowrap wrappeR'>
-                <div className='px-2 lg:px-0 flex pb-4 overflow-x-scroll scroll-smooth snap-x snap-mandatory justify-start gap-4 flex-nowrap'>
+              <div className='flex pb-4 overflow-scroll justify-start gap-4 flex-nowrap wrappeR'>
+                <div className='px-2 lg:px-0 flex pb-4 overflow-x-scroll justify-start gap-4 flex-nowrap'>
                   {
                     allProducts !== null ? <>
                       {
@@ -86,7 +86,7 @@ const Home = () => {
               <div className='flex w-full md:w-2/5 p-10'>
                 <img src={roasterImg} alt='Roaster' />
               </div>
-              <div className='flex w-full text-center md:w-3/5 mx-5'>
+              <div className='flex w-full text-justify md:w-3/5 mx-5'>
                 <p className='xl:text-lg 2xl:text-lg md:text-md text-sm align-top'>Наша компания в сфере HoReCa занимается поставками свежеобжаренного кофе и сиропов собственного производства.
                   Мы обжариваем кофе уже более 5 лет на лучшем в мире оборудовании. Каждую партию отслеживаем на специальном оборудовании, что позволяет создавать стабильно качественный продукт. В свободную продажу поступает товар, прошедший строгий контроль качества.
                   <br />*Так же наша компания занимается подготовкой и обучением высококвалифицированных бариста.</p>
@@ -94,12 +94,12 @@ const Home = () => {
             </div>
             <div className='flex w-full items-center flex-wrap md:flex-nowrap'>
               <div className='flex flex-col w-full md:w-3/5 mx-5'>
-                <p className='md:text-md text-sm xl:text-lg 2xl:text-lg md:mt-5 text-center mt-3'>
+                <p className='md:text-md text-sm xl:text-lg 2xl:text-lg md:mt-5 text-justify mt-3'>
                   *Большие склады для зеленого и свеже обжаренного кофе.
                 </p>
-                <p className='md:text-md text-sm xl:text-lg 2xl:text-lg md:mt-5 text-center mt-3 '>*Несколько видов Европейского обжарочного оборудования.
+                <p className='md:text-md text-sm xl:text-lg 2xl:text-lg md:mt-5 text-justify mt-3 '>*Несколько видов Европейского обжарочного оборудования.
                 </p>
-                <p className='md:text-md text-sm xl:text-lg 2xl:text-lg md:mt-5 text-center mt-3'>*Высокая стень очистки кофе дистонером. 3-х уровневый контроль качества.
+                <p className='md:text-md text-sm xl:text-lg 2xl:text-lg md:mt-5 text-justify mt-3'>*Высокая стень очистки кофе дистонером. 3-х уровневый контроль качества.
                 </p>
               </div>
               <div className='flex w-full md:w-2/5 justify-center p-10 '>
@@ -108,24 +108,24 @@ const Home = () => {
             </div>
           </div>
           <div className='grid grid-cols-1 my-4 sm:grid-cols-3 row-auto gap-1 md:gap-2 md:px-2 px-1 lg:gap-10 text-md items-top lg:mt-10 xl:mx-auto xl:max-w-screen-xl 2xl:max-w-screen-2xl'>
-            <div className='mx-6 sm:mx-0 border-2 rounded-xl flex-col justify-center text-center items-center p-5'>
-              <h2 className='text-xl font-semibold'>Доставка</h2>
-              <p className='xl:text-lg 2xl:text-lg md:text-md text-sm my-4'>Бесплатно по г.Ташкенту с 12:00 и в течении дня, с понедельника по субботу при заказе на сумму выше 350.000</p>
+            <div className='mx-1 sm:mx-0 border-2 rounded-xl flex-col justify-center text-justify items-center p-5'>
+              <h2 className='text-xl font-semibold text-center'>Доставка</h2>
+              <p className='xl:text-md 2xl:text-md md:text-md text-sm my-4'>Бесплатно по г.Ташкенту с 12:00 и в течении дня, с понедельника по субботу при заказе на сумму выше 350.000</p>
             </div>
-            <div className='mx-6 sm:mx-0 border-2 rounded-xl flex-col justify-center text-center items-center p-5'>
-              <h2 className='text-xl font-semibold'>Качество</h2>
-              <p className='xl:text-lg 2xl:text-lg md:text-md text-sm my-4'>Мы поддерживаем микроклимат на складе для зеленого кофе, используем лучшие в мире ростеры Probat, проверяем каждую партию кофе колориметрами. А после обжарки дополнительно очищаем.</p>
+            <div className='mx-1 sm:mx-0 border-2 rounded-xl flex-col justify-center text-justify items-center p-5'>
+              <h2 className='text-xl font-semibold text-center'>Качество</h2>
+              <p className='xl:text-md 2xl:text-md md:text-md text-sm my-4'>Мы поддерживаем микроклимат на складе для зеленого кофе, используем лучшие в мире ростеры Probat, проверяем каждую партию кофе колориметрами. А после обжарки дополнительно очищаем.</p>
             </div>
-            <div className='mx-6 sm:mx-0 border-2 rounded-xl flex-col justify-center text-center items-center p-5'>
-              <h2 className='text-xl font-semibold'>Жарим каждый день</h2>
-              <p className='xl:text-lg 2xl:text-lg md:text-md text-sm my-4'>Жарим кофе семь дней в неделю, отправляем на следующий день после заказа, чтобы вы получали максимально свежий кофе.</p>
+            <div className='mx-1 sm:mx-0 border-2 rounded-xl flex-col justify-center text-justify items-center p-5'>
+              <h2 className='text-xl font-semibold text-center'>Жарим каждый день</h2>
+              <p className='xl:text-md 2xl:text-md md:text-md text-sm my-4'>Жарим кофе семь дней в неделю, отправляем на следующий день после заказа, чтобы вы получали максимально свежий кофе.</p>
             </div>
           </div>
           <div className='flex flex-wrap md:flex-nowrap text-center md:text-start justify-center p-5 rounded-3xl items-center bg-gray-100 xl:mx-auto xl:max-w-screen-xl 2xl:max-w-screen-2xl mb-10'>
             <img src={teamImg} alt='Team' className='' />
             <div className='mx-4'>
               <span className='text-lg font-bold'>Подпишись на нас</span>
-              <p className='mx-auto my-2 md:mx-0 md:mt-1 w-fit xl:text-lg 2xl:text-lg md:text-md text-sm'>Здесь мы рассказываем о том, что у нас происходит каждый день. О людях, анонсах, процессах, событиях и новых сортах кофе.</p>
+              <p className='mx-auto my-2 md:mx-0 md:mt-1 w-fit xl:text-md 2xl:text-md md:text-md text-sm'>Здесь мы рассказываем о том, что у нас происходит каждый день. О людях, анонсах, процессах, событиях и новых сортах кофе.</p>
             </div>
             <div className='text-sm mr-4'>
               <div className='flex my-2 md:mt-0'>

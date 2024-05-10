@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Option, Select } from '@material-tailwind/react';
+import { Card, Option, Select, Button, Typography } from '@material-tailwind/react';
 import url from '.././default.json'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -9,7 +9,7 @@ import { toast } from 'react-toastify';
 import { AddBox, IndeterminateCheckBox } from '@mui/icons-material';
 import { red } from '@mui/material/colors';
 
-import { Button, IconButton, Typography } from '@mui/material';
+import { IconButton } from '@mui/material';
 
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
@@ -196,33 +196,34 @@ const TeaCard = ({ data }) => {
                     {
 
                         boolBasket ?
-                        <>
-                        <div className='flex items-center justify-between'>
-                        <IconButton onClick={decrement}>
-                            <IndeterminateCheckBox fontSize='inherit' sx={{ color: red[500] }}/>
-                        </IconButton>
-                        <span>{basket[index]?.amount}</span>
-                        <IconButton onClick={increment}>
-                            <AddBox fontSize='inherit' sx={{ color: red[500] }}/>
-                        </IconButton>
-                        </div>
-                        
-                        
-                        <Button startIcon={<ShoppingCartCheckoutIcon/>} variant='text' size='medium' color='error' onClick={() => navigate('/basket')}>
-                        <Typography variant='body1' fontWeight={500} fontSize={13}>Перейти</Typography>
-                        </Button>
-                    </> :
-                    <>
-                      
-                        <Button
-                            startIcon={<AddShoppingCartIcon fontSize='inherit'/>}
-                            variant='outlined'
-                            size='medium'
-                            color='error'
-                            onClick={addToBasketе}>
-                                <Typography variant='body1' fontWeight={500} fontSize={13}>Добавить</Typography>
-                        </Button>
-                    </>
+                            <>
+                                <div className='flex items-center justify-between'>
+                                <IconButton onClick={decrement}>
+                                    <IndeterminateCheckBox fontSize='inherit' sx={{ color: red[500] }}/>
+                                </IconButton>
+                                <span>{basket[index]?.amount}</span>
+                                <IconButton onClick={increment}>
+                                    <AddBox fontSize='inherit' sx={{ color: red[500] }}/>
+                                </IconButton>
+                                </div>
+                                
+                                
+                                <Button variant='outlined' size='sm' color='blue-gray' onClick={() => navigate('/basket')}>
+                                <h3>Перейти</h3>
+                                </Button>
+                                
+                            </> :
+                            <>
+                              
+                                <Button
+                                    className='font-medium'
+                                    color="red"
+                                    variant='gradient'
+                                    size='sm'
+                                    onClick={addToBasketе}>
+                                        <h3>В корзину</h3>
+                                </Button>
+                            </>
                     }
 
                 </div>

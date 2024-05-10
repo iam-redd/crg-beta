@@ -129,14 +129,12 @@ export default function UserHeader() {
                           Войти
                         </ListItem>
                       </Link>
-                      {/* <ListItem>
-                          <ListItemPrefix>
-
-                            <ArrowRightEndOnRectangleIcon className='w-5 h-5' />
-
-                          </ListItemPrefix>
-                          <LogForm open={open} handleOpenLog={handleOpenLog}/>
-                        </ListItem> */}
+                     <ListItem>
+                         <ListItemPrefix>
+                           <ArrowRightEndOnRectangleIcon className='w-5 h-5' />
+                         </ListItemPrefix>
+                         <LogForm open={open} handleOpenLog={handleOpenLog}/>
+                       </ListItem>
                     </List>
                   </Card>
                 </div>
