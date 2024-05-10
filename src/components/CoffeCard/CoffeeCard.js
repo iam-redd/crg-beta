@@ -148,21 +148,21 @@ function CoffeeCard({ data = {} }) {
         <div className={styles.container}>
             <Card className='w-80 md:w-80 h-full border py-5 px-5 card-hover snap-center'>
                 <div className={styles.header}>
-                    <span className='text-xs text-red-700'>{data.stopList && 'Нет в наличии'}</span>
-                    <span className='text-xs'>{data.topList && 'Топ-недели'}</span>
+                    <span className='text-sm text-red-700'>{data.stopList && 'Нет в наличии'}</span>
+                    <span className='text-sm'>{data.topList && 'Топ-недели'}</span>
                 </div>
-                <h2 className='text-center font-bold text-xl line-clamp-2'>{data?.name ? data.name : ''}</h2>
-                <p className='text-xs flex text-red-200 justify-center rounded border border-red-200 mx-auto my-2'>{data.roast}</p> {/*Вытаскиваем с базы для эспрессо или фильтра*/}
-                <div className='flex flex-col mt-5'>
+                <h2 className='text-center font-bold text-lg line-clamp-2'>{data?.name ? data.name : ''}</h2>
+                <p className='text-xs flex text-red-200 justify-center rounded border border-red-200 mx-auto mb-2 p-1'>{data.roast}</p> {/*Вытаскиваем с базы для эспрессо или фильтра*/}
+                <div className='flex flex-col'>
                     <img src={`${url.backendUrl}/${data.img[0]}`} alt='card-img' className='object-cover w-full' />
                     <div className='grid grid-cols-1 grid-rows-2 gap-1  text-xs'>
                         <div className='flex gap-2 mt-5'>
                         <p className='flex-auto font-medium'>
                             Обработка: <span className='font-normal'>{data.treatment}</span>
                         </p>
-                        <p className='flex-auto font-medium'>Оценка Q: <span className='font-normal'>{data?.scores ? data.scores : 0}</span></p>
+                        <p className='flex-auto font-medium'>CQI: <span className='font-normal'>{data?.scores ? data.scores : 0} балла</span></p>
                         </div>
-                        <div className='flex flex-row gap-4 mt-3'>
+                        <div className='flex flex-row gap-4 mt-2'>
                         <div className='flex-auto'>
                         <p className='mb-1'>Кислотность:</p>
                         <Progress color='red' size='sm' value={data?.acidity ? data.acidity : 0} />
