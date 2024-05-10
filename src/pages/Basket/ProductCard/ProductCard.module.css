@@ -3,12 +3,10 @@
     padding: 20px 5px;
     align-self: center;
 }
-
 .name{
     display: flex;
     justify-content: space-between;
 }
-
 .img{
     border-radius: 10px;
     transition: 1s;

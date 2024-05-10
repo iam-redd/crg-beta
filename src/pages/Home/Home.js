@@ -65,8 +65,8 @@ const Home = () => {
               <h2 className='text-xl font-bold text-center my-6 sm:my-10'>НОВИНКИ</h2>
             </div>
             <div className=''>
-              <div className='flex pb-4 overflow-scroll snap-x snap-mandatory justify-start gap-4 flex-nowrap wrappeR'>
-                <div className='px-2 lg:px-0 flex pb-4 overflow-x-scroll scroll-smooth snap-x snap-mandatory justify-start gap-4 flex-nowrap'>
+              <div className='flex pb-4 overflow-scroll justify-start gap-4 flex-nowrap wrappeR'>
+                <div className='px-2 lg:px-0 flex pb-4 overflow-x-scroll justify-start gap-4 flex-nowrap'>
                   {
                     allProducts !== null ? <>
                       {
