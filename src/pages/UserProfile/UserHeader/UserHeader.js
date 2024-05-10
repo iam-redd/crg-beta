@@ -14,6 +14,8 @@ export default function UserHeader() {
   const [, setToken] = useState(window.localStorage.getItem('token'))
   const userInfo = useSelector(state => state.user.userInfo)
   const dispatch = useDispatch()
+  const [open, setOpen] = React.useState(false);
+  const handleOpenLog = () => setOpen((cur) => !cur);
   const handleLogout = () => {
     dispatch(logout())
     setToken(null)
@@ -134,7 +136,7 @@ export default function UserHeader() {
                             <ArrowRightEndOnRectangleIcon className='w-5 h-5' />
 
                           </ListItemPrefix>
-                          <LogForm/>
+                          <LogForm open={open} handleOpenLog={handleOpenLog}/>
                         </ListItem>
                         </List>
                   </Card>
