@@ -152,7 +152,7 @@ function CoffeeCard({ data = {} }) {
                     <span className='text-sm'>{data.topList && 'Топ-недели'}</span>
                 </div>
                 <h2 className='text-center font-bold text-lg line-clamp-2'>{data?.name ? data.name : ''}</h2>
-                <p className='text-xs flex text-red-200 justify-center rounded border border-red-200 mx-auto mb-2 p-1'>{data.roast}</p> {/*Вытаскиваем с базы для эспрессо или фильтра*/}
+                <p className='text-xs flex text-red-200 justify-center rounded border border-red-200 mx-auto mt-1 mb-2 p-1'>{data.roast}</p> {/*Вытаскиваем с базы для эспрессо или фильтра*/}
                 <div className='flex flex-col'>
                     <img src={`${url.backendUrl}/${data.img[0]}`} alt='card-img' className='object-cover w-full' />
                     <div className='grid grid-cols-1 grid-rows-2 gap-1  text-xs'>
