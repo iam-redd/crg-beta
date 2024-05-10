@@ -117,7 +117,7 @@ const Registration = () => {
                                 type="text"
                                 name='phoneNumber'
                                 placeholder='+998 99 999 99 99'
-                                defaultValue={'+998999994923'}
+                                defaultValue={'+998'}
                                 label='Номер телефона'
                             />
                             <Input

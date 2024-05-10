@@ -21,12 +21,10 @@ const LogIn = () => {
         try {
             e.preventDefault()
             setLogin(false)
-            const email = e.target.email.value
-            const password = e.target.password.value
 
             const data = await axios.post(`/auth/login`, {
-                email,
-                password
+                phoneNumber:e.target.email.value,
+                password:e.target.password.value
             })
             console.log(data)
             if (data.status === 200) {
@@ -93,10 +91,10 @@ const LogIn = () => {
                             </div>
                             <Input
                                 type="text"
-                                label='Ваш логин'
+                                label='Ваш номер телефона'
                                 name='email'
                                 className={styles.input}
-                                defaultValue={'test6@test.ru'} />
+                                defaultValue={'+998'} />
                             <Input
                                 label='Ваш пароль'
                                 name='password'

@@ -8,7 +8,7 @@ import { Typography } from "@material-tailwind/react";
 
 export default function OrderForm({ totalPrice }) {
     const [btnBool, setBtnBool] = useState(false)
-    const [checkBool, setCheckBool] = useState(false)
+    const [checkBool] = useState(false)
     const [isError, setError] = useState(false)
     const [errorMessage, setMessage] = useState('')
     const dispatch = useDispatch()

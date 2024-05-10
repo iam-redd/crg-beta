@@ -32,9 +32,9 @@ const Layout = () => {
 
         } catch (error) {
             console.log(error)
-            if (error.response.status === 404) {
-                notifyError('Не получилось авторизоватся')
-            }
+            // if (error.response.status === 404) {
+                notifyError('Не удалось авторизоватся')
+            // }
         }
     }
 

@@ -5,11 +5,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setSelectedUsers } from '../../../../store/slices/forAdmin'
 export default function SearchBar() {
     const allUsers = useSelector(state => state.forAdmin.allUsers)
-    // const searchValue = useSelector(state => state.forAdmin.selectedValue)
-    // const selectedUsers = useSelector(state => state.forAdmin.selectedUsers)
     const dispatch = useDispatch()
     function filter(value = '') {
-        console.log(value)
         if (value === '') {
             dispatch(setSelectedUsers(allUsers))
         } else {
@@ -60,7 +57,7 @@ export default function SearchBar() {
                     </ButtonGroup>
                 </div>
                 <div className='w-72 mx-auto sm:mx-0'>
-                    <Input icon={<MagnifyingGlassIcon className="h-5 w-5" />} onInput={(e) => searchItem(e.target.value)} label="Поиск по email" />
+                    <Input icon={<MagnifyingGlassIcon className="h-5 w-5" />} onInput={(e) => searchItem(e.target.value)} label="Поиск по номеру телефона" />
                 </div>
             </div>
         </>

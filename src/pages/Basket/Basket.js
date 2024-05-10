@@ -17,8 +17,6 @@ const Basket = () => {
     const basket = useSelector(state => state.basket.basket)
     const [totalPrice, setTotalPrice] = useState(0)
 
-    const [promocode, setPromocode] = React.useState("");
-    const onChange = ({ target }) => setPromocode(target.value);
 
     const [data, setData] = useState(null)
     const navigate = useNavigate()
@@ -69,7 +67,9 @@ const Basket = () => {
                 if (product.id === good._id) {
                     statuses.push(good.stopList)
                 }
+                return null
             })
+            return null
         })
         dispatch(updateStopList(statuses))
 
