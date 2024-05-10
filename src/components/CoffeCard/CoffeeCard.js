@@ -12,10 +12,6 @@ import { AddBox, IndeterminateCheckBox } from '@mui/icons-material';
 import { red } from '@mui/material/colors';
 
 
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
-
-
 function CoffeeCard({ data = {} }) {
     const userInfo = useSelector(state => state.user.userInfo)
     const dispatch = useDispatch()
