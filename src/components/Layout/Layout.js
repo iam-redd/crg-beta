@@ -43,7 +43,7 @@ const Layout = () => {
     }
 
     useEffect(() => {
-        // getMe()
+        getMe()
         if (allProductsInBasket.length > 0 && productsInBasket.length > 0) {
             productsFromLocalStorage()
         }
