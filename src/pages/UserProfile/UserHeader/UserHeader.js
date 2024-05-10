@@ -136,7 +136,7 @@ export default function UserHeader() {
                             <ArrowRightEndOnRectangleIcon className='w-5 h-5' />
 
                           </ListItemPrefix>
-                          <LogForm open={open} handleOpenLog={handleOpenLog}/>
+                          {/*<LogForm open={open} handleOpenLog={handleOpenLog}/>*/}
                         </ListItem>
                         </List>
                   </Card>
