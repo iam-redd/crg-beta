@@ -6,9 +6,9 @@ import { useDispatch } from 'react-redux'
 import { addData } from '../../../store/slices/userSlice'
 import { Input, Typography } from "@material-tailwind/react"
 import { useNavigate } from 'react-router-dom';
-
+import CryptoJS from 'crypto-js';
+import secretKey from '../../../default.json'
 import { Link } from 'react-router-dom';
-
 // import URL from '../../default.json'
 const Registration = () => {
     const [uploadedImages, setUploadedImages] = useState(null)
@@ -49,6 +49,10 @@ const Registration = () => {
 
             const data = await axios.post('/auth/register', request)
             if (data.status === 200) {
+                window.localStorage.setItem('token', data.data.token)
+                const str = JSON.stringify(data)
+                const ciphertext = CryptoJS.AES.encrypt(str, secretKey.secretKey).toString();
+                window.localStorage.setItem('data', JSON.stringify(ciphertext))
                 dispatch(addData(data.data))
 
                 navigate('/user')

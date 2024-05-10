@@ -15,8 +15,8 @@ export default function UserInfo() {
     try {
       const response = await axios.get(`/user/${id}`)
       console.log(response)
-      if(response.status === 200){
-          setInfo(response.data)
+      if (response.status === 200) {
+        setInfo(response.data)
       }
     } catch (e) {
       console.log(e.message)
@@ -28,24 +28,24 @@ export default function UserInfo() {
   });
   return (
     <div>
-    <Breadcrumbs
-      className='bg-white'
-    >
-     <Link 
-     className='opacity-60'
-     onClick={() => {
-      navigate(`/admin`)
-     }}>Админ панель</Link>
-     <Link 
-     className='opacity-60'
-     onClick={() => {
-      navigate(`/admin/all-users`)
-     }}>Пользователи</Link>
-     {userInfo !== null ? <span>{userInfo.name}</span> 
-    :
-    <span></span>
-    }
-    </Breadcrumbs>
+      <Breadcrumbs
+        className='bg-white'
+      >
+        <Link
+          className='opacity-60'
+          onClick={() => {
+            navigate(`/admin`)
+          }}>Админ панель</Link>
+        <Link
+          className='opacity-60'
+          onClick={() => {
+            navigate(`/admin/all-users`)
+          }}>Пользователи</Link>
+        {userInfo !== null ? <span>{userInfo.name}</span>
+          :
+          <span></span>
+        }
+      </Breadcrumbs>
       {
         userInfo !== null ? <div className='xs:px-2 sm:flex md:flex xl:flex justify-between max-w-screen-xl 2xl:max-w-screen-xl lg:px-4 lg:py-2'>
           <div className='flex justify-between items-center p-2 xl:flex lg:flex lg:justify-center lg:items-center sm:flex sm:w-full'>
@@ -62,9 +62,9 @@ export default function UserInfo() {
               <div className={styles.userMail}>Имя: <span>{userInfo.name}</span></div>
               <div className={styles.userMail}>Почта: <span>{userInfo.email}</span></div>
               <div className={styles.userPhone}>Номер телефона: <span>{userInfo.phoneNumber}</span></div>
-              { userInfo.address[0] && <div className={styles.userAddress}>Адрес доставки: <span>{userInfo.address[0]}</span></div>}
+              {userInfo.address[0] && <div className={styles.userAddress}>Адрес доставки: <span>{userInfo.address[0]}</span></div>}
               <div className={styles.userAddress}>Статус: <span>{userInfo.role}</span></div>
-                <div className={styles.userOrg}>Организация: <span>Don Coffee</span></div>
+              <div className={styles.userOrg}>Организация: <span>Don Coffee</span></div>
             </div>
           </div>
         </div>

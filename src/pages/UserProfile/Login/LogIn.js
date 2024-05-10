@@ -8,12 +8,12 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect } from 'react';
 import { Input, Typography } from "@material-tailwind/react";
 import { Link } from 'react-router-dom';
-
+import CryptoJS from 'crypto-js';
+import secretKey from '../../../default.json'
 const LogIn = () => {
     const width = window.innerWidth
     const [isVisible, setVisible] = useState(false)
     const [loginError, setLogin] = useState(false)
-    // const userInfo = useSelector(state => state.user.userInfo)
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const [errorMessage, setMessage] = useState('')
@@ -23,13 +23,16 @@ const LogIn = () => {
             setLogin(false)
 
             const data = await axios.post(`/auth/login`, {
-                phoneNumber:e.target.email.value,
-                password:e.target.password.value
+                phoneNumber: e.target.email.value,
+                password: e.target.password.value
             })
             console.log(data)
             if (data.status === 200) {
                 console.log(data.data)
                 window.localStorage.setItem('token', data.data.token)
+                const str = JSON.stringify(data)
+                const ciphertext = CryptoJS.AES.encrypt(str, secretKey.secretKey).toString();
+                window.localStorage.setItem('data', JSON.stringify(ciphertext))
                 dispatch(addData(data.data))
                 setVisible(false)
                 navigate('/user')
@@ -61,7 +64,7 @@ const LogIn = () => {
     useEffect(() => {
         setVisible(true)
         // userInfo !== null && dispatch(logout())
-    },[setVisible])
+    }, [setVisible])
     return (
         <div className={`m-auto ${styles.container}`}>
             <AnimatePresence>
@@ -80,10 +83,10 @@ const LogIn = () => {
                             onSubmit={handleSubmit}
 
                             className={` m-auto ${styles.form}`}>
-                                <p 
+                            <p
                                 className="flex px-4 text-end cursor-pointer justify-end text-red-500"
-                                onClick={()=> navigate('/user')}
-                                >Закрыть</p>
+                                onClick={() => navigate('/user')}
+                            >Закрыть</p>
 
                             <div>
                                 <h2 className='text-center font-bold text-lg'>Авторизация</h2>

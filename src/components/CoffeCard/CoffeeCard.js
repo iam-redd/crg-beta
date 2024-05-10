@@ -155,7 +155,7 @@ function CoffeeCard({ data = {} }) {
                 <p className='text-xs flex text-red-200 justify-center rounded border border-red-200 mx-auto p-1 my-2'>{data.roast}</p> {/*Вытаскиваем с базы для эспрессо или фильтра*/}
                 <div className='flex mt-5 h-32'>
                     <img src={`${url.backendUrl}/${data.img[0]}`} alt='card-img' className='object-cover w-1/3' />
-                    <div className='grid grid-cols-1 grid-rows-8 gap-1 px-3 py-2 text-xs'>
+                    {/* <div className='grid grid-cols-1 grid-rows-8 gap-1 px-3 py-2 text-xs'>
                         <p>
                             Обработка: <span>{data.treatment}</span>
                         </p>
@@ -164,7 +164,7 @@ function CoffeeCard({ data = {} }) {
                         <p>Плотность:</p>
                         <Progress color='red' size='sm' value={data?.density ? data.density : 0} />
                         <p>Оценка Q: <span>{data?.scores ? data.scores : 0}</span></p>
-                    </div>
+                    </div> */}
                 </div>
                 <div className='mt-5 text-sm'>
                     <ReactSpoiler
