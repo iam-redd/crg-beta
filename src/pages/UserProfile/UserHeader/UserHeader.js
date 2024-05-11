@@ -35,17 +35,16 @@ export default function UserHeader() {
               </div>
               <div className='sm:ml-4 md:ml-4 lg:ml-5 xl:ml-10'>
                 <div className="flex gap-2 items-center flex-wrap justify-end sm:justify-start py-2">
-                <span className="text-lg font-bold text-blue-gray-900">{userInfo.name}</span>
-                {userInfo.role === 'admin' ?
-                <div >
-                <Chip className='rounded-full font-medium' size="sm" variant="gradient" color='red' value={userInfo.role === 'admin' ? 'админ' : 'ОПТ'} />
-                </div>
-                :
-                <div>
-                  <Chip className='rounded-full font-medium' size="sm" variant="gradient" color={userInfo.role === 'user' ? 'cyan' : 'amber'} value={userInfo.role === 'user' ? 'Розница' : 'ОПТ'} />
-                </div>
-              
-              }
+                  <span className="text-lg font-bold text-blue-gray-900">{userInfo.name}</span>
+                  {userInfo.role === 'admin' ?
+                    <div >
+                      <Chip className='rounded-full font-medium' size="sm" variant="gradient" color='red' value={userInfo.role === 'admin' ? 'админ' : 'ОПТ'} />
+                    </div>
+                    :
+                    <div>
+                      <Chip className='rounded-full font-medium' size="sm" variant="gradient" color={userInfo.role === 'user' ? 'cyan' : 'amber'} value={userInfo.role === 'user' ? 'Розница' : 'ОПТ'} />
+                    </div>
+                  }
                 </div>
                 <div className={styles.userMail}>Почта: <span>{userInfo.email}</span></div>
                 <div className={styles.userPhone}>Номер телефона: <span>{userInfo.phoneNumber}</span></div>
@@ -130,15 +129,13 @@ export default function UserHeader() {
                           Войти
                         </ListItem>
                       </Link>
-                      {/*<ListItem>
-                          <ListItemPrefix>
-
-                            <ArrowRightEndOnRectangleIcon className='w-5 h-5' />
-
-                          </ListItemPrefix>
-                          <LogForm open={open} handleOpenLog={handleOpenLog}/>
-                      </ListItem>*/}
-                        </List>
+                     <ListItem>
+                         <ListItemPrefix>
+                           <ArrowRightEndOnRectangleIcon className='w-5 h-5' />
+                         </ListItemPrefix>
+                         <LogForm open={open} handleOpenLog={handleOpenLog}/>
+                       </ListItem>
+                    </List>
                   </Card>
                 </div>
               </div>
