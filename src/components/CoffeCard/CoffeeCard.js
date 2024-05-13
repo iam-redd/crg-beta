@@ -154,16 +154,14 @@ function CoffeeCard({ data = {} }) {
                 </div>
                 <h2 className='text-center font-bold text-xl line-clamp-2'>{data?.name ? data.name : ''}</h2>
                 <p className='text-xs flex text-red-200 justify-center rounded border border-red-200 mx-auto p-1 my-2'>{data.roast}</p> {/*Вытаскиваем с базы для эспрессо или фильтра*/}
-                <div className='flex mt-5 h-32'>
-                    <img src={`${url.backendUrl}/${data.img[0]}`} alt='card-img' className='object-cover w-1/3' />
-                    <div className='grid grid-cols-1 grid-rows-8 gap-1 px-3 py-2 text-xs'>
+                <img src={`${url.backendUrl}/${data.img[0]}`} alt='card-img' className='object-cover w-full' />
+                <div className='flex mt-3 justify-between py-2 text-xs'>                    
                         <p>
                             Обработка: <span>{data.treatment}</span>
                         </p>
-                        <p className='flex-auto font-medium'>CQI: <span className='font-normal'>{data?.scores ? data.scores : 0} балла</span></p>
-                    </div>
+                        <p className='flex font-medium'>CQI: <span className='font-normal'>{data?.scores ? data.scores : 0} балла</span></p>
                 </div>
-                <div className='flex flex-row gap-4 mt-2'>
+                <div className='flex flex-row gap-4 mt-2 text-xs'>
                     <div className='flex-auto'>
                         <p className='mb-1'>Кислотность:</p>
                         <Progress color='red' size='sm' value={data?.acidity ? data.acidity : 0} />

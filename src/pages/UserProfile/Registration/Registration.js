@@ -84,7 +84,7 @@ const Registration = () => {
     });
     return (
         <div className='relative'>
-            <div className={`absolute -top-72 sm:-top-36 md:-top-48 flex w-full`}>
+            <div className={`absolute mx-auto my-14 flex w-full`}>
                 <div className={`items-center justify-center m-auto ${styles.bordered}`}>
                     <p
                         className="px-4 text-end text-red-500 cursor-pointer"

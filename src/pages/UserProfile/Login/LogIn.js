@@ -22,7 +22,7 @@ const LogIn = () => {
             e.preventDefault()
             setLogin(false)
 
-            const data = await axios.post(`/auth/login`, {
+            const data = await axios.post(`/login`, {
                 phoneNumber: e.target.email.value,
                 password: e.target.password.value
             })
@@ -66,18 +66,10 @@ const LogIn = () => {
         // userInfo !== null && dispatch(logout())
     }, [setVisible])
     return (
-        <div className={`m-auto ${styles.container}`}>
+        <div className={`mx-auto my-14  ${styles.container}`}>
             <AnimatePresence>
                 {
-                    isVisible && <motion.div
-                        className={` md:-top-48 flex w-full m-auto ${styles.wrapper}`}
-                        // animate={isVisible ? "open" : "closed"}
-                        // variants={variants}
-                        // style={{ transitionDuration: 2000 }}
-                        initial={{ top: '-500px' }}
-                        animate={{ top: width < 400 ? '-400px' : '-150px' }}
-                        exit={{ top: '-200px' }}
-                    >
+                    isVisible &&
 
                         <form
                             onSubmit={handleSubmit}
@@ -132,13 +124,13 @@ const LogIn = () => {
                                 <button
                                     className={styles.btn}
                                 >{isVisible ? 'Войти' : 'Загрузка...'}</button>
-                                <Link to='/user/registration'>
+                                <Link to='/registration'>
                                     <p className='cursor-pointer '>Регистрация</p>
                                 </Link>
                             </div>
                         </form>
 
-                    </motion.div>}
+                    }
             </AnimatePresence>
         </div>
     );

@@ -11,9 +11,6 @@ import { red } from '@mui/material/colors';
 
 import { IconButton } from '@mui/material';
 
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
-
 
 
 
