@@ -3,7 +3,7 @@ import styles from './UserHeader.module.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '../../../store/slices/userSlice';
 import {
-  ArchiveBoxIcon, ArrowLeftStartOnRectangleIcon, ArrowRightEndOnRectangleIcon, Cog6ToothIcon
+  ArchiveBoxIcon, ArrowLeftStartOnRectangleIcon, Cog6ToothIcon
 } from "@heroicons/react/24/outline";
 import url from '../../../default.json'
 import { Link, Navigate, Outlet } from 'react-router-dom';
@@ -21,7 +21,7 @@ export default function UserHeader() {
     <>
       <div>
         {
-          userInfo ? <div className='xs:px-2 sm:flex md:flex xl:flex justify-between max-w-screen-xl 2xl:max-w-screen-xl lg:px-4 lg:py-4 border-b-2'>
+          userInfo !== null ? <div className='xs:px-2 sm:flex md:flex xl:flex justify-between max-w-screen-xl 2xl:max-w-screen-xl lg:px-4 lg:py-4 border-b-2'>
             <div className='flex flex-wrap justify-around sm:justify-center text-center md:text-start items-center p-2 xl:flex lg:flex lg:justify-center lg:items-center sm:flex sm:w-full'>
               <div className='flex flex-col items-center'>
                 <div className={styles.userImg}>
@@ -46,7 +46,7 @@ export default function UserHeader() {
                 <div className={styles.userMail}>Почта: <span>{userInfo.email}</span></div>
                 <div className={styles.userPhone}>Номер телефона: <span>{userInfo.phoneNumber}</span></div>
                 {
-                  userInfo.address.length === 1 ? <div className={styles.userAddress}>Адрес доставки: <span>{userInfo.address[0]}</span></div> :
+                  // userInfo?.address?.length === 1 ? <div className={styles.userAddress}>Адрес доставки: <span>{userInfo.address[0]}</span></div> :
                     <div className={styles.userAddress}>Адрес доставки:
                      <ul>
                         {

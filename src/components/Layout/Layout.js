@@ -26,15 +26,17 @@ const Layout = () => {
         try {
             const token = window.localStorage.getItem('token')
             const data = window.localStorage.getItem('data')
+            console.log([data,token])
             if (token) {
                 if(data !== null){
                     const bytes = CryptoJS.AES.decrypt(JSON.parse(data), secretKey.secretKey);
                     const decryptedText = bytes.toString(CryptoJS.enc.Utf8);
                     const a = JSON.parse(decryptedText)
-                    dispatch(addData({ ...a, token }))
+                    dispatch(addData(a))
                 }else{
-                    const { data } = await axios.get('/auth/me')
-                    const str = JSON.stringify(data)
+                    const { data } = await axios.get('/me')
+                    console.log(data)
+                    const str = JSON.stringify(data.data)
                     const ciphertext = CryptoJS.AES.encrypt(str, secretKey.secretKey).toString();
                     window.localStorage.setItem('data',JSON.stringify(ciphertext))
                     dispatch(addData({ ...data, token }))
@@ -46,7 +48,7 @@ const Layout = () => {
         } catch (error) {
             console.log(error)
             // if (error.response.status === 404) {
-            notifyError('Не удалось авторизоватся')
+            // notifyError('Не удалось авторизоватся')
             // }
         }
     }

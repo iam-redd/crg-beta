@@ -10,6 +10,7 @@ import { Input, Typography } from "@material-tailwind/react";
 import { Link } from 'react-router-dom';
 import CryptoJS from 'crypto-js';
 import secretKey from '../../../default.json'
+import { VerticalAlignBottom } from '@mui/icons-material';
 const LogIn = () => {
     const width = window.innerWidth
     const [isVisible, setVisible] = useState(false)
@@ -21,7 +22,7 @@ const LogIn = () => {
         try {
             e.preventDefault()
             setLogin(false)
-
+            console.log([e.target.email.value,e.target.password.value])
             const data = await axios.post(`/login`, {
                 phoneNumber: e.target.email.value,
                 password: e.target.password.value
@@ -44,7 +45,7 @@ const LogIn = () => {
 
         } catch (error) {
             console.log(error)
-            const status = error.response.status
+            const status = error?.response?.status || null
             if (status === 403 || status === 404) {
                 handleError('Неверный логин или пароль')
             } else if (status === 500) {

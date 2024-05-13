@@ -47,7 +47,7 @@ const Registration = () => {
             console.log(request)
 
 
-            const data = await axios.post('/auth/register', request)
+            const data = await axios.post('/register', request)
             if (data.status === 200) {
                 window.localStorage.setItem('token', data.data.token)
                 const str = JSON.stringify(data)
