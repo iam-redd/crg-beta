@@ -4,9 +4,9 @@ import roasterImg from '../../assets/roaster.png'
 import skladImg from '../../assets/sklad.png'
 import CoffeeCard from '../../components/CoffeCard/CoffeeCard'
 import { JS_BARISTA, SHOP_USER, USER_PROFILE } from '../../utils/consts';
-import deliveryIcon from '../../assets/icons/delivery1.svg'
-import cupIcon from '../../assets/icons/cup.svg'
-import starIcon from '../../assets/icons/star.svg'
+import deliveryIcon from '../../assets/icons/delivery-truck.png'
+import qualityIcon from '../../assets/icons/high-quality.png'
+import coffeeBeanIcon from '../../assets/icons/coffee-bean.png'
 import teamImg from '../../assets/crg-team.png'
 import instagramIcon from '../../assets/icons/instagram-icon.svg'
 import { useGetAllGoodsQuery } from '../../store/goodsApi';
@@ -108,16 +108,25 @@ const Home = () => {
             </div>
           </div>
           <div className='grid grid-cols-1 my-4 sm:grid-cols-3 row-auto gap-1 md:gap-2 md:px-2 px-1 lg:gap-10 text-md items-top lg:mt-10 xl:mx-auto xl:max-w-screen-xl 2xl:max-w-screen-2xl'>
-            <div className='mx-1 sm:mx-0 border-2 rounded-xl flex-col justify-center text-justify items-center p-5'>
+            <div className='mx-1 sm:mx-0 border-1 rounded-xl flex-col justify-center text-justify items-center p-5'>
+              <div className='flex items-center flex-col gap-1'>
+              <img className='' width={50} src={deliveryIcon} alt='icon' />
               <h2 className='text-xl font-semibold text-center'>Доставка</h2>
+              </div>
               <p className='xl:text-md 2xl:text-md md:text-md text-sm my-4'>Бесплатно по г.Ташкенту с 12:00 и в течении дня, с понедельника по субботу при заказе на сумму выше 350.000</p>
             </div>
-            <div className='mx-1 sm:mx-0 border-2 rounded-xl flex-col justify-center text-justify items-center p-5'>
+            <div className='mx-1 sm:mx-0 border-1 rounded-xl flex-col justify-center text-justify items-center p-5'>
+              <div className='flex items-center flex-col gap-1'>
+              <img width={50} src={qualityIcon} alt='icon'/>
               <h2 className='text-xl font-semibold text-center'>Качество</h2>
+              </div>
               <p className='xl:text-md 2xl:text-md md:text-md text-sm my-4'>Мы поддерживаем микроклимат на складе для зеленого кофе, используем лучшие в мире ростеры Probat, проверяем каждую партию кофе колориметрами. А после обжарки дополнительно очищаем.</p>
             </div>
-            <div className='mx-1 sm:mx-0 border-2 rounded-xl flex-col justify-center text-justify items-center p-5'>
+            <div className='mx-1 sm:mx-0 border-1 rounded-xl flex-col justify-center text-justify items-center p-5'>
+              <div className='flex items-center flex-col gap-1'>
+              <img width={50} src={coffeeBeanIcon} alt='icon'/>
               <h2 className='text-xl font-semibold text-center'>Жарим каждый день</h2>
+              </div>
               <p className='xl:text-md 2xl:text-md md:text-md text-sm my-4'>Жарим кофе семь дней в неделю, отправляем на следующий день после заказа, чтобы вы получали максимально свежий кофе.</p>
             </div>
           </div>
