@@ -22,7 +22,7 @@ import { toast } from 'react-toastify';
 export default function AllUsers() {
   const notifyError = (text) => toast.error(text);
 
-  const TABLE_HEAD = ["Пользователь", "Контакты", "Статус", 'Состояния'];
+  const TABLE_HEAD = ["Пользователь", "Контакты", "Статус", 'Состояния', 'Менеджер'];
 
   const navigate = useNavigate()
   const [isSucccess, setSecccess] = useState(true)

@@ -20,37 +20,23 @@ const Layout = () => {
     const allProductsInBasket = JSON.parse(window.localStorage.getItem('allProductsId')) || []
     const productsInBasket = JSON.parse(window.localStorage.getItem('basket')) || []
     const notifyError = (text) => toast.error(text);
-    const token = window.localStorage.getItem('token');
-    const userInfo = window.localStorage.getItem('userInfo');
-    // if(token === null || userInfo === null){
-    //     getMe()
-    // }else{
-
-    // }
+  
 
     async function getMe() {
         try {
             const token = window.localStorage.getItem('token')
             const data = window.localStorage.getItem('data')
             if (token) {
-                // const str = JSON.stringify(data)
-                // const ciphertext = CryptoJS.AES.encrypt(str, secretKey.secretKey).toString();
-                // window.localStorage.setItem('data',JSON.stringify(ciphertext))
-                // console.log(ciphertext)
                 if(data !== null){
-                    console.log(data)
                     const bytes = CryptoJS.AES.decrypt(JSON.parse(data), secretKey.secretKey);
                     const decryptedText = bytes.toString(CryptoJS.enc.Utf8);
-                    console.log(JSON.parse(decryptedText))
                     const a = JSON.parse(decryptedText)
                     dispatch(addData({ ...a, token }))
-                    
                 }else{
                     const { data } = await axios.get('/auth/me')
                     const str = JSON.stringify(data)
                     const ciphertext = CryptoJS.AES.encrypt(str, secretKey.secretKey).toString();
                     window.localStorage.setItem('data',JSON.stringify(ciphertext))
-                    console.log(ciphertext)
                     dispatch(addData({ ...data, token }))
                 }
             } else {

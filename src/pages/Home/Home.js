@@ -11,16 +11,31 @@ import teamImg from '../../assets/crg-team.png'
 import instagramIcon from '../../assets/icons/instagram-icon.svg'
 import { useGetAllGoodsQuery } from '../../store/goodsApi';
 import { DefaultSpinner } from '../../components/Spinner'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import ProductCard from '../../components/ProductCard';
-
+import axios from '../../store/axios'
+import { addData } from '../../store/slices/userSlice';
+import CryptoJS from 'crypto-js';
+import secretKey from '../../default.json'
 const Home = () => {
-  const { data, isSuccess } = useGetAllGoodsQuery()
   const allProducts = useSelector(state => state.service.allProducts)
-  if (isSuccess) {
-    console.log(data)
-  }
+  const dispatch = useDispatch()
 
+
+  async function getMe() {
+    try {
+      const res = await axios.get('/auth/me')
+      if (res.status === 200) {
+        const str = JSON.stringify(res.data)
+        const ciphertext = CryptoJS.AES.encrypt(str, secretKey.secretKey).toString();
+        window.localStorage.setItem('data',JSON.stringify(ciphertext))
+        dispatch(addData(res.data))
+      }
+    } catch (e) {
+
+    }
+  }
+  getMe()
   return (
     <div>
       <div className="md:h-full sm:flex-wrap xl:flex xl:mx-auto xl:max-w-screen-xl 2xl:max-w-screen-2xl ">
