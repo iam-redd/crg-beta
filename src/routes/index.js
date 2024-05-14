@@ -11,6 +11,7 @@ const ShopWholeseller = lazy(()=> import ( '../pages/WS_Shop'))
 const UserProfile = lazy(()=> import ( '../pages/UserProfile/UserProfile'))
 const Login = lazy(()=> import ( '../pages/UserProfile/Login/LogIn'))
 const Registration = lazy(()=> import ( '../pages/UserProfile/Registration/Registration'))
+const CodePage = lazy(() => import ('../pages/UserProfile/Registration/CodeVerify/CodePage.js'))
 const Basket = lazy(()=> import ( '../pages/Basket/Basket'))
 const WsBasket = lazy(()=> import ( '../pages/WS_Basket'))
 const AboutPage = lazy(()=> import ( '../pages/About'))
@@ -30,6 +31,7 @@ const MyOrders = lazy(()=> import ( '../pages/UserProfile/MyOrders/MyOrders'))
 const MySettings = lazy(()=> import ( "../pages/UserProfile/UserSettings/UserSettings"))
 const Main = lazy(() => import('../pages/Home/Home'))
 
+
 const router = createBrowserRouter(createRoutesFromElements(
     <Route>
         <Route path="/" element={<Layout />}>
@@ -37,6 +39,7 @@ const router = createBrowserRouter(createRoutesFromElements(
             <Route path="shop" element={<ShopUser />} />
             <Route path="shop-wholeseller" element={<ShopWholeseller />} />
             <Route path="login" element={<Login />} />
+            <Route path="verify-code" element={<CodePage/>} />
             <Route path="registration" element={<Registration />} />
             <Route path="user" element={<UserProfile />} >                
                 <Route path="my-orders" element={<MyOrders />} />
