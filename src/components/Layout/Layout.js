@@ -20,31 +20,29 @@ const Layout = () => {
     const allProductsInBasket = JSON.parse(window.localStorage.getItem('allProductsId')) || []
     const productsInBasket = JSON.parse(window.localStorage.getItem('basket')) || []
     const notifyError = (text) => toast.error(text);
-  
+
 
     async function getMe() {
         try {
             const token = window.localStorage.getItem('token')
             const data = window.localStorage.getItem('data')
-            console.log([data,token])
             if (token) {
-                if(data !== null){
+                if (data !== null) {
                     const bytes = CryptoJS.AES.decrypt(JSON.parse(data), secretKey.secretKey);
                     const decryptedText = bytes.toString(CryptoJS.enc.Utf8);
-                    const a = JSON.parse(decryptedText)
+                    const a = JSON.parse( decryptedText)
                     dispatch(addData(a))
-                }else{
+                } else {
                     const { data } = await axios.get('/me')
-                    console.log(data)
                     const str = JSON.stringify(data.data)
                     const ciphertext = CryptoJS.AES.encrypt(str, secretKey.secretKey).toString();
-                    window.localStorage.setItem('data',JSON.stringify(ciphertext))
-                    dispatch(addData({ ...data, token }))
+                    window.localStorage.setItem('data', JSON.stringify( ciphertext))
+                    dispatch(addData(ciphertext))
                 }
             } else {
                 notifyError('Не удалось авторизоватся')
             }
- 
+
         } catch (error) {
             console.log(error)
             // if (error.response.status === 404) {

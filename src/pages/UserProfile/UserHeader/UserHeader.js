@@ -53,7 +53,6 @@ export default function UserHeader() {
                            userInfo.address.map(address => <li><span>{address}</span></li>)
                         }
                       </ul>
-                      <span>{userInfo.address[0]}</span>
                     </div>
                 } 
 

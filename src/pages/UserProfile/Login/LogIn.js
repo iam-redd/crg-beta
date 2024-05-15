@@ -29,12 +29,13 @@ const LogIn = () => {
             })
             console.log(data)
             if (data.status === 200) {
-                console.log(data.data)
+                const info = data.data
+                console.log(info)
                 window.localStorage.setItem('token', data.data.token)
-                const str = JSON.stringify(data)
+                const str = JSON.stringify(info)
                 const ciphertext = CryptoJS.AES.encrypt(str, secretKey.secretKey).toString();
                 window.localStorage.setItem('data', JSON.stringify(ciphertext))
-                dispatch(addData(data.data))
+                dispatch(addData(info))
                 setVisible(false)
                 navigate('/user')
             }
