@@ -8,7 +8,7 @@ import { Typography } from "@material-tailwind/react";
 
 export default function OrderForm({ totalPrice }) {
     const [btnBool, setBtnBool] = useState(false)
-    const [checkBool] = useState(false)
+    const [checkBool,setCheckBool] = useState(false)
     const [isError, setError] = useState(false)
     const [errorMessage, setMessage] = useState('')
     const dispatch = useDispatch()
@@ -16,6 +16,7 @@ export default function OrderForm({ totalPrice }) {
     const userInfo = useSelector(state => state.user.userInfo)
     const [paymentMethod, changePay] = useState(null)
     const [pomolColor, setPomoltColor] = useState(false)
+   
     async function newOrder(e) {
         try {
             e.preventDefault()
@@ -47,7 +48,6 @@ export default function OrderForm({ totalPrice }) {
                 return
             }
             const data = await axios.post('/new-order', { basket, comment, totalPrice, paymentMethod })
-            console.log(data)
             if (data.status === 200) {
                 console.log(new Date(data.data.createdAt))
                 // console.log('Order created successfully')
@@ -85,8 +85,10 @@ export default function OrderForm({ totalPrice }) {
                     </div>
                         <div className='flex items-center gap-1'>
                                 <Checkbox 
-                                    checked={checkBool}
-                                    onChange={() => setBtnBool(!checkBool)}
+                                    onChange={() => {
+                                        setCheckBool(!checkBool)
+                                        setBtnBool(!checkBool)
+                                    }}
                                 />
                                 <span className={styles.texttip}> Согласен с условиями
                                         <a href=' # '>обработки персональных данных</a>,
@@ -117,8 +119,6 @@ export default function OrderForm({ totalPrice }) {
                                 <p className="text-red-500">{errorMessage}</p>
                             </Typography>
                         }
-                        {/* <input type="text" className={styles.input} name='name' placeholder='Name' /> */}
-                        {/* <input type="text" className={styles.input} name='email' placeholder='Phone number' /> */}
                         <Button
                         type='submit'
                             color='red'

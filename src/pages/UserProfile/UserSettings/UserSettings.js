@@ -2,37 +2,40 @@ import React, { useRef, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux'
 import { Outlet } from 'react-router-dom';
 import axios from '../../.././store/axios'
-
 import url from '../../../default.json'
-
 import styles from './UserSettings.module.css'
 import { DefaultSpinner } from "../../../components/Spinner";
 import { addData } from "../../../store/slices/userSlice";
 import { Button, Input, Select, Option } from '@material-tailwind/react';
+import { toast } from "react-toastify";
 
 export default function MySettings() {
     const userInfo = useSelector(state => state.user.userInfo)
+    const notifyError = (text) => toast.error(text);
     const [, setMessage] = useState(null)
     const [paramsBool, setParams] = useState(false)
     const [image, setImage] = useState('')
     const dispatch = useDispatch()
     async function onSetting(e) {
-        e.preventDefault()
-        let options  = {
-            name:e.target.name.value,
-            email : e.target.email.value,
-            phoneNumber : e.target.phoneNumber.value,
-            telegram : e.target.telegram.value,
-            address : e.target.address.value,
-            avatarUrl:image
-        }
+        try {
+            e.preventDefault()
+            let options = {
+                name: e.target.name.value,
+                email: e.target.email.value,
+                phoneNumber: e.target.phoneNumber.value,
+                telegram: e.target.telegram.value,
+                address: e.target.address.value,
+                avatarUrl: image
+            }
 
-        const response = await axios.patch(`/update-user-data`,options)
-        console.log(response)
-        if(response.status === 200){
-            dispatch(addData(response.data))
-            setParams(false)
-            window.location.reload();
+            const response = await axios.patch(`/update-user-data`, options)
+            if (response.status === 200) {
+                dispatch(addData(response.data))
+                setParams(false)
+                window.location.reload();
+            }
+        }catch (e) {
+            notifyError('Что-то пошло не так')
         }
     }
 
@@ -48,7 +51,7 @@ export default function MySettings() {
             const formData = new FormData();
             formData.append('image', image);
             const response = await axios.post(`/upload `, formData);
-            if(response.status === 200){
+            if (response.status === 200) {
                 setImage(response.data.imagePath)
             }
             setParams(true)
@@ -73,13 +76,13 @@ export default function MySettings() {
                             <div className="flex flex-col gap-2 md:border rounded-md p-2 md:border-gray-400 content-center">
                                 <div className={`mx-auto ${styles.userImg} justify-center items-center`}>
                                     {
-                                        image !== '' ? <img  src={`${url.backendUrl}/${image}`} alt="" /> :
+                                        image !== '' ? <img src={`${url.backendUrl}/${image}`} alt="" /> :
                                             <>
                                                 {
                                                     isLoading ? <DefaultSpinner /> : <>
-                                                    {
-                                                        userInfo.avatarUrl !== '' ? <img src={`${url.backendUrl}/${userInfo.avatarUrl}`} alt="" /> :<></>
-                                                    }
+                                                        {
+                                                            userInfo.avatarUrl !== '' ? <img src={`${url.backendUrl}/${userInfo.avatarUrl}`} alt="" /> : <></>
+                                                        }
                                                     </>
                                                 }
                                             </>
@@ -141,30 +144,30 @@ export default function MySettings() {
                                         </div>
                                         <div className="flex items-center gap-2">
                                             <div className="flex-1">
-                                            <Input label="Адрес организации:" />
+                                                <Input label="Адрес организации:" />
                                             </div>
                                             <Button size="sm" variant="outlined" className="flex-none">+</Button>
                                         </div>
                                         <div className="w-72 text-sm mt-2">
-                                        Выберите вашего менеджера
-                                         <Select size="md" >
-                                            <Option >
-                                                <img 
-                                                    src=""    
-                                                    alt="manager"
-                                                />
-                                                Manager 1
-                                            </Option>
-                                            <Option >
-                                                <img 
-                                                    src=""    
-                                                    alt="manager"
-                                                />
-                                                Manager 2
-                                            </Option>
-                                            
-                                         </Select>
-                                            
+                                            Выберите вашего менеджера
+                                            <Select size="md" >
+                                                <Option >
+                                                    <img
+                                                        src=""
+                                                        alt="manager"
+                                                    />
+                                                    Manager 1
+                                                </Option>
+                                                <Option >
+                                                    <img
+                                                        src=""
+                                                        alt="manager"
+                                                    />
+                                                    Manager 2
+                                                </Option>
+
+                                            </Select>
+
                                         </div>
                                     </div>
                                     :
@@ -174,7 +177,7 @@ export default function MySettings() {
                         </div>
                         <div className="flex justify-end gap-2 p-4 md:p-0">
                             <Button size="md" variant="filled" color="green" type="submit" disabled={!paramsBool}>Сохранить</Button>
-                            <Button size="md" variant="outlined" color="blue-gray" onClick={()=> {
+                            <Button size="md" variant="outlined" color="blue-gray" onClick={() => {
                                 setParams(false)
                                 setImage('')
                             }}>Отменить</Button>
