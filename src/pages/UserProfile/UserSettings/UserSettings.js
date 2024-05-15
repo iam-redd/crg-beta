@@ -17,16 +17,15 @@ export default function MySettings() {
     const [image, setImage] = useState('')
     const dispatch = useDispatch()
     async function onSetting(e) {
-        try {
-            e.preventDefault()
-            let options = {
-                name: e.target.name.value,
-                email: e.target.email.value,
-                phoneNumber: e.target.phoneNumber.value,
-                telegram: e.target.telegram.value,
-                address: e.target.address.value,
-                avatarUrl: image
-            }
+        e.preventDefault()
+        let options  = {
+            name:e.target.name.value,
+            email : e.target.email.value,
+            phoneNumber : e.target.phoneNumber.value,
+            telegram : e.target.telegram.value,
+            address : e.target.address.value,
+            avatarUrl:image
+        }
 
             const response = await axios.patch(`/update-user-data`, options)
             if (response.status === 200) {
@@ -113,14 +112,7 @@ export default function MySettings() {
                                         name="email"
                                         onInput={(e) => e.target.value.trim() !== userInfo.email ? setParams(true) : setParams(false)} />
                                 </div>
-                                <div>
-                                    <Input
-                                        label="Номер телефона"
-                                        defaultValue={userInfo.phoneNumber}
-                                        name="phoneNumber"
-                                        onInput={(e) => e.target.value.trim() !== userInfo.phoneNumber ? setParams(true) : setParams(false)}
-                                    />
-                                </div>
+                                
                                 <div>
                                     <Input
                                         label="Telegram"
