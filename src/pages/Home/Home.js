@@ -2,14 +2,12 @@ import React from 'react';
 //import movie from '../../assets/kons_img4.jpg'
 import roasterImg from '../../assets/roaster.png'
 import skladImg from '../../assets/sklad.png'
-import CoffeeCard from '../../components/CoffeCard/CoffeeCard'
 import { JS_BARISTA, SHOP_USER, USER_PROFILE } from '../../utils/consts';
 import deliveryIcon from '../../assets/icons/delivery-truck.png'
 import qualityIcon from '../../assets/icons/high-quality.png'
 import coffeeBeanIcon from '../../assets/icons/coffee-bean.png'
 import teamImg from '../../assets/crg-team.png'
 import instagramIcon from '../../assets/icons/instagram-icon.svg'
-import { useGetAllGoodsQuery } from '../../store/goodsApi';
 import { DefaultSpinner } from '../../components/Spinner'
 import { useDispatch, useSelector } from 'react-redux';
 import ProductCard from '../../components/ProductCard';
