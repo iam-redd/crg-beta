@@ -4,15 +4,13 @@ import axios from '../../../store/axios'
 import { addData } from '../../../store/slices/userSlice';
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import { useEffect } from 'react';
 import { Input, Typography } from "@material-tailwind/react";
 import { Link } from 'react-router-dom';
 import CryptoJS from 'crypto-js';
 import secretKey from '../../../default.json'
-import { VerticalAlignBottom } from '@mui/icons-material';
 const LogIn = () => {
-    const width = window.innerWidth
     const [isVisible, setVisible] = useState(false)
     const [loginError, setLogin] = useState(false)
     const dispatch = useDispatch()
