@@ -21,7 +21,6 @@ export default function MySettings() {
         let options  = {
             name:e.target.name.value,
             email : e.target.email.value,
-            phoneNumber : e.target.phoneNumber.value,
             telegram : e.target.telegram.value,
             address : e.target.address.value,
             avatarUrl:image
@@ -109,14 +108,7 @@ export default function MySettings() {
                                         name="email"
                                         onInput={(e) => e.target.value.trim() !== userInfo.email ? setParams(true) : setParams(false)} />
                                 </div>
-                                <div>
-                                    <Input
-                                        label="Номер телефона"
-                                        defaultValue={userInfo.phoneNumber}
-                                        name="phoneNumber"
-                                        onInput={(e) => e.target.value.trim() !== userInfo.phoneNumber ? setParams(true) : setParams(false)}
-                                    />
-                                </div>
+                                
                                 <div>
                                     <Input
                                         label="Telegram"
