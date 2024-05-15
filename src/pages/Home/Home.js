@@ -24,7 +24,7 @@ const Home = () => {
 
   async function getMe() {
     try {
-      const res = await axios.get('/auth/me')
+      const res = await axios.get('/me')
       if (res.status === 200) {
         const str = JSON.stringify(res.data)
         const ciphertext = CryptoJS.AES.encrypt(str, secretKey.secretKey).toString();
