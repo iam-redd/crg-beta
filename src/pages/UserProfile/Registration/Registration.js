@@ -21,12 +21,13 @@ const Registration = () => {
     const handleSubmit = async (e) => {
         try {
             e.preventDefault()
+            console.log(e)
             setLogin(false)
-            if(e.target.name.value.trim() === ''){
+            if (e.target.name.value.trim() === '') {
                 handleError('Имя обязательная поля')
                 return
             }
-            if(e.target.phoneNumber.value.trim() === ''){
+            if (e.target.phoneNumber.value.trim() === '') {
                 handleError('Номер телефона обязательная поля')
                 return
             }
@@ -41,33 +42,32 @@ const Registration = () => {
                 avatarUrl: uploadedImages,
                 address: [e.target.address.value],
                 telegram: e.target.telegram.value,
-                organization: e.target.organization.value //Не работает??
+                // organization: e.target.organization.value //Не работает??
             }
-            if(e.target.email.value !== '')  request.email = e.target.email.value
+            if (e.target.email.value !== '') request.email = e.target.email.value
             console.log(request)
 
 
             const data = await axios.post('/register', request)
             if (data.status === 200) {
+                const info = data.data
+                console.log(info)
                 window.localStorage.setItem('token', data.data.token)
-                const str = JSON.stringify(data)
+                const str = JSON.stringify(info)
                 const ciphertext = CryptoJS.AES.encrypt(str, secretKey.secretKey).toString();
                 window.localStorage.setItem('data', JSON.stringify(ciphertext))
-                dispatch(addData(data.data))
-
+                dispatch(addData(info))
                 navigate('/user')
             }
             console.log(data)
         } catch (error) {
-            const res = error.response
+            const res = error?.response || null
             console.log(error)
-            if (res?.data[0]) {
-                handleError(res?.data[0].msg)
-            } else if (res.status === 400) {
+            if (error?.response?.status === 400) {
                 handleError('Ошибка при вводе данных')
-            } else if (res.status === 500) {
+            } else if (error?.response?.status === 500) {
                 handleError('Не удалось авторизоватся')
-            } else if (res?.status === 401) {
+            } else if (error?.response?.status === 401) {
                 handleError(res.data.message)
             } else {
                 handleError(error.message)
@@ -125,7 +125,7 @@ const Registration = () => {
                                 defaultValue={'+998'}
                                 label='Номер телефона'
                             />
-                            
+
                             <Input
                                 type="text"
                                 name='telegram'
@@ -135,13 +135,13 @@ const Registration = () => {
                             />
                         </div>
                         <div className='grid gap-2 sm:flex'>
-                        <Input
-                        type="text"
-                        name='address'
-                        placeholder='город, район, улица, дом, квартира'
-                        defaultValue={'gulsanam 48'}
-                        label='Адрес'
-                    />
+                            <Input
+                                type="text"
+                                name='address'
+                                placeholder='город, район, улица, дом, квартира'
+                                defaultValue={'gulsanam 48'}
+                                label='Адрес'
+                            />
                         </div>
                         <div className='grid gap-2 sm:flex'>
                             <Input
@@ -185,7 +185,8 @@ const Registration = () => {
                                 variant='outlined'
                                 color='red'
                                 size='md'
-                                className='mt-4'>Зарегистрироваться
+                                className='mt-4'
+                                type='submit'>Зарегистрироваться
                             </Button>
                             <div className='flex w-full mt-4 text-xs'>
                                 <p className='mr-1'>Уже есть аккаунт?</p>

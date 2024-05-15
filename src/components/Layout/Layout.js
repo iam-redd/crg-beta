@@ -40,7 +40,8 @@ const Layout = () => {
                     dispatch(addData(ciphertext))
                 }
             } else {
-                notifyError('Не удалось авторизоватся')
+                // notifyError('Не удалось авторизоватся')
+                console.log('Не удалось авторизоватся')
             }
 
         } catch (error) {

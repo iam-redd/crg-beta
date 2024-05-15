@@ -13,6 +13,7 @@ export default function UserHeader() {
   const [, setToken] = useState(window.localStorage.getItem('token'))
   const userInfo = useSelector(state => state.user.userInfo)
   const dispatch = useDispatch()
+  console.log(userInfo)
   const handleLogout = () => {
     dispatch(logout())
     setToken(null)
