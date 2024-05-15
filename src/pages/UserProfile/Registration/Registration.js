@@ -4,7 +4,7 @@ import ImageUpload from './UploadImage/UploadImage';
 import axios from '../../../store/axios'
 import { useDispatch } from 'react-redux'
 import { addData } from '../../../store/slices/userSlice'
-import { Input, Typography } from "@material-tailwind/react"
+import { Button, Input, Typography } from "@material-tailwind/react"
 import { useNavigate } from 'react-router-dom';
 import CryptoJS from 'crypto-js';
 import secretKey from '../../../default.json'
@@ -83,14 +83,15 @@ const Registration = () => {
         // userInfo !== null && dispatch(logout())
     });
     return (
-        <div className='relative'>
-            <div className={`absolute mx-auto my-14 flex w-full`}>
+        <div className=''>
+            <div className={`mx-auto my-14 flex w-full`}>
                 <div className={`items-center justify-center m-auto ${styles.bordered}`}>
                     <p
-                        className="px-4 text-end text-red-500 cursor-pointer"
+                        className="px-4 text-xs text-end text-red-500 cursor-pointer"
                         onClick={() => navigate('/user')}
                     >Закрыть</p>
-                    <div className='flex justify-center items-center text-sm'>
+                    <h2 className='text-center font-bold text-lg my-4'>Регистрация</h2>
+                    <div className='flex justify-center mb-4 p-2 items-center text-sm border border-blue-gray-200 rounded-xl'>
                         Загрузите аватарку
                         <ImageUpload
                             list={uploadedImages}
@@ -124,15 +125,7 @@ const Registration = () => {
                                 defaultValue={'+998'}
                                 label='Номер телефона'
                             />
-                            <Input
-                                type="text"
-                                name='address'
-                                placeholder='город, район, улица, дом, квартира'
-                                defaultValue={'gulsanam 48'}
-                                label='Адрес'
-                            />
-                        </div>
-                        <div className='grid gap-2 sm:flex'>
+                            
                             <Input
                                 type="text"
                                 name='telegram'
@@ -140,12 +133,15 @@ const Registration = () => {
                                 defaultValue={'kadyrzhan_23'}
                                 label='Телеграм @username'
                             />
-                            <Input
-                                type='text'
-                                name='organization'
-                                placeholder='Название организации'
-                                label='Организация'
-                            />
+                        </div>
+                        <div className='grid gap-2 sm:flex'>
+                        <Input
+                        type="text"
+                        name='address'
+                        placeholder='город, район, улица, дом, квартира'
+                        defaultValue={'gulsanam 48'}
+                        label='Адрес'
+                    />
                         </div>
                         <div className='grid gap-2 sm:flex'>
                             <Input
@@ -185,13 +181,16 @@ const Registration = () => {
                             </Typography>
                         }
                         <div className='flex flex-col m-auto items-center'>
-                            <button
-                                className={` ${styles.btn}`}>Зарегистрироваться
-                            </button>
-                            <div className='flex w-full mt-2 text-sm'>
+                            <Button
+                                variant='outlined'
+                                color='red'
+                                size='md'
+                                className='mt-4'>Зарегистрироваться
+                            </Button>
+                            <div className='flex w-full mt-4 text-xs'>
                                 <p className='mr-1'>Уже есть аккаунт?</p>
                                 <Link to='/user/login'>
-                                    <p className='cursor-pointer'>Войти</p>
+                                    <p className='cursor-pointer text-xs text-red-500 border-b border-b-red-500'>Войти</p>
                                 </Link>
                             </div>
                         </div>
