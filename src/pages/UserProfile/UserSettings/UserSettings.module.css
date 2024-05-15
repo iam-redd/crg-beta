@@ -3,4 +3,5 @@
     height: 200px;
     border: 1px solid #ba181b;
     margin-bottom: 5px;
+    overflow: hidden;
 }

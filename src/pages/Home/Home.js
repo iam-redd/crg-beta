@@ -9,17 +9,13 @@ import qualityIcon from '../../assets/icons/high-quality.png'
 import coffeeBeanIcon from '../../assets/icons/coffee-bean.png'
 import teamImg from '../../assets/crg-team.png'
 import instagramIcon from '../../assets/icons/instagram-icon.svg'
-import { useGetAllGoodsQuery } from '../../store/goodsApi';
 import { DefaultSpinner } from '../../components/Spinner'
-import { useDispatch, useSelector } from 'react-redux';
+import {  useSelector } from 'react-redux';
 import ProductCard from '../../components/ProductCard';
-import axios from '../../store/axios'
-import { addData } from '../../store/slices/userSlice';
-import CryptoJS from 'crypto-js';
-import secretKey from '../../default.json'
+
 const Home = () => {
   const allProducts = useSelector(state => state.service.allProducts)
-  const dispatch = useDispatch()
+
 
 
 
