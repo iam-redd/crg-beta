@@ -2,7 +2,6 @@ import React from 'react';
 //import movie from '../../assets/kons_img4.jpg'
 import roasterImg from '../../assets/roaster.png'
 import skladImg from '../../assets/sklad.png'
-import CoffeeCard from '../../components/CoffeCard/CoffeeCard'
 import { JS_BARISTA, SHOP_USER, USER_PROFILE } from '../../utils/consts';
 import deliveryIcon from '../../assets/icons/delivery-truck.png'
 import qualityIcon from '../../assets/icons/high-quality.png'

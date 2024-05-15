@@ -10,7 +10,7 @@ import { setAllProducts, setSelectedProducts } from '../../store/slices/serviceD
 import { getProductsFromLocalStorage } from '../../store/slices/basketSlice';
 import { addData } from '../../store/slices/userSlice';
 import { DefaultSpinner } from '../Spinner';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import CryptoJS from 'crypto-js';
 import secretKey from '../../default.json'
@@ -19,7 +19,6 @@ const Layout = () => {
     const dispatch = useDispatch()
     const allProductsInBasket = JSON.parse(window.localStorage.getItem('allProductsId')) || []
     const productsInBasket = JSON.parse(window.localStorage.getItem('basket')) || []
-    const notifyError = (text) => toast.error(text);
 
 
     async function getMe() {
