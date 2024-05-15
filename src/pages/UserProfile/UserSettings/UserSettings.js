@@ -32,6 +32,7 @@ export default function MySettings() {
         if(response.status === 200){
             dispatch(addData(response.data))
             setParams(false)
+            window.location.reload();
         }
     }
 
