@@ -13,7 +13,6 @@ export default function UserHeader() {
   const [, setToken] = useState(window.localStorage.getItem('token'))
   const userInfo = useSelector(state => state.user.userInfo)
   const dispatch = useDispatch()
-  console.log(userInfo)
   const handleLogout = () => {
     dispatch(logout())
     setToken(null)
@@ -51,7 +50,7 @@ export default function UserHeader() {
                     <div className={styles.userAddress}>Адрес доставки:
                      <ul>
                         {
-                           userInfo.address.map(address => <li><span>{address}</span></li>)
+                           userInfo.address.map(address => <li key={address}><span>{address}</span></li>)
                         }
                       </ul>
                     </div>

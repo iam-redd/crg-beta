@@ -22,20 +22,7 @@ const Home = () => {
   const dispatch = useDispatch()
 
 
-  async function getMe() {
-    try {
-      const res = await axios.get('/auth/me')
-      if (res.status === 200) {
-        const str = JSON.stringify(res.data)
-        const ciphertext = CryptoJS.AES.encrypt(str, secretKey.secretKey).toString();
-        window.localStorage.setItem('data',JSON.stringify(ciphertext))
-        dispatch(addData(res.data))
-      }
-    } catch (e) {
 
-    }
-  }
-  getMe()
   return (
     <div>
       <div className="md:h-full sm:flex-wrap xl:flex xl:mx-auto xl:max-w-screen-xl 2xl:max-w-screen-2xl ">
