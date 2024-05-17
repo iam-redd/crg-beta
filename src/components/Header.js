@@ -89,11 +89,11 @@ const Header = () => {
                 Call-центр: +998(99)000-00-00
               </div>
               <ul className='flex text-xs'>
-                <li className='cursor-pointer ml-5 hover:text-red-600'><Link to="/about">О нас</Link></li>
-                <li className='cursor-pointer ml-5 hover:text-red-600'><Link to="/about/pay-n-delivery">Оплата и доставка</Link></li>
-                <li className='cursor-pointer ml-5 hover:text-red-600'><Link to="/about/wholesellers">ОПТ</Link></li>
-                <li className='cursor-pointer ml-5 hover:text-red-600'><Link to="/about/contacts">Контакты</Link></li>
-                <li className='cursor-pointer ml-5 hover:text-red-600'><Link to="/admin/monitoring">Админ</Link></li>
+                <li className='cursor-pointer ml-5 hover:text-red-600'><Link to="/others/about">О нас</Link></li>
+                <li className='cursor-pointer ml-5 hover:text-red-600'><Link to="/others/pay-n-delivery">Оплата и доставка</Link></li>
+                <li className='cursor-pointer ml-5 hover:text-red-600'><Link to="/others/wholesellers">ОПТ</Link></li>
+                <li className='cursor-pointer ml-5 hover:text-red-600'><Link to="/others/contacts">Контакты</Link></li>
+                <li className='cursor-pointer ml-5 hover:text-red-600'><Link to="/others/monitoring">Админ</Link></li>
               </ul>
             </div>
           </div>

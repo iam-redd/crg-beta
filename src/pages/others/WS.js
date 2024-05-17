@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const WS_Shop = () => {
+const WS = () => {
     return (
         <div>
             WholeSeller Shop
@@ -9,4 +9,4 @@ const WS_Shop = () => {
     );
 };
 
-export default WS_Shop;
+export default WS;
