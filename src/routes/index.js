@@ -41,7 +41,7 @@ const router = createBrowserRouter(createRoutesFromElements(
             <Route path="login" element={<Login />} />
             <Route path="verify-code" element={<CodePage/>} />
             <Route path="registration" element={<Registration />} />
-            <Route path="user" element={<UserProfile />} >                
+            <Route path="user" element={<UserProfile />} >
                 <Route path="my-orders" element={<MyOrders />} />
                 <Route path="settings" element={<MySettings />} />
             </Route>
