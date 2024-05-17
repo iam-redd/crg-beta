@@ -30,9 +30,8 @@ const Catalog = lazy(()=> import ( "../pages/admin/Catalog/Catalog"))
 const MyOrders = lazy(()=> import ( '../pages/UserProfile/MyOrders/MyOrders'))
 const MySettings = lazy(()=> import ( "../pages/UserProfile/UserSettings/UserSettings"))
 const Main = lazy(() => import('../pages/Home/Home'))
-const Others = lazy (() => import ('../components/Others'))
+const Others = lazy (() => import ('../pages/others/Layout/Layout.js'))
 const Contacts = lazy(() => import ('../pages/others/Contacts'))
- 
 
 const router = createBrowserRouter(createRoutesFromElements(
     <Route>
