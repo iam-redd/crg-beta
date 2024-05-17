@@ -7,7 +7,7 @@ import {
   Collapse,
   Badge,
 } from "@material-tailwind/react";
-import { ABOUT_COFFEE, ADMIN, BASKET, HOME_PAGE, JS_BARISTA, RECIPES, SHOP_USER, USER_PROFILE,} from '../utils/consts';
+import { ABOUT_COFFEE, BASKET, HOME_PAGE, JS_BARISTA, RECIPES, SHOP_USER, USER_PROFILE,} from '../utils/consts';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -69,7 +69,7 @@ const Header = () => {
     <div className='flex flex-col gap-2 text-gray-800'>
       <ul className='mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 text-sm'>
         <li>О нас</li>
-        <li>Оплата и доставка</li>
+        <li><Link to="/pay-n-delivery">Оплата и доставка</Link></li>
         <li>Опт</li>
         <li>Контакты</li>
           <li><Link to="/admin/monitoring">Админ</Link></li>
@@ -89,11 +89,11 @@ const Header = () => {
                 Call-центр: +998(99)000-00-00
               </div>
               <ul className='flex text-xs'>
-                <li className='cursor-pointer ml-5 hover:text-red-600'>О нас</li>
-                <li className='cursor-pointer ml-5 hover:text-red-600'>Оплата и доставка</li>
-                <li className='cursor-pointer ml-5 hover:text-red-600'>Опт</li>
-                <li className='cursor-pointer ml-5 hover:text-red-600'>Контакты</li>
-                <a href={ADMIN}><li className='cursor-pointer ml-5 hover:text-red-600'>Админ</li></a>
+                <li className='cursor-pointer ml-5 hover:text-red-600'><Link to="/about">О нас</Link></li>
+                <li className='cursor-pointer ml-5 hover:text-red-600'><Link to="/about/pay-n-delivery">Оплата и доставка</Link></li>
+                <li className='cursor-pointer ml-5 hover:text-red-600'><Link to="/about/wholesellers">ОПТ</Link></li>
+                <li className='cursor-pointer ml-5 hover:text-red-600'><Link to="/about/contacts">Контакты</Link></li>
+                <li className='cursor-pointer ml-5 hover:text-red-600'><Link to="/admin/monitoring">Админ</Link></li>
               </ul>
             </div>
           </div>

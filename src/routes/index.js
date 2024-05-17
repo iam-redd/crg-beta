@@ -14,8 +14,8 @@ const Registration = lazy(()=> import ( '../pages/UserProfile/Registration/Regis
 const CodePage = lazy(() => import ('../pages/UserProfile/Registration/CodeVerify/CodePage.js'))
 const Basket = lazy(()=> import ( '../pages/Basket/Basket'))
 const WsBasket = lazy(()=> import ( '../pages/WS_Basket'))
-const AboutPage = lazy(()=> import ( '../pages/About'))
-const PayDelivery = lazy(()=> import ( '../pages/PayDelivery'))
+const AboutPage = lazy(()=> import ( '../pages/others/About.js'))
+const PayDelivery = lazy(()=> import ( '../pages/others/PayDelivery.js'))
 const AboutCoffe = lazy(()=> import ( '../pages/AboutCoffee'))
 const JsBarista = lazy(()=> import ( '../pages/JSBarista'))
 const NotFound = lazy(()=> import ( '../pages/NotFound'))
@@ -37,7 +37,6 @@ const router = createBrowserRouter(createRoutesFromElements(
         <Route path="/" element={<Layout />}>
             <Route index element={<Main />} />
             <Route path="shop" element={<ShopUser />} />
-            <Route path="shop-wholeseller" element={<ShopWholeseller />} />
             <Route path="login" element={<Login />} />
             <Route path="verify-code" element={<CodePage/>} />
             <Route path="registration" element={<Registration />} />
@@ -56,10 +55,12 @@ const router = createBrowserRouter(createRoutesFromElements(
                 <Route path="catalog" element={<Catalog />} />
                 <Route path="all-goods" element={<AllGoods />} />
             </Route>
-            <Route path="about" element={<AboutPage />} />
-            <Route path="pay-n-delivery" element={<PayDelivery />} />
+            <Route path="about" element={<AboutPage />} >
+                <Route path="pay-n-delivery" element={<PayDelivery />} />
+                <Route path="barista-school" element={<JsBarista />} />
+                <Route path="shop-wholeseller" element={<ShopWholeseller />} />
+            </Route>
             <Route path="about-coffe" element={<AboutCoffe />} />
-            <Route path="barista-school" element={<JsBarista />} />
             <Route path="*" element={<NotFound />} />
         </Route>
     </Route>
