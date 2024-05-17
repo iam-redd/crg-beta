@@ -1,11 +1,12 @@
 import React from 'react';
 
-const About = () => {
+
+const WS = () => {
     return (
         <div>
-            About
+            WholeSeller Shop
         </div>
     );
 };
 
-export default About;
+export default WS;

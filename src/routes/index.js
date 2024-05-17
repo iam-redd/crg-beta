@@ -7,15 +7,15 @@ import Layout from "../components/Layout/Layout";
 import { lazy } from "react";
 
 const ShopUser = lazy(()=> import ( '../pages/Shop/Shop'))
-const ShopWholeseller = lazy(()=> import ( '../pages/WS_Shop'))
+const Wholesellers = lazy(()=> import ( '../pages/others/WS'))
 const UserProfile = lazy(()=> import ( '../pages/UserProfile/UserProfile'))
 const Login = lazy(()=> import ( '../pages/UserProfile/Login/LogIn'))
 const Registration = lazy(()=> import ( '../pages/UserProfile/Registration/Registration'))
 const CodePage = lazy(() => import ('../pages/UserProfile/Registration/CodeVerify/CodePage.js'))
 const Basket = lazy(()=> import ( '../pages/Basket/Basket'))
 const WsBasket = lazy(()=> import ( '../pages/WS_Basket'))
-const AboutPage = lazy(()=> import ( '../pages/About'))
-const PayDelivery = lazy(()=> import ( '../pages/PayDelivery'))
+const AboutPage = lazy(()=> import ( '../pages/others/About.js'))
+const PayDelivery = lazy(()=> import ( '../pages/others/PayDelivery.js'))
 const AboutCoffe = lazy(()=> import ( '../pages/AboutCoffee'))
 const JsBarista = lazy(()=> import ( '../pages/JSBarista'))
 const NotFound = lazy(()=> import ( '../pages/NotFound'))
@@ -30,14 +30,15 @@ const Catalog = lazy(()=> import ( "../pages/admin/Catalog/Catalog"))
 const MyOrders = lazy(()=> import ( '../pages/UserProfile/MyOrders/MyOrders'))
 const MySettings = lazy(()=> import ( "../pages/UserProfile/UserSettings/UserSettings"))
 const Main = lazy(() => import('../pages/Home/Home'))
-
+const Others = lazy (() => import ('../components/Others'))
+const Contacts = lazy(() => import ('../pages/others/Contacts'))
+ 
 
 const router = createBrowserRouter(createRoutesFromElements(
     <Route>
         <Route path="/" element={<Layout />}>
             <Route index element={<Main />} />
             <Route path="shop" element={<ShopUser />} />
-            <Route path="shop-wholeseller" element={<ShopWholeseller />} />
             <Route path="login" element={<Login />} />
             <Route path="verify-code" element={<CodePage/>} />
             <Route path="registration" element={<Registration />} />
@@ -56,10 +57,14 @@ const router = createBrowserRouter(createRoutesFromElements(
                 <Route path="catalog" element={<Catalog />} />
                 <Route path="all-goods" element={<AllGoods />} />
             </Route>
-            <Route path="about" element={<AboutPage />} />
-            <Route path="pay-n-delivery" element={<PayDelivery />} />
+            <Route path="others" element={<Others />} >
+                <Route path="pay-n-delivery" element={<PayDelivery />} />
+                <Route path="about" element={<AboutPage />} />
+                <Route path="barista-school" element={<JsBarista />} />
+                <Route path="wholesellers" element={<Wholesellers />} />
+                <Route path="contacts" element={<Contacts />} />
+            </Route>
             <Route path="about-coffe" element={<AboutCoffe />} />
-            <Route path="barista-school" element={<JsBarista />} />
             <Route path="*" element={<NotFound />} />
         </Route>
     </Route>

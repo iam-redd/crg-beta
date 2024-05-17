@@ -1,12 +1,11 @@
 import React from 'react';
 
-
-const WS_Shop = () => {
+const Contacts = () => {
     return (
         <div>
-            WholeSeller Shop
+            Contacts
         </div>
     );
 };
 
-export default WS_Shop;
+export default Contacts;

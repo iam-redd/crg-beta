@@ -80,26 +80,26 @@ const Home = () => {
           <div className='xl:mx-auto xl:max-w-screen-xl 2xl:max-w-screen-xl'>
             <h2 className='text-2xl font-bold text-center'>COFFEE ROASTERY GROUP</h2>
             <div className='flex w-full items-center flex-wrap md:flex-nowrap'>
-              <div className='flex w-full md:w-2/5 p-10'>
+              <div className='flex w-full md:w-2/6 p-10'>
                 <img src={roasterImg} alt='Roaster' />
               </div>
-              <div className='flex w-full text-justify md:w-3/5 mx-5'>
-                <p className='xl:text-lg 2xl:text-lg md:text-md text-sm align-top'>Наша компания в сфере HoReCa занимается поставками свежеобжаренного кофе и сиропов собственного производства.
+              <div className='flex w-full text-justify md:w-3/5 mx-8'>
+                <p className='xl:text-md 2xl:text-md md:text-md text-sm align-top'>Наша компания в сфере HoReCa занимается поставками свежеобжаренного кофе и сиропов собственного производства.
                   Мы обжариваем кофе уже более 5 лет на лучшем в мире оборудовании. Каждую партию отслеживаем на специальном оборудовании, что позволяет создавать стабильно качественный продукт. В свободную продажу поступает товар, прошедший строгий контроль качества.
                   <br />*Так же наша компания занимается подготовкой и обучением высококвалифицированных бариста.</p>
               </div>
             </div>
             <div className='flex w-full items-center flex-wrap md:flex-nowrap'>
-              <div className='flex flex-col w-full md:w-3/5 mx-5'>
-                <p className='md:text-md text-sm xl:text-lg 2xl:text-lg md:mt-5 text-justify mt-3'>
+              <div className='flex flex-col w-full md:w-3/5 mx-8 items-center'>
+                <p className='md:text-md text-sm xl:text-md 2xl:text-md md:mt-5 text-justify mt-3'>
                   *Большие склады для зеленого и свеже обжаренного кофе.
                 </p>
-                <p className='md:text-md text-sm xl:text-lg 2xl:text-lg md:mt-5 text-justify mt-3 '>*Несколько видов Европейского обжарочного оборудования.
+                <p className='md:text-md text-sm xl:text-md 2xl:text-md md:mt-5 text-justify mt-3 '>*Несколько видов Европейского обжарочного оборудования.
                 </p>
-                <p className='md:text-md text-sm xl:text-lg 2xl:text-lg md:mt-5 text-justify mt-3'>*Высокая стень очистки кофе дистонером. 3-х уровневый контроль качества.
+                <p className='md:text-md text-sm xl:text-md 2xl:text-md md:mt-5 text-justify mt-3'>*Высокая стень очистки кофе дистонером. 3-х уровневый контроль качества.
                 </p>
               </div>
-              <div className='flex w-full md:w-2/5 justify-center p-10 '>
+              <div className='flex w-full md:w-2/6 justify-center p-10 '>
                 <img src={skladImg} alt='sklad' />
               </div>
             </div>
