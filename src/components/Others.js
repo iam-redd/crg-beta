@@ -1,17 +1,21 @@
+import { Card, List, ListItem } from '@material-tailwind/react';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 
 const Others = () => {
     return (
-        <div className='flex'>
-            <ul className='flex gap-5 mx-auto'>
-                <li><Link to='about'>1</Link></li>
-                <li>2</li>
-                <li>3</li>
-                <li>4</li>
-                <li>5</li>
-            </ul>
+        <div className='hidden sm:visible'>
+            <Card className="w-full">
+                <List>
+                    <Link to='about'><ListItem>О нас</ListItem></Link>
+                    <Link to='pay-n-delivery'><ListItem>Оплата и доставка</ListItem></Link>
+                    <Link to='wholesellers'><ListItem>ОПТ</ListItem></Link>
+                    <Link to='contacts'><ListItem>Контакты</ListItem></Link>
+                    <ListItem>Политика конфеденциальности</ListItem>
+                    <ListItem>Публичная оферта</ListItem>
+                </List>
+            </Card>
         </div>
     );
 };

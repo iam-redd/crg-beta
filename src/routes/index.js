@@ -13,7 +13,6 @@ const Login = lazy(()=> import ( '../pages/UserProfile/Login/LogIn'))
 const Registration = lazy(()=> import ( '../pages/UserProfile/Registration/Registration'))
 const CodePage = lazy(() => import ('../pages/UserProfile/Registration/CodeVerify/CodePage.js'))
 const Basket = lazy(()=> import ( '../pages/Basket/Basket'))
-const WsBasket = lazy(()=> import ( '../pages/WS_Basket'))
 const AboutPage = lazy(()=> import ( '../pages/others/About.js'))
 const PayDelivery = lazy(()=> import ( '../pages/others/PayDelivery.js'))
 const AboutCoffe = lazy(()=> import ( '../pages/AboutCoffee'))
@@ -46,7 +45,6 @@ const router = createBrowserRouter(createRoutesFromElements(
                 <Route path="settings" element={<MySettings />} />
             </Route>
             <Route path="basket" element={<Basket />} />
-            <Route path="wholeseller-basket" element={<WsBasket />} />
             <Route path="admin" element={<AdminLayout />} >
                 <Route path="monitoring" element={<Monitoring />} />
                 <Route path="create" element={<CreatePost />} />
