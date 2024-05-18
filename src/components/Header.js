@@ -13,6 +13,7 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
   const productSize = useSelector(state => state.basket.basket)
+
   const [openNav, setOpenNav] = React.useState(false);
   React.useEffect(() => {
     window.addEventListener(
@@ -72,7 +73,7 @@ const Header = () => {
         <li><Link to="/pay-n-delivery">Оплата и доставка</Link></li>
         <li>Опт</li>
         <li>Контакты</li>
-          <li><Link to="/admin/monitoring">Админ</Link></li>
+        <li><Link to="/admin/monitoring">Админ</Link></li>
       </ul>
       <div className='text-md cursor-text text-gray-600 mb-5'>
         Call-центр: +998(99)000-00-00
@@ -93,7 +94,7 @@ const Header = () => {
                 <li className='cursor-pointer ml-5 hover:text-red-600'><Link to="/others/pay-n-delivery">Оплата и доставка</Link></li>
                 <li className='cursor-pointer ml-5 hover:text-red-600'><Link to="/others/wholesellers">ОПТ</Link></li>
                 <li className='cursor-pointer ml-5 hover:text-red-600'><Link to="/others/contacts">Контакты</Link></li>
-                <li className='cursor-pointer ml-5 hover:text-red-600'><Link to="/others/monitoring">Админ</Link></li>
+                <li className='cursor-pointer ml-5 hover:text-red-600'><Link to="/admin/monitoring">Админ</Link></li>
               </ul>
             </div>
           </div>

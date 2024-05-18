@@ -31,8 +31,8 @@ const Footer = () => {
         
 
         <div className='flex flex-wrap md:flex-nowrap'>
-        <div className="grid grid-cols-1 md:grid-cols-6 justify-between gap-2 text-start text-xs">
-        <div>
+        <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 justify-between gap-2 text-start text-xs">
+        <div className='mr-4'>
           <div className='flex'>
             <div className='mr-2'>
             <img width={70} src={logoIcon} alt='logo' />
@@ -51,11 +51,11 @@ const Footer = () => {
           </p>
         </div>
             {LINKS.map(({ title, items }) => (
-              <ul key={title}>
+              <ul key={title} className='mx-1'>
                 <Typography
                   variant="small"
                   color="blue-gray"
-                  className="mb-3 font-medium opacity-40"
+                  className="mb-1 font-medium opacity-40"
                 >
                   {title}
                 </Typography>
@@ -65,7 +65,7 @@ const Footer = () => {
                       as="a"
                       href="#"
                       color="gray"
-                      className="text-xs py-1 font-normal transition-colors hover:text-blue-gray-900"
+                      className="text-xs py-1 font-normal transition-colors hover:text-red-400"
                     >
                       {link}
                     </Typography>
@@ -73,9 +73,9 @@ const Footer = () => {
                 ))}  
               </ul>
             ))}
-            <div className='col-span-2'>
-            <p className='text-xs mb-2'>Адрес: г.Ташкент, Шайхантахурский район, Кунчилик 37</p>
-            <YMap/>
+            <div className='col-span-2 overflow-hidden h-48'>
+            <a href='https://yandex.uz/maps/-/CDbD505E' ><p className='text-xs font-medium mb-2 opacity-70 hover:text-red-400'>Адрес: г.Ташкент, Шайхантахурский район, Кончилик 37</p></a>
+            <YMap />
           </div>
           </div>
         </div>
