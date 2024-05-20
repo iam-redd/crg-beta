@@ -19,13 +19,14 @@ export default function MySettings() {
     async function onSetting(e) {
         try {
             e.preventDefault()
+            console.log('start')
             let options = {
                 name: e.target.name.value,
                 email: e.target.email.value,
-                phoneNumber: e.target.phoneNumber.value,
                 telegram: e.target.telegram.value,
                 address: e.target.address.value,
-                avatarUrl: image
+                avatarUrl: image,
+                phoneNumber: e.target.phoneNumber.value
             }
 
             const response = await axios.patch(`/update-user-data`, options)
@@ -34,8 +35,14 @@ export default function MySettings() {
                 setParams(false)
                 window.location.reload();
             }
+            console.log('close')
         } catch (e) {
-            notifyError('Что-то пошло не так')
+            console.log(e)
+            if (e?.response?.status === 500) {
+                notifyError(e.response.data.message)
+            } else {
+                notifyError('Что-то пошло не так')
+            }
         }
     }
 
@@ -102,14 +109,22 @@ export default function MySettings() {
                                 <div className="flex">
                                     <Input
                                         size="md"
+                                        name="name"
                                         label="Имя:"
-                                        defaultValue={userInfo.name}
+                                        defaultValue={userInfo?.name ? userInfo.name : ''}
                                         onInput={(e) => e.target.value.trim() !== userInfo.name ? setParams(true) : setParams(false)} />
                                 </div>
                                 <div>
                                     <Input
+                                        label="Телефон:"
+                                        defaultValue={userInfo?.phoneNumber ? userInfo.phoneNumber : ''}
+                                        name="phoneNumber"
+                                        onInput={(e) => e.target.value.trim() !== userInfo.email ? setParams(true) : setParams(false)} />
+                                </div>
+                                <div>
+                                    <Input
                                         label="Email:"
-                                        defaultValue={userInfo.email}
+                                        defaultValue={userInfo?.email ? userInfo.email : ''}
                                         name="email"
                                         onInput={(e) => e.target.value.trim() !== userInfo.email ? setParams(true) : setParams(false)} />
                                 </div>
@@ -117,7 +132,7 @@ export default function MySettings() {
                                 <div>
                                     <Input
                                         label="Telegram"
-                                        defaultValue={userInfo.telegram}
+                                        defaultValue={userInfo?.telegram ? userInfo.telegram : ''}
                                         name="telegram"
                                         onInput={(e) => e.target.value.trim() !== userInfo.telegram ? setParams(true) : setParams(false)}
                                     />
@@ -125,7 +140,7 @@ export default function MySettings() {
                                 <div>
                                     <Input
                                         label="Адрес"
-                                        defaultValue={userInfo.address[0]}
+                                        defaultValue={userInfo?.address[0] ? userInfo.address[0] : ''}
                                         name="address"
                                         onInput={(e) => e.target.value.trim() !== userInfo.address[0] ? setParams(true) : setParams(false)}
                                     />

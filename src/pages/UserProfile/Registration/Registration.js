@@ -3,19 +3,16 @@ import styles from './Registration.module.css'
 import ImageUpload from './UploadImage/UploadImage';
 import axios from '../../../store/axios'
 import { useDispatch } from 'react-redux'
-import { addData } from '../../../store/slices/userSlice'
+import { setRegister } from '../../../store/slices/userSlice'
 import { Button, Input, Typography } from "@material-tailwind/react"
-import { useNavigate } from 'react-router-dom';
-import CryptoJS from 'crypto-js';
-import secretKey from '../../../default.json'
-import { Link } from 'react-router-dom';
-// import URL from '../../default.json'
+import { useNavigate, Link } from 'react-router-dom';
 const Registration = () => {
     const [uploadedImages, setUploadedImages] = useState(null)
     // const userInfo = useSelector(state => state.user.userInfo)
     const [loginError, setLogin] = useState(false)
     const [errorMessage, setMessage] = useState('')
-    console.log(uploadedImages)
+    const regex = /^\+998[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]$/
+
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const handleSubmit = async (e) => {
@@ -27,46 +24,47 @@ const Registration = () => {
                 handleError('Имя обязательная поля')
                 return
             }
+            if (!regex.test(e.target.phoneNumber.value.trim())) {
+                handleError('Неправильный формат номера телефона')
+                return
+            }
             if (e.target.phoneNumber.value.trim() === '') {
                 handleError('Номер телефона обязательная поля')
                 return
             }
-            if (e.target.password.value !== e.target.password_try.value) {
-                handleError('Пароли введенное вами не совпадает')
-                return
-            }
+            // if (e.target.password.value !== e.target.password_try.value) {
+            //     handleError('Пароли введенное вами не совпадает')
+            //     return
+            // }
             const request = {
                 name: e.target.name.value,
-                phoneNumber: e.target.phoneNumber.value,
-                password: e.target.password.value,
+                phoneNumber: e.target.phoneNumber.value.trim(),
+                // password: e.target.password.value,
                 avatarUrl: uploadedImages,
                 address: [e.target.address.value],
                 telegram: e.target.telegram.value,
-                // organization: e.target.organization.value //Не работает??
             }
             if (e.target.email.value !== '') request.email = e.target.email.value
-            console.log(request)
 
 
-            const data = await axios.post('/register', request)
+            const data = await axios.post('/register-verify', request)
             if (data.status === 200) {
-                const info = data.data
-                console.log(info)
-                window.localStorage.setItem('token', data.data.token)
-                const str = JSON.stringify(info)
-                const ciphertext = CryptoJS.AES.encrypt(str, secretKey.secretKey).toString();
-                window.localStorage.setItem('data', JSON.stringify(ciphertext))
-                dispatch(addData(info))
-                navigate('/user')
+                dispatch(setRegister(request))
+                const res = await axios.post('/send-code', { phoneNumber: request.phoneNumber })
+                if (res.status === 200) {
+                    navigate('/verify-code', { state: { path: 'register' } })
+                }
+            } else {
+                handleError('Номер телефона обязательная поля')
+                return
             }
-            console.log(data)
         } catch (error) {
             const res = error?.response || null
             console.log(error)
             if (error?.response?.status === 400) {
                 handleError('Ошибка при вводе данных')
             } else if (error?.response?.status === 500) {
-                handleError('Не удалось авторизоватся')
+                handleError('Не удалось зарегистрироватся')
             } else if (error?.response?.status === 401) {
                 handleError(res.data.message)
             } else {
@@ -143,7 +141,7 @@ const Registration = () => {
                                 label='Адрес'
                             />
                         </div>
-                        <div className='grid gap-2 sm:flex'>
+                        {/* <div className='grid gap-2 sm:flex'>
                             <Input
                                 type="password"
                                 name='password'
@@ -158,7 +156,7 @@ const Registration = () => {
                                 placeholder='Повторите пароль'
                                 defaultValue={'123456'}
                             />
-                        </div>
+                        </div> */}
                         {loginError &&
                             <Typography
                                 variant="small"
@@ -190,7 +188,7 @@ const Registration = () => {
                             </Button>
                             <div className='flex w-full mt-4 text-xs'>
                                 <p className='mr-1'>Уже есть аккаунт?</p>
-                                <Link to='/user/login'>
+                                <Link to='/login'>
                                     <p className='cursor-pointer text-xs text-red-500 border-b border-b-red-500'>Войти</p>
                                 </Link>
                             </div>

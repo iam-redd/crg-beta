@@ -5,6 +5,8 @@ const userSlice = createSlice({
     name: 'user',
     initialState: {
         userInfo: null,
+        register: null,
+        authConfirm: false,
     },
     reducers: {
         addData(state, { payload }) {
@@ -15,8 +17,14 @@ const userSlice = createSlice({
             window.localStorage.removeItem('token')
             window.localStorage.removeItem('data')
         },
+        setRegister(state, { payload }) {
+            state.register = payload
+        },
+        setAuthConfirm(state, { payload }) {
+            state.authConfirm = payload
+        }
     },
 })
 
-export const { addData , logout} = userSlice.actions;
+export const { addData, logout, setRegister, setAuthConfirm } = userSlice.actions;
 export default userSlice.reducer
