@@ -11,7 +11,6 @@ export default function index() {
                 phoneNumber
             })
 
-            console.log(response)
 
             // console.log({ name, phoneNumber })
         } catch (e) {
