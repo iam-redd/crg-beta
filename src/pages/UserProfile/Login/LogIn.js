@@ -84,10 +84,10 @@ const LogIn = ({ setLoginVisible, setRegisterVisible, setCodeFormVisible }) => {
         <form
             onSubmit={handleSubmit}
             className={` m-auto ${styles.form}`}>
-            <p
+            {/* <p
                 className="flex px-4 text-end cursor-pointer justify-end text-red-500"
                 onClick={() => navigate('/user')}
-            >Закрыть</p>
+            >Закрыть</p> */}
             <div>
                 <h2 className='text-center font-bold text-lg'>Авторизация</h2>
                 <p className='py-4 text-center'>Добро пожаловать, рады вас видеть. <br /> Чтобы войти в свой аккаунт, пожалуйста введите ваши данные.</p>

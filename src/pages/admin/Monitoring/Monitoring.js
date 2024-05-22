@@ -12,6 +12,7 @@ import OnTheWayOrders from './OnTheWayOrders/OnTheWayOrders';
 import DeliveredOrders from './DeliveredOrders/DeliveredOrders';
 import DeniedOrders from './DeniedOrders/DeniedOrders';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -49,6 +50,8 @@ function a11yProps(index) {
 export default function BasicTabs() {
   const [data, setData] = React.useState(null)
   const userInfo = useSelector(state => state.user.userInfo)
+  const navigate = useNavigate()
+
   async function getAllOrders() {
     try {
       const data = await axios.get('/get-all-orders')
@@ -56,6 +59,7 @@ export default function BasicTabs() {
         setData(data.data)
       } else throw new Error('Что-то пошло не так')
     } catch (error) {
+      navigate('/')
       console.log(error.message)
     }
   }
@@ -88,19 +92,19 @@ export default function BasicTabs() {
           <PendingOrders data={data} getAllOrders={getAllOrders} index={0} />
         </CustomTabPanel>
         <CustomTabPanel value={value} index={1}>
-          <IssuedOrders data={data} getAllOrders={getAllOrders} index={1}/>
+          <IssuedOrders data={data} getAllOrders={getAllOrders} index={1} />
         </CustomTabPanel>
         <CustomTabPanel value={value} index={2}>
-          <OnTheWayOrders data={data} getAllOrders={getAllOrders} index={2}/>
+          <OnTheWayOrders data={data} getAllOrders={getAllOrders} index={2} />
         </CustomTabPanel>
         <CustomTabPanel value={value} index={3}>
-          <DeliveredOrders data={data} getAllOrders={getAllOrders} index={3}/>
+          <DeliveredOrders data={data} getAllOrders={getAllOrders} index={3} />
         </CustomTabPanel>
         <CustomTabPanel value={value} index={4}>
-          <DeniedOrders data={data} getAllOrders={getAllOrders} index={4}/>
+          <DeniedOrders data={data} getAllOrders={getAllOrders} index={4} />
         </CustomTabPanel>
         <CustomTabPanel value={value} index={5}>
-          <AllOrders data={data} getAllOrders={getAllOrders} index={5}/>
+          <AllOrders data={data} getAllOrders={getAllOrders} index={5} />
         </CustomTabPanel>
       </Box>
     }

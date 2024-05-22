@@ -13,14 +13,6 @@ const config = {
 
 };
 let token = JSON.parse(window.localStorage.getItem('token'))
-console.log(token)
-// if (token.split('')[0] === '"'){
-//   token = token.split('').splice(0,1)
-// }
-// const temp = token.split('')
-// if (temp[temp.length - 1] === '"'){
-//   token = temp.splice(temp.length - 1,1)
-// }
 
 
   instance.interceptors.request.use((config) => {

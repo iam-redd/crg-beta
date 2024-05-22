@@ -5,7 +5,7 @@ import axios from '../../../store/axios'
 import { useDispatch } from 'react-redux'
 import { setRegister } from '../../../store/slices/userSlice'
 import { Button, Input, Typography } from "@material-tailwind/react"
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 const Registration = ({ setLoginVisible, setRegisterVisible, setCodeFormVisible }) => {
     const [uploadedImages, setUploadedImages] = useState(null)
     // const userInfo = useSelector(state => state.user.userInfo)
@@ -88,10 +88,10 @@ const Registration = ({ setLoginVisible, setRegisterVisible, setCodeFormVisible 
         <div className=''>
             <div className={`mx-auto my-14 flex w-full`}>
                 <div className={`items-center justify-center m-auto ${styles.bordered}`}>
-                    <p
+                    {/* <p
                         className="px-4 text-xs text-end text-red-500 cursor-pointer"
                         onClick={() => navigate('/user')}
-                    >Закрыть</p>
+                    >Закрыть</p> */}
                     <h2 className='text-center font-bold text-lg my-4'>Регистрация</h2>
                     <div className='flex justify-center mb-4 p-2 items-center text-sm border border-blue-gray-200 rounded-xl'>
                         Загрузите аватарку
