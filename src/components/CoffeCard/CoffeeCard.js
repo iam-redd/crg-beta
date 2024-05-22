@@ -169,7 +169,6 @@ function CoffeeCard({ data = {} }) {
                     <div className='flex-auto'>
                         <p className='mb-1'>Плотность:</p>
                         <Progress color='red' size='sm' value={data?.density ? data.density : 0} />
-                        <p>Оценка Q: <span>{data?.scores ? data.scores : 0}</span></p>
                     </div>
                 </div>
                 <div className='mt-3 text-sm'>
