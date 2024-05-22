@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux'
 import { setRegister } from '../../../store/slices/userSlice'
 import { Button, Input, Typography } from "@material-tailwind/react"
 import { useNavigate, Link } from 'react-router-dom';
-const Registration = () => {
+const Registration = ({ setLoginVisible, setRegisterVisible, setCodeFormVisible }) => {
     const [uploadedImages, setUploadedImages] = useState(null)
     // const userInfo = useSelector(state => state.user.userInfo)
     const [loginError, setLogin] = useState(false)
@@ -52,7 +52,11 @@ const Registration = () => {
                 dispatch(setRegister(request))
                 const res = await axios.post('/send-code', { phoneNumber: request.phoneNumber })
                 if (res.status === 200) {
-                    navigate('/verify-code', { state: { path: 'register' } })
+                    // navigate('/verify-code', { state: { path: 'register' } })
+                    setRegisterVisible(false)
+                    setTimeout(() => {
+                        setCodeFormVisible(true)
+                    }, 200)
                 }
             } else {
                 handleError('Номер телефона обязательная поля')
@@ -188,9 +192,16 @@ const Registration = () => {
                             </Button>
                             <div className='flex w-full mt-4 text-xs'>
                                 <p className='mr-1'>Уже есть аккаунт?</p>
-                                <Link to='/login'>
-                                    <p className='cursor-pointer text-xs text-red-500 border-b border-b-red-500'>Войти</p>
-                                </Link>
+                                {/* <Link to='/login'> */}
+                                <p
+                                    className='cursor-pointer text-xs text-red-500 border-b border-b-red-500'
+                                    onClick={() => {
+                                        setRegisterVisible(false)
+                                        setInterval(() => {
+                                            setLoginVisible(true)
+                                        }, 200)
+                                    }}>Войти</p>
+                                {/* </Link> */}
                             </div>
                         </div>
                     </form>

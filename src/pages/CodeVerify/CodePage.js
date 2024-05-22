@@ -5,9 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addData, setRegister } from '../../store/slices/userSlice';
 import CryptoJS from 'crypto-js';
 import secretKey from '../../default.json'
-import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-const CodePage = () => {
+const CodePage = ({setCodeFormVisible }) => {
     const [value, setValue] = useState(null)
     const [ErrorText, setError] = useState('')
     const [time, setTime] = useState(300); // 5 минут = 300 секунд
@@ -15,10 +14,7 @@ const CodePage = () => {
     const timerRef = useRef(null);
     const userInfo = useSelector(state => state.user.register)
     const dispatch = useDispatch()
-    const navigate = useNavigate()
-    const location = useLocation()
     const notify = (text) => toast.error(text)
-    console.log(userInfo)
     async function handleVerify(e) {
         try {
             e.preventDefault()
@@ -35,11 +31,9 @@ const CodePage = () => {
                 window.localStorage.setItem('token', JSON.stringify(response.data.token))
                 dispatch(addData(response.data))
                 dispatch(setRegister(null))
-                navigate('/user')
-
+                setCodeFormVisible(false)
             }
         } catch (err) {
-            // setError(err?.message ? err.message : err)
             console.log(err)
             if (err?.response) {
                 if (err?.response?.data?.message) {
@@ -50,16 +44,7 @@ const CodePage = () => {
         }
     }
 
-    const sendAgain = ()=>{
-        if(location.state.path === 'login'){
-            againLogin()
-        }
-        if(location.state.path === 'register'){
-            againRegister()
-        }
-    }
-
-    const againLogin = async () => {
+    const sendAgain = async () => {
         try {
             console.log(userInfo)
             const response = await axios.post(`/send-code`, userInfo)
@@ -68,37 +53,13 @@ const CodePage = () => {
             }
         } catch (err) {
             console.log(err)
-            if(err?.response?.data?.message){
+            if (err?.response?.data?.message) {
                 notify(err.response.data.message)
-            }else{
+            } else {
                 notify(err)
             }
         }
     }
-
-    const againRegister = async () => {
-        try {
-            console.log('start register')
-
-            const res = await axios.post('/send-code', { phoneNumber: userInfo.phoneNumber })
-            if(res.status === 200){
-                resetHandler()
-            }
-        } catch (err) {
-            console.log(err)
-            if(err?.response?.data?.message){
-                notify(err.response.data.message)
-            }else{
-                notify(err)
-            }
-        }
-    }
-
-
-
-    // const startStopHandler = () => {
-    //     setIsRunning((prevState) => !prevState);
-    // };
 
     const resetHandler = () => {
         setIsRunning(false);
@@ -126,7 +87,7 @@ const CodePage = () => {
     }, [isRunning, time]);
     return (
         <div>
-            <form onSubmit={handleVerify} className='w-3/4 m-auto h-full md:w-3/6 lg:h-2/6 border rounded-xl p-4 mt-4 md:mt-8'>
+            <form onSubmit={handleVerify} className='w-3/4 m-auto h-full md:w-3/6 lg:h-2/6 border rounded-xl p-4 mt-4 md:mt-8' style={{backgroundColor:'#FFFFFF'}}>
                 <h2 className='text-center my-4'>Верификация</h2>
                 <p className='text-sm my-2'>Введите код из 6 цифр отправленного на номер /Номер пользователя ****//</p>
                 <p className='text-sm my-2'>{formatTime(time)}</p>
