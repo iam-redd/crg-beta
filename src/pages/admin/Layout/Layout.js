@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 function Layout() {
   const userInfo = useSelector(state => state.user.userInfo)
   const navigate = useNavigate()
+  const main = ''
   // console.log(userInfo)
   if(userInfo === null) navigate('/')
   if(userInfo !== null){
