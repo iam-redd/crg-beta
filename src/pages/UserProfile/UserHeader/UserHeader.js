@@ -100,7 +100,10 @@ export default function UserHeader() {
               </div>
             </div>
             :
-            <Modals/>
+              <div className='w-full'>
+                <Modals/>
+              </div>
+
           // <Navigate to='/login'/>
         }
 
