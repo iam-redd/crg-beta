@@ -16,12 +16,12 @@ export default function Modals() {
     }, []);
     return (
         <>
-            <button style={{
+            {/* <button style={{
                 width: 300,
                 backgroundColor: '#ddd',
                 padding: '0.8rem 1.2rem'
             }}
-                onClick={() => setLoginVisible(!loginVisible)}>Click me</button>
+                onClick={() => setLoginVisible(!loginVisible)}>Click me</button> */}
             <AnimatePresence>
                 {
                     loginVisible &&

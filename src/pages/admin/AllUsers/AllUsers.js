@@ -41,7 +41,7 @@ export default function AllUsers() {
     } catch (error) {
       console.log(error.message)
       notifyError(error.message)
-      navigate('/')
+      // navigate('/')
     }
   }
 

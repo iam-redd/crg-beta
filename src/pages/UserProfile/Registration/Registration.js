@@ -32,6 +32,14 @@ const Registration = ({ setLoginVisible, setRegisterVisible, setCodeFormVisible 
                 handleError('Номер телефона обязательная поля')
                 return
             }
+            if (e.target.city.value.trim() === '') {
+                handleError('Город обязательная поля')
+                return
+            }
+            if (e.target.address.value.trim() === '') {
+                handleError('Адрес обязательная поля')
+                return
+            }
             // if (e.target.password.value !== e.target.password_try.value) {
             //     handleError('Пароли введенное вами не совпадает')
             //     return
@@ -39,7 +47,7 @@ const Registration = ({ setLoginVisible, setRegisterVisible, setCodeFormVisible 
             const request = {
                 name: e.target.name.value,
                 phoneNumber: e.target.phoneNumber.value.trim(),
-                // password: e.target.password.value,
+                city: e.target.city.value,
                 avatarUrl: uploadedImages,
                 address: [e.target.address.value],
                 telegram: e.target.telegram.value,
@@ -108,14 +116,14 @@ const Registration = ({ setLoginVisible, setRegisterVisible, setCodeFormVisible 
                                 type="text"
                                 name='name'
                                 placeholder='Василий Пупкин'
-                                defaultValue={'kadyrzhan'}
+                                // defaultValue={'kadyrzhan'}
                                 label='Имя и фамилия'
                             />
                             <Input
                                 type="text"
                                 name='email'
                                 placeholder='empty@empty.com'
-                                defaultValue={'test@test.ru'}
+                                // defaultValue={'test@test.ru'}
                                 label='Электронная почта'
                             />
                         </div>
@@ -132,16 +140,23 @@ const Registration = ({ setLoginVisible, setRegisterVisible, setCodeFormVisible 
                                 type="text"
                                 name='telegram'
                                 placeholder='@username'
-                                defaultValue={'kadyrzhan_23'}
+                                // defaultValue={'kadyrzhan_23'}
                                 label='Телеграм @username'
                             />
                         </div>
                         <div className='grid gap-2 sm:flex'>
+                        <Input
+                                type="text"
+                                name='city'
+                                placeholder='Город'
+                                // defaultValue={'Ташкент'}
+                                label='Город'
+                            />
                             <Input
                                 type="text"
                                 name='address'
-                                placeholder='город, район, улица, дом, квартира'
-                                defaultValue={'gulsanam 48'}
+                                placeholder=' район, улица, дом, квартира'
+                                // defaultValue={'gulsanam 48'}
                                 label='Адрес'
                             />
                         </div>
