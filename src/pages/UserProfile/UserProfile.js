@@ -18,9 +18,17 @@ const UserProfile = () => {
         dispatch(addData(res.data))
       }
     } catch (e) {
+      console.log(e)
+      if(e?.response?.status === 404){
+        window.localStorage.removeItem('data')
+        window.localStorage.removeItem('token')
+        dispatch(addData(null))
+      }
       console.log('Ошибка при авторизации')
     }
   }
+  const now = [1]
+  console.log(now.length)
   getMe()
   return (
 

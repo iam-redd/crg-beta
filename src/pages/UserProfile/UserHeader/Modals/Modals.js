@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion';
 import { useSelector } from 'react-redux';
-import Template from './Template';
 import LogIn from '../../Login/LogIn';
 import Registration from '../../Registration/Registration';
 import CodePage from '../../../CodeVerify/CodePage';
@@ -12,16 +11,15 @@ export default function Modals() {
     const [codeFormVisible, setCodeFormVisible] = useState(false)
     useEffect(() => {
         if (userInfo === null && registerVisible === false && codeFormVisible === false) setLoginVisible(true)
-
     }, []);
     return (
         <>
-            <button style={{
+            {/* <button style={{
                 width: 300,
                 backgroundColor: '#ddd',
                 padding: '0.8rem 1.2rem'
             }}
-                onClick={() => setLoginVisible(!loginVisible)}>Click me</button>
+                onClick={() => setLoginVisible(!loginVisible)}>Click me</button> */}
             <AnimatePresence>
                 {
                     loginVisible &&

@@ -15,6 +15,8 @@ import {
   CardBody,
   CardFooter,
   Avatar,
+  Select,
+  Option,
 } from "@material-tailwind/react";
 import icon from '../../../assets/icons/user.png'
 import url from '../../../default.json'
@@ -27,6 +29,7 @@ export default function AllUsers() {
   const navigate = useNavigate()
   const [isSucccess, setSecccess] = useState(true)
   const [isLoading, setLoading] = useState(true)
+  const [managers, setManagers] = useState(null)
   const selectedUsers = useSelector(state => state.forAdmin.selectedUsers)
   const dispatch = useDispatch()
   async function getAllUsersFunc() {
@@ -35,7 +38,7 @@ export default function AllUsers() {
       if (data.status === 200) {
         dispatch(editAllUsers(data.data))
         setLoading(false)
-      }else{
+      } else {
         notifyError('Ошибка')
       }
     } catch (error) {
@@ -82,8 +85,25 @@ export default function AllUsers() {
 
     }
   }
+  async function getAllManagers() {
+    const { data } = await axios.get('/managers')
+    console.log(data)
+    setManagers(data)
+  }
 
-  // !isLoading && selectedUsers[0].avatarUrl !== '' && console.log(`${url.backendUrl}/${selectedUsers[0].avatarUrl}`)
+  managers === null && getAllManagers()
+
+  // isLoading && selectedUsers[0].avatarUrl !== '' && console.log(`${url.backendUrl}/${selectedUsers[0].avatarUrl}`)
+
+  async function changeManagerForUser(id, manager) {
+    try {
+      console.log(id, manager)
+      const response = await axios.post('/change-manager', { id, manager })
+      console.log(response)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   useEffect(() => {
     selectedUsers === null && getAllUsersFunc()
@@ -133,6 +153,7 @@ export default function AllUsers() {
                 <tbody>
                   {
                     selectedUsers.map(
+
                       (row, index) => {
                         const id = row._id
                         const isLast = index === selectedUsers.length - 1;
@@ -236,6 +257,25 @@ export default function AllUsers() {
                                   </div>}
                               </div>}
                             </td>
+                            {
+                              // row.role === 'user' || row.role === 'superUser' && managers !== null &&
+                              managers !== null &&
+
+                              <td>
+                                <Select
+                                  label='Менеджер'
+                                  value={row.manager.name}
+                                  onChange={(e) => changeManagerForUser(row._id, e)}>
+                                  {
+                                    managers.map((manager, index) => {
+                                      return (
+                                        <Option value={manager.name} key={index}>{manager.name}</Option>
+                                      )
+                                    })
+                                  }
+                                </Select>
+                              </td>
+                            }
                           </tr>
                         );
                       },
@@ -264,5 +304,12 @@ export default function AllUsers() {
 
   )
 }
+
+// function ManagerBlock() {
+//   const [manager, setManager] = useState('')
+//   return (
+//     <></>
+//   )
+// }
 
 

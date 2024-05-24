@@ -31,7 +31,6 @@ const MySettings = lazy(()=> import ( "../pages/UserProfile/UserSettings/UserSet
 const Main = lazy(() => import('../pages/Home/Home'))
 const Others = lazy (() => import ('../pages/others/Layout/Layout.js'))
 const Contacts = lazy(() => import ('../pages/others/Contacts'))
-const Development = lazy(() => import ('../ development/index'))
 
 
 const router = createBrowserRouter(createRoutesFromElements(
@@ -64,7 +63,6 @@ const router = createBrowserRouter(createRoutesFromElements(
                 <Route path="contacts" element={<Contacts />} />
             </Route>
             <Route path="about-coffe" element={<AboutCoffe />} />
-            <Route path="development" element={<Development />} />
             <Route path="*" element={<NotFound />} />
         </Route>
     </Route>

@@ -11,7 +11,7 @@ function Layout() {
   // console.log(userInfo)
   if(userInfo === null) navigate('/')
   if(userInfo !== null){
-    if(userInfo.role === 'user' || userInfo.role === 'superUser') navigate('/')
+    // if(userInfo.role === 'user' || userInfo.role === 'superUser') navigate('/')
   }
 
   return (

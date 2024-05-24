@@ -18,7 +18,7 @@ export default function OrderCardMonitorng({ data, getAllOrders, index }) {
     return (
         <div className={styles.container}>
             <div className={styles.header}>
-                ID {data._id}
+                № {data.identifier}
             </div>
             <div className={styles.main}>
                 <p>Статус: <span className={styles.status}>{data.status}</span></p>
