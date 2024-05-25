@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion';
 import { useSelector } from 'react-redux';
-import Template from './Template';
 import LogIn from '../../Login/LogIn';
 import Registration from '../../Registration/Registration';
 import CodePage from '../../../CodeVerify/CodePage';
