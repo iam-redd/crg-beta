@@ -122,10 +122,11 @@ const LogIn = ({ setLoginVisible, setRegisterVisible, setCodeFormVisible }) => {
             <div className='w-full flex justify-between'>
                 <p className='cursor-pointer'>Забыли пароль?</p>
             </div>
-            <div className='flex w-full justify-around'>
+            <div className='flex w-full justify-around items-center'>
                 <button
                     className={styles.btn}
-                >{isVisible ? 'Войти' : 'Загрузка...'}</button>
+                >{isVisible ? 'Войти' : 'Загрузка...'}
+                </button>
                 {/* <Link to='/registration'> */}
                 <p className='cursor-pointer '
                     onClick={() => {

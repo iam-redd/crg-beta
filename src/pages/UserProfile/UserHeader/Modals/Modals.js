@@ -43,7 +43,7 @@ export default function Modals() {
                         initial={{ opacity: 0, height: 0, top: '-200px' }}
                         animate={{ opacity: 1, height: 'auto', top: 80 }}
                         exit={{ height: 0, top: '-200px' }}
-                        style={{ padding: '0.8rem 1.2rem', overflow: 'hidden', position: 'absolute', zIndex: 10 }}
+                        style={{ padding: '0.8rem 1.2rem', overflow: 'hidden', position:"absolute", width: '100%' , zIndex: 10 }}
                         transition={{ duration: 0.2 }}
                     >
                         <Registration setLoginVisible={setLoginVisible} setRegisterVisible={setRegisterVisible} setCodeFormVisible={setCodeFormVisible} />

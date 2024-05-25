@@ -96,7 +96,6 @@ const Registration = ({ setLoginVisible, setRegisterVisible, setCodeFormVisible 
                     >Закрыть</p> */}
                     <h2 className='text-center font-bold text-lg my-4'>Регистрация</h2>
                     <div className='flex justify-center mb-4 p-2 items-center text-sm border border-blue-gray-200 rounded-xl'>
-                        Загрузите аватарку
                         <ImageUpload
                             list={uploadedImages}
                             setList={setUploadedImages} />

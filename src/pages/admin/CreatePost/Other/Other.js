@@ -87,6 +87,7 @@ export default function Other() {
                         <Option value='drip'>Дрип-кофе</Option>
                     </Select>
                 </div>
+                <p className='text-xs'>Для оптимизации поиска товара, название на кириллице и на русском</p>
                 <Input
                     type="text"
                     label='Тэги через запятую ( , )'
