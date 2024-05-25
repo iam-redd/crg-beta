@@ -116,7 +116,7 @@ const AllGoods = () => {
                                     <td>{product.name}</td>
                                     <td>
                                         {
-                                            product.topList? <button
+                                            product.topList ? <button
                                                 className='text-red-700 hover:text-white border border-red-400 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-bolder rounded-lg text-xs px-3 py-2 text-center me-2 mb-2 dark:red-green-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-800'
                                                 onClick={() => deleteFromTop(product._id)}
                                             >
@@ -131,8 +131,8 @@ const AllGoods = () => {
                                         }
                                     </td>
                                     <td>
-                                    {
-                                            product.stopList? <button
+                                        {
+                                            product.stopList ? <button
                                                 className='text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-bolder rounded-lg text-xs px-3 py-2 text-center me-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800'
                                                 onClick={() => deleteFromStop(product._id)}
                                             >

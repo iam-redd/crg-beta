@@ -80,7 +80,10 @@ export default function BasicTabs() {
         <h2>Мониторинг</h2>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-            <Tab label="Новые" {...a11yProps(1)} />
+            {
+              userInfo.role !== 'giver' &&
+              <Tab label="Новые" {...a11yProps(1)} />
+            }
             <Tab label="оформленные" {...a11yProps(1)} />
             <Tab label="в пути" {...a11yProps(2)} />
             <Tab label="доставленные" {...a11yProps(3)} />
@@ -88,9 +91,12 @@ export default function BasicTabs() {
             <Tab label="Все заказы" {...a11yProps(5)} />
           </Tabs>
         </Box>
-        <CustomTabPanel value={value} index={0}>
-          <PendingOrders data={data} getAllOrders={getAllOrders} index={0} />
-        </CustomTabPanel>
+        {
+          userInfo.role !== 'giver' &&
+          <CustomTabPanel value={value} index={0}>
+            <PendingOrders data={data} getAllOrders={getAllOrders} index={0} />
+          </CustomTabPanel>
+        }
         <CustomTabPanel value={value} index={1}>
           <IssuedOrders data={data} getAllOrders={getAllOrders} index={1} />
         </CustomTabPanel>
