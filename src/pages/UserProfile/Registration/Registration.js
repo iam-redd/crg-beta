@@ -4,7 +4,7 @@ import ImageUpload from './UploadImage/UploadImage';
 import axios from '../../../store/axios'
 import { useDispatch } from 'react-redux'
 import { setRegister } from '../../../store/slices/userSlice'
-import {Button, Input, Option, Select, Typography} from "@material-tailwind/react"
+import { Button, Input, Option, Select, Typography } from "@material-tailwind/react"
 import { useNavigate } from 'react-router-dom';
 
 const Registration = ({ setLoginVisible, setRegisterVisible, setCodeFormVisible }) => {
@@ -34,6 +34,14 @@ const Registration = ({ setLoginVisible, setRegisterVisible, setCodeFormVisible 
                 handleError('Номер телефона обязательная поля')
                 return
             }
+            if (e.target.city.value.trim() === '') {
+                handleError('Город обязательная поля')
+                return
+            }
+            if (e.target.address.value.trim() === '') {
+                handleError('Адрес обязательная поля')
+                return
+            }
             // if (e.target.password.value !== e.target.password_try.value) {
             //     handleError('Пароли введенное вами не совпадает')
             //     return
@@ -41,7 +49,7 @@ const Registration = ({ setLoginVisible, setRegisterVisible, setCodeFormVisible 
             const request = {
                 name: e.target.name.value,
                 phoneNumber: e.target.phoneNumber.value.trim(),
-                // password: e.target.password.value,
+                city: e.target.city.value,
                 avatarUrl: uploadedImages,
                 address: [e.target.address.value],
                 telegram: e.target.telegram.value,
@@ -109,13 +117,13 @@ const Registration = ({ setLoginVisible, setRegisterVisible, setCodeFormVisible 
                                 type="text"
                                 name='name'
                                 placeholder='Василий Пупкин'
-
-                                label='Имя и фамилия'
+                                // defaultValue={'kadyrzhan'}
                             />
                             <Input
-                                type="text"
+                                type="email"
                                 name='email'
                                 placeholder='empty@empty.com'
+                                // defaultValue={'test@test.ru'}
                                 label='Электронная почта'
                             />
                         </div>
@@ -131,10 +139,22 @@ const Registration = ({ setLoginVisible, setRegisterVisible, setCodeFormVisible 
                                 type="text"
                                 name='telegram'
                                 placeholder='@username'
+                                // defaultValue={'kadyrzhan_23'}
                                 label='Телеграм @username'
                             />
                         </div>
                         <div className='grid gap-2 sm:flex'>
+                            <Input
+                                type="text"
+                                name='city'
+                                placeholder='Город'
+                                label='Город'
+                            />
+                            <Input
+                                type="text"
+                                name='address'
+                                placeholder=' район, улица, дом, квартира'
+                            />
                             <Select
                                 size="md"
                                 label="Ваш город"
@@ -163,6 +183,7 @@ const Registration = ({ setLoginVisible, setRegisterVisible, setCodeFormVisible 
                                 placeholder='улица, дом, квартира'
                                 label='Адрес'
                             />
+
                         </div>
                         {/* <div className='grid gap-2 sm:flex'>
                             <Input

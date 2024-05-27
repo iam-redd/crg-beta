@@ -5,6 +5,14 @@ import axios from '../../../../../store/axios'
 export default function Order({ data, orderId, getAllOrders, bool, index }) {
     const [amount, setAmount] = useState(0)
     let currentAmount = data.amount
+    let type = ''
+        if (data.type === 'coffe-beans') type = 'Кофе'
+        else if (data.type === 'tea') type = 'Чай'
+        else if (data.type === 'syrup') type = 'Сироп'
+        else if (data.type === 'accessory') type = 'Аксессуар'
+        else if (data.type === 'chemistry') type = 'Химия'
+        else if (data.type === 'coffee-capsule') type = 'Кофе в капсуле'
+        else if (data.type === 'drip') type = 'Дрип-кофе'
     async function save() {
         try {
             const comment = `This is comment`
@@ -88,6 +96,8 @@ export default function Order({ data, orderId, getAllOrders, bool, index }) {
                             <p>Обьём: {data.weight}
                             </p>
                             <p>Цена: {data.price}сум</p>
+                            <p>Вид товара: {type}</p>
+
                             <p style={{ display: 'flex' }}>Количество:
                                 {
                                     index === 0 && <button

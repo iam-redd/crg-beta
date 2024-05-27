@@ -21,6 +21,14 @@ const AnyCard = ({ data }) => {
     const [boolBasket, setBoolBasket] = useState(allProductsId.includes(data._id) ? true : false)
     const [index, setIndex] = useState(null)
     const notifyError = (text) => toast.error(text);
+    let type = ''
+    if (data.type === 'coffe-beans') type = 'Кофе'
+    else if (data.type === 'tea') type = 'Чай'
+    else if (data.type === 'syrup') type = 'Сироп'
+    else if (data.type === 'accessory') type = 'Аксессуар'
+    else if (data.type === 'chemistry') type = 'Химия'
+    else if (data.type === 'coffee-capsule') type = 'Кофе в капсуле'
+    else if (data.type === 'drip') type = 'Дрип-кофе'
 
     function increment() {
         try {
@@ -97,7 +105,7 @@ const AnyCard = ({ data }) => {
                     <span className='text-xs'>{data.topList && 'Топ-недели'}</span>
                 </div>
                 <h2 className='text-center font-bold text-xl'>{data.name}</h2>
-                <p className='text-center text-xs'>Сироп или химия</p>
+                <p className='text-center text-xs'>{type}</p>
                 <div className='flex mt-5'>
                     <img src={`${url.backendUrl}/${data.img}`} alt='card-img' className='object-cover w-full' />
                 </div>

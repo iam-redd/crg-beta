@@ -21,13 +21,11 @@ export default function OrderForm({ totalPrice }) {
         try {
             e.preventDefault()
             setError(false)
-            console.log('click')
             if (paymentMethod === null) {
                 // setPomoltColor(true)
                 setMessage('Способ оплаты не выбран')
                 setError(true)
                 setBtnBool(false)
-
                 return
             }
             if (!userInfo.isActive) {
