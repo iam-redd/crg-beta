@@ -12,7 +12,6 @@
     font-weight: 400;
     font-size: small;
     font-family: 'Proxima Soft', sans-serif;
-    font-size: small;
     -webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
     transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
 }
@@ -21,10 +20,4 @@
     padding: 20px;
     background-color: #fff;
     border-radius: 15px;
-}
-
-@media (max-width:420px) {
-    .form{
-        width: 90%;
-    }
 }

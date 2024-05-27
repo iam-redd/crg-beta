@@ -40,6 +40,21 @@ function CoffeeCard({ data = {} }) {
         }
         setPomol(val)
     }
+
+
+    const imgdata = [
+        {
+            imgelink:
+                `${url.backendUrl}/${data.img[0]}`
+        },
+    ];
+    const [active, setActive] = React.useState(
+        `${url.backendUrl}/${data.img[0]}`
+    );
+
+
+
+
     const changeWeight = (val) => {
         setWeightColor(false)
         const template = basket.filter(product => product.weight === val)
@@ -87,6 +102,10 @@ function CoffeeCard({ data = {} }) {
         dispatch(addTooBasket(info))
         setBoolBasket(true)
     }
+
+
+
+
     function decrement() {
         try {
             if (!boolBasket) {
@@ -154,21 +173,43 @@ function CoffeeCard({ data = {} }) {
                 </div>
                 <h2 className='text-center font-bold text-xl line-clamp-2'>{data?.name ? data.name : ''}</h2>
                 <p className='text-xs flex text-red-200 justify-center rounded border border-red-200 mx-auto p-1 my-2'>{data.roast}</p> {/*Вытаскиваем с базы для эспрессо или фильтра*/}
-                <img src={`${url.backendUrl}/${data.img[0]}`} alt='card-img' className='object-cover w-full' />
-                <div className='flex mt-3 justify-between py-2 text-xs'>                    
-                        <p>
-                            Обработка: <span>{data.treatment}</span>
-                        </p>
-                        <p className='flex font-medium'>CQI: <span className='font-normal'>{data?.scores ? data.scores : 0} балла</span></p>
+                {/*<img src={`${url.backendUrl}/${data.img[0]}`} alt='card-img' className='object-cover w-full'/>*/}
+                <div className="grid gap-4">
+                    <div>
+                        <img
+                            className="w-full max-w-full object-cover object-center"
+                            src={active}
+                            alt=""
+                        />
+                    </div>
+                    <div className="grid grid-cols-3 gap-4">
+                        {imgdata.map(({imgelink}, index) => (
+                            <div key={index}>
+                                <img
+                                    onClick={() => setActive(imgelink)}
+                                    src={`${url.backendUrl}/${data.img[0]}`}
+                                    className=" max-w-full cursor-pointer rounded object-cover object-center"
+                                    alt="gallery-image"
+                                />
+                            </div>
+                        ))}
+                    </div>
+                </div>
+                <div className='flex mt-3 justify-between py-2 text-xs'>
+                    <p>
+                        Обработка: <span>{data.treatment}</span>
+                    </p>
+                    <p className='flex font-medium'>CQI: <span
+                        className='font-normal'>{data?.scores ? data.scores : 0} балла</span></p>
                 </div>
                 <div className='flex flex-row gap-4 mt-2 text-xs'>
                     <div className='flex-auto'>
                         <p className='mb-1'>Кислотность:</p>
-                        <Progress color='red' size='sm' value={data?.acidity ? data.acidity : 0} />
+                        <Progress color='red' size='sm' value={data?.acidity ? data.acidity : 0}/>
                     </div>
                     <div className='flex-auto'>
                         <p className='mb-1'>Плотность:</p>
-                        <Progress color='red' size='sm' value={data?.density ? data.density : 0} />
+                        <Progress color='red' size='sm' value={data?.density ? data.density : 0}/>
                     </div>
                 </div>
                 <div className='mt-3 text-sm'>
@@ -177,7 +218,7 @@ function CoffeeCard({ data = {} }) {
                         lineHeight={7}
                         showMoreComponent={<p className='spoiler-size'>еще...</p>}
                         showLessComponent={<p className='spoiler-size'>Скрыть</p>}
-                        toggleContainerStyle={{ color: '#ba181b' }}
+                        toggleContainerStyle={{color: '#ba181b'}}
                         collapsedSize={60}
                     >
                         <p className='text-justify text-sm sm:text-md md:text-md lg:text-md xl:text-md 2xl:text-md'>
@@ -192,12 +233,12 @@ function CoffeeCard({ data = {} }) {
                         Помол:
                         <div className='col-span-3 w-auto'>
                             <Select size="md"
-                                label="Выберите помол"
-                                onChange={(e) => changePomol(e)}
-                                style={{ borderColor: pomolColor ? "red" : '' }}
-                                onClick={handlePomolColor}
-                                value='В зёрнах'
-                            // value={userInfo.role === 'superUser' ? {"1"} : {''}}
+                                    label="Выберите помол"
+                                    onChange={(e) => changePomol(e)}
+                                    style={{borderColor: pomolColor ? "red" : ''}}
+                                    onClick={handlePomolColor}
+                                    value='В зёрнах'
+                                // value={userInfo.role === 'superUser' ? {"1"} : {''}}
                             >
                                 <Option value='В зёрнах'>В зёрнах</Option>
                                 <Option value='Под турку'>Под турку</Option>
@@ -217,7 +258,7 @@ function CoffeeCard({ data = {} }) {
                                 size="md"
                                 label="Выберите вес"
                                 onChange={(e) => changeWeight(e)}
-                                style={{ borderColor: weightColor ? "red" : '' }}
+                                style={{borderColor: weightColor ? "red" : ''}}
                                 onClick={handleWeightColor}>
                                 {
                                     weightSize.map((item, index) => (
@@ -277,16 +318,17 @@ function CoffeeCard({ data = {} }) {
                             <>
                                 <div className='flex items-center justify-between'>
                                     <IconButton onClick={decrement}>
-                                        <IndeterminateCheckBox fontSize='inherit' sx={{ color: red[500] }} />
+                                        <IndeterminateCheckBox fontSize='inherit' sx={{color: red[500]}}/>
                                     </IconButton>
                                     <span>{basket[index]?.amount}</span>
                                     <IconButton onClick={increment}>
-                                        <AddBox fontSize='inherit' sx={{ color: red[500] }} />
+                                        <AddBox fontSize='inherit' sx={{color: red[500]}}/>
                                     </IconButton>
                                 </div>
 
 
-                                <Button variant='outlined' size='sm' color='blue-gray' onClick={() => navigate('/basket')}>
+                                <Button variant='outlined' size='sm' color='blue-gray'
+                                        onClick={() => navigate('/basket')}>
                                     <h3>Перейти</h3>
                                 </Button>
 

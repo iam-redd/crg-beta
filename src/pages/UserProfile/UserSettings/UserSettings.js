@@ -156,27 +156,6 @@ export default function MySettings() {
                                             </div>
                                             <Button size="sm" variant="outlined" className="flex-none">+</Button>
                                         </div>
-                                        <div className="w-72 text-sm mt-2">
-                                            Выберите вашего менеджера
-                                            <Select size="md" >
-                                                <Option >
-                                                    <img
-                                                        src=""
-                                                        alt="manager"
-                                                    />
-                                                    Manager 1
-                                                </Option>
-                                                <Option >
-                                                    <img
-                                                        src=""
-                                                        alt="manager"
-                                                    />
-                                                    Manager 2
-                                                </Option>
-
-                                            </Select>
-
-                                        </div>
                                     </div>
                                     :
                                     <div></div>

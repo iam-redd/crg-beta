@@ -99,7 +99,7 @@ const AnyCard = ({ data }) => {
 
     return (
         <div className=''>
-            <Card className='w-80 md:w-72 h-full border py-5 px-5 card-hover'>
+            <Card className='w-80 md:w-80 h-full border py-5 px-5 card-hover snap-center'>
                 <div className={styles.header}>
                     <span className='text-xs text-red-700'>{data.stopList && 'Нет в наличии'}</span>
                     <span className='text-xs'>{data.topList && 'Топ-недели'}</span>

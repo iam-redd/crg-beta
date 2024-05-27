@@ -83,7 +83,7 @@ const LogIn = ({ setLoginVisible, setRegisterVisible, setCodeFormVisible }) => {
 
         <form
             onSubmit={handleSubmit}
-            className={` m-auto ${styles.form}`}>
+            className={styles.form}>
             {/* <p
                 className="flex px-4 text-end cursor-pointer justify-end text-red-500"
                 onClick={() => navigate('/user')}
@@ -122,10 +122,11 @@ const LogIn = ({ setLoginVisible, setRegisterVisible, setCodeFormVisible }) => {
             <div className='w-full flex justify-between'>
                 <p className='cursor-pointer'>Забыли пароль?</p>
             </div>
-            <div className='flex w-full justify-around'>
+            <div className='flex w-full justify-around items-center'>
                 <button
                     className={styles.btn}
-                >{isVisible ? 'Войти' : 'Загрузка...'}</button>
+                >{isVisible ? 'Войти' : 'Загрузка...'}
+                </button>
                 {/* <Link to='/registration'> */}
                 <p className='cursor-pointer '
                     onClick={() => {

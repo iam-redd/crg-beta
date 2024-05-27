@@ -74,23 +74,23 @@ export default function Tea() {
                     type="text"
                     label='Названия'
                     name='name'
-                    className={styles.input} />
+                    className={styles.input}/>
                 <div className="flex">
                     <Input
                         type="text"
                         label='Цена 1'
                         name='price1'
-                        className={styles.input} />
+                        className={styles.input}/>
                     <Input
                         type="text"
                         label='Цена 2'
                         name='price2'
-                        className={styles.input} />
+                        className={styles.input}/>
                     <Input
                         type="text"
                         label='Цена 3'
                         name='price3'
-                        className={styles.input} />
+                        className={styles.input}/>
                 </div>
                 <div className="">Цена для оптовиков</div>
                 <div className="flex">
@@ -98,45 +98,45 @@ export default function Tea() {
                         type="text"
                         label='Цена 1'
                         name='priceWs1'
-                        className={styles.input} />
+                        className={styles.input}/>
                     <Input
                         type="text"
                         label='Цена 2'
                         name='priceWs2'
-                        className={styles.input} />
+                        className={styles.input}/>
                     <Input
                         type="text"
                         label='Цена 3'
                         name='priceWs3'
-                        className={styles.input} />
+                        className={styles.input}/>
                 </div>
                 <div className="">Упаковка</div>
                 <div className="flex">
                     <Checkbox
                         color="red"
                         label="Крафт пакет"
-                        name='weight1' />
+                        name='weight1'/>
                     <Checkbox
                         color="red"
                         label="Картонная"
-                        name='weight2' />
+                        name='weight2'/>
                     <Checkbox
                         color="red"
                         label="Алюминиевая"
                         defaultChecked
-                        name='weight3' />
+                        name='weight3'/>
                 </div>
                 <div className="flex gap-10">
                     <Radio name="type" label="Чёрный"  defaultChecked onChange={()=> colorTea = 'Чёрный'}/>
                     <Radio name="type" label="Зелёный" onChange={()=> colorTea = 'Зелёный'}/>
                 </div>
-
+                <p className='text-xs'>Для оптимизации поиска товара, название на кириллице и на русском</p>
                 <Input
                     type="text"
                     label='Тэги через запятую ( , )'
                     name='tags'
                     required
-                    className={styles.input} />
+                    className={styles.input}/>
                 <div class="relative w-full min-w-[200px]">
                     <textarea
                         class="peer h-full min-h-[100px] w-full resize-none rounded-[7px] border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:resize-none disabled:border-0 disabled:bg-blue-gray-50"
@@ -158,7 +158,7 @@ export default function Tea() {
 }
 
 
-const Upload = ({ images, setImages, secondImage, setSecondImage, thirdImage, setThirdImage }) => {
+const Upload = ({images, setImages, secondImage, setSecondImage, thirdImage, setThirdImage }) => {
     return (
         <div className={styles.imageWrapper}>
             <UploadImage list={images} setList={setImages} index={0} />

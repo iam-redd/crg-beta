@@ -4,13 +4,15 @@ import ImageUpload from './UploadImage/UploadImage';
 import axios from '../../../store/axios'
 import { useDispatch } from 'react-redux'
 import { setRegister } from '../../../store/slices/userSlice'
-import { Button, Input, Typography } from "@material-tailwind/react"
+import { Button, Input, Option, Select, Typography } from "@material-tailwind/react"
 import { useNavigate } from 'react-router-dom';
+
 const Registration = ({ setLoginVisible, setRegisterVisible, setCodeFormVisible }) => {
     const [uploadedImages, setUploadedImages] = useState(null)
     // const userInfo = useSelector(state => state.user.userInfo)
     const [loginError, setLogin] = useState(false)
     const [errorMessage, setMessage] = useState('')
+    const [selectValue, setValue] = useState(null)
     const regex = /^\+998[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]$/
 
     const dispatch = useDispatch()
@@ -94,7 +96,7 @@ const Registration = ({ setLoginVisible, setRegisterVisible, setCodeFormVisible 
     });
     return (
         <div className=''>
-            <div className={`mx-auto my-14 flex w-full`}>
+            <div className={`mx-auto my-5 flex w-full`}>
                 <div className={`items-center justify-center m-auto ${styles.bordered}`}>
                     {/* <p
                         className="px-4 text-xs text-end text-red-500 cursor-pointer"
@@ -102,7 +104,6 @@ const Registration = ({ setLoginVisible, setRegisterVisible, setCodeFormVisible 
                     >Закрыть</p> */}
                     <h2 className='text-center font-bold text-lg my-4'>Регистрация</h2>
                     <div className='flex justify-center mb-4 p-2 items-center text-sm border border-blue-gray-200 rounded-xl'>
-                        Загрузите аватарку
                         <ImageUpload
                             list={uploadedImages}
                             setList={setUploadedImages} />
@@ -117,7 +118,6 @@ const Registration = ({ setLoginVisible, setRegisterVisible, setCodeFormVisible 
                                 name='name'
                                 placeholder='Василий Пупкин'
                                 // defaultValue={'kadyrzhan'}
-                                label='Имя и фамилия'
                             />
                             <Input
                                 type="email"
@@ -132,7 +132,6 @@ const Registration = ({ setLoginVisible, setRegisterVisible, setCodeFormVisible 
                                 type="text"
                                 name='phoneNumber'
                                 placeholder='+998 99 999 99 99'
-                                defaultValue={'+998'}
                                 label='Номер телефона'
                             />
 
@@ -145,20 +144,46 @@ const Registration = ({ setLoginVisible, setRegisterVisible, setCodeFormVisible 
                             />
                         </div>
                         <div className='grid gap-2 sm:flex'>
-                        <Input
+                            <Input
                                 type="text"
                                 name='city'
                                 placeholder='Город'
-                                // defaultValue={'Ташкент'}
                                 label='Город'
                             />
                             <Input
                                 type="text"
                                 name='address'
                                 placeholder=' район, улица, дом, квартира'
-                                // defaultValue={'gulsanam 48'}
+                            />
+                            <Select
+                                size="md"
+                                label="Ваш город"
+                                name='type'
+                                onChange={(e) => setValue(e)}>
+                                <Option value='город Ташкент'>город Ташкент</Option>
+                                <Option value='Ташкентская область'>Ташкентская область</Option>
+                                <Option value='Самаркандская область'>Самаркандская область</Option>
+                                <Option value='Ферганская область'>Ферганская область</Option>
+                                <Option value='Хорезмская область'>Хорезмская область</Option>
+                                <Option value='Сырдарьинская область'>Сырдарьинская область</Option>
+                                <Option value='Сурхандарьинская область'>Сурхандарьинская область</Option>
+                                <Option value='Наманганская область'>Наманганская область</Option>
+                                <Option value='Навоийская область'>Навоийская область</Option>
+                                <Option value='Кашкадарьинская область'>Кашкадарьинская область</Option>
+                                <Option value='Джизакская область'>Джизакская область</Option>
+                                <Option value='Бухарская область'>Бухарская область</Option>
+                                <Option value='Андижанская область'>Андижанская область</Option>
+                                <Option value='Республика Каракалпакстан'>Республика Каракалпакстан</Option>
+                            </Select>
+                        </div>
+                        <div className='grid gap-2 sm:flex'>
+                            <Input
+                                type="text"
+                                name='address'
+                                placeholder='улица, дом, квартира'
                                 label='Адрес'
                             />
+
                         </div>
                         {/* <div className='grid gap-2 sm:flex'>
                             <Input
