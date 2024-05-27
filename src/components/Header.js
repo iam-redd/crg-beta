@@ -1,19 +1,21 @@
 import React from 'react';
 import { ShoppingCartIcon, UserIcon } from "@heroicons/react/24/solid";
 import {
-  Navbar,
-  Typography,
-  IconButton,
-  Collapse,
-  Badge,
+    Navbar,
+    Typography,
+    IconButton,
+    Collapse,
+    Badge, Avatar,
 } from "@material-tailwind/react";
 import { ABOUT_COFFEE, BASKET, HOME_PAGE, JS_BARISTA, RECIPES, SHOP_USER, USER_PROFILE,} from '../utils/consts';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import url from '../default.json'
+
 const Header = () => {
   const productSize = useSelector(state => state.basket.basket)
-
+    const userInfo = useSelector(state => state.user.userInfo)
   const [openNav, setOpenNav] = React.useState(false);
   React.useEffect(() => {
     window.addEventListener(
@@ -326,35 +328,41 @@ const Header = () => {
           </Typography>
           <div className="flex items-center gap-4">
             <div className="mr-4 hidden lg:block">{navList}</div>
-            <div className="flex items-center gap-x-1 mr-2">
-                <a href={USER_PROFILE}>
-                <IconButton color='red' variant='outlined' className='h-8 w-8 rounded-full mr-1'>
-                  <UserIcon color='red' className="h-4 w-4"/>
-                </IconButton>
-                </a>
-             
-              <a href={BASKET}>
-              <Badge color='red' content={productSize.length} className='' placement="bottom-end">
-                <IconButton variant='outlined'  color='red' className='h-9 w-9 rounded-full'>
-                  <ShoppingCartIcon color='red' className="h-4 w-4" />
-                </IconButton>
-              </Badge>
-              </a>
-            </div>
-            <IconButton
-              variant="text"
-              className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
-              ripple={false}
-              onClick={() => setOpenNav(!openNav)}
-            >
-              {openNav ? (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  className="h-6 w-6"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
+              <div className="flex items-center gap-x-1 mr-2">
+                  <a href={USER_PROFILE}>
+                      {userInfo === null ?
+                          <IconButton color='red' variant='outlined' className='h-8 w-8 rounded-full mr-1'>
+                              <UserIcon color='red' className="h-4 w-4"/>
+                          </IconButton>
+                          :
+                          <div className='border rounded-full border-red-500'>
+                              <Avatar src={`${url.backendUrl}/${userInfo.avatarUrl}`} size={"md"}/>
+                          </div>
+                      }
+                  </a>
+
+                  <a href={BASKET}>
+                      <Badge color='red' content={productSize.length} className='' placement="bottom-end">
+                          <IconButton variant='outlined' color='red' className='h-9 w-9 rounded-full'>
+                              <ShoppingCartIcon color='red' className="h-4 w-4"/>
+                          </IconButton>
+                      </Badge>
+                  </a>
+              </div>
+              <IconButton
+                  variant="text"
+                  className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
+                  ripple={false}
+                  onClick={() => setOpenNav(!openNav)}
+              >
+                  {openNav ? (
+                      <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          className="h-6 w-6"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth={2}
                 >
                   <path
                     strokeLinecap="round"
