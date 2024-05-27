@@ -25,12 +25,12 @@ const LINKS = [
 
 const Footer = () => {
     return (
-      <footer className="mx-auto bg-gray-100 pb-5 max-w-screen-xl 2xl:max-w-screen-2xl rounded-none px-4 2xl:px-0 lg:px-8 lg:py-4 flex w-full flex-row flex-wrap items-center justify-center gap-y-6 gap-x-12 border-t border-blue-gray-50 py-6 text-center md:justify-between">
+      <footer className="bg-gray-100 pb-5 max-w-screen-full rounded-none px-4 2xl:px-0 lg:px-8 lg:py-4 flex w-full flex-row flex-wrap items-center justify-center gap-y-6 gap-x-12 border-t border-blue-gray-50 py-6 text-center md:justify-between">
       
       <div className='flex w-full flex-wrap lg:flex-nowrap'>
         
 
-        <div className='flex flex-wrap md:flex-nowrap'>
+        <div className='flex flex-wrap md:flex-nowrap mx-auto'>
         <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 justify-between gap-2 text-start text-xs">
         <div className='mr-4'>
           <div className='flex'>

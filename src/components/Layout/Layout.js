@@ -74,7 +74,7 @@ const Layout = () => {
                     <Outlet />
                 </Suspense>
             </div>
-            <Footer className={styles.footer} />
+            <Footer className='mx-auto' />
         </div>
     );
 }

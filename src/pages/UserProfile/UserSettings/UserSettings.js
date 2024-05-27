@@ -97,12 +97,17 @@ export default function MySettings() {
                                 </div>
                                 <div className="flex justify-center md:justify-end">
                                     <input type="file" hidden ref={input} onChange={handleUpload} />
-                                    <Button
-                                        size="md"
-                                        variant="outlined"
-                                        onClick={() => input.current.click()} >
-                                        Изменить
-                                    </Button>
+                                    <div className='flex flex-col gap-2'>
+                                        <p className='text-xs text-red-500 w-56 text-center'>*Рекомендуются фотографии с пропорцией 1:1
+                                            (до 500px)</p>
+                                        <Button
+                                            size="md"
+                                            variant="outlined"
+                                            onClick={() => input.current.click()}
+                                        >
+                                            Изменить
+                                        </Button>
+                                    </div>
                                 </div>
                             </div>
                             <div className="flex flex-col gap-2 p-4 md:p-0">
@@ -119,6 +124,7 @@ export default function MySettings() {
                                         label="Телефон:"
                                         defaultValue={userInfo?.phoneNumber ? userInfo.phoneNumber : ''}
                                         name="phoneNumber"
+                                        disabled={true}
                                         onInput={(e) => e.target.value.trim() !== userInfo.email ? setParams(true) : setParams(false)} />
                                 </div>
                                 <div>

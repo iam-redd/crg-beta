@@ -169,10 +169,10 @@ function CoffeeCard({ data = {} }) {
             <Card className='w-80 md:w-80 h-full border py-5 px-5 card-hover snap-center'>
                 <div className={styles.header}>
                     <span className='text-sm text-red-700'>{data.stopList && 'Нет в наличии'}</span>
-                    <span className='text-sm'>{data.topList && 'Топ-недели'}</span>
+                    <span className='text-xs'>{data.topList && 'Топ-недели'}</span>
                 </div>
                 <h2 className='text-center font-bold text-xl line-clamp-2'>{data?.name ? data.name : ''}</h2>
-                <p className='text-xs flex text-red-200 justify-center rounded border border-red-200 mx-auto p-1 my-2'>{data.roast}</p> {/*Вытаскиваем с базы для эспрессо или фильтра*/}
+                <p className='text-xs flex text-red-200 justify-center rounded border border-red-200 mx-auto p-0.5 mb-1.5'>{data.roast}</p> {/*Вытаскиваем с базы для эспрессо или фильтра*/}
                 {/*<img src={`${url.backendUrl}/${data.img[0]}`} alt='card-img' className='object-cover w-full'/>*/}
                 <div className="grid gap-4">
                     <div>

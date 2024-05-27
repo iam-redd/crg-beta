@@ -1,18 +1,21 @@
 import React from 'react';
 import { ShoppingCartIcon, UserIcon } from "@heroicons/react/24/solid";
 import {
-  Navbar,
-  Typography,
-  IconButton,
-  Collapse,
-  Badge,
+    Navbar,
+    Typography,
+    IconButton,
+    Collapse,
+    Badge, Avatar,
 } from "@material-tailwind/react";
 import { ABOUT_COFFEE, BASKET, HOME_PAGE, JS_BARISTA, RECIPES, SHOP_USER, USER_PROFILE,} from '../utils/consts';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import url from '../default.json'
 
 const Header = () => {
   const productSize = useSelector(state => state.basket.basket)
+
+    const userInfo = useSelector(state => state.user.userInfo)
 
   const [openNav, setOpenNav] = React.useState(false);
   React.useEffect(() => {
@@ -328,9 +331,15 @@ const Header = () => {
             <div className="mr-4 hidden lg:block">{navList}</div>
             <div className="flex items-center gap-x-1 mr-2">
                 <a href={USER_PROFILE}>
-                <IconButton color='red' variant='outlined' className='h-8 w-8 rounded-full mr-1'>
-                  <UserIcon color='red' className="h-4 w-4"/>
-                </IconButton>
+                    {userInfo === null ?
+                        <IconButton color='red' variant='outlined' className='h-8 w-8 rounded-full mr-1'>
+                            <UserIcon color='red' className="h-4 w-4"/>
+                        </IconButton>
+                        :
+                        <div className='border rounded-full border-red-500'>
+                            <Avatar src={`${url.backendUrl}/${userInfo.avatarUrl}`} size={"md"}/>
+                        </div>
+                    }
                 </a>
              
               <a href={BASKET}>
