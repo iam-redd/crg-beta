@@ -7,13 +7,13 @@ import {
   Collapse,
   Badge,
 } from "@material-tailwind/react";
-import { ABOUT_COFFEE, BASKET, HOME_PAGE, JS_BARISTA, RECIPES, SHOP_USER, USER_PROFILE,} from '../utils/consts';
+import { ABOUT_COFFEE, BASKET, HOME_PAGE, JS_BARISTA, RECIPES, SHOP_USER, USER_PROFILE, } from '../utils/consts';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const Header = () => {
   const productSize = useSelector(state => state.basket.basket)
-
+  const userInfo = useSelector(state => state.user.userInfo)
   const [openNav, setOpenNav] = React.useState(false);
   React.useEffect(() => {
     window.addEventListener(
@@ -73,7 +73,10 @@ const Header = () => {
         <li><Link to="/pay-n-delivery">Оплата и доставка</Link></li>
         <li>Опт</li>
         <li>Контакты</li>
-        <li><Link to="/admin/monitoring">Админ</Link></li>
+        {
+          userInfo !== null && userInfo.role === 'admin' &&
+          <li><Link to="/admin">Админ</Link></li>
+        }
       </ul>
       <div className='text-md cursor-text text-gray-600 mb-5'>
         Call-центр: +998(99)000-00-00
@@ -94,7 +97,10 @@ const Header = () => {
                 <li className='cursor-pointer ml-5 hover:text-red-600'><Link to="/others/pay-n-delivery">Оплата и доставка</Link></li>
                 <li className='cursor-pointer ml-5 hover:text-red-600'><Link to="/others/wholesellers">ОПТ</Link></li>
                 <li className='cursor-pointer ml-5 hover:text-red-600'><Link to="/others/contacts">Контакты</Link></li>
-                <li className='cursor-pointer ml-5 hover:text-red-600'><Link to="/admin/monitoring">Админ</Link></li>
+                {
+                  userInfo !== null && userInfo.role === 'admin' &&
+                  <li className='cursor-pointer ml-5 hover:text-red-600'><Link to="/admin">Админ</Link></li>
+                }
               </ul>
             </div>
           </div>
@@ -327,18 +333,18 @@ const Header = () => {
           <div className="flex items-center gap-4">
             <div className="mr-4 hidden lg:block">{navList}</div>
             <div className="flex items-center gap-x-1 mr-2">
-                <a href={USER_PROFILE}>
+              <a href={USER_PROFILE}>
                 <IconButton color='red' variant='outlined' className='h-8 w-8 rounded-full mr-1'>
-                  <UserIcon color='red' className="h-4 w-4"/>
+                  <UserIcon color='red' className="h-4 w-4" />
                 </IconButton>
-                </a>
-             
+              </a>
+
               <a href={BASKET}>
-              <Badge color='red' content={productSize.length} className='' placement="bottom-end">
-                <IconButton variant='outlined'  color='red' className='h-9 w-9 rounded-full'>
-                  <ShoppingCartIcon color='red' className="h-4 w-4" />
-                </IconButton>
-              </Badge>
+                <Badge color='red' content={productSize.length} className='' placement="bottom-end">
+                  <IconButton variant='outlined' color='red' className='h-9 w-9 rounded-full'>
+                    <ShoppingCartIcon color='red' className="h-4 w-4" />
+                  </IconButton>
+                </Badge>
               </a>
             </div>
             <IconButton

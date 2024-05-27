@@ -6,7 +6,8 @@ import axios from '../../../../store/axios'
 import {
     Input,
     Checkbox,
-    Button
+    Button,
+    Radio
 } from "@material-tailwind/react";
 import { useNavigate } from 'react-router-dom'
 
@@ -14,6 +15,7 @@ export default function Tea() {
     const [images, setImages] = useState([])
     const [secondImage, setSecondImage] = useState(false)
     const [thirdImage, setThirdImage] = useState(false)
+    let colorTea = 'Черный'
     const navigate = useNavigate()
 
     async function onSubmit(e) {
@@ -26,8 +28,9 @@ export default function Tea() {
                 img: images,
                 type: 'tea',
                 description: e.target.description.value,
-                package:[],
-                tags:e.target.tags.value.split(',').map(element => element.trim().toLowerCase())
+                package: [],
+                tags: e.target.tags.value.split(',').map(element => element.trim().toLowerCase()),
+                color:colorTea
             }
 
             e.target.price1.value !== '' && options.priceUser.push(totalCost(e.target.price1.value))
@@ -123,6 +126,11 @@ export default function Tea() {
                         defaultChecked
                         name='weight3' />
                 </div>
+                <div className="flex gap-10">
+                    <Radio name="type" label="Чёрный"  defaultChecked onChange={()=> colorTea = 'Чёрный'}/>
+                    <Radio name="type" label="Зелёный" onChange={()=> colorTea = 'Зелёный'}/>
+                </div>
+
                 <Input
                     type="text"
                     label='Тэги через запятую ( , )'

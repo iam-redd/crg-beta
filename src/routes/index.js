@@ -5,6 +5,7 @@ import {
 } from "react-router-dom";
 import Layout from "../components/Layout/Layout";
 import { lazy } from "react";
+import Admin from "../components/Admin";
 
 const ShopUser = lazy(()=> import ( '../pages/Shop/Shop'))
 const Wholesellers = lazy(()=> import ( '../pages/others/WS'))
@@ -47,7 +48,8 @@ const router = createBrowserRouter(createRoutesFromElements(
                 <Route path="settings" element={<MySettings />} />
             </Route>
             <Route path="basket" element={<Basket />} />
-            <Route path="admin" element={<AdminLayout />} >
+            <Route path="admin" element={<Admin />} />
+            <Route path="staff" element={<AdminLayout />} >
                 <Route path="monitoring" element={<Monitoring />} />
                 <Route path="create" element={<CreatePost />} />
                 <Route path="all-users" element={<AllUsers />} />

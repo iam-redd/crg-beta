@@ -120,7 +120,7 @@ const Registration = ({ setLoginVisible, setRegisterVisible, setCodeFormVisible 
                                 label='Имя и фамилия'
                             />
                             <Input
-                                type="text"
+                                type="email"
                                 name='email'
                                 placeholder='empty@empty.com'
                                 // defaultValue={'test@test.ru'}

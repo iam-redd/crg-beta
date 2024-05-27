@@ -18,6 +18,12 @@ const UserProfile = () => {
         dispatch(addData(res.data))
       }
     } catch (e) {
+      // console.log(e)
+      // if(e?.response?.status === 404){
+      //   dispatch(addData(null))
+      //   window.localStorage.removeItem('data')
+      //   window.localStorage.removeItem('token')
+      // }
       console.log('Ошибка при авторизации')
     }
   }

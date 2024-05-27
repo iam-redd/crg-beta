@@ -122,7 +122,7 @@ const TeaCard = ({ data }) => {
                     <span className='text-xs'>{data.topList && 'Топ-недели'}</span>
                 </div>
                 <h2 className='text-center font-bold text-xl'>{data.name}</h2>
-                <p className='text-center text-xs'>Черный чай или зеленый</p>
+                <p className='text-center text-xs'>{data.color}</p>
                 <div className='flex mt-5 bg-cover'>
                     <img src={`${url.backendUrl}/${data.img}`} alt='card-img' className='object-cover w-full' />
                 </div>

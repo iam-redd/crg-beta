@@ -56,6 +56,7 @@ export default function BasicTabs() {
     try {
       const data = await axios.get('/get-all-orders')
       if (data.status === 200) {
+        console.log(data.data)
         setData(data.data)
       } else throw new Error('Что-то пошло не так')
     } catch (error) {
