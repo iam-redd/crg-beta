@@ -18,7 +18,6 @@ const UserProfile = () => {
         dispatch(addData(res.data))
       }
     } catch (e) {
-      console.log(e)
       if(e?.response?.status === 404){
         window.localStorage.removeItem('data')
         window.localStorage.removeItem('token')

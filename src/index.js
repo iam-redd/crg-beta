@@ -17,6 +17,7 @@ root.render(
   <Provider store={store}>
     <RouterProvider router={router}> {/*Базовый роутинг */}
       <ThemeProvider> {/*Material Tailwind Theme */}
+        
 
       </ThemeProvider>
     </RouterProvider>
