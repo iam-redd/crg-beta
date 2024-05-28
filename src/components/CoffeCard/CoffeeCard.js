@@ -177,7 +177,7 @@ function CoffeeCard({ data = {} }) {
                 <div className="grid gap-4">
                     <div>
                         <img
-                            className="w-full max-w-full object-cover object-center"
+                            className="w-full  object-cover object-center"
                             src={active}
                             alt=""
                         />

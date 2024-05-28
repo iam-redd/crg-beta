@@ -122,9 +122,9 @@ const TeaCard = ({ data }) => {
                     <span className='text-xs'>{data.topList && 'Топ-недели'}</span>
                 </div>
                 <h2 className='text-center font-bold text-xl'>{data.name}</h2>
-                <p className='text-center text-xs'>{data.color}</p>
-                <div className='flex mt-5 bg-cover'>
-                    <img src={`${url.backendUrl}/${data.img}`} alt='card-img' className='object-cover w-full' />
+                <p className='text-center text-xs mx-auto border-none p-0.5 mb-1.5'>{data.color}</p>
+                <div className='flex'>
+                    <img src={`${url.backendUrl}/${data.img}`} alt='card-img' className='object-cover object-center w-full' />
                 </div>
                 <div className='mt-5 text-sm'>
                     <p className='line-clamp-3'>
