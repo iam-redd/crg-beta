@@ -3,7 +3,7 @@ import styles from './UserHeader.module.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '../../../store/slices/userSlice';
 import {
-  ArchiveBoxIcon, ArrowLeftStartOnRectangleIcon, Cog6ToothIcon
+  ArchiveBoxIcon, ArrowLeftStartOnRectangleIcon, Cog6ToothIcon, ComputerDesktopIcon
 } from "@heroicons/react/24/outline";
 import url from '../../../default.json'
 import { Link, Outlet } from 'react-router-dom';
@@ -94,6 +94,18 @@ export default function UserHeader() {
                           <ListItemSuffix className='ml-1'>Выйти из профиля</ListItemSuffix>
                         </ListItem>
                       </Link>
+                      {userInfo.role === 'admin' ?
+                          <Link to={'/staff'}>
+                            <ListItem>
+                              <ListItemPrefix>
+                                <ComputerDesktopIcon className='w-5 h-5' />
+                              </ListItemPrefix>
+                              <ListItemSuffix className='ml-1'>ADMIN</ListItemSuffix>
+                            </ListItem>
+                          </Link>
+                          :
+                          <></>
+                      }
                     </List>
                   </Card>
                 </div>

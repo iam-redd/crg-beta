@@ -28,9 +28,9 @@ const Header = () => {
     <ul className="mt-4 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
       <Typography
         as="li"
-        variant="h6"
+        variant="h4"
         color="blue-gray"
-        className="text-sm font-semibold hover:text-red-800"
+        className="text-md font-semibold hover:text-red-800"
       >
         <a href={SHOP_USER} className="flex items-center">
           Магазин
@@ -38,9 +38,9 @@ const Header = () => {
       </Typography>
       <Typography
         as="li"
-        variant="h6"
+        variant="h4"
         color="blue-gray"
-        className="text-sm font-semibold hover:text-red-800"
+        className="text-md font-semibold hover:text-red-800"
       >
         <a href={JS_BARISTA} target='blank' className="flex items-center">
           Школа бариста
@@ -48,9 +48,9 @@ const Header = () => {
       </Typography>
       <Typography
         as="li"
-        variant="h6"
+        variant="h4"
         color="blue-gray"
-        className="text-sm font-semibold hover:text-red-800"
+        className="text-md font-semibold hover:text-red-800"
       >
         <a href={RECIPES} className="flex items-center">
           Рецепты
@@ -58,9 +58,9 @@ const Header = () => {
       </Typography>
       <Typography
         as="li"
-        variant="h6"
+        variant="h4"
         color="blue-gray"
-        className="text-sm font-semibold hover:text-red-800"
+        className="text-md font-semibold hover:text-red-800"
       >
         <a href={ABOUT_COFFEE} className="flex items-center">
           Энциклопедия
@@ -71,13 +71,13 @@ const Header = () => {
   const topNavList = (
     <div className='flex flex-col gap-2 text-gray-800'>
       <ul className='mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 text-sm'>
-        <li>О нас</li>
-        <li><Link to="/pay-n-delivery">Оплата и доставка</Link></li>
-        <li>Опт</li>
-        <li>Контакты</li>
+        <li><Link to="/others/about">О нас</Link></li>
+        <li><Link to="/others/pay-n-delivery">Оплата и доставка</Link></li>
+        <li><Link to="/others/wholesellers">ОПТ</Link></li>
+        <li><Link to="/others/contacts">Контакты</Link></li>
       </ul>
       <div className='text-md cursor-text text-gray-600 mb-5'>
-        Call-центр: +998(99)000-00-00
+        Call-центр: +998(99)899-20-12
       </div>
     </div>
   );
@@ -88,7 +88,7 @@ const Header = () => {
           <div className='border-b border-gray-200'>
             <div className='h-full mx-auto max-w-screen-xl 2xl:max-w-screen-2xl hidden nowrap  px-4 py-1 2xl:px-0 items-center justify-between text-gray-600 lg:flex lg:px-4 lg:py-2'>
               <div className='text-sm cursor-text ml-5'>
-                Call-центр: +998(99)000-00-00
+                Call-центр: +998(99)899-20-12
               </div>
               <ul className='flex text-xs'>
                 <li className='cursor-pointer ml-5 hover:text-red-600'><Link to="/others/about">О нас</Link></li>
