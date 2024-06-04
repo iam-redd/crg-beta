@@ -87,29 +87,31 @@ const CodePage = ({setCodeFormVisible }) => {
     }, [isRunning, time]);
     return (
         <div>
-            <form onSubmit={handleVerify} className='w-3/4 m-auto h-full md:w-3/6 lg:h-2/6 border rounded-xl p-4 mt-4 md:mt-8' style={{backgroundColor:'#FFFFFF'}}>
-                <h2 className='text-center my-4'>Верификация</h2>
-                <p className='text-sm my-2'>Введите код из 6 цифр отправленного на номер /Номер пользователя ****//</p>
-                <p className='text-sm my-2'>{formatTime(time)}</p>
-                <Input className='' label='Введите код из 6 цифр' name='code' onInput={(e) => setValue(e)} />
+            <form onSubmit={handleVerify} className='w-full m-auto h-full md:w-80 lg:h-2/6 border rounded-xl p-4 mt-10 md:mt-8' style={{backgroundColor:'#FFFFFF'}}>
+                <h2 className='text-center my-4 font-bold '>Верификация</h2>
+
+                <p className='text-sm my-2 text-center'>{formatTime(time)}</p>
+                <Input className='' label='Введите код' name='code' onInput={(e) => setValue(e)} />
                 <div className='mt-4' >
                     <p className='text-xs my-2'>{
-                        userInfo?.phoneNumber ? `Введите код из 6 цифр отправленного на номер ${userInfo.phoneNumber.split('')[0] + userInfo.phoneNumber.split('')[1] + userInfo.phoneNumber.split('')[2] + userInfo.phoneNumber.split('')[3]}*****` : 'Введите код из 6 цифр отправленного на номер /Номер пользователя ****//'
+                        userInfo?.phoneNumber ? `Введите код из 6 цифр отправленного на номер ${userInfo.phoneNumber.split('')[0] + userInfo.phoneNumber.split('')[1] + userInfo.phoneNumber.split('')[2] + userInfo.phoneNumber.split('')[3] + ('*****') + userInfo.phoneNumber.split('')[11] + userInfo.phoneNumber.split('')[12]}` : 'Введите код из 6 цифр отправленного на номер /Номер пользователя ****//'
                     }</p>
                     <p className='text-xs my-2 text-red-500'>{ErrorText}</p>
-                    <Button
-                        variant=''
-                        size='md'
-                        color='red'
-                        type='submit'
-                    >Подтвердить
-                    </Button>
-                    <Button
-                        size='md'
-                        color={time === 0 ? 'red' : 'white'}
-                        className='text-xs'
-                        onClick={() => time === 0 && sendAgain()}
-                    >Отправить повторно</Button>
+                    <div className='flex items-center gap-4' >
+                        <Button
+                            className='mt-4 mx-auto'
+                            variant='outlined'
+                            size='md'
+                            color='red'
+                            type='submit'
+                        >Подтвердить
+                        </Button>
+                        <p
+                            color={time === 0 ? 'red' : 'blue-gray'}
+                            className='text-xs mt-4 cursor-pointer'
+                            onClick={() => time === 0 && sendAgain()}
+                        >Отправить повторно</p>
+                    </div>
                 </div>
             </form>
         </div>

@@ -85,6 +85,9 @@ span {
     color: #9ca3af;
     margin-top: 5px;
     font-size: 14px;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
 }
 
 .userNameD,

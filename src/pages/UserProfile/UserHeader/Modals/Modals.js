@@ -28,7 +28,7 @@ export default function Modals() {
                         initial={{ opacity: 0, height: 0, top: '-200px' }}
                         animate={{ opacity: 1, height: 'auto', top: 80 }}
                         exit={{ height: 0, top: '-200px' }}
-                        style={{ padding: '0.8rem 1.2rem', overflow: 'hidden', position: 'absolute', zIndex: 10 }}
+                        style={{ padding: '0.8rem 1.2rem', overflow: 'hidden', margin: '70px auto', zIndex: 10 }}
                         transition={{ duration: 0.2 }}
                     >
                         <LogIn setLoginVisible={setLoginVisible} setRegisterVisible={setRegisterVisible} setCodeFormVisible={setCodeFormVisible} />
@@ -42,7 +42,7 @@ export default function Modals() {
                         initial={{ opacity: 0, height: 0, top: '-200px' }}
                         animate={{ opacity: 1, height: 'auto', top: 80 }}
                         exit={{ height: 0, top: '-200px' }}
-                        style={{ padding: '0.8rem 1.2rem', overflow: 'hidden', position: 'absolute', zIndex: 10 }}
+                        style={{ padding: '0.8rem 1.2rem', overflow: 'hidden', zIndex: 10 }}
                         transition={{ duration: 0.2 }}
                     >
                         <Registration setLoginVisible={setLoginVisible} setRegisterVisible={setRegisterVisible} setCodeFormVisible={setCodeFormVisible} />
@@ -56,7 +56,7 @@ export default function Modals() {
                         initial={{ opacity: 0, height: 0, top: '-200px' }}
                         animate={{ opacity: 1, height: 'auto', top: 80 }}
                         exit={{ height: 0, top: '-200px' }}
-                        style={{ padding: '0.8rem 1.2rem', overflow: 'hidden', position: 'absolute', zIndex: 10 }}
+                        style={{ padding: '0.8rem 1.2rem', overflow: 'hidden', position: 'absolute', top:'50%', left:'50%', transform: 'translate(-50%)', zIndex: 99 }}
                         transition={{ duration: 0.2 }}
                     >
                         <CodePage setCodeFormVisible={setCodeFormVisible} />

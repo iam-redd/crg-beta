@@ -36,8 +36,8 @@ export default function UserHeader() {
                     }
                   </div>
                 </div>
-                <div className='sm:ml-4 md:ml-4 lg:ml-5 xl:ml-10'>
-                  <div className="flex gap-2 items-center flex-wrap justify-end sm:justify-start py-2">
+                <div className='sm:ml-4 md:ml-4 lg:ml-5 xl:ml-10 w-full'>
+                  <div className="flex gap-2 items-center justify-center flex-wrap sm:justify-start py-2">
                     <span className="text-lg font-bold text-blue-gray-900">{userInfo.name}</span>
                     {userInfo.role === 'admin' ?
                       <div >

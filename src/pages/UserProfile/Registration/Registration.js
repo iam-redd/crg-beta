@@ -117,6 +117,7 @@ const Registration = ({ setLoginVisible, setRegisterVisible, setCodeFormVisible 
                                 type="text"
                                 name='name'
                                 placeholder='Василий Пупкин'
+                                label='Имя'
                                 // defaultValue={'kadyrzhan'}
                             />
                             <Input
@@ -144,21 +145,10 @@ const Registration = ({ setLoginVisible, setRegisterVisible, setCodeFormVisible 
                             />
                         </div>
                         <div className='grid gap-2 sm:flex'>
-                            <Input
-                                type="text"
-                                name='city'
-                                placeholder='Город'
-                                label='Город'
-                            />
-                            <Input
-                                type="text"
-                                name='address'
-                                placeholder=' район, улица, дом, квартира'
-                            />
                             <Select
                                 size="md"
                                 label="Ваш город"
-                                name='type'
+                                name='city'
                                 onChange={(e) => setValue(e)}>
                                 <Option value='город Ташкент'>город Ташкент</Option>
                                 <Option value='Ташкентская область'>Ташкентская область</Option>

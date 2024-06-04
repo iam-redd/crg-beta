@@ -1,6 +1,4 @@
 .form{
-    max-width: max-content ;
-    margin: 20px auto;
     border-radius: 15px;
     border: 1px solid #c7c7c7;
     padding: 20px ;
@@ -38,11 +36,4 @@ p {
 .wrapper{
     position: absolute;
     display: flex;
-}
-
-
-@media (max-width:420px){
-    .form{
-        width: 90%;
-    }
 }

@@ -127,18 +127,18 @@ const Home = () => {
               <p className='xl:text-md 2xl:text-md md:text-md text-sm my-4'>Жарим кофе семь дней в неделю, отправляем на следующий день после заказа, чтобы вы получали максимально свежий кофе.</p>
             </div>
           </div>
-          <div className='flex flex-wrap md:flex-nowrap text-center md:text-start justify-center p-5 rounded-3xl items-center bg-gray-100 xl:mx-auto xl:max-w-screen-xl 2xl:max-w-screen-2xl mb-10'>
+          <div className='flex flex-wrap md:flex-nowrap text-center md:text-start justify-center p-5 mx-2 rounded-3xl items-center bg-gray-100 xl:mx-auto xl:max-w-screen-xl 2xl:max-w-screen-2xl mb-10'>
             <img src={teamImg} alt='Team' className='' />
             <div className='mx-4'>
               <span className='text-lg font-bold'>Подпишись на нас</span>
               <p className='mx-auto my-2 md:mx-0 md:mt-1 w-fit xl:text-md 2xl:text-md md:text-md text-sm'>Здесь мы рассказываем о том, что у нас происходит каждый день. О людях, анонсах, процессах, событиях и новых сортах кофе.</p>
             </div>
-            <div className='text-sm mr-4'>
-              <div className='flex my-2 md:mt-0'>
+            <div className='text-sm md:mr-4 flex flex-row md:flex-col items-center justify-center'>
+              <div className='flex my-2 md:mt-0 items-center'>
                 <img src={instagramIcon} alt='instagram' />
                 <a href='https://instagram.com/coffeeroasterygroup?igshid=YTQwZjQ0NmI0OA==' target='blank' className='mx-1' >@coffeeroasterygroup</a>
               </div>
-              <div className='flex mt-2 md:mt-0'>
+              <div className='flex my-2 md:mt-0 items-center'>
                 <img src={instagramIcon} alt='instagram' />
                 <a href='https://instagram.com/jsbarista.uz?igshid=MzRlODBiNWFlZA==' target='blank' className='mx-1' >@jsbarista.uz</a>
               </div>
