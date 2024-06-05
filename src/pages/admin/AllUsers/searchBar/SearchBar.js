@@ -5,16 +5,20 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setSelectedUsers } from '../../../../store/slices/forAdmin'
 export default function SearchBar() {
     const allUsers = useSelector(state => state.forAdmin.allUsers)
+    const userInfo = useSelector(state => state.user.userInfo)
     const dispatch = useDispatch()
     function filter(value = '') {
         if (value === '') {
             dispatch(setSelectedUsers(allUsers))
+        } else if (value === 'мои') {
+            const template = allUsers.filter(user => user.manager.id === userInfo._id)
+            dispatch(setSelectedUsers(template))
         } else {
             const template = allUsers.filter(user => user.role === value)
             dispatch(setSelectedUsers(template))
         }
     }
-    
+
     function searchItem(value) {
         if (value === '') dispatch(setSelectedUsers(allUsers))
         let temp = value.split('')
@@ -53,6 +57,11 @@ export default function SearchBar() {
                             onClick={() => filter('user')}
                         >
                             Розница
+                        </Button>
+                        <Button
+                            onClick={() => filter('мои')}
+                        >
+                            Мои
                         </Button>
                     </ButtonGroup>
                 </div>
