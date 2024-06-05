@@ -237,7 +237,7 @@ export default function AllUsers() {
                                     ДАТЬ ОПТ
                                   </button> : <>
                                     {
-                                      row.role === 'superuser' ? <Button variant='outlined' size='sm' disabled={true}>УЖЕ ОПТ</Button> :
+                                      row.role === 'superUser' ? <Button variant='outlined' size='sm' disabled={true}>УЖЕ ОПТ</Button> :
                                         <Button variant='outlined' size='sm' disabled={true}>Staff</Button>
                                     }
                                   </>}

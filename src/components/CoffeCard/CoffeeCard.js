@@ -139,7 +139,7 @@ function CoffeeCard({ data = {} }) {
         }
     }
 
-    
+
     const handleWeightColor = () => setWeightColor(false)
     const handlePomolColor = () => setPomoltColor(false)
     useEffect(() => {
@@ -177,7 +177,7 @@ function CoffeeCard({ data = {} }) {
                         />
                     </div>
                     <div className="grid grid-cols-3 gap-4">
-                        {imgdata.map(( imgelink , index) => (
+                        {imgdata.map((imgelink, index) => (
                             <div key={index}>
                                 <img
                                     onClick={() => setActive(imgelink)}
