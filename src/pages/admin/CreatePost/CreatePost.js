@@ -7,6 +7,9 @@ import Box from '@mui/material/Box';
 import CoffeBeans from './CoffeBeans/CoffeBeans';
 import Tea from './Tea/Tea'
 import Other from './Other/Other';
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -42,11 +45,15 @@ function a11yProps(index) {
 
 export default function BasicTabs() {
   const [value, setValue] = React.useState(0);
-
+  const userInfo = useSelector(state => state.user.userInfo)
+  const navigate = useNavigate()
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
+  useEffect(() => {
+    userInfo !== null && userInfo.role !== 'admin' && navigate(-1)
+  })
   return (
     <Box sx={{ width: '100%' }}>
       <h2>Добавить</h2>
@@ -58,13 +65,13 @@ export default function BasicTabs() {
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
-        <CoffeBeans/>
+        <CoffeBeans />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        <Tea/>
+        <Tea />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
-        <Other/>
+        <Other />
       </CustomTabPanel>
     </Box>
   );

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './AllGoods.module.css'
 import axios from '../../../store/axios'
@@ -7,11 +7,14 @@ import {
     Typography,
 } from "@material-tailwind/react";
 import { setAllProducts } from '../../../store/slices/serviceDataSlice';
+import { useNavigate } from 'react-router-dom';
 
 const AllGoods = () => {
     const TABLE_HEAD = ['№', 'Названия', 'Топ', 'Стоп-лист', 'Удалить']
     const allProducts = useSelector(state => state.service.allProducts)
     const dispatch = useDispatch()
+    const userInfo = useSelector(state => state.user.userInfo)
+    const navigate = useNavigate()
     const notify = (text, type) => {
         if (type === 'error') {
             toast.error(text, 'error')
@@ -84,6 +87,10 @@ const AllGoods = () => {
             console.log(error)
         }
     }
+  
+    useEffect(() => {
+      userInfo !== null && userInfo.role !== 'admin' && navigate(-1)
+    })
     return (
         <div className={styles.wrapper}>
             <h2>Все товары</h2>

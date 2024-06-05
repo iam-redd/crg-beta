@@ -42,17 +42,12 @@ function CoffeeCard({ data = {} }) {
     }
 
 
-    const imgdata = [
-        {
-            imgelink:
-                `${url.backendUrl}/${data.img[0]}`
-        },
-    ];
+    const imgdata = data.img.map(img => {
+        return (`${url.backendUrl}/${img}`)
+    })
     const [active, setActive] = React.useState(
         `${url.backendUrl}/${data.img[0]}`
     );
-
-
 
 
     const changeWeight = (val) => {
@@ -104,8 +99,6 @@ function CoffeeCard({ data = {} }) {
     }
 
 
-
-
     function decrement() {
         try {
             if (!boolBasket) {
@@ -128,6 +121,7 @@ function CoffeeCard({ data = {} }) {
         }
     }
 
+
     function increment() {
         try {
             if (!boolBasket) {
@@ -145,6 +139,7 @@ function CoffeeCard({ data = {} }) {
         }
     }
 
+    
     const handleWeightColor = () => setWeightColor(false)
     const handlePomolColor = () => setPomoltColor(false)
     useEffect(() => {
@@ -163,7 +158,6 @@ function CoffeeCard({ data = {} }) {
             setAmount(1)
         }
     }, [pomol, basket, weight, data]);
-
     return (
         <div className={styles.container}>
             <Card className='w-80 md:w-80 h-full border py-5 px-5 card-hover snap-center'>
@@ -183,11 +177,11 @@ function CoffeeCard({ data = {} }) {
                         />
                     </div>
                     <div className="grid grid-cols-3 gap-4">
-                        {imgdata.map(({imgelink}, index) => (
+                        {imgdata.map(( imgelink , index) => (
                             <div key={index}>
                                 <img
                                     onClick={() => setActive(imgelink)}
-                                    src={`${url.backendUrl}/${data.img[0]}`}
+                                    src={`${imgelink}`}
                                     className=" max-w-full cursor-pointer rounded object-cover object-center"
                                     alt="gallery-image"
                                 />
@@ -205,11 +199,11 @@ function CoffeeCard({ data = {} }) {
                 <div className='flex flex-row gap-4 mt-2 text-xs'>
                     <div className='flex-auto'>
                         <p className='mb-1'>Кислотность:</p>
-                        <Progress color='red' size='sm' value={data?.acidity ? data.acidity : 0}/>
+                        <Progress color='red' size='sm' value={data?.acidity ? data.acidity : 0} />
                     </div>
                     <div className='flex-auto'>
                         <p className='mb-1'>Плотность:</p>
-                        <Progress color='red' size='sm' value={data?.density ? data.density : 0}/>
+                        <Progress color='red' size='sm' value={data?.density ? data.density : 0} />
                     </div>
                 </div>
                 <div className='mt-3 text-sm'>
@@ -218,7 +212,7 @@ function CoffeeCard({ data = {} }) {
                         lineHeight={7}
                         showMoreComponent={<p className='spoiler-size'>еще...</p>}
                         showLessComponent={<p className='spoiler-size'>Скрыть</p>}
-                        toggleContainerStyle={{color: '#ba181b'}}
+                        toggleContainerStyle={{ color: '#ba181b' }}
                         collapsedSize={60}
                     >
                         <p className='text-justify text-sm sm:text-md md:text-md lg:text-md xl:text-md 2xl:text-md'>
@@ -233,12 +227,12 @@ function CoffeeCard({ data = {} }) {
                         Помол:
                         <div className='col-span-3 w-auto'>
                             <Select size="md"
-                                    label="Выберите помол"
-                                    onChange={(e) => changePomol(e)}
-                                    style={{borderColor: pomolColor ? "red" : ''}}
-                                    onClick={handlePomolColor}
-                                    value='В зёрнах'
-                                // value={userInfo.role === 'superUser' ? {"1"} : {''}}
+                                label="Выберите помол"
+                                onChange={(e) => changePomol(e)}
+                                style={{ borderColor: pomolColor ? "red" : '' }}
+                                onClick={handlePomolColor}
+                                value='В зёрнах'
+                            // value={userInfo.role === 'superUser' ? {"1"} : {''}}
                             >
                                 <Option value='В зёрнах'>В зёрнах</Option>
                                 <Option value='Под турку'>Под турку</Option>
@@ -258,7 +252,7 @@ function CoffeeCard({ data = {} }) {
                                 size="md"
                                 label="Выберите вес"
                                 onChange={(e) => changeWeight(e)}
-                                style={{borderColor: weightColor ? "red" : ''}}
+                                style={{ borderColor: weightColor ? "red" : '' }}
                                 onClick={handleWeightColor}>
                                 {
                                     weightSize.map((item, index) => (
@@ -318,17 +312,17 @@ function CoffeeCard({ data = {} }) {
                             <>
                                 <div className='flex items-center justify-between'>
                                     <IconButton onClick={decrement}>
-                                        <IndeterminateCheckBox fontSize='inherit' sx={{color: red[500]}}/>
+                                        <IndeterminateCheckBox fontSize='inherit' sx={{ color: red[500] }} />
                                     </IconButton>
                                     <span>{basket[index]?.amount}</span>
                                     <IconButton onClick={increment}>
-                                        <AddBox fontSize='inherit' sx={{color: red[500]}}/>
+                                        <AddBox fontSize='inherit' sx={{ color: red[500] }} />
                                     </IconButton>
                                 </div>
 
 
                                 <Button variant='outlined' size='sm' color='blue-gray'
-                                        onClick={() => navigate('/basket')}>
+                                    onClick={() => navigate('/basket')}>
                                     <h3>Перейти</h3>
                                 </Button>
 

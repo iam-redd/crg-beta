@@ -6,9 +6,8 @@ import { useNavigate } from 'react-router-dom'
 export default function Admin() {
     const userInfo = useSelector(state => state.user.userInfo)
     const navigate = useNavigate()
-    console.log(userInfo)
     useEffect(() => {
-        if (userInfo !== null && userInfo.role === 'admin') {
+        if (userInfo !== null && userInfo.role === 'admin' || userInfo.role === 'operator') {
             navigate('/staff/monitoring')
         }
         else navigate('/')
