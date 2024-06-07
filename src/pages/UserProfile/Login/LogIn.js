@@ -83,7 +83,7 @@ const LogIn = ({ setLoginVisible, setRegisterVisible, setCodeFormVisible }) => {
 
         <form
             onSubmit={handleSubmit}
-            className={styles.form}>
+            className={`w-full md:w-max ${styles.form}`}>
             {/* <p
                 className="flex px-4 text-end cursor-pointer justify-end text-red-500"
                 onClick={() => navigate('/user')}
