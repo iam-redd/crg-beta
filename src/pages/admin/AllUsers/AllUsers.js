@@ -21,10 +21,11 @@ import {
 import icon from '../../../assets/icons/user.png'
 import url from '../../../default.json'
 import { toast } from 'react-toastify';
+import { UserIcon } from '@heroicons/react/24/outline';
 export default function AllUsers() {
   const notifyError = (text) => toast.error(text);
-
-  const TABLE_HEAD = ["Пользователь", "Контакты", "Статус", 'Состояния', 'Менеджер'];
+  const userInfo = useSelector(state => state.user.userInfo)
+  const TABLE_HEAD = ["Пользователь", "Контакты", "Статус", 'Состояния'];
 
   const navigate = useNavigate()
   const [isSucccess, setSecccess] = useState(true)
@@ -108,8 +109,7 @@ export default function AllUsers() {
   useEffect(() => {
     selectedUsers === null && getAllUsersFunc()
     selectedUsers !== null && setLoading(false)
-  });
-  console.log(selectedUsers);
+  }, [setLoading, getAllUsersFunc, selectedUsers]);
 
   return (
     <div>
@@ -148,6 +148,18 @@ export default function AllUsers() {
                         </Typography>
                       </th>
                     ))}
+                    {
+                      userInfo !== null && userInfo.role === 'admin' ? <th
+                        className="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4"
+                      >
+                        <Typography
+                          variant="small"
+                          color="blue-gray"
+                          className="font-normal leading-none opacity-70"
+                        >
+                          Менеджер
+                        </Typography>
+                      </th> : <></>}
                   </tr>
                 </thead>
                 <tbody>
@@ -162,7 +174,7 @@ export default function AllUsers() {
                           : "p-4 border-b border-blue-gray-50";
 
                         return (
-                          <tr>
+                          <tr key={id}>
                             <td className={classes}>
                               <div className="flex items-center gap-3">
                                 <Avatar src={row.avatarUrl !== '' ? `${url.backendUrl}/${row.avatarUrl}` : icon} alt={row.name} size="sm"
@@ -237,7 +249,7 @@ export default function AllUsers() {
                                     ДАТЬ ОПТ
                                   </button> : <>
                                     {
-                                      row.role === 'superuser' ? <Button variant='outlined' size='sm' disabled={true}>УЖЕ ОПТ</Button> :
+                                      row.role === 'superUser' ? <Button variant='outlined' size='sm' disabled={true}>УЖЕ ОПТ</Button> :
                                         <Button variant='outlined' size='sm' disabled={true}>Staff</Button>
                                     }
                                   </>}
@@ -258,24 +270,21 @@ export default function AllUsers() {
                               </div>}
                             </td>
                             {
-                              // row.role === 'user' || row.role === 'superUser' && managers !== null &&
-                              managers !== null &&
-
-                              <td>
-                                <Select
-                                  label='Менеджер'
-                                  value={row.manager.name}
-                                  onChange={(e) => changeManagerForUser(row._id, e)}>
-                                  {
-                                    managers.map((manager, index) => {
-                                      return (
-                                        <Option value={manager.name} key={index}>{manager.name}</Option>
-                                      )
-                                    })
-                                  }
-                                </Select>
-                              </td>
-                            }
+                              managers !== null && userInfo.role === 'admin' ?
+                                <td>
+                                  <Select
+                                    label='Менеджер'
+                                    value={row.manager.name}
+                                    onChange={(e) => changeManagerForUser(row._id, e)}>
+                                    {
+                                      managers.map((manager, index) => {
+                                        return (
+                                          <Option value={manager.name} key={index}>{manager.name}</Option>
+                                        )
+                                      })
+                                    }
+                                  </Select>
+                                </td> : <></>}
                           </tr>
                         );
                       },

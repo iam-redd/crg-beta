@@ -45,7 +45,7 @@ export default function UserHeader() {
                       </div>
                       :
                       <div>
-                        <Chip className='rounded-full font-medium' size="sm" variant="gradient" color={userInfo.role === 'user' ? 'cyan' : 'amber'} value={userInfo.role === 'user' ? 'Розница' : 'ОПТ'} />
+                        <Chip className='rounded-full font-medium' size="sm" variant="gradient" color={userInfo.role === 'user' ? 'cyan' : 'amber'} value={userInfo.role === 'user' ? 'Розница' : userInfo.role === 'superUser' ? 'ОПТ' : 'Оператор'} />
                       </div>
                     }
                   </div>
@@ -94,17 +94,17 @@ export default function UserHeader() {
                           <ListItemSuffix className='ml-1'>Выйти из профиля</ListItemSuffix>
                         </ListItem>
                       </Link>
-                      {userInfo.role === 'admin' ?
-                          <Link to={'/staff'}>
-                            <ListItem>
-                              <ListItemPrefix>
-                                <ComputerDesktopIcon className='w-5 h-5' />
-                              </ListItemPrefix>
-                              <ListItemSuffix className='ml-1'>ADMIN</ListItemSuffix>
-                            </ListItem>
-                          </Link>
-                          :
-                          <></>
+                      {userInfo.role === 'admin' || userInfo.role === 'operator' ?
+                        <Link to={'/admin'}>
+                          <ListItem>
+                            <ListItemPrefix>
+                              <ComputerDesktopIcon className='w-5 h-5' />
+                            </ListItemPrefix>
+                            <ListItemSuffix className='ml-1'>ADMIN</ListItemSuffix>
+                          </ListItem>
+                        </Link>
+                        :
+                        <></>
                       }
                     </List>
                   </Card>
@@ -112,9 +112,9 @@ export default function UserHeader() {
               </div>
             </div>
             :
-              <div className='w-full'>
-                <Modals/>
-              </div>
+            <div className='w-full'>
+              <Modals />
+            </div>
 
           // <Navigate to='/login'/>
         }

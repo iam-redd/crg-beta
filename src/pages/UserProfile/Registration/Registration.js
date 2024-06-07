@@ -20,7 +20,7 @@ const Registration = ({ setLoginVisible, setRegisterVisible, setCodeFormVisible 
     const handleSubmit = async (e) => {
         try {
             e.preventDefault()
-            console.log(e)
+            console.log(e.target.city.value)
             setLogin(false)
             if (e.target.name.value.trim() === '') {
                 handleError('Имя обязательная поля')
@@ -34,7 +34,7 @@ const Registration = ({ setLoginVisible, setRegisterVisible, setCodeFormVisible 
                 handleError('Номер телефона обязательная поля')
                 return
             }
-            if (e.target.city.value.trim() === '') {
+            if (selectValue.trim() === '') {
                 handleError('Город обязательная поля')
                 return
             }
@@ -49,13 +49,13 @@ const Registration = ({ setLoginVisible, setRegisterVisible, setCodeFormVisible 
             const request = {
                 name: e.target.name.value,
                 phoneNumber: e.target.phoneNumber.value.trim(),
-                city: e.target.city.value,
+                city: selectValue,
                 avatarUrl: uploadedImages,
                 address: [e.target.address.value],
                 telegram: e.target.telegram.value,
             }
             if (e.target.email.value !== '') request.email = e.target.email.value
-
+            console.log(request)
 
             const data = await axios.post('/register-verify', request)
             if (data.status === 200) {
