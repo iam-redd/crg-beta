@@ -10,10 +10,12 @@
 .img{
     border-radius: 10px;
     transition: 0.5s;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .resize{
     display: inline-block;
-    border: 1px red solid;
+
 }
 .img:hover{
     transform: scale(1.1);
