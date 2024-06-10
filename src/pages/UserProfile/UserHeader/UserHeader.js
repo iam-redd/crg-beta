@@ -32,12 +32,12 @@ export default function UserHeader() {
                 <div className='flex flex-col items-center'>
                   <div className={styles.userImg}>
                     {
-                      userInfo.avatarUrl !== '' ? <img src={`${url.backendUrl}/${userInfo.avatarUrl}`} alt="" /> : <span></span>
+                      userInfo.avatarUrl !== '' ? <img src={`${url.backendUrl}/${userInfo.avatarUrl}`} alt="avater" /> : <span></span>
                     }
                   </div>
                 </div>
                 <div className='sm:ml-4 md:ml-4 lg:ml-5 xl:ml-10 w-full'>
-                  <div className="flex gap-2 items-center justify-center flex-wrap sm:justify-start py-2">
+                  <div className="flex gap-2 items-center sm:justify-center flex-wrap justify-start py-2">
                     <span className="text-lg font-bold text-blue-gray-900">{userInfo.name}</span>
                     {userInfo.role === 'admin' ?
                       <div >
