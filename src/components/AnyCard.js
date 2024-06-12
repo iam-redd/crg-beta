@@ -107,7 +107,7 @@ const AnyCard = ({ data }) => {
                 <h2 className='text-center font-bold text-xl'>{data.name}</h2>
                 <p className='text-center text-xs mx-auto border-none p-0.5 mb-1.5'>{type}</p>
                 <div className='flex mt-5'>
-                    <img src={`${url.backendUrl}/${data.img}`} alt='card-img' className='object-cover object-center w-full' />
+                    <img src={`${url.backendUrl}/${data.img[0]}`} alt='card-img' className='object-cover object-center w-full' />
                 </div>
                 <div className='mt-5 text-sm'>
                     <p className='line-clamp-3'>
