@@ -41,7 +41,7 @@ export default function LeftBar() {
           onClick={() => selectedProducts !== null ? filter(null) : null}>
           <img src={allGoods} className='w-8 h-8 text-center' alt='' />
           <div>
-            Всё
+            Все
           </div>
         </div>
         <div
