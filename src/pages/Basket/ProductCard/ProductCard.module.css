@@ -10,8 +10,7 @@
 .img{
     border-radius: 10px;
     transition: 0.5s;
-    background-repeat: no-repeat;
-    background-size: cover;
+    object-fit: cover;
 }
 .resize{
     display: inline-block;

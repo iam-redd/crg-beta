@@ -183,7 +183,7 @@ function CoffeeCard({ data = {} }) {
                                     onClick={() => setActive(imgelink)}
                                     src={`${imgelink}`}
                                     className=" max-w-full cursor-pointer rounded object-cover object-center"
-                                    alt="gallery-image"
+                                    alt="product img"
                                 />
                             </div>
                         ))}
