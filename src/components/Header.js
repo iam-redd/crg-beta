@@ -87,7 +87,7 @@ const Header = () => {
         <div className="bg-white">
           <div className='border-b border-gray-200'>
             <div className='h-full mx-auto max-w-screen-xl 2xl:max-w-screen-2xl hidden nowrap  px-4 py-1 2xl:px-0 items-center justify-between text-gray-600 lg:flex lg:px-4 lg:py-2'>
-              <div className='text-sm cursor-text ml-5'>
+              <div className='text-sm cursor-text ml-5 md:ml-0'>
                 Call-центр: +998(99)899-20-12
               </div>
               <ul className='flex text-xs'>
