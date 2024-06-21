@@ -41,7 +41,7 @@ export default function LeftBar() {
           onClick={() => selectedProducts !== null ? filter(null) : null}>
           <img src={allGoods} className='w-8 h-8 text-center' alt='' />
           <div>
-            Всё
+            Все
           </div>
         </div>
         <div
@@ -87,7 +87,7 @@ export default function LeftBar() {
 
         <div
           className={`p-5 mb-1 mr-1 flex flex-col items-center ${styles.catcat} ${tabActive === 'accessories' && styles.tabActive}`}
-          onClick={() => selectedProducts !== null ? filter('accessories') : null}
+          onClick={() => selectedProducts !== null ? filter('accessory') : null}
         >
           <img src={accessorieIcon} className='w-8 h-8 text-center' alt='' />
           <div>

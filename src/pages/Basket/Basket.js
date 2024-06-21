@@ -88,8 +88,8 @@ const Basket = () => {
                             <div className=""><DefaultSpinner /></div> :
                             <>
                                 <div className='text-xl font-bold text-center my-6 lg:my-10'>Корзина</div>
-                                <div className='flex flex-col md:flex-row'>
-                                    <div className=''>
+                                <div className='flex flex-col md:flex-row justify-between'>
+                                    <div className='w-full'>
                                         {
                                             data.map((_, index) => {
                                                 return (

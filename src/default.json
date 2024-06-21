@@ -1,4 +1,5 @@
 {
-    "backendUrl":"http://localhost:4444",
+    
+    "backendUrl":"https://crg-1126b7a61fae.herokuapp.com",
     "secretKey":"secret123"
 }

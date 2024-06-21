@@ -37,10 +37,10 @@ function ProductCard({ index }) {
             {
                 basket[index]?.amount > 0 ?
                     <div className={`rounded mx-4 my-2 flex flex-wrap sm:flex-nowrap ${styles.product_container}`}>
-                        <div className={`sm:w-2/4 lg:w-1/5 md:w-2/5 ${styles.resize}`}><img className={styles.img} src={`${url.backendUrl}/${basket[index]?.img}`} alt="" /></div>
+                        <img className={` sm:w-2/4 lg:w-1/5 md:w-2/5 ${styles.resize} ${styles.img}`} src={`${url.backendUrl}/${basket[index]?.img[0]}`} alt="product card" />
                         <div className='ml-4 xl:ml-10 flex flex-auto flex-col md:flex-row'>
-                            <div>
-                            <div className={`font-bold`}>
+                            <div className='flex flex-col justify-center md:justify-start'>
+                            <div className={`font-bold text-lg text-center md:text-start mt-2 md:mt-0`}>
                                 <span>{basket[index]?.name } </span>
                                 <span className='text-sm font-medium text-red-700'>
                                     {
@@ -48,18 +48,18 @@ function ProductCard({ index }) {
                                     }
                                 </span>
                             </div>
-                            <div className='flex flex-row justify-between'>
-                            <div className=''>
+                            <div className='flex flex-row justify-center text-center'>
+                            <div className='flex flex-col gap-4'>
                             {(basket[index].type === 'tea' || 'coffee-beans') &&
-                                <p>---{basket[index].package}</p>
+                                <p>{basket[index].package}</p>
                             }
                             {basket[index].type === 'coffe-beans' &&
                                 <div className='flex flex-col'>
                                     <span className='text-sm'>
                                         Вес: <span className='ml-1 font-medium border-b border-dashed border-black'>{basket[index].weight}</span>
                                     </span>
-                                    <span className='text-sm my-1'>
-                                        Обжарка: <span className='ml-1 text-xs text-red-200 justify-center rounded border border-red-200 p-1'>{basket[index].roast}</span>
+                                    <span className='text-sm my-2'>
+                                        Обжарка: <span className='ml-1 text-xs text-red-400 justify-center rounded border border-red-200 p-1'>{basket[index].roast}</span>
                                     </span>
                                     <span className='text-sm'>
                                         Помол: <span className='font-medium border-b border-dashed border-black'>{basket[index].pomol}</span>
@@ -70,7 +70,8 @@ function ProductCard({ index }) {
                             
                             </div>
                             </div>
-                            <div className={`mt-5 items-center w-max flex-auto flex justify-end md:flex-start`}>
+                            <div className={`mt-5 items-center w-full md:w-max flex-auto flex justify-end md:flex-start`}>
+                                <p className='text-sm font-medium'>Кол-во:</p>
                                 <IconButton onClick={decrement}>
                                     <IndeterminateCheckBox sx={{ color: red[300] }}/>
                                 </IconButton>
