@@ -51,6 +51,7 @@ export default function BasicTabs() {
   const [data, setData] = React.useState(null)
   const userInfo = useSelector(state => state.user.userInfo)
   const navigate = useNavigate()
+  console.log(process.env.NODE_ENV)
 
   async function getAllOrders() {
     try {

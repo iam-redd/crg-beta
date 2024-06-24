@@ -113,7 +113,6 @@ const AnyCard = ({ data }) => {
                 <div className='mt-5 text-sm'>
                     <p className='line-clamp-3'>
                         Описание: &nbsp;
-                        
                         <span>
                         {data.description}
                         </span>
