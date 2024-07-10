@@ -58,7 +58,7 @@ const router = createBrowserRouter(createRoutesFromElements(
                 <Route path="all-goods" element={<AllGoods />} />
             </Route>
             <Route path="others" element={<Others />} >
-                <Route path="pay-n-delivery" element={<PayDelivery />} />
+                <Route path="payndelivery" element={<PayDelivery />} />
                 <Route path="about" element={<AboutPage />} />
                 <Route path="barista-school" element={<JsBarista />} />
                 <Route path="wholesellers" element={<Wholesellers />} />

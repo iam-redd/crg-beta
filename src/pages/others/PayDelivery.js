@@ -1,13 +1,6 @@
 import React from 'react';
 import {useSelector} from "react-redux";
 
-
-
-
-
-
-
-
 const PayNDelivery = () => {
     const userInfo = useSelector(state => state.user.userInfo)
     return (

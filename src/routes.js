@@ -5,7 +5,7 @@ import Basket from "./pages/Basket"
 import Home from "./pages/Home/Home"
 import JSBarista from "./pages/JSBarista"
 import LogIn from "./pages/LogIn"
-import PayNDelivery from "./pages/PayNDelivery"
+
 import Recipes from "./pages/Recipes"
 import Registration from "./pages/Registration"
 import Shop from "./pages/Shop"

@@ -11,6 +11,7 @@ const Registration = ({ setLoginVisible, setRegisterVisible, setCodeFormVisible 
     const [uploadedImages, setUploadedImages] = useState(null)
     // const userInfo = useSelector(state => state.user.userInfo)
     const [loginError, setLogin] = useState(false)
+    const [btnBool, setBtnBool] = useState(true)
     const [errorMessage, setMessage] = useState('')
     const [selectValue, setValue] = useState(null)
     const regex = /^\+998[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]$/
@@ -218,7 +219,8 @@ const Registration = ({ setLoginVisible, setRegisterVisible, setCodeFormVisible 
                                 color='red'
                                 size='md'
                                 className='mt-4'
-                                type='submit'>Зарегистрироваться
+                                disabled={!btnBool}
+                                type='submit'>{ btnBool ? 'Зарегистрироваться' : 'Обработка'}
                             </Button>
                             <div className='flex w-full mt-4 text-xs'>
                                 <p className='mr-1'>Уже есть аккаунт?</p>
