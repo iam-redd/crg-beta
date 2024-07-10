@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/964.ade17014.chunk.css","mappings":"AAAA,yBACI,YAAa,CACb,6BACJ,CCHA,mBACI,eACJ","sources":["components/CoffeCard/CoffeCard.module.css","components/Style.module.css"],"sourcesContent":[".header{\n    display: flex;\n    justify-content: space-between;\n}",".imgH{\n    overflow: hidden;\n}"],"names":[],"sourceRoot":""}

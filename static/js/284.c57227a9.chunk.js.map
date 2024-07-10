@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/284.c57227a9.chunk.js","mappings":"kJAEe,SAASA,IACtB,OACEC,EAAAA,EAAAA,KAAA,OAAAC,SAAK,YAET,C","sources":["pages/admin/Settings/Settings.js"],"sourcesContent":["import React from 'react'\n\nexport default function Settings() {\n  return (\n    <div>Settings</div>\n  )\n}\n"],"names":["Settings","_jsx","children"],"sourceRoot":""}
