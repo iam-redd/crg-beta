@@ -1,6 +1,0 @@
-{
-    "MONGO_DB_URL":"mongodb+srv://zarimkofe:wwwwww@cluster0.ddu19sw.mongodb.net/blog?retryWrites=true&w=majority",
-    "eskiz_secret_key":"zWEZELYvgTdoRsUzH4cP5PSCPqotht2kuLyZ3nBp",
-    "eskiz_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MTg1NTUyNzIsImlhdCI6MTcxNTk2MzI3Miwicm9sZSI6InVzZXIiLCJzaWduIjoiNWQyZTBhYjIxYjI4NDY1MDk2ZGY3NWQ1ZWE3ZDJjMDVlZjZlNWZlZjVlMTBlZWZkNjZiNDM0ZThhMmZhZTNjOSIsInN1YiI6IjcwODYifQ.t498XthH4FQc7T_DSmlJgTFrvtBLT8KIcljTGDUL6ag",
-    "eskiz_url":"notify.eskiz.uz"
-}

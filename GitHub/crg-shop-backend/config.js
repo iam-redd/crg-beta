@@ -1,1 +1,0 @@
-export default  "mongodb+srv://admin:wwwwww@cluster0.pauzooa.mongodb.net/test3?retryWrites=true&w=majority"
