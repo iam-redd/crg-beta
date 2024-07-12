@@ -164,6 +164,9 @@ function CoffeeCard({ data = {} }) {
                 <div className={styles.header}>
                     <span className='text-sm text-red-700'>{data.stopList && 'Нет в наличии'}</span>
                     <span className='text-xs'>{data.topList && 'Топ-недели'}</span>
+                    {
+                        data.topList || data.stopList !== undefined && <span className='pt-4'></span>
+                    }
                 </div>
                 <h2 className='text-center font-bold text-xl line-clamp-2'>{data?.name ? data.name : ''}</h2>
                 <p className='text-xs flex text-red-200 justify-center rounded border border-red-200 mx-auto p-0.5 mb-1.5'>{data.roast}</p> {/*Вытаскиваем с базы для эспрессо или фильтра*/}

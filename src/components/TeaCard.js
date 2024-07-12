@@ -45,7 +45,7 @@ const TeaCard = ({ data }) => {
     }
 
 
-    function addToBasketе() {
+    function addToBasket() {
         setPackageIndex(0)
         setPackageColor(false)
         if (packageValue === null) {
@@ -120,6 +120,9 @@ const TeaCard = ({ data }) => {
                 <div className={styles.header}>
                     <span className='text-xs text-red-700'>{data.stopList && 'Нет в наличии'}</span>
                     <span className='text-xs'>{data.topList && 'Топ-недели'}</span>
+                    {
+                        data.topList || data.stopList !== undefined && <span className='pt-4'></span>
+                    }
                 </div>
                 <h2 className='text-center font-bold text-xl'>{data.name}</h2>
                 <p className='text-center text-xs mx-auto border-none p-0.5 mb-1.5'>{data.color}</p>
@@ -217,7 +220,7 @@ const TeaCard = ({ data }) => {
                                     color="red"
                                     variant='gradient'
                                     size='sm'
-                                    onClick={addToBasketе}>
+                                    onClick={addToBasket}>
                                         <h3>В корзину</h3>
                                 </Button>
                             </>

@@ -104,6 +104,9 @@ const AnyCard = ({ data }) => {
                 <div className={styles.header}>
                     <span className='text-xs text-red-700'>{data.stopList && 'Нет в наличии'}</span>
                     <span className='text-xs'>{data.topList && 'Топ-недели'}</span>
+                    {
+                        data.topList || data.stopList !== undefined && <span className='pt-4'></span>
+                    }
                 </div>
                 <h2 className='text-center font-bold text-xl'>{data.name}</h2>
                 <p className='text-center text-xs mx-auto border-none p-0.5 mb-1.5'>{type}</p>
