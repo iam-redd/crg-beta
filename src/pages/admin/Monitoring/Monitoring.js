@@ -2,7 +2,6 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import AllOrders from './AllOrders/AllOrders';
 import axios from '../../../store/axios'
@@ -13,6 +12,9 @@ import DeliveredOrders from './DeliveredOrders/DeliveredOrders';
 import DeniedOrders from './DeniedOrders/DeniedOrders';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { Option, Select, Typography } from '@material-tailwind/react';
+import { useState } from 'react';
+
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -49,9 +51,11 @@ function a11yProps(index) {
 
 export default function BasicTabs() {
   const [data, setData] = React.useState(null)
+  const [allOrders,setAllOrders] = useState(data)
+  const [managers, setManagers] = React.useState(null)
   const userInfo = useSelector(state => state.user.userInfo)
+  const [managerSelect,setManagerSelect] = useState(userInfo.role === 'admin' || userInfo.role === 'manager' ? userInfo.name : 'all')
   const navigate = useNavigate()
-  console.log(process.env.NODE_ENV)
 
   async function getAllOrders() {
     try {
@@ -65,6 +69,17 @@ export default function BasicTabs() {
       console.log(error.message)
     }
   }
+  async function getAllManagers() {
+    try {
+      const { data } = await axios.get('/managers')
+      console.log(data)
+      setManagers(data)
+    }
+    catch (error) {
+      console.log(error)
+    }
+  }
+  // async function getAllManagers
 
   const [value, setValue] = React.useState(0);
 
@@ -74,12 +89,29 @@ export default function BasicTabs() {
 
   React.useEffect(() => {
     data === null && getAllOrders()
+    managers === null && getAllManagers()
   });
   return (<>
     {
       userInfo &&
       <Box sx={{ width: '100%' }}>
         <h2>Мониторинг</h2>
+        {
+          userInfo.role === 'manager' || userInfo.role === 'admin'  && <>
+          {
+          managers !== null &&
+          <Select
+            size="md"
+            label="Выберите менеджера"
+            value={managerSelect}>
+            <Option value={'all'}>Все заказы</Option>
+            <Option value={'roz'}>Розница</Option>
+            <Option value={'opt'}>Опт</Option>
+            {
+              managers.map(manager => <Option value={manager.name}>{manager.name}</Option>)
+            }
+          </Select>}</>
+        }
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
             {

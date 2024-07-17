@@ -7,12 +7,10 @@ export default function Admin() {
     const userInfo = useSelector(state => state.user.userInfo)
     const navigate = useNavigate()
     useEffect(() => {
-        if (userInfo !== null && userInfo.role === 'admin' || userInfo.role === 'operator') {
+        if (userInfo !== null && userInfo.role === 'admin' || userInfo.role === 'operator' || userInfo.role === 'developer' || userInfo.role === 'master' || userInfo.role === 'heaver' || userInfo.role === 'manager') {
             navigate('/staff/monitoring')
         }
         else navigate('/')
-
-
     }, [userInfo]);
     return (
         <div><DefaultSpinner /></div>

@@ -334,7 +334,7 @@ const Header = () => {
                           </IconButton>
                           :
                           <div className='border rounded-full border-red-500 mr-1'>
-                              <Avatar src={`${url.backendUrl}/${userInfo.avatarUrl}`} size={"md"}/>
+                              <Avatar src={`${process.env.REACT_APP_SERVER}/${userInfo.avatarUrl}`} size={"md"}/>
                           </div>
                       }
                   </a>

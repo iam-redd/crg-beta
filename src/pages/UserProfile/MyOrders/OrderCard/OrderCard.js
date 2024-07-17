@@ -81,7 +81,7 @@ export default function OrderCard({ data }) {
 function Order({ data }) {
   return (
     <div className={styles.order}>
-      <img src={`${url.backendUrl}/${data.img}`} alt="" />
+      <img src={`${process.env.REACT_APP_SERVER}/${data.img}`} alt="" />
       <div className={styles.info}>
         <p>Название: {data.name}</p>
         <p>Вес: {data.weight}</p>

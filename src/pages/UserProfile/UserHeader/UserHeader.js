@@ -32,7 +32,7 @@ export default function UserHeader() {
                 <div className='flex flex-col items-center'>
                   <div className={styles.userImg}>
                     {
-                      userInfo.avatarUrl !== '' ? <img src={`${url.backendUrl}/${userInfo.avatarUrl}`} alt="User avatar" /> : <span></span>
+                      userInfo.avatarUrl !== '' ? <img src={`${process.env.REACT_APP_SERVER}/${userInfo.avatarUrl}`} alt="User avatar" /> : <span></span>
                     }
                   </div>
                 </div>
@@ -45,7 +45,8 @@ export default function UserHeader() {
                       </div>
                       :
                       <div>
-                        <Chip className='rounded-full font-medium' size="sm" variant="gradient" color={userInfo.role === 'user' ? 'cyan' : 'amber'} value={userInfo.role === 'user' ? 'Розница' : userInfo.role === 'superUser' ? 'ОПТ' : 'Оператор'} />
+                        <Chip className='rounded-full font-medium' size="sm" variant="gradient" color={userInfo.role === 'user' ? 'cyan' : 'amber'} value={userInfo.role === 'user' ? 'Розница' : userInfo.role === 'superUser' ? 'ОПТ' : userInfo.role === 'developer' ? 'Разработчик' : userInfo.role === 'master' ? 'Владелец' : userInfo.role === 'manager' || userInfo.role === 'admin' ? 'Менеджер':'Оператор'
+                        } />
                       </div>
                     }
                   </div>
@@ -94,7 +95,7 @@ export default function UserHeader() {
                           <ListItemSuffix className='ml-1'>Выйти из профиля</ListItemSuffix>
                         </ListItem>
                       </Link>
-                      {userInfo.role === 'admin' || userInfo.role === 'operator' ?
+                      {userInfo.role === 'admin' || userInfo.role === 'operator' || userInfo.role === 'developer' || userInfo.role === 'heaver' || userInfo.role === 'master' || userInfo.role === 'manager' ?
                         <Link to={'/admin'}>
                           <ListItem>
                             <ListItemPrefix>

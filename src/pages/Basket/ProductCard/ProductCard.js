@@ -37,7 +37,7 @@ function ProductCard({ index }) {
             {
                 basket[index]?.amount > 0 ?
                     <div className={`rounded mx-4 my-2 flex flex-wrap sm:flex-nowrap ${styles.product_container}`}>
-                        <img className={` sm:w-2/4 lg:w-1/5 md:w-2/5 ${styles.resize} ${styles.img}`} src={`${url.backendUrl}/${basket[index]?.img[0]}`} alt="product card" />
+                        <img className={` sm:w-2/4 lg:w-1/5 md:w-2/5 ${styles.resize} ${styles.img}`} src={`${process.env.REACT_APP_SERVER}/${basket[index]?.img[0]}`} alt="product card" />
                         <div className='ml-4 xl:ml-10 flex flex-auto flex-col md:flex-row'>
                             <div className='flex flex-col justify-center md:justify-start'>
                             <div className={`font-bold text-lg text-center md:text-start mt-2 md:mt-0`}>

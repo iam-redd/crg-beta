@@ -1,5 +1,4 @@
 {
-    
-    "backendUrl":"http://45.138.158.250:4444",
-    "secretKey":"secret123"   
+     "backendUrl":"https://api.cataleya.uz:4444",
+    "secretKey":"secret123"
 }

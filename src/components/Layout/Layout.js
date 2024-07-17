@@ -29,13 +29,13 @@ const Layout = () => {
                 if (data !== null) {
                     const bytes = CryptoJS.AES.decrypt(JSON.parse(data), secretKey.secretKey);
                     const decryptedText = bytes.toString(CryptoJS.enc.Utf8);
-                    const a = JSON.parse( decryptedText)
+                    const a = JSON.parse(decryptedText)
                     dispatch(addData(a))
                 } else {
                     const { data } = await axios.get('/me')
                     const str = JSON.stringify(data.data)
                     const ciphertext = CryptoJS.AES.encrypt(str, secretKey.secretKey).toString();
-                    window.localStorage.setItem('data', JSON.stringify( ciphertext))
+                    window.localStorage.setItem('data', JSON.stringify(ciphertext))
                     dispatch(addData(ciphertext))
                 }
             } else {

@@ -87,14 +87,17 @@ export default function AllUsers() {
     }
   }
   async function getAllManagers() {
-    const { data } = await axios.get('/managers')
+    try{const { data } = await axios.get('/managers')
     console.log(data)
-    setManagers(data)
+    setManagers(data)}
+    catch (error) {
+      console.log(error)
+    }
   }
 
   managers === null && getAllManagers()
 
-  // isLoading && selectedUsers[0].avatarUrl !== '' && console.log(`${url.backendUrl}/${selectedUsers[0].avatarUrl}`)
+  // isLoading && selectedUsers[0].avatarUrl !== '' && console.log(`${process.env.REACT_APP_SERVER}/${selectedUsers[0].avatarUrl}`)
 
   async function changeManagerForUser(id, manager) {
     try {
@@ -177,7 +180,7 @@ export default function AllUsers() {
                           <tr key={id}>
                             <td className={classes}>
                               <div className="flex items-center gap-3">
-                                <Avatar src={row.avatarUrl !== '' ? `${url.backendUrl}/${row.avatarUrl}` : icon} alt={row.name} size="sm"
+                                <Avatar src={row.avatarUrl !== '' ? `${process.env.REACT_APP_SERVER}/${row.avatarUrl}` : icon} alt={row.name} size="sm"
                                   className='cursor-pointer'
                                   onClick={() => {
                                     dispatch(setCurrentUser(row))

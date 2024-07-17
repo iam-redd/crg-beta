@@ -83,12 +83,12 @@ export default function MySettings() {
                             <div className="flex flex-col gap-2 md:border rounded-md p-2 md:border-gray-400 content-center">
                                 <div className={`mx-auto ${styles.userImg} justify-center items-center`}>
                                     {
-                                        image !== '' ? <img src={`${url.backendUrl}/${image}`} alt="" /> :
+                                        image !== '' ? <img src={`${process.env.REACT_APP_SERVER}/${image}`} alt="" /> :
                                             <>
                                                 {
                                                     isLoading ? <DefaultSpinner /> : <>
                                                         {
-                                                            userInfo.avatarUrl !== '' ? <img src={`${url.backendUrl}/${userInfo.avatarUrl}`} alt="" /> : <></>
+                                                            userInfo.avatarUrl !== '' ? <img src={`${process.env.REACT_APP_SERVER}/${userInfo.avatarUrl}`} alt="" /> : <></>
                                                         }
                                                     </>
                                                 }

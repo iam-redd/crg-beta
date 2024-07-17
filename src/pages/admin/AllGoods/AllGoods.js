@@ -119,7 +119,7 @@ const AllGoods = () => {
                             return (
                                 <tr className={styles.tr} key={index}>
                                     <td>{index + 1}</td>
-                                    {/* <td><img className={styles.trImage} src={`${url.backendUrl}/${product.img}`} alt="" /></td> */}
+                                    {/* <td><img className={styles.trImage} src={`${process.env.REACT_APP_SERVER}/${product.img}`} alt="" /></td> */}
                                     <td>{product.name}</td>
                                     <td>
                                         {

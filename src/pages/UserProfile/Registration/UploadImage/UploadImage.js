@@ -56,7 +56,7 @@ const ImageUpload = ({ list, setList }) => {
                                 </Button>
                             }
                         </> :
-                        <img src={`${url.backendUrl}/${list}`} alt=''/>
+                        <img src={`${process.env.REACT_APP_SERVER}/${list}`} alt=''/>
                 }
             </div>
             <input type="file" onChange={handleUpload} accept='image/*' hidden ref={input} />

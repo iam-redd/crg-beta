@@ -15,7 +15,7 @@ import { IconButton } from '@mui/material';
 
 
 const TeaCard = ({ data }) => {
-    const packages = ['Крафт-пакет', 'Картонная', 'Альюминиевая']
+    const packages = ['Крафт-пакет 40гр','Крафт-пакет 3кг','Крафт-пакет 5кг', 'Картонная', 'Альюминиевая']
     const [packageColor, setPackageColor] = useState(false)
     const basket = useSelector(state => state.basket.basket)
     const [boolBasket, setBoolBasket] = useState(false)
@@ -127,7 +127,7 @@ const TeaCard = ({ data }) => {
                 <h2 className='text-center font-bold text-xl'>{data.name}</h2>
                 <p className='text-center text-xs mx-auto border-none p-0.5 mb-1.5'>{data.color}</p>
                 <div className='flex'>
-                    <img src={`${url.backendUrl}/${data.img}`} alt='card-img' className='object-cover object-center w-full' />
+                    <img src={`${process.env.REACT_APP_SERVER}/${data.img}`} alt='card-img' className='object-cover object-center w-full' />
                 </div>
                 <div className='mt-5 text-sm'>
                     <p className='line-clamp-3'>
@@ -141,7 +141,7 @@ const TeaCard = ({ data }) => {
                         <p>Упа-ка: </p>
                         <div className='col-span-3'>
                             <Select
-                                size="md"
+                                size="sm"
                                 label="Выберите упа-ку"
                                 onChange={(e) => changePackage(e)}
                                 onClick={() => handlePackageColor()}

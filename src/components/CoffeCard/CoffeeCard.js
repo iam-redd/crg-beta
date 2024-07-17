@@ -43,10 +43,10 @@ function CoffeeCard({ data = {} }) {
 
 
     const imgdata = data.img.map(img => {
-        return (`${url.backendUrl}/${img}`)
+        return (`${process.env.REACT_APP_SERVER}/${img}`)
     })
     const [active, setActive] = React.useState(
-        `${url.backendUrl}/${data.img[0]}`
+        `${process.env.REACT_APP_SERVER}/${data.img[0]}`
     );
 
 
@@ -170,7 +170,7 @@ function CoffeeCard({ data = {} }) {
                 </div>
                 <h2 className='text-center font-bold text-xl line-clamp-2'>{data?.name ? data.name : ''}</h2>
                 <p className='text-xs flex text-red-200 justify-center rounded border border-red-200 mx-auto p-0.5 mb-1.5'>{data.roast}</p> {/*Вытаскиваем с базы для эспрессо или фильтра*/}
-                {/*<img src={`${url.backendUrl}/${data.img[0]}`} alt='card-img' className='object-cover w-full'/>*/}
+                {/*<img src={`${process.env.REACT_APP_SERVER}/${data.img[0]}`} alt='card-img' className='object-cover w-full'/>*/}
                 <div className="grid gap-4">
                     <div>
                         <img

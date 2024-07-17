@@ -31,7 +31,7 @@ const ImageUpload = ({ list, setList , index}) => {
                 {
                     list.length > index?
                         
-                        <img src={`${url.backendUrl}/${list[index]}`} alt="" /> : 
+                        <img src={`${process.env.REACT_APP_SERVER}/${list[index]}`} alt="" /> : 
                         <>
                             {isLoading ?
                                 <DefaultSpinner /> :

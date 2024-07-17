@@ -52,7 +52,7 @@ export default function UserInfo() {
             <div className='flex flex-col items-center'>
               <div className={styles.userImg}>
                 {
-                  userInfo.avatarUrl !== '' ? <img src={`${url.backendUrl}/${userInfo.avatarUrl}`} alt="" /> : <span></span>
+                  userInfo.avatarUrl !== '' ? <img src={`${process.env.REACT_APP_SERVER}/${userInfo.avatarUrl}`} alt="" /> : <span></span>
                 }
               </div>
               <div className={styles.userName}><span>{userInfo.name}</span></div>

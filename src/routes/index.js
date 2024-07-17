@@ -7,31 +7,31 @@ import Layout from "../components/Layout/Layout";
 import { lazy } from "react";
 import Admin from "../components/Admin";
 
-const ShopUser = lazy(()=> import ( '../pages/Shop/Shop'))
-const Wholesellers = lazy(()=> import ( '../pages/others/WS'))
-const UserProfile = lazy(()=> import ( '../pages/UserProfile/UserProfile'))
-const Login = lazy(()=> import ( '../pages/UserProfile/Login/LogIn'))
-const Registration = lazy(()=> import ( '../pages/UserProfile/Registration/Registration'))
-const CodePage = lazy(() => import ('../pages/CodeVerify/CodePage'))
-const Basket = lazy(()=> import ( '../pages/Basket/Basket'))
-const AboutPage = lazy(()=> import ( '../pages/others/About.js'))
-const PayDelivery = lazy(()=> import ( '../pages/others/PayDelivery.js'))
-const AboutCoffe = lazy(()=> import ( '../pages/AboutCoffee'))
-const JsBarista = lazy(()=> import ( '../pages/JSBarista'))
-const NotFound = lazy(()=> import ( '../pages/NotFound'))
-const Monitoring = lazy(()=> import ( "../pages/admin/Monitoring/Monitoring"))
-const CreatePost = lazy(()=> import ( "../pages/admin/CreatePost/CreatePost"))
-const Settings = lazy(()=> import ( "../pages/admin/Settings/Settings"))
-const AllUsers = lazy(()=> import ( "../pages/admin/AllUsers/AllUsers"))
-const AllGoods = lazy(()=> import ( "../pages/admin/AllGoods/AllGoods.js"))
-const User = lazy(() => import('../pages/admin/AllUsers/UserInfo/UserInfo.js'))
-const AdminLayout = lazy(()=> import ( '../pages/admin/Layout/Layout'))
-const Catalog = lazy(()=> import ( "../pages/admin/Catalog/Catalog"))
-const MyOrders = lazy(()=> import ( '../pages/UserProfile/MyOrders/MyOrders'))
-const MySettings = lazy(()=> import ( "../pages/UserProfile/UserSettings/UserSettings"))
-const Main = lazy(() => import('../pages/Home/Home'))
-const Others = lazy (() => import ('../pages/others/Layout/Layout.js'))
-const Contacts = lazy(() => import ('../pages/others/Contacts'))
+import  ShopUser from '../pages/Shop/Shop'
+import  Wholesellers from '../pages/others/WS'
+import  UserProfile from '../pages/UserProfile/UserProfile'
+import  Login from '../pages/UserProfile/Login/LogIn'
+import  Registration from '../pages/UserProfile/Registration/Registration'
+import  CodePage from '../pages/CodeVerify/CodePage'
+import  Basket from '../pages/Basket/Basket'
+import  AboutPage from '../pages/others/About.js'
+import  PayDelivery from '../pages/others/PayDelivery.js'
+import  AboutCoffe from '../pages/AboutCoffee'
+import  JsBarista from '../pages/JSBarista'
+import  NotFound from '../pages/NotFound'
+import  Monitoring from "../pages/admin/Monitoring/Monitoring"
+import  CreatePost from "../pages/admin/CreatePost/CreatePost"
+import  Settings from "../pages/admin/Settings/Settings"
+import  AllUsers from "../pages/admin/AllUsers/AllUsers"
+import  AllGoods from "../pages/admin/AllGoods/AllGoods.js"
+import  User from'../pages/admin/AllUsers/UserInfo/UserInfo.js'
+import  AdminLayout from '../pages/admin/Layout/Layout'
+import  Catalog from "../pages/admin/Catalog/Catalog"
+import  MyOrders from '../pages/UserProfile/MyOrders/MyOrders'
+import  MySettings from "../pages/UserProfile/UserSettings/UserSettings"
+import  Main from '../pages/Home/Home'
+import  Others from'../pages/others/Layout/Layout.js'
+import  Contacts from'../pages/others/Contacts'
 
 
 const router = createBrowserRouter(createRoutesFromElements(
@@ -51,7 +51,7 @@ const router = createBrowserRouter(createRoutesFromElements(
             <Route path="staff" element={<AdminLayout />} >
                 <Route path="monitoring" element={<Monitoring />} />
                 <Route path="create" element={<CreatePost />} />
-                <Route path="all-users" element={<AllUsers />} />
+                <Route path="all-users" element={<AllUsers />} />zz
                 <Route path="all-users/:id" element={<User />} />
                 <Route path="settings" element={<Settings />} />
                 <Route path="catalog" element={<Catalog />} />

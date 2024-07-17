@@ -6,7 +6,7 @@ export default function Card({name,image}) {
 
     <div className={styles.wrapper}>
         <p>{name}</p>
-        <img src={`${url.backendUrl}/${image}`} alt="" />
+        <img src={`${process.env.REACT_APP_SERVER}/${image}`} alt="" />
     </div>
   )
 }
