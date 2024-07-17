@@ -19,9 +19,7 @@ import {
   Option,
 } from "@material-tailwind/react";
 import icon from '../../../assets/icons/user.png'
-import url from '../../../default.json'
 import { toast } from 'react-toastify';
-import { UserIcon } from '@heroicons/react/24/outline';
 export default function AllUsers() {
   const notifyError = (text) => toast.error(text);
   const userInfo = useSelector(state => state.user.userInfo)

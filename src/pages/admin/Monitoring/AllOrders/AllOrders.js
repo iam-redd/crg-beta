@@ -4,11 +4,11 @@ import OrderCardMonitorng from '../OrderCardMonitiring/OrderCardMonitorng'
 import axios from '../../../../store/axios'
 
 export default function AllOrders({ data, getAllOrders, index }) {
-    
+    const allOrders = data.reverse() || null
     return (
         <>
             {
-                data === null ?
+                allOrders === null ?
                     <DefaultSpinner /> :
                     <div className="">
                         {

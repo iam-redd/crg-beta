@@ -51,18 +51,18 @@ function a11yProps(index) {
 
 export default function BasicTabs() {
   const [data, setData] = React.useState(null)
-  const [allOrders,setAllOrders] = useState(data)
-  const [managers, setManagers] = React.useState(null)
+  const [allOrders, setAllOrders] = useState(data)
+  const [managers, setManagers] = React.useState(['Все заказы', 'Розница', 'ОПТ'])
   const userInfo = useSelector(state => state.user.userInfo)
-  const [managerSelect,setManagerSelect] = useState(userInfo.role === 'admin' || userInfo.role === 'manager' ? userInfo.name : 'all')
   const navigate = useNavigate()
 
   async function getAllOrders() {
     try {
       const data = await axios.get('/get-all-orders')
       if (data.status === 200) {
-        console.log(data.data)
+
         setData(data.data)
+        // setAllOrders(data)
       } else throw new Error('Что-то пошло не так')
     } catch (error) {
       navigate('/')
@@ -72,14 +72,23 @@ export default function BasicTabs() {
   async function getAllManagers() {
     try {
       const { data } = await axios.get('/managers')
-      console.log(data)
-      setManagers(data)
+      const temp = managers
+      data.map(item => temp.push(item.name))
+      setManagers(temp)
+      // setManagers(data)
     }
     catch (error) {
       console.log(error)
     }
   }
-  // async function getAllManagers
+
+  console.log(managers)
+  function changeManager(v) {
+    if (v === 'Все заказы') setAllOrders(data)
+    else if (v === 'Розница') setAllOrders(data.filter(order => order.userStatus === 'user'))
+    else if (v === 'ОПТ') setAllOrders(data.filter(order => order.userStatus === 'superUser'))
+    else setAllOrders(data.filter(order => order.manager.name === v))
+  }
 
   const [value, setValue] = React.useState(0);
 
@@ -89,29 +98,42 @@ export default function BasicTabs() {
 
   React.useEffect(() => {
     data === null && getAllOrders()
-    managers === null && getAllManagers()
-  });
+    managers.length === 3 && getAllManagers()
+    setAllOrders(data)
+  }, [data]);
   return (<>
     {
       userInfo &&
       <Box sx={{ width: '100%' }}>
         <h2>Мониторинг</h2>
-        {
-          userInfo.role === 'manager' || userInfo.role === 'admin'  && <>
+        <div className="" style={{ maxWidth: '400px' }}>
           {
-          managers !== null &&
-          <Select
-            size="md"
-            label="Выберите менеджера"
-            value={managerSelect}>
-            <Option value={'all'}>Все заказы</Option>
-            <Option value={'roz'}>Розница</Option>
-            <Option value={'opt'}>Опт</Option>
-            {
-              managers.map(manager => <Option value={manager.name}>{manager.name}</Option>)
-            }
-          </Select>}</>
-        }
+            userInfo.role === 'manager' || userInfo.role === 'admin' && <>
+              {
+                managers.length > 3 &&
+                <Select
+                  // style={{maxWidth:'400px'}}
+                  size="sm"
+                  label="Выберите менеджера"
+                  value={'Все заказы'}
+                  onChange={(value) => changeManager(value)}>
+                  {/* <Option value={'all'}>Все заказы</Option>
+                  <Option value={'roz'}>Розница</Option>
+                  <Option value={'opt'}>Опт</Option> */}
+                  {
+                    managers.map((name) => {
+                      return (
+                        <Option
+                          value={name}
+                          key={name}>
+                          {name}
+                        </Option>
+                      )
+                    })
+                  }
+                </Select>}</>
+          }
+        </div>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
             {
@@ -128,23 +150,23 @@ export default function BasicTabs() {
         {
           userInfo.role !== 'giver' &&
           <CustomTabPanel value={value} index={0}>
-            <PendingOrders data={data} getAllOrders={getAllOrders} index={0} />
+            <PendingOrders data={allOrders} getAllOrders={getAllOrders} index={0} />
           </CustomTabPanel>
         }
         <CustomTabPanel value={value} index={1}>
-          <IssuedOrders data={data} getAllOrders={getAllOrders} index={1} />
+          <IssuedOrders data={allOrders} getAllOrders={getAllOrders} index={1} />
         </CustomTabPanel>
         <CustomTabPanel value={value} index={2}>
-          <OnTheWayOrders data={data} getAllOrders={getAllOrders} index={2} />
+          <OnTheWayOrders data={allOrders} getAllOrders={getAllOrders} index={2} />
         </CustomTabPanel>
         <CustomTabPanel value={value} index={3}>
-          <DeliveredOrders data={data} getAllOrders={getAllOrders} index={3} />
+          <DeliveredOrders data={allOrders} getAllOrders={getAllOrders} index={3} />
         </CustomTabPanel>
         <CustomTabPanel value={value} index={4}>
-          <DeniedOrders data={data} getAllOrders={getAllOrders} index={4} />
+          <DeniedOrders data={allOrders} getAllOrders={getAllOrders} index={4} />
         </CustomTabPanel>
         <CustomTabPanel value={value} index={5}>
-          <AllOrders data={data} getAllOrders={getAllOrders} index={5} />
+          <AllOrders data={allOrders} getAllOrders={getAllOrders} index={5} />
         </CustomTabPanel>
       </Box>
     }
