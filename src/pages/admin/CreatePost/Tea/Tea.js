@@ -30,23 +30,26 @@ export default function Tea() {
                 description: e.target.description.value,
                 package: [],
                 tags: e.target.tags.value.split(',').map(element => element.trim().toLowerCase()),
-                color: colorTea
+                color:colorTea
             }
 
             e.target.price1.value !== '' && options.priceUser.push(totalCost(e.target.price1.value))
             e.target.price2.value !== '' && options.priceUser.push(totalCost(e.target.price2.value))
             e.target.price3.value !== '' && options.priceUser.push(totalCost(e.target.price3.value))
+            e.target.price4.value !== '' && options.priceUser.push(totalCost(e.target.price4.value))
+            e.target.price5.value !== '' && options.priceUser.push(totalCost(e.target.price5.value))
 
             e.target.priceWs1.value !== '' && options.priceWS.push(totalCost(e.target.priceWs1.value))
             e.target.priceWs2.value !== '' && options.priceWS.push(totalCost(e.target.priceWs2.value))
             e.target.priceWs3.value !== '' && options.priceWS.push(totalCost(e.target.priceWs3.value))
+            e.target.priceWs4.value !== '' && options.priceWS.push(totalCost(e.target.priceWs4.value))
+            e.target.priceWs5.value !== '' && options.priceWS.push(totalCost(e.target.priceWs5.value))
 
             e.target.weight1.checked ? options.package.push(true) : options.package.push(false)
             e.target.weight2.checked ? options.package.push(true) : options.package.push(false)
             e.target.weight3.checked ? options.package.push(true) : options.package.push(false)
             e.target.weight4.checked ? options.package.push(true) : options.package.push(false)
             e.target.weight5.checked ? options.package.push(true) : options.package.push(false)
-
 
             console.log(options)
 
@@ -82,85 +85,87 @@ export default function Tea() {
                 <div className="flex">
                     <Input
                         type="text"
-                        label='Цена 1'
+                        label='Цена крафт пакет 40гр'
                         name='price1'
                         className={styles.input} />
                     <Input
                         type="text"
-                        label='Цена 2'
+                        label='Цена крафт пакет 3кг'
                         name='price2'
                         className={styles.input} />
                     <Input
                         type="text"
-                        label='Цена 3'
+                        label='Цена крафт пакет 5кг'
                         name='price3'
-                        className={styles.input} />
+                        className={styles.input}/>
                     <Input
                         type="text"
-                        label='Цена 4'
+                        label='Цена Картонная 100гр'
                         name='price4'
-                        className={styles.input} />
+                        className={styles.input}/>
                     <Input
                         type="text"
-                        label='Цена 5'
+                        label='Цена Алюминиевая 100гр'
                         name='price5'
-                        className={styles.input} />
+                        className={styles.input}/>
                 </div>
                 <div className="">Цена для оптовиков</div>
                 <div className="flex">
                     <Input
                         type="text"
-                        label='Цена 1'
+                        label='Цена крафт пакет 40гр'
                         name='priceWs1'
-                        className={styles.input} />
+                        className={styles.input}/>
                     <Input
                         type="text"
-                        label='Цена 2'
+                        label='Цена крафт пакет 3кг'
                         name='priceWs2'
-                        className={styles.input} />
+                        className={styles.input}/>
                     <Input
                         type="text"
-                        label='Цена 3'
+                        label='Цена крафт пакет 5кг'
                         name='priceWs3'
-                        className={styles.input} />
+                        className={styles.input}/>
                     <Input
                         type="text"
-                        label='Цена 4'
+                        label='Цена Картонная 100гр'
                         name='priceWs4'
-                        className={styles.input} />
-                        <Input
+                        className={styles.input}/>
+                    <Input
                         type="text"
-                        label='Цена 5'
+                        label='Цена Алюминиевая 100гр'
                         name='priceWs5'
-                        className={styles.input} />
+                        className={styles.input}/>
                 </div>
                 <div className="">Упаковка</div>
                 <div className="flex">
                     <Checkbox
                         color="red"
                         label="Крафт пакет 40гр"
-                        name='weight1' />
+                        name='weight1'/>
                     <Checkbox
                         color="red"
                         label="Крафт пакет 3кг"
-                        name='weight2' />
+                        name='weight2'/>
                     <Checkbox
                         color="red"
                         label="Крафт пакет 5кг"
-                        name='weight3' />
+                        name='weight3'/>
                     <Checkbox
                         color="red"
-                        label="Картонная"
-                        name='weight4' />
+                        label="Картонная 100гр"
+                        name='weight4'/>
                     <Checkbox
                         color="red"
-                        label="Алюминиевая"
+                        label="Алюминиевая 100гр"
                         defaultChecked
-                        name='weight5' />
+                        name='weight5'/>
                 </div>
                 <div className="flex gap-10">
-                    <Radio name="type" label="Чёрный" defaultChecked onChange={() => colorTea = 'Чёрный'} />
-                    <Radio name="type" label="Зелёный" onChange={() => colorTea = 'Зелёный'} />
+                    <Radio name="type" label="Чёрный"  defaultChecked onChange={()=> colorTea = 'Чёрный чай'}/>
+                    <Radio name="type" label="Зелёный" onChange={()=> colorTea = 'Зелёный чай'}/>
+                    <Radio name="type" label="Белый" onChange={()=> colorTea = 'Белый чай'}/>
+                    <Radio name="type" label="Улун" onChange={()=> colorTea = 'Улун чай'}/>
                 </div>
                 <p className='text-xs'>Для оптимизации поиска товара, название на кириллице и на русском</p>
                 <Input
@@ -168,7 +173,7 @@ export default function Tea() {
                     label='Тэги через запятую ( , )'
                     name='tags'
                     required
-                    className={styles.input} />
+                    className={styles.input}/>
                 <div class="relative w-full min-w-[200px]">
                     <textarea
                         class="peer h-full min-h-[100px] w-full resize-none rounded-[7px] border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:resize-none disabled:border-0 disabled:bg-blue-gray-50"
@@ -190,7 +195,7 @@ export default function Tea() {
 }
 
 
-const Upload = ({ images, setImages, secondImage, setSecondImage, thirdImage, setThirdImage }) => {
+const Upload = ({images, setImages, secondImage, setSecondImage, thirdImage, setThirdImage }) => {
     return (
         <div className={styles.imageWrapper}>
             <UploadImage list={images} setList={setImages} index={0} />

@@ -3,13 +3,13 @@ import styles from './Login.module.css'
 import axios from '../../../store/axios'
 import { setRegister } from '../../../store/slices/userSlice';
 import { useDispatch } from 'react-redux'
-import { useNavigate, Link } from 'react-router-dom'
+//import { useNavigate } from 'react-router-dom'
 import { Input, Typography } from "@material-tailwind/react";
 const LogIn = ({ setLoginVisible, setRegisterVisible, setCodeFormVisible }) => {
     const [isVisible, setVisible] = useState(false)
     const [loginError, setLogin] = useState(false)
     const dispatch = useDispatch()
-    const navigate = useNavigate()
+    //const navigate = useNavigate()
     const [errorMessage, setMessage] = useState('')
     const regex = /^\+998[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]$/
     const handleSubmit = async (e) => {

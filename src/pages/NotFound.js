@@ -1,5 +1,5 @@
 import React from 'react';
-import TeaCard from '../components/TeaCard';
+//import TeaCard from '../components/TeaCard';
 
 const NotFound = () => {
     return (

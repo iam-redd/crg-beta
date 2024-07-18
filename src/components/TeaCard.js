@@ -15,7 +15,15 @@ import { IconButton } from '@mui/material';
 
 
 const TeaCard = ({ data }) => {
-    const packages = ['Крафт-пакет 40гр','Крафт-пакет 3кг','Крафт-пакет 5кг', 'Картонная', 'Альюминиевая']
+
+    //Tea Card select options//
+    const packages = [
+        'Крафт-пакет 40гр',
+        'Крафт-пакет 3кг',
+        'Крафт-пакет 5кг',
+        'Картонная 100гр',
+        'Альюминиевая 100гр'
+    ]
     const [packageColor, setPackageColor] = useState(false)
     const basket = useSelector(state => state.basket.basket)
     const [boolBasket, setBoolBasket] = useState(false)
@@ -168,7 +176,7 @@ const TeaCard = ({ data }) => {
                         <p>Упа-ка: </p>
                         <div className='col-span-3'>
                             <Select
-                                size="sm"
+                                size="md"
                                 label="Выберите упа-ку"
                                 onChange={(e) => changePackage(e)}
                                 onClick={() => handlePackageColor()}

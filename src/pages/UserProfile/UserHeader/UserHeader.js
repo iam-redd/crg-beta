@@ -7,7 +7,7 @@ import {
 } from "@heroicons/react/24/outline";
 import url from '../../../default.json'
 import { Link, Outlet } from 'react-router-dom';
-import { List, ListItemSuffix, ListItemPrefix, Card, ListItem, Chip, Input, Typography } from '@material-tailwind/react';
+import { List, ListItemSuffix, ListItemPrefix, Card, ListItem, Chip } from '@material-tailwind/react';
 import Modals from './Modals/Modals';
 
 export default function UserHeader() {
@@ -19,9 +19,9 @@ export default function UserHeader() {
     setToken(null)
   }
 
-  const openLogin = () => {
+  //const openLogin = () => {
 
-  }
+  //}
   return (
     <>
       <div>

@@ -55,7 +55,8 @@ export default function CoffeBeans() {
             const request = await axios.post('/post/create/coffe', options)
 
             console.log(request)
-            navigate('/shop')
+            navigate('/staff/create')
+            alert('Товар успешно добавлен')
         } catch (err) {
             console.log(err.message)
         }
@@ -120,17 +121,17 @@ export default function CoffeBeans() {
                 <div className="flex">
                     <Input
                         type="text"
-                        label='Цена 1'
+                        label='Цена 250гр'
                         name='price1'
                         className={styles.input}/>
                     <Input
                         type="text"
-                        label='Цена 2'
+                        label='Цена 500гр'
                         name='price2'
                         className={styles.input}/>
                     <Input
                         type="text"
-                        label='Цена 3'
+                        label='Цена 1000гр'
                         name='price3'
                         className={styles.input}/>
                 </div>
@@ -138,17 +139,17 @@ export default function CoffeBeans() {
                 <div className="flex">
                     <Input
                         type="text"
-                        label='Цена 1'
+                        label='Цена 250гр'
                         name='priceWs1'
                         className={styles.input}/>
                     <Input
                         type="text"
-                        label='Цена 2'
+                        label='Цена 500гр'
                         name='priceWs2'
                         className={styles.input}/>
                     <Input
                         type="text"
-                        label='Цена 3'
+                        label='Цена 100гр'
                         name='priceWs3'
                         className={styles.input}/>
                 </div>

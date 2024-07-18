@@ -5,7 +5,7 @@ import axios from '../../../store/axios'
 import { useDispatch } from 'react-redux'
 import { setRegister } from '../../../store/slices/userSlice'
 import { Button, Input, Option, Select, Typography } from "@material-tailwind/react"
-import { useNavigate } from 'react-router-dom';
+//import { useNavigate } from 'react-router-dom';
 
 const Registration = ({ setLoginVisible, setRegisterVisible, setCodeFormVisible }) => {
     const [uploadedImages, setUploadedImages] = useState(null)
@@ -17,7 +17,7 @@ const Registration = ({ setLoginVisible, setRegisterVisible, setCodeFormVisible 
     const regex = /^\+998[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]$/
 
     const dispatch = useDispatch()
-    const navigate = useNavigate()
+   // const navigate = useNavigate()
     const handleSubmit = async (e) => {
         try {
             e.preventDefault()
@@ -71,7 +71,7 @@ const Registration = ({ setLoginVisible, setRegisterVisible, setCodeFormVisible 
                 }
             } else {
                 handleError('Номер телефона обязательная поля')
-                return
+
             }
         } catch (error) {
             const res = error?.response || null

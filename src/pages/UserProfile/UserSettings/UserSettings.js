@@ -6,7 +6,7 @@ import url from '../../../default.json'
 import styles from './UserSettings.module.css'
 import { DefaultSpinner } from "../../../components/Spinner";
 import { addData } from "../../../store/slices/userSlice";
-import { Button, Input, Select, Option } from '@material-tailwind/react';
+import { Button, Input } from '@material-tailwind/react';
 import { toast } from "react-toastify";
 
 export default function MySettings() {

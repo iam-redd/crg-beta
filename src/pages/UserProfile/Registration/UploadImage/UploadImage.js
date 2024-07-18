@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import styles from './UploadImage.module.css'
 import axios from '../../../../store/axios';
-import icon from '../../../../assets/icons/addImage.png'
+//import icon from '../../../../assets/icons/addImage.png'
 import url from '../../../../default.json'
 import { DefaultSpinner } from '../../../../components/Spinner';
 import {Button} from "@material-tailwind/react";

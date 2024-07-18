@@ -26,7 +26,7 @@ export default function AllUsers() {
   const TABLE_HEAD = ["Пользователь", "Контакты", "Статус", 'Состояния'];
 
   const navigate = useNavigate()
-  const [isSucccess, setSecccess] = useState(true)
+  const [isSuccess, setSuccess] = useState(true)
   const [isLoading, setLoading] = useState(true)
   const [managers, setManagers] = useState(null)
   const selectedUsers = useSelector(state => state.forAdmin.selectedUsers)
@@ -54,7 +54,7 @@ export default function AllUsers() {
       })
 
       if (response.status === 200) {
-        getAllUsersFunc()
+        await getAllUsersFunc()
       }
     }
     catch (err) {
@@ -67,7 +67,7 @@ export default function AllUsers() {
   async function levelUp(id) {
     try {
       console.log(id)
-      setSecccess(false)
+      setSuccess(false)
       const request = await axios.patch('/user/level-up', {
         currentUserId: id
       })
@@ -76,9 +76,9 @@ export default function AllUsers() {
       }
 
       if (request.status === 200) {
-        getAllUsersFunc()
+        await getAllUsersFunc()
       }
-      setSecccess(true)
+      setSuccess(true)
     } catch (error) {
       console.log(error.message)
 
@@ -245,8 +245,8 @@ export default function AllUsers() {
                                 {row.role === 'user' ?
                                   <button
                                     className='text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-bolder rounded-lg text-xs px-3 py-2 text-center me-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800'
-                                    disabled={!isSucccess}
-                                    onClick={() => isSucccess && levelUp(id)}>
+                                    disabled={!isSuccess}
+                                    onClick={() => isSuccess && levelUp(id)}>
                                     ДАТЬ ОПТ
                                   </button> : <>
                                     {
