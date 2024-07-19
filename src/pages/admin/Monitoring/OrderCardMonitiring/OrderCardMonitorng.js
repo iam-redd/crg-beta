@@ -12,7 +12,6 @@ export default function OrderCardMonitorng({ data, getAllOrders, index }) {
     const [isVisibleEdit] = useState(false)
     const handleVisible = () => setVisible(!isVisible)
     const handleVisible2 = () => setVisible2(!isVisible2)
-    // console.log(userInfo._id ,data.manager.id)
     const variants = {
         open: { transform: 'rotate(-180deg' },
         closed: { transform: 'rotate(0deg' }

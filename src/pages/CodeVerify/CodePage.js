@@ -21,9 +21,7 @@ const CodePage = ({setCodeFormVisible }) => {
             setError('')
 
             let options = Object.assign({}, userInfo, { code: value.target.value.trim() })
-            console.log(options)
             const response = await axios.post('/verify-code', options)
-            console.log(response)
             if (response.status === 200) {
                 const str = JSON.stringify(response.data)
                 const ciphertext = CryptoJS.AES.encrypt(str, secretKey.secretKey).toString();
@@ -34,10 +32,8 @@ const CodePage = ({setCodeFormVisible }) => {
                 setCodeFormVisible(false)
             }
         } catch (err) {
-            console.log(err)
             if (err?.response) {
                 if (err?.response?.data?.message) {
-                    console.log(err.response.data.message)
                     setError(err.response.data.message)
                 }
             }
@@ -46,13 +42,11 @@ const CodePage = ({setCodeFormVisible }) => {
 
     const sendAgain = async () => {
         try {
-            console.log(userInfo)
             const response = await axios.post(`/send-code`, userInfo)
             if (response.status === 200) {
                 resetHandler()
             }
         } catch (err) {
-            console.log(err)
             if (err?.response?.data?.message) {
                 notify(err.response.data.message)
             } else {

@@ -39,12 +39,10 @@ const Layout = () => {
                     dispatch(addData(ciphertext))
                 }
             } else {
-                // notifyError('Не удалось авторизоватся')
-                console.log('Не удалось авторизоватся')
+               
             }
 
         } catch (error) {
-            console.log(error)
             // if (error.response.status === 404) {
             // notifyError('Не удалось авторизоватся')
             // }

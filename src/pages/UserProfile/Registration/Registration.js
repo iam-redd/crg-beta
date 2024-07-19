@@ -21,7 +21,6 @@ const Registration = ({ setLoginVisible, setRegisterVisible, setCodeFormVisible 
     const handleSubmit = async (e) => {
         try {
             e.preventDefault()
-            console.log(e.target.city.value)
             setLogin(false)
             if (e.target.name.value.trim() === '') {
                 handleError('Имя обязательная поля')
@@ -56,7 +55,6 @@ const Registration = ({ setLoginVisible, setRegisterVisible, setCodeFormVisible 
                 telegram: e.target.telegram.value,
             }
             if (e.target.email.value !== '') request.email = e.target.email.value
-            console.log(request)
 
             const data = await axios.post('/register-verify', request)
             if (data.status === 200) {
@@ -75,7 +73,6 @@ const Registration = ({ setLoginVisible, setRegisterVisible, setCodeFormVisible 
             }
         } catch (error) {
             const res = error?.response || null
-            console.log(error)
             if (error?.response?.status === 400) {
                 handleError('Ошибка при вводе данных')
             } else if (error?.response?.status === 500) {

@@ -24,7 +24,6 @@ const AllGoods = () => {
     };
     const deleteProduct = async (id) => {
         try {
-            console.log(id)
             const options = {
                 postId: id
             }
@@ -33,9 +32,7 @@ const AllGoods = () => {
                 dispatch(setAllProducts(res.data))
                 notify('Товар удален', 'success')
             }
-            console.log(res)
         } catch (e) {
-            console.log(e)
             notify('Не получилось удалит товар', 'error')
         }
     }
@@ -48,7 +45,6 @@ const AllGoods = () => {
                 dispatch(setAllProducts(res.data))
             }
         } catch (error) {
-            console.log(error)
         }
     }
 
@@ -60,7 +56,6 @@ const AllGoods = () => {
                 dispatch(setAllProducts(res.data))
             }
         } catch (error) {
-            console.log(error)
         }
     }
 
@@ -72,7 +67,6 @@ const AllGoods = () => {
                 dispatch(setAllProducts(res.data))
             }
         } catch (error) {
-            console.log(error)
         }
     }
 
@@ -84,7 +78,6 @@ const AllGoods = () => {
                 dispatch(setAllProducts(res.data))
             }
         } catch (error) {
-            console.log(error)
         }
     }
   

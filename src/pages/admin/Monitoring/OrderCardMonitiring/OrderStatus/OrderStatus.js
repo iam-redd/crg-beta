@@ -72,7 +72,6 @@ export default function OrderStatus({ status, id, getAllOrders, index }) {
 
     async function updateStatus(nextStatus) {
         try {
-            console.log('click')
             setLoading(true)
             if (status !== nextStatus) {
                 const request = await axios.patch('/order', {
@@ -87,7 +86,6 @@ export default function OrderStatus({ status, id, getAllOrders, index }) {
             }
         } catch (e) {
             setLoading(false)
-            console.log(e)
             if(e.response.status === 404){
                 notifyError(e.response.data.message)
 

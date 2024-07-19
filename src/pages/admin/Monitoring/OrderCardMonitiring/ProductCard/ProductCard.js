@@ -16,13 +16,7 @@ export default function Order({ data, orderId, getAllOrders, bool, index }) {
     async function save() {
         try {
             const comment = `This is comment`
-            console.log({
-                orderId,
-                productId: data.id,
-                currentAmount: currentAmount,
-                nextAmount: data.amount + amount,
-                comment
-            })
+            
             const request = await axios.patch('/order/product/amount',
                 {
                     orderId,
@@ -31,14 +25,12 @@ export default function Order({ data, orderId, getAllOrders, bool, index }) {
                     nextAmount: data.amount + amount,
                     comment
                 })
-            console.log(request)
             if (request.status === 200) {
                 getAllOrders()
                 setAmount(0)
             }
         }
         catch (error) {
-            console.log(error.message)
         }
     }
 
@@ -57,12 +49,7 @@ export default function Order({ data, orderId, getAllOrders, bool, index }) {
     async function deleteProductFromOrder() {
         try {
             const comment = `This is comment`
-            console.log({
-                orderId,
-                productId: data.id,
-                amount: data.amount,
-                comment
-            })
+           
             const request = await axios.patch('/order/product',
                 {
                     orderId,
@@ -72,11 +59,9 @@ export default function Order({ data, orderId, getAllOrders, bool, index }) {
                     productWeight: data.weight
                 })
             if (request.status === 200) {
-                console.log(request.data)
                 getAllOrders()
             }
         } catch (err) {
-            console.log(err)
         }
     }
     return (

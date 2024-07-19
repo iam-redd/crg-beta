@@ -21,7 +21,6 @@ export default function LeftBar() {
   const selectedProducts = useSelector(state => state.service.selectedProducts)
 
   const filter = (value) => {
-    console.log(value)
     if (value === null) {
       dispatch(cancelSelectedProducts(allProducts))
       setTabActive(value)

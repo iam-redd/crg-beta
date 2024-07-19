@@ -47,15 +47,12 @@ export default function OrderForm({ totalPrice }) {
             }
             const data = await axios.post('/new-order', { basket, comment, totalPrice, paymentMethod })
             if (data.status === 200) {
-                console.log(new Date(data.data.createdAt))
-                // console.log('Order created successfully')
                 dispatch(cancelBasket())
             } else {
                 throw new Error('Order not created successfully')
             }
         } catch (error) {
 
-            console.log(error)
         }
         setBtnBool(false)
     }

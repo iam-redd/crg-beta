@@ -19,7 +19,6 @@ const LogIn = ({ setLoginVisible, setRegisterVisible, setCodeFormVisible }) => {
             const options = {
                 phoneNumber: e.target.email.value.trim(),
             }
-            console.log(options)
             if (options.phoneNumber === '') {
                 handleError('Имя обязательная поля')
                 return
@@ -37,24 +36,10 @@ const LogIn = ({ setLoginVisible, setRegisterVisible, setCodeFormVisible }) => {
                     setTimeout(()=>{
                         setCodeFormVisible(true)
                     },200)
-                    // navigate('/verify-code', { state: { path: 'login' } })
                 }
-                //     const info = data.data
-                //     console.log(info)
-                //     window.localStorage.setItem('token', data.data.token)
-                //     const str = JSON.stringify(info)
-                //     const ciphertext = CryptoJS.AES.encrypt(str, secretKey.secretKey).toString();
-                //     window.localStorage.setItem('data', JSON.stringify(ciphertext))
-                //     dispatch(addData(info))
-                //     setVisible(false)
             }
-            // if (data.status === 403 || data.status === 404) {
-            //     setLogin(true)
-            // }
-            // return null
 
         } catch (error) {
-            console.log(error)
             const status = error?.response?.status || null
             if (error?.response?.data?.message) {
                 handleError(error?.response?.data?.message)
@@ -73,21 +58,11 @@ const LogIn = ({ setLoginVisible, setRegisterVisible, setCodeFormVisible }) => {
     }
     useEffect(() => {
         setVisible(true)
-        // userInfo !== null && dispatch(logout())
     }, [setVisible])
     return (
-        // <div className={`mx-auto my-14  ${styles.container}`}>
-        //     <AnimatePresence>
-        //         {
-        //             isVisible &&
-
         <form
             onSubmit={handleSubmit}
             className={`w-full md:w-max ${styles.form}`}>
-            {/* <p
-                className="flex px-4 text-end cursor-pointer justify-end text-red-500"
-                onClick={() => navigate('/user')}
-            >Закрыть</p> */}
             <div>
                 <h2 className='text-center font-bold text-lg'>Авторизация</h2>
                 <p className='py-4 text-center'>Добро пожаловать, рады вас видеть. <br /> Чтобы войти в свой аккаунт, пожалуйста введите ваши данные.</p>

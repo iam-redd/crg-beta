@@ -19,7 +19,6 @@ export default function CoffeBeans() {
     async function onSubmit(e) {
         try {
             e.preventDefault()
-            // console.log(e.target.tags.value.split(','))
             const options = {
                 name: e.target.name.value,
                 priceUser: [],
@@ -50,15 +49,12 @@ export default function CoffeBeans() {
             e.target.weight2.checked ? options.weight.push(true) : options.weight.push(false)
             e.target.weight3.checked ? options.weight.push(true) : options.weight.push(false)
 
-            console.log(options)
 
             const request = await axios.post('/post/create/coffe', options)
 
-            console.log(request)
             navigate('/staff/create')
             alert('Товар успешно добавлен')
         } catch (err) {
-            console.log(err.message)
         }
     }
     return (

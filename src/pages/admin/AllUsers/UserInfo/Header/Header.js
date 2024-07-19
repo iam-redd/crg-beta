@@ -14,12 +14,10 @@ export default function UserInfo() {
   async function getUserInfo() {
     try {
       const response = await axios.get(`/user/${id}`)
-      console.log(response)
       if (response.status === 200) {
         setInfo(response.data)
       }
     } catch (e) {
-      console.log(e.message)
     }
   }
 

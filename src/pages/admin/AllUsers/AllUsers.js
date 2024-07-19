@@ -41,7 +41,6 @@ export default function AllUsers() {
         notifyError('Ошибка')
       }
     } catch (error) {
-      console.log(error.message)
       notifyError(error.message)
       // navigate('/')
     }
@@ -58,7 +57,6 @@ export default function AllUsers() {
       }
     }
     catch (err) {
-      console.log(err)
     }
   }
 
@@ -66,13 +64,11 @@ export default function AllUsers() {
 
   async function levelUp(id) {
     try {
-      console.log(id)
       setSuccess(false)
       const request = await axios.patch('/user/level-up', {
         currentUserId: id
       })
       if (request.status === 403) {
-        console.log('status 404')
       }
 
       if (request.status === 200) {
@@ -80,30 +76,23 @@ export default function AllUsers() {
       }
       setSuccess(true)
     } catch (error) {
-      console.log(error.message)
 
     }
   }
   async function getAllManagers() {
     try{const { data } = await axios.get('/managers')
-    console.log(data)
     setManagers(data)}
     catch (error) {
-      console.log(error)
     }
   }
 
   managers === null && getAllManagers()
 
-  // isLoading && selectedUsers[0].avatarUrl !== '' && console.log(`${process.env.REACT_APP_SERVER}/${selectedUsers[0].avatarUrl}`)
 
   async function changeManagerForUser(id, manager) {
     try {
-      console.log(id, manager)
       const response = await axios.post('/change-manager', { id, manager })
-      console.log(response)
     } catch (error) {
-      console.log(error)
     }
   }
 

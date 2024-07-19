@@ -12,12 +12,10 @@ const ImageUpload = ({ list, setList }) => {
         try {
             setLoading(true)
             const image = input.current.files[0]
-            console.log(image)
             const formData = new FormData();
             formData.append('image', image);
             const response = await axios.post(`/upload `, formData);
             setList(response.data.imagePath)
-            console.log(response.data);
         } catch (error) {
             console.error('Error uploading file:', error);
         }

@@ -31,7 +31,6 @@ function CoffeeCard({ data = {} }) {
         const template = basket.filter(product => product.pomol === val)
         const template2 = template.filter(product => product.weight === weight)
         if (basket.length > 0 && template2.length > 0 && data._id === template2[0].id) {
-            console.log(template2)
             setAmount(template2[0].amount)
             setBoolBasket(true)
         } else {
@@ -74,13 +73,13 @@ function CoffeeCard({ data = {} }) {
         if (pomol === null) {
             setPomoltColor(true)
             notifyError('Выберите помол')
-            return console.log('Помол не выбран')
+            return 
 
         }
         if (weight === null) {
             setWeightColor(true)
             notifyError('Выберите обьём упаковки')
-            return console.log('Обьем упаковки не выбран')
+            return 
         }
         const info = {
             id: data._id,
@@ -117,7 +116,7 @@ function CoffeeCard({ data = {} }) {
             }
         }
         catch (error) {
-            console.log('first error')
+            
         }
     }
 
@@ -135,7 +134,6 @@ function CoffeeCard({ data = {} }) {
                 dispatch(incrementProduct(index))
             }
         } catch (error) {
-            console.log(error)
         }
     }
 
