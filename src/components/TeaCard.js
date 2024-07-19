@@ -258,14 +258,14 @@ const TeaCard = ({ data }) => {
                                     <>
                                         {
                                             packageValue === null && packageIndex === 0 ?
-                                                data.priceWS[0] !== '0' ? data.priceWS[0] : data.priceWS[1] !== '0' ? data.priceWS[1] : data.priceWS[2] :
+                                                data.priceWS[0] !== '0' ? data.priceWS[0] : data.priceWS[1] !== '0' ? data.priceWS[1] : data.priceWS[2] !== '0' ? data.priceWS[2] : data.priceWS[3] !== '0' ? data.priceWS[3] : data.priceWS[4] :
                                                 data.priceWS[packages.indexOf(packageValue)]
                                         }
                                     </> :
                                     <>
                                         {
                                             packageValue === null && packageIndex === 0 ?
-                                                data.priceUser[0] !== '0' ? data.priceUser[0] : data.priceUser[1] !== '0' ? data.priceUser[1] : data.priceUser[2] :
+                                                data.priceUser[0] !== '0' ? data.priceUser[0] : data.priceUser[1] !== '0' ? data.priceUser[1] : data.priceUser[2] !== '0' ? data.priceUser[2] : data.priceUser[3] !== '0' ? data.priceUser[3] : data.priceUser[4] :
                                                 data.priceUser[packages.indexOf(packageValue)]
                                         }
                                     </>
