@@ -26,6 +26,12 @@ const TeaCard = ({ data }) => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const [amount, setAmount] = useState(1)
+    const imgdata = data.img.map(img => {
+        return (`${process.env.REACT_APP_SERVER}/${img}`)
+    })
+    const [active, setActive] = React.useState(
+        `${process.env.REACT_APP_SERVER}/${data.img[0]}`
+    );
     const notifyError = (text) => toast.error(text);
     const changePackage = (val) => {
         console.log(val)
@@ -126,9 +132,30 @@ const TeaCard = ({ data }) => {
                 </div>
                 <h2 className='text-center font-bold text-xl'>{data.name}</h2>
                 <p className='text-center text-xs mx-auto border-none p-0.5 mb-1.5'>{data.color}</p>
-                <div className='flex'>
+                {/* <div className='flex'>
                     <img src={`${process.env.REACT_APP_SERVER}/${data.img}`} alt='card-img' className='object-cover object-center w-full' />
-                </div>
+                </div> */}
+                <div className="grid gap-4">
+                        <div>
+                            <img
+                                className="w-full  object-cover object-center"
+                                src={`${active}`}
+                                alt=""
+                            />
+                        </div>
+                        <div className="grid grid-cols-3 gap-4">
+                            {imgdata.map((imgelink, index) => (
+                                <div key={index}>
+                                    <img
+                                        onClick={() => setActive(imgelink)}
+                                        src={`${imgelink}`}
+                                        className=" max-w-full cursor-pointer rounded object-cover object-center"
+                                        alt="product img"
+                                    />
+                                </div>
+                            ))}
+                        </div>
+                    </div>
                 <div className='mt-5 text-sm'>
                     <p className='line-clamp-3'>
                         Описание: <span>
