@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Option, Progress, Select, Button, Typography } from '@material-tailwind/react';
+import {Card, Option, Progress, Select, Button, Typography, Carousel} from '@material-tailwind/react';
 import { IconButton } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
@@ -171,7 +171,62 @@ function CoffeeCard({ data = {} }) {
                 <h2 className='text-center font-bold text-xl line-clamp-2'>{data?.name ? data.name : ''}</h2>
                 <p className='text-xs flex text-red-200 justify-center rounded border border-red-200 mx-auto p-0.5 mb-1.5'>{data.roast}</p> {/*Вытаскиваем с базы для эспрессо или фильтра*/}
                 {/*<img src={`${process.env.REACT_APP_SERVER}/${data.img[0]}`} alt='card-img' className='object-cover w-full'/>*/}
-                <div className="grid gap-4">
+                <Carousel
+                    className='h-auto'
+                    prevArrow={({ handlePrev }) => (
+                        <IconButton
+                            variant="text"
+                            color="red"
+                            size="md"
+                            onClick={handlePrev}
+                            className="!absolute top-2/4 left-4 -translate-y-2/4"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                strokeWidth={2}
+                                stroke="grey"
+                                className="h-6 w-6"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
+                                />
+                            </svg>
+                        </IconButton>
+                    )}
+                    nextArrow={({ handleNext }) => (
+                        <IconButton
+                            variant="text"
+                            color="red"
+                            size="md"
+                            onClick={handleNext}
+                            className="!absolute top-2/4 !right-4 -translate-y-2/4"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                strokeWidth={2}
+                                stroke="grey"
+                                className="h-6 w-6"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                                />
+                            </svg>
+                        </IconButton>
+                    )}
+                >
+                    {imgdata.map((item, index) => (
+                        <img className='w-full object-cover object-center' key={index} src={`${item}`} />
+                    ))}
+                </Carousel>
+                {/*<div className="grid gap-4">
                     <div>
                         <img
                             className="w-full  object-cover object-center"
@@ -179,7 +234,8 @@ function CoffeeCard({ data = {} }) {
                             alt=""
                         />
                     </div>
-                    <div className="grid grid-cols-3 gap-4">
+                    */}
+                    {/* <div className="grid grid-cols-3 gap-4">
                         {imgdata.map((imgelink, index) => (
                             <div key={index}>
                                 <img
@@ -191,7 +247,7 @@ function CoffeeCard({ data = {} }) {
                             </div>
                         ))}
                     </div>
-                </div>
+                </div>*/}
                 <div className='flex mt-3 justify-between py-2 text-xs'>
                     <p>
                         Обработка: <span>{data.treatment}</span>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Option, Select, Button, Typography } from '@material-tailwind/react';
+import {Card, Option, Select, Button, Typography, Carousel} from '@material-tailwind/react';
 import url from '.././default.json'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -143,27 +143,82 @@ const TeaCard = ({ data }) => {
                 {/* <div className='flex'>
                     <img src={`${process.env.REACT_APP_SERVER}/${data.img}`} alt='card-img' className='object-cover object-center w-full' />
                 </div> */}
-                <div className="grid gap-4">
-                        <div>
-                            <img
-                                className="w-full  object-cover object-center"
-                                src={`${active}`}
-                                alt=""
-                            />
-                        </div>
-                        <div className="grid grid-cols-3 gap-4">
-                            {imgdata.map((imgelink, index) => (
-                                <div key={index}>
-                                    <img
-                                        onClick={() => setActive(imgelink)}
-                                        src={`${imgelink}`}
-                                        className=" max-w-full cursor-pointer rounded object-cover object-center"
-                                        alt="product img"
-                                    />
-                                </div>
-                            ))}
-                        </div>
+                <Carousel
+                    className='h-auto'
+                    prevArrow={({ handlePrev }) => (
+                        <IconButton
+                            variant="text"
+                            color="red"
+                            size="md"
+                            onClick={handlePrev}
+                            className="!absolute top-2/4 left-4 -translate-y-2/4"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                strokeWidth={2}
+                                stroke="grey"
+                                className="h-6 w-6"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
+                                />
+                            </svg>
+                        </IconButton>
+                    )}
+                    nextArrow={({ handleNext }) => (
+                        <IconButton
+                            variant="text"
+                            color="red"
+                            size="md"
+                            onClick={handleNext}
+                            className="!absolute top-2/4 !right-4 -translate-y-2/4"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                strokeWidth={2}
+                                stroke="grey"
+                                className="h-6 w-6"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                                />
+                            </svg>
+                        </IconButton>
+                    )}
+                >
+                    {imgdata.map((item, index) => (
+                        <img className='w-full object-cover object-center' key={index} src={`${item}`} />
+                    ))}
+                </Carousel>
+                {/*<div className="grid gap-4">
+                    <div>
+                        <img
+                            className="w-full  object-cover object-center"
+                            src={`${active}`}
+                            alt=""
+                        />
                     </div>
+                    <div className="grid grid-cols-3 gap-4">
+                        {imgdata.map((imgelink, index) => (
+                            <div key={index}>
+                                <img
+                                    onClick={() => setActive(imgelink)}
+                                    src={`${imgelink}`}
+                                    className=" max-w-full cursor-pointer rounded object-cover object-center"
+                                    alt="product img"
+                                />
+                            </div>
+                        ))}
+                    </div>
+                </div>*/}
                 <div className='mt-5 text-sm'>
                     <p className='line-clamp-3'>
                         Описание: <span>

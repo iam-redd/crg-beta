@@ -46,7 +46,7 @@ const Header = () => {
           Школа бариста
         </a>
       </Typography>
-      <Typography
+        {/*<Typography
         as="li"
         variant="h4"
         color="blue-gray"
@@ -65,7 +65,7 @@ const Header = () => {
         <a href={ABOUT_COFFEE} className="flex items-center">
           Энциклопедия
         </a>
-      </Typography>
+      </Typography>*/}
     </ul>
   );
   const topNavList = (
