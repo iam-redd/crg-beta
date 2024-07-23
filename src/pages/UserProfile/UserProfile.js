@@ -23,11 +23,9 @@ const UserProfile = () => {
         window.localStorage.removeItem('token')
         dispatch(addData(null))
       }
-      console.log('Ошибка при авторизации')
     }
   }
   const now = [1]
-  console.log(now.length)
   getMe()
   return (
 

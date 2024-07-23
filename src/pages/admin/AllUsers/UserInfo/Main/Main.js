@@ -8,7 +8,6 @@ export default function Main() {
     const [data, setData] = useState(null)
     async function getUserOrders() {
         const request = await axios.get(`/user-orders/${id}`)
-        console.log(request)
         setData(request.data.reverse())
     }
 

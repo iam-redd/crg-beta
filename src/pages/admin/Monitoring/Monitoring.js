@@ -66,7 +66,6 @@ export default function BasicTabs() {
       } else throw new Error('Что-то пошло не так')
     } catch (error) {
       navigate('/')
-      console.log(error.message)
     }
   }
   async function getAllManagers() {
@@ -78,11 +77,9 @@ export default function BasicTabs() {
       // setManagers(data)
     }
     catch (error) {
-      console.log(error)
     }
   }
 
-  console.log(managers)
   function changeManager(v) {
     if (v === 'Все заказы') setAllOrders(data)
     else if (v === 'Розница') setAllOrders(data.filter(order => order.userStatus === 'user'))

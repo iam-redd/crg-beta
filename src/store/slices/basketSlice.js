@@ -20,7 +20,6 @@ const basketSlice = createSlice({
             state.allProductsId = payload.allProductsId
         },
         incrementProduct(state, { payload }) {
-            console.log(payload)
             state.basket[payload].amount++
             window.localStorage.setItem('basket', JSON.stringify(state.basket))
             window.localStorage.setItem('allProductsId', JSON.stringify(state.allProductsId))

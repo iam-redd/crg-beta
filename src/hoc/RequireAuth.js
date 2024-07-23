@@ -6,7 +6,6 @@ export default async function RequireAccess({children}) {
 
     const location = useLocation()
     const userInfo = useSelector(state => state.user.userInfo)
-    console.log(userInfo)
     const auth = true;
 
     if(auth){

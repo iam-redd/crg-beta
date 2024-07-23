@@ -37,10 +37,8 @@ export default function Other() {
 
             const request = await axios.post('/post/create/other', options)
 
-            console.log(request)
             navigate('/shop')
         } catch (err) {
-            console.log(err.message)
         }
     }
     return (

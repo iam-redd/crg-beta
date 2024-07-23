@@ -8,7 +8,6 @@ export default function SearchBar() {
   const allProducts = useSelector(state => state.service.allProducts)
   const searchValue = useSelector(state => state.service.searchValue)
   function searchItem(value) {
-    console.log(value)
     dispatch(setSearchValue(value))
     const a = allProducts.reduce((acc, product, index) => {
       const temp = product.name.split(' ')
@@ -22,7 +21,6 @@ export default function SearchBar() {
       }
     }, [])
     dispatch(setSelectedProducts(a))
-    console.log(a)
   }
   return (
     <div className="p-2 col-span-3 flex justify-between my-3">

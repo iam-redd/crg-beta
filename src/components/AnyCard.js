@@ -33,8 +33,6 @@ const AnyCard = ({ data }) => {
 
     function increment() {
         try {
-            console.log(amount)
-            console.log(boolBasket)
             if(!boolBasket){
                 notifyError('Добавте товар в корзину')
             }
@@ -45,14 +43,11 @@ const AnyCard = ({ data }) => {
                 notifyError('Товар не найден')
             }
         } catch (error) {
-            console.log(error)
         }
     }
 
     function decrement() {
         try {
-            console.log(index)
-            console.log(boolBasket)
             if(amount === 1){
                 return
             }
@@ -67,7 +62,6 @@ const AnyCard = ({ data }) => {
                 notifyError('Товар не найден')
             }
         } catch (error) {
-            console.log(error)
 
         }
 

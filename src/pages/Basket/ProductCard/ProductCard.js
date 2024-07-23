@@ -25,7 +25,6 @@ function ProductCard({ index }) {
             }
         }
         catch (error) {
-            console.log('first error')
         }
     }
 

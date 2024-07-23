@@ -41,9 +41,7 @@ const TeaCard = ({ data }) => {
     );
     const notifyError = (text) => toast.error(text);
     const changePackage = (val) => {
-        console.log(val)
         const template = basket.filter(product => product.package === val)
-        console.log(template)
         const index = packages.indexOf(val)
         setPackageValue(val)
         setPackageIndex(prev => index)
@@ -64,7 +62,7 @@ const TeaCard = ({ data }) => {
         if (packageValue === null) {
             setPackageColor(true)
             notifyError('Выберите упаковку')
-            return console.log('Упаковка не выбран')
+            return 
         }
 
         const info = {
@@ -112,7 +110,6 @@ const TeaCard = ({ data }) => {
             }
         }
         catch (error) {
-            console.log('first error')
         }
     }
 
@@ -121,7 +118,6 @@ const TeaCard = ({ data }) => {
         
         const template = basket.filter(product => product.id === data._id)
         const template2 = template.filter(product => product.package === packageValue)
-        console.log(template2)
         if (basket.length > 0 && template2.length > 0) {
             setIndex(template2[0].index)
         }

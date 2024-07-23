@@ -51,14 +51,11 @@ export default function Tea() {
             e.target.weight4.checked ? options.package.push(true) : options.package.push(false)
             e.target.weight5.checked ? options.package.push(true) : options.package.push(false)
 
-            console.log(options)
 
             const request = await axios.post('/post/create/tea', options)
 
-            console.log(request)
             navigate('/shop')
         } catch (err) {
-            console.log(err.message)
         }
     }
     return (

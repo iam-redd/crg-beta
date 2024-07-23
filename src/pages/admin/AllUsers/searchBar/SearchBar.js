@@ -23,7 +23,6 @@ export default function SearchBar() {
         if (value === '') dispatch(setSelectedUsers(allUsers))
         let temp = value.split('')
         temp[0] === '+' ? temp = temp.splice(1, temp.length).join('') : temp = temp.join('')
-        console.log(temp)
         const template = allUsers.filter((user, index) => {
             let str = user.phoneNumber.split('')
             str[0] === '+' ? str = str.slice(1, str.length).join('') : str = str.join('')

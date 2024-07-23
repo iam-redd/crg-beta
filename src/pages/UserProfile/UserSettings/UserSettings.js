@@ -19,7 +19,6 @@ export default function MySettings() {
     async function onSetting(e) {
         try {
             e.preventDefault()
-            console.log('start')
             let options = {
                 name: e.target.name.value,
                 email: e.target.email.value,
@@ -35,9 +34,7 @@ export default function MySettings() {
                 setParams(false)
                 window.location.reload();
             }
-            console.log('close')
         } catch (e) {
-            console.log(e)
             if (e?.response?.status === 500) {
                 notifyError(e.response.data.message)
             } else {
@@ -54,7 +51,6 @@ export default function MySettings() {
             setLoading(true)
             setImage('')
             const image = input.current.files[0]
-            console.log(image)
             const formData = new FormData();
             formData.append('image', image);
             const response = await axios.post(`/upload `, formData);
