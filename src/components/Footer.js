@@ -9,6 +9,8 @@ import logoIcon from '../assets/icons/Coffee_Roastery_logo.svg'
 import YMap from './YMap';
 
 import {Dropdown} from "flowbite-react";
+import {Link} from "react-router-dom";
+import {JS_BARISTA} from "../utils/consts";
 //import {Link} from 'react-router-dom'
 
 const LINKS = [
@@ -113,26 +115,26 @@ const Footer = () => {
               <div className='flex flex-col justify-end'>
                 <div className='flex flex-col gap-2 text-md text-center justify-center'>
                   <Dropdown placement='auto' size='lg' label="Страницы" inline>
-                    <Dropdown.Item>Главная</Dropdown.Item>
-                    <Dropdown.Item>Магазин</Dropdown.Item>
+                    <Link to={'/'}><Dropdown.Item>Главная</Dropdown.Item></Link>
+                    <Link to={'/shop'}><Dropdown.Item>Магазин</Dropdown.Item></Link>
                     <Dropdown.Item>Школа бариста</Dropdown.Item>
-                    <Dropdown.Item>Личный кабинет</Dropdown.Item>
-                    <Dropdown.Item>Рецепты</Dropdown.Item>
-                    <Dropdown.Item>Энциклопедия</Dropdown.Item>
+                    <a href={JS_BARISTA}><Dropdown.Item>Личный кабинет</Dropdown.Item></a>
+                    {/*<Dropdown.Item>Рецепты</Dropdown.Item>*/}
+                    {/*<Dropdown.Item>Энциклопедия</Dropdown.Item>*/}
                   </Dropdown>
                   <Dropdown placement='auto' size='lg' label="Каталог" inline>
-                    <Dropdown.Item>Кофе</Dropdown.Item>
-                    <Dropdown.Item>Чаи</Dropdown.Item>
-                    <Dropdown.Item>Сиропы</Dropdown.Item>
-                    <Dropdown.Item>Химия</Dropdown.Item>
-                    <Dropdown.Item>Аксессуары</Dropdown.Item>
+                    <Link to={'/shop'}><Dropdown.Item>Кофе</Dropdown.Item></Link>
+                    <Link to={'shop'}><Dropdown.Item>Чаи</Dropdown.Item></Link>
+                    <Link to={'shop'}><Dropdown.Item>Сиропы</Dropdown.Item></Link>
+                    <Link to={'shop'}><Dropdown.Item>Химия</Dropdown.Item></Link>
+                    <Link to={'shop'}><Dropdown.Item>Аксессуары</Dropdown.Item></Link>
                   </Dropdown>
                   <Dropdown placement='auto' size='lg' label="Прочее" inline>
-                    <Dropdown.Item>О нас</Dropdown.Item>
-                    <Dropdown.Item>Оплата и доставка</Dropdown.Item>
-                    <Dropdown.Item>Контакты</Dropdown.Item>
-                    <Dropdown.Item>Политика конфеденциальеости</Dropdown.Item>
-                    <Dropdown.Item>Публичная оферта</Dropdown.Item>
+                    <Link to={'/others/about'} ><Dropdown.Item>О нас</Dropdown.Item></Link>
+                    <Link to={'/others/payndelivery'}><Dropdown.Item>Оплата и доставка</Dropdown.Item></Link>
+                    <Link to={'others/contacts'}><Dropdown.Item>Контакты</Dropdown.Item></Link>
+                    <Link to={'/others/privacypolicy'}><Dropdown.Item>Политика конфеденциальеости</Dropdown.Item></Link>
+                    <Link to={'/others/publicoffer'}><Dropdown.Item>Публичная оферта</Dropdown.Item></Link>
                   </Dropdown>
 
                 </div>

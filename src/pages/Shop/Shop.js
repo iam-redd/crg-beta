@@ -14,7 +14,6 @@ const Shop = () => {
   }, [selectedProducts]);
 
 
-
   return (
     <div className='w-full md:max-w-screen-xl 2xl:max-w-screen-2xl mx-auto my-8'>
       <div className=''>

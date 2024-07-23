@@ -5,18 +5,20 @@ import { Link } from 'react-router-dom';
 
 const Others = () => {
     return (
-        <div className='hidden md:flex'>
-            <Card className="w-full">
+        <div className=''>
+            <Card className="w-full hidden md:flex">
                 <List>
                     <Link to='about'><ListItem >О нас</ListItem></Link>
                     <Link to='payndelivery'><ListItem>Оплата и доставка</ListItem></Link>
                     <Link to='wholesellers'><ListItem>ОПТ</ListItem></Link>
                     <Link to='contacts'><ListItem>Контакты</ListItem></Link>
-                    <ListItem>Политика конфеденциальности</ListItem>
-                    <ListItem>Публичная оферта</ListItem>
+                    <Link to='privacypolicy'><ListItem>Политика конфеденциальности</ListItem></Link>
+                    <Link to='publicoffer'><ListItem>Публичная оферта</ListItem></Link>
                 </List>
             </Card>
+
         </div>
+
     );
 };
 

@@ -8,7 +8,6 @@ import styles from './CoffeCard/CoffeCard.module.css'
 import { toast } from 'react-toastify';
 import { AddBox, IndeterminateCheckBox } from '@mui/icons-material';
 import { red } from '@mui/material/colors';
-
 import { IconButton } from '@mui/material';
 
 
