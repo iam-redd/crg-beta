@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Button, Typography } from '@material-tailwind/react';
-import url from '../default.json'
 import styles from './CoffeCard/CoffeCard.module.css'
 import style from './Style.module.css'
 import { useDispatch, useSelector } from 'react-redux';
