@@ -206,7 +206,7 @@ function CoffeeCard({ data = {} }) {
                     )}
                 >
                     {imgdata.map((item, index) => (
-                        <img className='w-3/4 object-cover object-center mx-auto' key={index} src={`${item}`}/>
+                        <img className='w-3/4 object-cover object-center mx-auto'  alt='card' key={index} src={`${item}`}/>
                     ))}
                 </Carousel>
                 {/*<div className="grid gap-4">
