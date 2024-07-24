@@ -25,7 +25,8 @@ export default function MySettings() {
                 telegram: e.target.telegram.value,
                 address: e.target.address.value,
                 avatarUrl: image,
-                phoneNumber: e.target.phoneNumber.value
+                phoneNumber: e.target.phoneNumber.value,
+                addressDop: e.target.addressDop.value
             }
 
             const response = await axios.patch(`/update-user-data`, options)
@@ -140,12 +141,34 @@ export default function MySettings() {
                                     />
                                 </div>
                                 <div>
-                                    <Input
+                                    {/* <Input
                                         label="Адрес"
                                         defaultValue={userInfo?.address[0] ? userInfo.address[0] : ''}
                                         name="address"
                                         onInput={(e) => e.target.value.trim() !== userInfo.address[0] ? setParams(true) : setParams(false)}
-                                    />
+                                    /> */}
+                                    {
+                                        userInfo !== null && userInfo.address.map((address, index) => {
+                                            return (
+                                                <Input
+                                                    label={`${userInfo.address.length > 1 ? `Адрес ${index}`: `Адрес`}`}
+                                                    defaultValue={userInfo?.address[index] ? userInfo.address[index] : ''}
+                                                    name="address"
+                                                    onInput={(e) => e.target.value.trim() !== userInfo.address[index] ? setParams(true) : setParams(false)}
+                                                />
+                                            )
+                                        })
+                                    }
+                                    <span>Здесь можно добавить ещё один адресс</span>
+                                    {
+                                        userInfo !== null && <Input
+                                            label="Адрес"
+                                            defaultValue={''}
+                                            name="addressDop"
+                                            onInput={(e) => e.target.value.trim() !== '' && setParams(true)}
+                                        />
+                                    }
+
                                 </div>
                                 {userInfo.role === 'superUser' ?
                                     <div className="flex flex-col gap-2">

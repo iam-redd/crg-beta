@@ -93,6 +93,7 @@ function CoffeeCard({ data = {} }) {
             roast: data.roast,
             stopList: data.stopList
         }
+        if(data.type === 'coffe-beans') info.treatment = data.treatment
         dispatch(addTooBasket(info))
         setBoolBasket(true)
     }
