@@ -7,11 +7,10 @@ import {
     Collapse,
     Badge, Avatar,
 } from "@material-tailwind/react";
-import { ABOUT_COFFEE, BASKET, HOME_PAGE, JS_BARISTA, RECIPES, SHOP_USER, USER_PROFILE,} from '../utils/consts';
+import {  BASKET, HOME_PAGE, JS_BARISTA,  SHOP_USER, USER_PROFILE,} from '../utils/consts';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import url from '../default.json'
 
 const Header = () => {
   const productSize = useSelector(state => state.basket.basket)
@@ -72,12 +71,14 @@ const Header = () => {
     <div className='flex flex-col gap-2 text-gray-800'>
       <ul className='mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 text-sm'>
         <li><Link to="/others/about">О нас</Link></li>
-        <li><Link to="/others/pay-n-delivery">Оплата и доставка</Link></li>
+        <li><Link to="/others/payndelivery">Оплата и доставка</Link></li>
         <li><Link to="/others/wholesellers">ОПТ</Link></li>
         <li><Link to="/others/contacts">Контакты</Link></li>
       </ul>
-      <div className='text-md cursor-text text-gray-600 mb-5'>
-        Call-центр: +998(99)899-20-12
+      <div className='text-md cursor-text font-medium mb-5'>
+          Call-центр: <a className=' text-blue-600 ' href="tel:+998998992012">+998(99)899-20-12</a>,&nbsp;
+          <a className=' text-blue-600 ' href='tel:+998909555562'>+998(90)955-55-62</a>,&nbsp;
+          <a className=' text-blue-600 ' href="tel:+998335666663">+998(33)566-66-63</a>
       </div>
     </div>
   );
@@ -87,12 +88,14 @@ const Header = () => {
         <div className="bg-white">
           <div className='border-b border-gray-200'>
             <div className='h-full mx-auto max-w-screen-xl 2xl:max-w-screen-2xl hidden nowrap  px-4 py-1 2xl:px-0 items-center justify-between text-gray-600 lg:flex lg:px-4 lg:py-2'>
-              <div className='text-sm cursor-text ml-5 md:ml-0'>
-                Call-центр: +998(99)899-20-12
-              </div>
-              <ul className='flex text-xs'>
-                <li className='cursor-pointer ml-5 hover:text-red-600'><Link to="/others/about">О нас</Link></li>
-                <li className='cursor-pointer ml-5 hover:text-red-600'><Link to="/others/pay-n-delivery">Оплата и доставка</Link></li>
+                <div className='text-sm text-blue-gray-600 font-medium cursor-text ml-5 md:ml-0'>
+                    Call-центр: <a href="tel:+998998992012">+998(99)899-20-12</a>, &nbsp;
+                    <a  href='tel:+998909555562'>+998(90)955-55-62</a>,&nbsp;
+                    <a  href="tel:+998335666663">+998(33)566-66-63</a>
+                </div>
+                <ul className='flex text-xs'>
+                    <li className='cursor-pointer ml-5 hover:text-red-600'><Link to="/others/about">О нас</Link></li>
+                <li className='cursor-pointer ml-5 hover:text-red-600'><Link to="/others/payndelivery">Оплата и доставка</Link></li>
                 <li className='cursor-pointer ml-5 hover:text-red-600'><Link to="/others/wholesellers">ОПТ</Link></li>
                 <li className='cursor-pointer ml-5 hover:text-red-600'><Link to="/others/contacts">Контакты</Link></li>
               </ul>
@@ -108,7 +111,7 @@ const Header = () => {
             className="cursor-pointer font-medium flex items-center"
           >  {/*LOGO CRG */}
             <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
-              width="35" height="35" viewBox="0 0 374.000000 375.000000"
+              width="45" height="45" viewBox="0 0 374.000000 375.000000"
               preserveAspectRatio="xMidYMid meet">
               <g transform="translate(0.000000,375.000000) scale(0.100000,-0.100000)"
                 fill="#BA181B" stroke="none">

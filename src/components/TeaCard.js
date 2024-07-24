@@ -8,8 +8,8 @@ import styles from './CoffeCard/CoffeCard.module.css'
 import { toast } from 'react-toastify';
 import { AddBox, IndeterminateCheckBox } from '@mui/icons-material';
 import { red } from '@mui/material/colors';
-
 import { IconButton } from '@mui/material';
+import {ReactSpoiler} from "react-simple-spoiler";
 
 
 
@@ -149,23 +149,16 @@ const TeaCard = ({ data }) => {
                             onClick={handlePrev}
                             className="!absolute top-2/4 left-4 -translate-y-2/4"
                         >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                strokeWidth={2}
-                                stroke="grey"
-                                className="h-6 w-6"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
-                                />
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                 className="size-5">
+                                <path fill-rule="evenodd"
+                                      d="M11.78 5.22a.75.75 0 0 1 0 1.06L8.06 10l3.72 3.72a.75.75 0 1 1-1.06 1.06l-4.25-4.25a.75.75 0 0 1 0-1.06l4.25-4.25a.75.75 0 0 1 1.06 0Z"
+                                      clip-rule="evenodd"/>
                             </svg>
+
                         </IconButton>
                     )}
-                    nextArrow={({ handleNext }) => (
+                    nextArrow={({handleNext}) => (
                         <IconButton
                             variant="text"
                             color="red"
@@ -173,25 +166,18 @@ const TeaCard = ({ data }) => {
                             onClick={handleNext}
                             className="!absolute top-2/4 !right-4 -translate-y-2/4"
                         >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                strokeWidth={2}
-                                stroke="grey"
-                                className="h-6 w-6"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
-                                />
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                 className="size-5">
+                                <path fill-rule="evenodd"
+                                      d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z"
+                                      clip-rule="evenodd"/>
                             </svg>
+
                         </IconButton>
                     )}
                 >
                     {imgdata.map((item, index) => (
-                        <img className='w-full object-cover object-center' key={index} src={`${item}`} />
+                        <img className='w-full object-cover object-center' key={index} src={`${item}`}/>
                     ))}
                 </Carousel>
                 {/*<div className="grid gap-4">
@@ -216,11 +202,19 @@ const TeaCard = ({ data }) => {
                     </div>
                 </div>*/}
                 <div className='mt-5 text-sm'>
-                    <p className='line-clamp-3'>
+                    <ReactSpoiler
+                        noOfLines={6}
+                        lineHeight={7}
+                        showMoreComponent={<p className='spoiler-size'>еще...</p>}
+                        showLessComponent={<p className='spoiler-size'>Скрыть</p>}
+                        toggleContainerStyle={{ color: '#ba181b' }}
+                    >
+                    <p className='text-justify text-sm sm:text-md md:text-md lg:text-md xl:text-md 2xl:text-md'>
                         Описание: <span>
                             {data.description}
                         </span>
                     </p>
+                    </ReactSpoiler>
                 </div>
                 <div className='flex justify-between mt-2 text-sm'>
                     <div className='grid grid-cols-4 items-center'>

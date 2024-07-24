@@ -10,9 +10,7 @@ import Admin from "../components/Admin";
 import  ShopUser from '../pages/Shop/Shop'
 import  Wholesellers from '../pages/others/WS'
 import  UserProfile from '../pages/UserProfile/UserProfile'
-import  Login from '../pages/UserProfile/Login/LogIn'
-import  Registration from '../pages/UserProfile/Registration/Registration'
-import  CodePage from '../pages/CodeVerify/CodePage'
+
 import  Basket from '../pages/Basket/Basket'
 import  AboutPage from '../pages/others/About.js'
 import  PayDelivery from '../pages/others/PayDelivery.js'
@@ -32,6 +30,9 @@ import  MySettings from "../pages/UserProfile/UserSettings/UserSettings"
 import  Main from '../pages/Home/Home'
 import  Others from'../pages/others/Layout/Layout.js'
 import  Contacts from'../pages/others/Contacts'
+
+import Policy from '../pages/others/Policy'
+import Public from '../pages/others/Public'
 
 
 const router = createBrowserRouter(createRoutesFromElements(
@@ -60,9 +61,10 @@ const router = createBrowserRouter(createRoutesFromElements(
             <Route path="others" element={<Others />} >
                 <Route path="payndelivery" element={<PayDelivery />} />
                 <Route path="about" element={<AboutPage />} />
-                <Route path="barista-school" element={<JsBarista />} />
                 <Route path="wholesellers" element={<Wholesellers />} />
                 <Route path="contacts" element={<Contacts />} />
+                <Route path="privacypolicy" element={<Policy />} />
+                <Route path="publicoffer" element={<Public />} />
             </Route>
             <Route path="about-coffe" element={<AboutCoffe />} />
             <Route path="*" element={<NotFound />} />
