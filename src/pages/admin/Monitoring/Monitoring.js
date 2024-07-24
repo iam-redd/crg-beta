@@ -105,7 +105,7 @@ export default function BasicTabs() {
         <h2>Мониторинг</h2>
         <div className="" style={{ maxWidth: '400px' }}>
           {
-            userInfo.role === 'manager' || userInfo.role === 'admin' && <>
+            userInfo.role === 'manager' || userInfo.role === 'admin' || userInfo.role === 'operator' && <>
               {
                 managers.length > 3 &&
                 <Select

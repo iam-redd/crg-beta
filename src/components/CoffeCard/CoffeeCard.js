@@ -206,7 +206,7 @@ function CoffeeCard({ data = {} }) {
                     )}
                 >
                     {imgdata.map((item, index) => (
-                        <img className='w-full object-cover object-center' key={index} src={`${item}`}/>
+                        <img className='w-3/4 object-cover object-center mx-auto' key={index} src={`${item}`}/>
                     ))}
                 </Carousel>
                 {/*<div className="grid gap-4">
@@ -250,12 +250,11 @@ function CoffeeCard({ data = {} }) {
                 </div>
                 <div className='mt-3 text-sm'>
                     <ReactSpoiler
-                        noOfLines={2}
+                        noOfLines={6}
                         lineHeight={7}
                         showMoreComponent={<p className='spoiler-size'>еще...</p>}
                         showLessComponent={<p className='spoiler-size'>Скрыть</p>}
                         toggleContainerStyle={{ color: '#ba181b' }}
-                        collapsedSize={60}
                     >
                         <p className='text-justify text-sm sm:text-md md:text-md lg:text-md xl:text-md 2xl:text-md'>
                             Описание: <span>
@@ -310,6 +309,8 @@ function CoffeeCard({ data = {} }) {
                         </div>
                     </div>
                 </div>
+
+
                 <div className='mt-5'>
                     <Typography variant='h6'>Цена:
                         <span>{

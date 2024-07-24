@@ -9,6 +9,7 @@ import { toast } from 'react-toastify';
 import { AddBox, IndeterminateCheckBox } from '@mui/icons-material';
 import { red } from '@mui/material/colors';
 import { IconButton } from '@mui/material';
+import {ReactSpoiler} from "react-simple-spoiler";
 
 
 
@@ -201,11 +202,19 @@ const TeaCard = ({ data }) => {
                     </div>
                 </div>*/}
                 <div className='mt-5 text-sm'>
-                    <p className='line-clamp-3'>
+                    <ReactSpoiler
+                        noOfLines={6}
+                        lineHeight={7}
+                        showMoreComponent={<p className='spoiler-size'>еще...</p>}
+                        showLessComponent={<p className='spoiler-size'>Скрыть</p>}
+                        toggleContainerStyle={{ color: '#ba181b' }}
+                    >
+                    <p className='text-justify text-sm sm:text-md md:text-md lg:text-md xl:text-md 2xl:text-md'>
                         Описание: <span>
                             {data.description}
                         </span>
                     </p>
+                    </ReactSpoiler>
                 </div>
                 <div className='flex justify-between mt-2 text-sm'>
                     <div className='grid grid-cols-4 items-center'>

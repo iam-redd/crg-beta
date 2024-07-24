@@ -11,6 +11,7 @@ import { AddBox, IndeterminateCheckBox } from '@mui/icons-material';
 import { red } from '@mui/material/colors';
 
 import { IconButton } from '@mui/material';
+import {ReactSpoiler} from "react-simple-spoiler";
 
 const AnyCard = ({ data }) => {
     const userInfo = useSelector(state => state.user.userInfo)
@@ -28,7 +29,7 @@ const AnyCard = ({ data }) => {
     else if (data.type === 'syrup') type = 'Сироп'
     else if (data.type === 'accessory') type = 'Аксессуар'
     else if (data.type === 'chemistry') type = 'Химия'
-    else if (data.type === 'coffee-capsule') type = 'Кофе в капсуле'
+    else if (data.type === 'coffee-capsule') type = 'Кофе в капсулах'
     else if (data.type === 'drip') type = 'Дрип-кофе'
 
     function increment() {
@@ -92,6 +93,11 @@ const AnyCard = ({ data }) => {
         }
     }, [data._id,basket]);
 
+
+    // data.description.split('\n').forEach((el) => {
+    //     document.querySelector("span.description").innerText += el + '\n';
+    // })
+
     return (
         <div className=''>
             <Card className='w-80 md:w-80 h-full border py-5 px-5 card-hover snap-center'>
@@ -108,12 +114,20 @@ const AnyCard = ({ data }) => {
                     <img src={`${process.env.REACT_APP_SERVER}/${data.img}`} alt='card-img' className={`${style.imgH}object-cover object-center mx-auto`} />
                 </div>
                 <div className='mt-5 text-sm'>
-                    <p className='line-clamp-3'>
+                    <ReactSpoiler
+                        noOfLines={6}
+                        lineHeight={7}
+                        showMoreComponent={<p className='spoiler-size'>еще...</p>}
+                        showLessComponent={<p className='spoiler-size'>Скрыть</p>}
+                        toggleContainerStyle={{ color: '#ba181b' }}
+                    >
+                    <p className='text-justify text-sm sm:text-md md:text-md lg:text-md xl:text-md 2xl:text-md'>
                         Описание: &nbsp;
-                        <span>
+                        <span className='description'>
                         {data.description}
                         </span>
                     </p>
+                    </ReactSpoiler>
                 </div>
                 <div className='mt-5'>
                     <Typography variant='h6'>Цена:

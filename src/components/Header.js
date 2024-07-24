@@ -75,9 +75,10 @@ const Header = () => {
         <li><Link to="/others/wholesellers">ОПТ</Link></li>
         <li><Link to="/others/contacts">Контакты</Link></li>
       </ul>
-      <div className='text-md cursor-text text-gray-600 mb-5'>
-          Call-центр: <a href="tel:+998998992012">+998(99)899-20-12</a>,&nbsp;
-          <a href='tel:+998909555562'>+998(90)955-55-62</a>
+      <div className='text-md cursor-text font-medium mb-5'>
+          Call-центр: <a className=' text-blue-600 ' href="tel:+998998992012">+998(99)899-20-12</a>,&nbsp;
+          <a className=' text-blue-600 ' href='tel:+998909555562'>+998(90)955-55-62</a>,&nbsp;
+          <a className=' text-blue-600 ' href="tel:+998335666663">+998(33)566-66-63</a>
       </div>
     </div>
   );
@@ -87,12 +88,13 @@ const Header = () => {
         <div className="bg-white">
           <div className='border-b border-gray-200'>
             <div className='h-full mx-auto max-w-screen-xl 2xl:max-w-screen-2xl hidden nowrap  px-4 py-1 2xl:px-0 items-center justify-between text-gray-600 lg:flex lg:px-4 lg:py-2'>
-                <div className='text-sm cursor-text ml-5 md:ml-0'>
+                <div className='text-sm text-blue-gray-600 font-medium cursor-text ml-5 md:ml-0'>
                     Call-центр: <a href="tel:+998998992012">+998(99)899-20-12</a>, &nbsp;
-                    <a href='tel:+998909555562'>+998(90)955-55-62</a>
+                    <a  href='tel:+998909555562'>+998(90)955-55-62</a>,&nbsp;
+                    <a  href="tel:+998335666663">+998(33)566-66-63</a>
                 </div>
                 <ul className='flex text-xs'>
-                <li className='cursor-pointer ml-5 hover:text-red-600'><Link to="/others/about">О нас</Link></li>
+                    <li className='cursor-pointer ml-5 hover:text-red-600'><Link to="/others/about">О нас</Link></li>
                 <li className='cursor-pointer ml-5 hover:text-red-600'><Link to="/others/payndelivery">Оплата и доставка</Link></li>
                 <li className='cursor-pointer ml-5 hover:text-red-600'><Link to="/others/wholesellers">ОПТ</Link></li>
                 <li className='cursor-pointer ml-5 hover:text-red-600'><Link to="/others/contacts">Контакты</Link></li>
