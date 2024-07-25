@@ -4,10 +4,11 @@ import CryptoJS from 'crypto-js';
 import secretKey from '../../default.json'
 import UserHeader from './UserHeader/UserHeader';
 import { useDispatch } from 'react-redux';
+import { Outlet } from 'react-router-dom';
 
 const UserProfile = () => {
   const dispatch = useDispatch()
-  
+
   async function getMe() {
     try {
       const res = await axios.get('/me')
@@ -18,7 +19,7 @@ const UserProfile = () => {
         dispatch(addData(res.data))
       }
     } catch (e) {
-      if(e?.response?.status === 404){
+      if (e?.response?.status === 404) {
         window.localStorage.removeItem('data')
         window.localStorage.removeItem('token')
         dispatch(addData(null))
@@ -35,6 +36,7 @@ const UserProfile = () => {
       <div className=''>
         <UserHeader />
       </div>
+      <Outlet />
     </div>
   );
 };
