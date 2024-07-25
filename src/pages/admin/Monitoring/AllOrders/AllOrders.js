@@ -1,9 +1,10 @@
 import React from 'react'
 import { DefaultSpinner } from '../../../../components/Spinner'
 import OrderCardMonitorng from '../OrderCardMonitiring/OrderCardMonitorng'
-import axios from '../../../../store/axios'
+import { useSelector } from 'react-redux'
 
 export default function AllOrders({ data, getAllOrders, index }) {
+    const userInfo = useSelector(state => state.user.userInfo)
     const allOrders = data.reverse() || null
     return (
         <>
