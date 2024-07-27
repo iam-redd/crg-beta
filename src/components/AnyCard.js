@@ -8,9 +8,9 @@ import { toast } from 'react-toastify';
 import { addTooBasket, decrementProduct, incrementProduct } from '../store/slices/basketSlice';
 import { AddBox, IndeterminateCheckBox } from '@mui/icons-material';
 import { red } from '@mui/material/colors';
-
 import { IconButton } from '@mui/material';
-import {ReactSpoiler} from "react-simple-spoiler";
+import { ReactSpoiler } from "react-simple-spoiler";
+import { motion } from 'framer-motion';
 
 const AnyCard = ({ data }) => {
     const userInfo = useSelector(state => state.user.userInfo)
@@ -30,16 +30,26 @@ const AnyCard = ({ data }) => {
     else if (data.type === 'chemistry') type = 'Химия'
     else if (data.type === 'coffee-capsule') type = 'Кофе в капсулах'
     else if (data.type === 'drip') type = 'Дрип-кофе'
-
+    const boxAnimation = {
+        hidden: {
+            y: 100,
+            opacity: 0
+        },
+        visible: custom => ({
+            y: 0,
+            opacity: 1,
+            transition: { delay: custom * 0.2 }
+        })
+    }
     function increment() {
         try {
-            if(!boolBasket){
+            if (!boolBasket) {
                 notifyError('Добавте товар в корзину')
             }
             else if (boolBasket && index !== null) {
                 dispatch(incrementProduct(index))
                 setAmount((prev) => prev = prev + 1)
-            }else{
+            } else {
                 notifyError('Товар не найден')
             }
         } catch (error) {
@@ -48,17 +58,17 @@ const AnyCard = ({ data }) => {
 
     function decrement() {
         try {
-            if(amount === 1){
+            if (amount === 1) {
                 return
             }
-            if(amount < 1){
+            if (amount < 1) {
                 return setAmount(1)
             }
             if (boolBasket && index !== null) {
                 setAmount(amount - 1)
                 dispatch(decrementProduct(index))
 
-            }else{
+            } else {
                 notifyError('Товар не найден')
             }
         } catch (error) {
@@ -90,7 +100,7 @@ const AnyCard = ({ data }) => {
         } else {
             setBoolBasket(false)
         }
-    }, [data._id,basket]);
+    }, [data._id, basket]);
 
 
     // data.description.split('\n').forEach((el) => {
@@ -98,42 +108,47 @@ const AnyCard = ({ data }) => {
     // })
 
     return (
-        <div className=''>
-            <Card className='w-80 md:w-80 h-full border py-5 px-5 card-hover snap-center'>
-                <div className={styles.header}>
-                    <span className='text-xs text-red-700'>{data.stopList && 'Нет в наличии'}</span>
-                    <span className='text-xs'>{data.topList && 'Топ-недели'}</span>
-                    {
-                        data.topList || data.stopList !== undefined && <span className='pt-4'></span>
-                    }
-                </div>
-                <h2 className='text-center font-bold text-xl'>{data.name}</h2>
-                <p className='text-center text-xs mx-auto border-none p-0.5 mb-1.5'>{type}</p>
-                <div className=''>
-                    <img src={`${process.env.REACT_APP_SERVER}/${data.img}`} alt='card-img' className={`${style.imgH}object-cover object-center mx-auto`} />
-                </div>
-                <div className='mt-5 text-sm'>
-                    <ReactSpoiler
-                        noOfLines={6}
-                        lineHeight={7}
-                        showMoreComponent={<p className='spoiler-size'>еще...</p>}
-                        showLessComponent={<p className='spoiler-size'>Скрыть</p>}
-                        toggleContainerStyle={{ color: '#ba181b' }}
-                    >
-                    <p className='text-justify text-sm sm:text-md md:text-md lg:text-md xl:text-md 2xl:text-md'>
-                        Описание: &nbsp;
-                        <span className='description'>
-                        {data.description}
-                        </span>
-                    </p>
-                    </ReactSpoiler>
-                </div>
-                <div className='mt-5'>
-                    <Typography variant='h6'>Цена:
-                        <span> {userInfo !== null && userInfo.role === 'superUser' ? data.priceWS[0] : data.priceUser[0]}
-                        </span> UZS</Typography>
-                </div>
-                {/* <div className='flex mt-5 items-center justify-between'>
+        <>
+            {
+                !data.stopList && <motion.div
+                initial="hidden"
+                whileInView="visible"
+                variants={boxAnimation} className=''>
+                    <Card className='w-80 md:w-80 h-full border py-5 px-5 card-hover snap-center'>
+                        <div className={styles.header}>
+                            <span className='text-xs text-red-700'>{data.stopList && 'Нет в наличии'}</span>
+                            <span className='text-xs'>{data.topList && 'Топ-недели'}</span>
+                            {
+                                data.topList || data.stopList !== undefined && <span className='pt-4'></span>
+                            }
+                        </div>
+                        <h2 className='text-center font-bold text-xl'>{data.name}</h2>
+                        <p className='text-center text-xs mx-auto border-none p-0.5 mb-1.5'>{type}</p>
+                        <div className=''>
+                            <img src={`${process.env.REACT_APP_SERVER}/${data.img}`} alt='card-img' className={`${style.imgH}object-cover object-center mx-auto`} />
+                        </div>
+                        <div className='mt-5 text-sm'>
+                            <ReactSpoiler
+                                noOfLines={6}
+                                lineHeight={7}
+                                showMoreComponent={<p className='spoiler-size'>еще...</p>}
+                                showLessComponent={<p className='spoiler-size'>Скрыть</p>}
+                                toggleContainerStyle={{ color: '#ba181b' }}
+                            >
+                                <p className='text-justify text-sm sm:text-md md:text-md lg:text-md xl:text-md 2xl:text-md'>
+                                    Описание: &nbsp;
+                                    <span className='description'>
+                                        {data.description}
+                                    </span>
+                                </p>
+                            </ReactSpoiler>
+                        </div>
+                        <div className='mt-5'>
+                            <Typography variant='h6'>Цена:
+                                <span> {userInfo !== null && userInfo.role === 'superUser' ? data.priceWS[0] : data.priceUser[0]}
+                                </span> UZS</Typography>
+                        </div>
+                        {/* <div className='flex mt-5 items-center justify-between'>
                     {
                         boolBasket ?
                             <Button
@@ -151,43 +166,45 @@ const AnyCard = ({ data }) => {
                                 onClick={addToBasketе}>В корзину</Button>
                     }
                 </div> */}
-                <div className='flex mt-5 items-center justify-between'>
-                    {
+                        <div className='flex mt-5 items-center justify-between'>
+                            {
 
-                        boolBasket ?
-                            <>
-                                <div className='flex items-center justify-between'>
-                                <IconButton onClick={decrement}>
-                                    <IndeterminateCheckBox fontSize='inherit' sx={{ color: red[500] }}/>
-                                </IconButton>
-                                <span>{basket[index]?.amount}</span>
-                                <IconButton onClick={increment}>
-                                    <AddBox fontSize='inherit' sx={{ color: red[500] }}/>
-                                </IconButton>
-                                </div>
-                                
-                                
-                                <Button variant='outlined' size='sm' color='blue-gray' onClick={() => navigate('/basket')}>
-                                <h3>Перейти</h3>
-                                </Button>
-                                
-                            </> :
-                            <>
-                              
-                                <Button
-                                    className='font-medium'
-                                    color="red"
-                                    variant='gradient'
-                                    size='sm'
-                                    onClick={addToBasketе}>
-                                        <h3>В корзину</h3>
-                                </Button>
-                            </>
-                    }
+                                boolBasket ?
+                                    <>
+                                        <div className='flex items-center justify-between'>
+                                            <IconButton onClick={decrement}>
+                                                <IndeterminateCheckBox fontSize='inherit' sx={{ color: red[500] }} />
+                                            </IconButton>
+                                            <span>{basket[index]?.amount}</span>
+                                            <IconButton onClick={increment}>
+                                                <AddBox fontSize='inherit' sx={{ color: red[500] }} />
+                                            </IconButton>
+                                        </div>
 
-                </div>
-            </Card>
-        </div>
+
+                                        <Button variant='outlined' size='sm' color='blue-gray' onClick={() => navigate('/basket')}>
+                                            <h3>Перейти</h3>
+                                        </Button>
+
+                                    </> :
+                                    <>
+
+                                        <Button
+                                            className='font-medium'
+                                            color="red"
+                                            variant='gradient'
+                                            size='sm'
+                                            onClick={addToBasketе}>
+                                            <h3>В корзину</h3>
+                                        </Button>
+                                    </>
+                            }
+
+                        </div>
+                    </Card>
+                </motion.div>
+            }
+        </>
     );
 };
 

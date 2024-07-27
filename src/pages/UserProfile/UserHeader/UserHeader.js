@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { startTransition, useState } from 'react'
 import styles from './UserHeader.module.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '../../../store/slices/userSlice';
@@ -18,6 +18,7 @@ export default function UserHeader() {
     dispatch(logout())
     setToken(null)
   }
+
 
   //const openLogin = () => {
 
@@ -45,7 +46,7 @@ export default function UserHeader() {
                       </div>
                       :
                       <div>
-                        <Chip className='rounded-full font-medium' size="sm" variant="gradient" color={userInfo.role === 'user' ? 'cyan' : 'amber'} value={userInfo.role === 'user' ? 'Розница' : userInfo.role === 'superUser' ? 'ОПТ' : userInfo.role === 'developer' ? 'Разработчик' : userInfo.role === 'master' ? 'Владелец' : userInfo.role === 'manager' || userInfo.role === 'admin' ? 'Менеджер':'Оператор'
+                        <Chip className='rounded-full font-medium' size="sm" variant="gradient" color={userInfo.role === 'user' ? 'cyan' : 'amber'} value={userInfo.role === 'user' ? 'Розница' : userInfo.role === 'superUser' ? 'ОПТ' : userInfo.role === 'developer' ? 'Разработчик' : userInfo.role === 'master' ? 'Владелец' : userInfo.role === 'manager' || userInfo.role === 'admin' ? 'Менеджер' : 'Оператор'
                         } />
                       </div>
                     }
@@ -96,7 +97,7 @@ export default function UserHeader() {
                         </ListItem>
                       </Link>
                       {userInfo.role === 'admin' || userInfo.role === 'operator' || userInfo.role === 'developer' || userInfo.role === 'heaver' || userInfo.role === 'master' || userInfo.role === 'manager' ?
-                        <Link to={'/admin'}>
+                        <Link to="/admin">
                           <ListItem>
                             <ListItemPrefix>
                               <ComputerDesktopIcon className='w-5 h-5' />
@@ -111,7 +112,7 @@ export default function UserHeader() {
                   </Card>
                 </div>
               </div>
-            </div>
+            </div >
             :
             <div className='w-full'>
               <Modals />
@@ -120,8 +121,7 @@ export default function UserHeader() {
           // <Navigate to='/login'/>
         }
 
-      </div>
-      <Outlet />
+      </div >
     </>
   )
 }

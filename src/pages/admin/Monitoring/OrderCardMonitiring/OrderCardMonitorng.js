@@ -24,6 +24,7 @@ export default function OrderCardMonitorng({ data, getAllOrders, index }) {
                         № {data.identifier}
                     </div>
                     <div className={styles.main}>
+                        <p>Заказчик: <span className={styles.status}>{data.userName}</span></p>
                         <p>Статус: <span className={styles.status}>{data.status}</span></p>
                         <p>Дата заказа: <span className={styles.status}>{data.creationDate}</span></p>
                         <p>Сумма заказа: <span className={styles.status}>{data.totalPrice}</span></p>

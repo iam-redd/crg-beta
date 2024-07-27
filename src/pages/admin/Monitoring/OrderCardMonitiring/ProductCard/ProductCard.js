@@ -69,7 +69,7 @@ export default function Order({ data, orderId, getAllOrders, bool, index }) {
             {
                 bool ?
                     <div className={styles.order}>
-                        <img className={styles.img} src={`${process.env.REACT_APP_SERVER}/${data.img}`} alt=""  />
+                        <img className={styles.img} src={`${process.env.REACT_APP_SERVER}/${data.img[0]}`} alt=""  />
                         <div className={styles.info}>
                             <p >Найменования:
                                 {data.name}

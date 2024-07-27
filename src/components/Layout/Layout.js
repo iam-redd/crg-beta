@@ -39,7 +39,7 @@ const Layout = () => {
                     dispatch(addData(ciphertext))
                 }
             } else {
-               
+
             }
 
         } catch (error) {
@@ -67,8 +67,8 @@ const Layout = () => {
         <div className={styles.container}>
             <Header />
             <div className={`min-h-svh`}>
+                <ToastContainer />
                 <Suspense fallback={<DefaultSpinner />}>
-                    <ToastContainer />
                     <Outlet />
                 </Suspense>
             </div>

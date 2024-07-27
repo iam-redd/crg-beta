@@ -102,9 +102,10 @@ export default function AllUsers() {
   }, [setLoading, getAllUsersFunc, selectedUsers]);
 
   return (
+  
     <div>
       {
-        !isLoading ? <div className="">
+        !isLoading && selectedUsers !== null ? <div className="">
 
           <Card className="h-full w-full">
             <CardHeader floated={false} shadow={false} className="rounded-none">

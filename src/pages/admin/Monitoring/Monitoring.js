@@ -92,6 +92,9 @@ export default function BasicTabs() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+  const allGoods = useSelector(state => state.service.allProducts)
+  // const navigate = useNavigate()
+  allGoods == null && navigate('/user')
 
   React.useEffect(() => {
     data === null && getAllOrders()

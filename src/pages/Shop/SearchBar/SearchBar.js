@@ -10,7 +10,7 @@ export default function SearchBar() {
   function searchItem(value) {
     dispatch(setSearchValue(value))
     const a = allProducts.reduce((acc, product, index) => {
-      const temp = product.name.split(' ')
+      const temp = product.tags
 
       const bool = temp.filter((name) => {
         return !name.trim().toLowerCase().search(searchValue)
@@ -20,6 +20,7 @@ export default function SearchBar() {
         return acc
       }
     }, [])
+    console.log(a)
     dispatch(setSelectedProducts(a))
   }
   return (

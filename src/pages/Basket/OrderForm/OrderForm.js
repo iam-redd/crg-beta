@@ -45,7 +45,8 @@ export default function OrderForm({ totalPrice }) {
 
                 return
             }
-            const data = await axios.post('/new-order', { basket, comment, totalPrice, paymentMethod })
+            const options = { basket, comment, totalPrice, paymentMethod }
+            const data = await axios.post('/new-order', options)
             if (data.status === 200) {
                 dispatch(cancelBasket())
             } else {
@@ -72,7 +73,10 @@ export default function OrderForm({ totalPrice }) {
                                 onChange={(e) => changePay(e)}
                                 style={{ borderColor: pomolColor ? "red" : '' }}
                                 onClick={handlePomolColor}>
-                                <Option value='Перечислением'>Перечислением</Option>
+                                     <>{
+                                        userInfo.role !== 'user' && <Option value='Перечислением'>Перечислением</Option>
+                                    }</>
+                                <Option value='Наличка'>Наличка</Option>
                                 <Option value='PayMe'>PayMe</Option>
                                 <Option value='Другое'>Другое</Option>
                             </Select>
