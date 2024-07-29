@@ -5,6 +5,7 @@ import { Button, Checkbox, Option, Select } from '@material-tailwind/react';
 import { useDispatch, useSelector } from 'react-redux'
 import { cancelBasket } from '../../../store/slices/basketSlice'
 import { Typography } from "@material-tailwind/react";
+import {Link} from "react-router-dom";
 
 export default function OrderForm({ totalPrice }) {
     const [btnBool, setBtnBool] = useState(false)
@@ -16,9 +17,7 @@ export default function OrderForm({ totalPrice }) {
     const userInfo = useSelector(state => state.user.userInfo)
     const [paymentMethod, changePay] = useState(null)
     const [pomolColor, setPomoltColor] = useState(false)
-
     const [butloading, setButloading] = useState(false);
-   
     async function newOrder(e) {
         try {
             e.preventDefault()
@@ -47,7 +46,8 @@ export default function OrderForm({ totalPrice }) {
 
                 return
             }
-            const data = await axios.post('/new-order', { basket, comment, totalPrice, paymentMethod })
+            const options = { basket, comment, totalPrice, paymentMethod }
+            const data = await axios.post('/new-order', options)
             if (data.status === 200) {
                 dispatch(cancelBasket())
             } else {
@@ -82,7 +82,9 @@ export default function OrderForm({ totalPrice }) {
                                 onChange={(e) => changePay(e)}
                                 style={{ borderColor: pomolColor ? "red" : '' }}
                                 onClick={handlePomolColor}>
-                                <Option value='Перечислением'>Перечислением</Option>
+                                <>{
+                                    userInfo.role !== 'user' && <Option value='Перечислением'>Перечислением</Option>
+                                }</>
                                 <Option value='PayMe'>PayMe</Option>
                                 <Option value='Другое'>Другое</Option>
                             </Select>
@@ -96,9 +98,9 @@ export default function OrderForm({ totalPrice }) {
                                     }}
                                 />
                                 <span className={styles.texttip}> Согласен с условиями
-                                        <a href=' # '>обработки персональных данных</a>,
-                                        <a href=' # '>Доставки</a> и
-                                        <a href='# '>Публичной оферты</a>
+                                        <Link to='/others/privacypolicy'>обработки персональных данных</Link>,
+                                        <Link to='/others/payndelivery'>Доставки</Link> и
+                                        <Link to='/others/publicoffer'>Публичной оферты</Link>
                                         </span>
                                 </div>
                         <textarea className={styles.textarea} name='comment' placeholder='Комментария для заказа'></textarea>

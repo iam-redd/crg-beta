@@ -6,17 +6,17 @@ export default function Order({ data, orderId, getAllOrders, bool, index }) {
     const [amount, setAmount] = useState(0)
     let currentAmount = data.amount
     let type = ''
-        if (data.type === 'coffe-beans') type = 'Кофе'
-        else if (data.type === 'tea') type = 'Чай'
-        else if (data.type === 'syrup') type = 'Сироп'
-        else if (data.type === 'accessory') type = 'Аксессуар'
-        else if (data.type === 'chemistry') type = 'Химия'
-        else if (data.type === 'coffee-capsule') type = 'Кофе в капсуле'
-        else if (data.type === 'drip') type = 'Дрип-кофе'
+    if (data.type === 'coffe-beans') type = 'Кофе'
+    else if (data.type === 'tea') type = 'Чай'
+    else if (data.type === 'syrup') type = 'Сироп'
+    else if (data.type === 'accessory') type = 'Аксессуар'
+    else if (data.type === 'chemistry') type = 'Химия'
+    else if (data.type === 'coffee-capsule') type = 'Кофе в капсуле'
+    else if (data.type === 'drip') type = 'Дрип-кофе'
     async function save() {
         try {
             const comment = `This is comment`
-            
+
             const request = await axios.patch('/order/product/amount',
                 {
                     orderId,
@@ -49,7 +49,7 @@ export default function Order({ data, orderId, getAllOrders, bool, index }) {
     async function deleteProductFromOrder() {
         try {
             const comment = `This is comment`
-           
+
             const request = await axios.patch('/order/product',
                 {
                     orderId,
@@ -69,9 +69,9 @@ export default function Order({ data, orderId, getAllOrders, bool, index }) {
             {
                 bool ?
                     <div className={styles.order}>
-                        <img className={styles.img} src={`${process.env.REACT_APP_SERVER}/${data.img}`} alt=""  />
+                        <img className={styles.img} src={`${process.env.REACT_APP_SERVER}/${data.img[0]}`} alt=""  />
                         <div className={styles.info}>
-                            <p >Найменования:
+                            <p >Название:
                                 {data.name}
                                 {
                                     amount !== 0 &&
@@ -97,9 +97,10 @@ export default function Order({ data, orderId, getAllOrders, bool, index }) {
                                 }
                                 {
                                     index === 0 && <button className={styles.btn}
-                                        onClick={deleteProductFromOrder}>Удалить</button>
+                                                           onClick={deleteProductFromOrder}>Удалить</button>
                                 }
                             </p>
+
                         </div>
                     </div> :
                     <div className={styles.order}>
@@ -121,6 +122,3 @@ export default function Order({ data, orderId, getAllOrders, bool, index }) {
     )
 
 }
-
-
-

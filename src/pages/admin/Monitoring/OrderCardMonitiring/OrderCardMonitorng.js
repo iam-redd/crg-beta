@@ -24,6 +24,7 @@ export default function OrderCardMonitorng({ data, getAllOrders, index }) {
                         № {data.identifier}
                     </div>
                     <div className={styles.main}>
+                        <p>Заказчик: <span className={styles.status}>{data.userName}</span></p>
                         <p>Статус: <span className={styles.status}>{data.status}</span></p>
                         <p>Дата заказа: <span className={styles.status}>{data.creationDate}</span></p>
                         <p>Сумма заказа: <span className={styles.status}>{data.totalPrice}</span></p>
@@ -95,7 +96,7 @@ export default function OrderCardMonitorng({ data, getAllOrders, index }) {
                     {
                         data.rejectedList.length > 0 &&
                         <div className={styles.footer}
-                            onClick={handleVisible2}>
+                             onClick={handleVisible2}>
                             <span>
                                 <> Удалённые товары из заказа
                                     {
@@ -151,6 +152,3 @@ export default function OrderCardMonitorng({ data, getAllOrders, index }) {
         </>
     )
 }
-
-
-

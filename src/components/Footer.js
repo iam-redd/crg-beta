@@ -35,12 +35,12 @@ const Footer = () => {
       <div className='hidden md:flex w-full flex-wrap lg:flex-nowrap'>
         <div className='flex flex-wrap md:flex-nowrap mx-auto'>
           <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 justify-between gap-2 text-start text-xs">
-            <div className='mr-4'>
+            <div className='mr-4 mt-2'>
               <div className='flex'>
                 <div className='mr-2'>
                   <img width={70} src={logoIcon} alt='logo'/>
                 </div>
-                <div className='w-16'>
+                <div className='w-16 '>
                   <p className='font-bold leading-none'>COFFEE ROASTERY GROUP</p>
                   <div className='flex mt-2 gap-2'>
                     <a href='https://www.instagram.com/coffeeroasterygroup/' title='Instagram' target='_blank'
@@ -69,9 +69,9 @@ const Footer = () => {
                       <li key={link}>
                         <Typography
                             as="a"
-                            href="#"
+                            href={link.links}
                             color="gray"
-                            className="text-xs py-1 font-normal transition-colors hover:text-red-400"
+                            className="text-xs py-1 font-normal transition-colors hover:text-red-400 cursor-pointer"
                         >
                           {link}
                         </Typography>
@@ -97,18 +97,18 @@ const Footer = () => {
             <div className='flex w-full items-center'>
               <div className='flex w-full'>
                 <div className='mr-2'>
-                  <img width={54} src={logoIcon} alt='logo'/>
+                  <img width={64} src={logoIcon} alt='logo'/>
                 </div>
-                <div className='w-12'>
+                <div className='w-2/4 md:w-12'>
                   <p className='font-bold leading-none text-xs'>COFFEE ROASTERY GROUP</p>
-                  <div className='flex mt-2 gap-2'>
+                  <div className='flex mt-4 md:mt-2 gap-6 md:gap-2 justify-center md:justify-start'>
                     <a href='https://www.instagram.com/coffeeroasterygroup/' title='Instagram' target='_blank'
-                       rel='noreferrer'><img width={15} src={instagramIcon} alt=''/></a>
+                       rel='noreferrer'><img width={20} src={instagramIcon} alt='insticon'/></a>
                     <a href='https://t.me/coffee_zdes' title='Telegram' target='_blank'
                        rel='noreferrer'><img
-                        width={15} src={telegramIcon} alt=''/></a>
+                        width={20} src={telegramIcon} alt=''/></a>
                     <a href='https://www.facebook.com/people/Coffee-Roastery-Group/100089262537599/?mibextid=LQQJ4d'
-                       title='Facebook' target='_blank' rel='noreferrer'><img width={15} src={facebookIcon} alt=''/></a>
+                       title='Facebook' target='_blank' rel='noreferrer'><img width={20} src={facebookIcon} alt=''/></a>
                   </div>
                 </div>
               </div>

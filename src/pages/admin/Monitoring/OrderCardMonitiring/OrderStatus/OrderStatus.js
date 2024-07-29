@@ -2,10 +2,11 @@ import React, { useState } from 'react'
 import styles from './OrderStatus.module.css'
 import axios from '../../../../../store/axios'
 import { toast } from 'react-toastify'
+import {CheckBadgeIcon, ExclamationCircleIcon, NoSymbolIcon, PaperAirplaneIcon} from "@heroicons/react/24/solid";
 
 export default function OrderStatus({ status, id, getAllOrders, index }) {
     const statusesDb = ['Отказано', 'В ожидании', 'Оформлен', 'В пути', 'Доставлен']
-    const allStatuses = ['Отказ', 'Одобрить', 'Отправить', 'Доставлен']
+    const allStatuses = ['Отказать', 'Одобрить', 'Отправить', 'Доставлен']
     const [isLoading, setLoading] = useState(false)
     const notifyError = (text) => toast.error(text);
     let bool0 = true
@@ -94,26 +95,26 @@ export default function OrderStatus({ status, id, getAllOrders, index }) {
         }
     }
     return (
-        <div className={styles.container}>
+        <div className={`w-full flex justify-center gap-6 p-4`}>
             <div
-                className={`${styles.colorRed} ${styles.btn_wrapper} ${!bool0 && styles.opacity}`}
+                className={`text-red-500 font-medium text-md text-center items-center flex flex-col cursor-pointer ${!bool0 && styles.opacity}`}
                 onClick={() => bool0 && !isLoading && updateStatus('Отказано')}>
-                <div className={styles.btn_}>1</div>
+                    <NoSymbolIcon className='size-12 hover:scale-110' />
                 {allStatuses[0]}
             </div>
-            <div className={`${styles.btn_wrapper} ${!bool1 && styles.opacity}`}
-                onClick={() => bool1 && !isLoading && updateStatus('Оформлен')}>
-                <div className={styles.btn}>2</div>
+            <div className={`text-green-500 font-medium text-md text-center items-center flex flex-col cursor-pointer ${!bool1 && styles.opacity}`}
+                 onClick={() => bool1 && !isLoading && updateStatus('Оформлено')}>
+                <CheckBadgeIcon className='size-12 hover:scale-110' />
                 {allStatuses[1]}
             </div>
-            <div className={`${styles.btn_wrapper} ${!bool2 && styles.opacity}`}
+            <div className={`text-blue-500 font-medium text-md text-center items-center flex flex-col cursor-pointer ${!bool2 && styles.opacity}`}
                 onClick={() => bool2 && !isLoading && updateStatus('В пути')}>
-                <div className={styles.btn}>3</div>
+                <PaperAirplaneIcon className='size-12 hover:scale-110' />
                 {allStatuses[2]}
             </div>
-            <div className={`${styles.btn_wrapper} ${!bool3 && styles.opacity}`}
+            <div className={`text-yellow-500-500 font-medium text-md text-center items-center flex flex-col cursor-pointer ${!bool3 && styles.opacity}`}
                 onClick={() => bool3 && !isLoading && updateStatus('Доставлен')}>
-                <div className={styles.btn}>4</div>
+                <ExclamationCircleIcon className='size-12 hover:scale-110' />
                 {allStatuses[3]}
             </div>
         </div>
