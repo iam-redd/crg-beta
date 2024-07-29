@@ -30,17 +30,6 @@ const AnyCard = ({ data }) => {
     else if (data.type === 'chemistry') type = 'Химия'
     else if (data.type === 'coffee-capsule') type = 'Кофе в капсулах'
     else if (data.type === 'drip') type = 'Дрип-кофе'
-    const boxAnimation = {
-        hidden: {
-            y: 100,
-            opacity: 0
-        },
-        visible: custom => ({
-            y: 0,
-            opacity: 1,
-            transition: { delay: custom * 0.2 }
-        })
-    }
     function increment() {
         try {
             if (!boolBasket) {
@@ -101,19 +90,11 @@ const AnyCard = ({ data }) => {
             setBoolBasket(false)
         }
     }, [data._id, basket]);
-
-
-    // data.description.split('\n').forEach((el) => {
-    //     document.querySelector("span.description").innerText += el + '\n';
-    // })
-
     return (
         <>
             {
                 !data.stopList && <motion.div
-                initial="hidden"
-                whileInView="visible"
-                variants={boxAnimation} className=''>
+                className=''>
                     <Card className='w-80 md:w-80 h-full border py-5 px-5 card-hover snap-center'>
                         <div className={styles.header}>
                             <span className='text-xs text-red-700'>{data.stopList && 'Нет в наличии'}</span>

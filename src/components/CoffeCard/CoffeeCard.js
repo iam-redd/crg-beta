@@ -141,26 +141,9 @@ function CoffeeCard({ data = {} }) {
     }
 
 
-    const boxAnimation = {
-        hidden: {
-            y: 100,
-            opacity: 0
-        },
-        visible: custom => ({
-            y: 0,
-            opacity: 1,
-            transition: { delay: custom * 0.2 }
-        })
-    }
-
-
     const handleWeightColor = () => setWeightColor(false)
     const handlePomolColor = () => setPomoltColor(false)
     useEffect(() => {
-        // if(boolBasket) {
-        //     setAmount(basket[index].amount)
-        // }
-        // boolBasket && setAmount(basket[index].amount)
         const template = basket.filter(product => product.pomol === pomol)
         let template2 = template.filter(product => product.weight === weight)
         const template3 = template2.filter(product => product.id === data._id)
@@ -177,9 +160,7 @@ function CoffeeCard({ data = {} }) {
             {
                 !data.stopList &&
                 <motion.div
-                initial="hidden"
-                whileInView="visible"
-                variants={boxAnimation} className={styles.container}>
+                className={styles.container}>
                     <Card className='w-80 md:w-80 h-full border py-5 px-5 card-hover snap-center'>
                         <div className={styles.header}>
                             <span className='text-sm text-red-700'>{data.stopList && 'Нет в наличии'}</span>

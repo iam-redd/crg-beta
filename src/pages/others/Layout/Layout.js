@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Outlet } from 'react-router-dom'
 import List from '../../../components/Others'
+import { DefaultSpinner } from '../../../components/Spinner';
 
 const Layout = () => {
   return (
@@ -11,12 +12,14 @@ const Layout = () => {
             <List />
           </div>
           <div className='col-span-4 md:col-span-3 px-4'>
-            <Outlet />
+            <Suspense fallback={<DefaultSpinner />}>
+              <Outlet />
+            </Suspense>
           </div>
-          
+
         </div>
       </div>
-      
+
     </>
   );
 };

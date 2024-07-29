@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import styles from './LeftBar.module.css'
 
@@ -12,9 +12,12 @@ import chemieIcon from '../../../assets/icons/clean.png'
 import teaIcon from '../../../assets/icons/tea.png'
 import { useDispatch, useSelector } from 'react-redux';
 import { cancelSelectedProducts } from '../../../store/slices/serviceDataSlice';
+import { useLocation } from 'react-router-dom';
 
 
 export default function LeftBar() {
+  const location = useLocation().state
+
   const dispatch = useDispatch()
   const [tabActive, setTabActive] = useState(null)
   const allProducts = useSelector(state => state.service.allProducts)
@@ -30,6 +33,16 @@ export default function LeftBar() {
       setTabActive(value)
     }
   }
+
+  const firstFilter = ()=> {
+    const temp = allProducts.filter(product => product.type === location)
+    dispatch(cancelSelectedProducts(temp))
+    setTabActive(location)
+  }
+
+  useEffect(() => {
+    location !== null && firstFilter()
+  }, []);
 
   return (
     <div className={`${styles.catcatBck} w-full mx-auto 2xl:mx-0 md:max-w-screen-xl p-4 m-4 wrappeR`}>

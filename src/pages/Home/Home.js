@@ -44,12 +44,21 @@ const Home = () => {
       y: 100,
       opacity: 0
     },
-    visible: {
+    visible: custom => ({
       y: 0,
-      opacity: 1
-    }
+      opacity: 1,
+      transition: { delay: custom * 0.2 }
+    })
   }
-
+  const boxOpacity = {
+    hidden: {
+      opacity: 0
+    },
+    visible: custom => ({
+      opacity: 1,
+      transition: { delay: custom * 0.2 }
+    })
+  }
 
 
   return (
@@ -78,8 +87,8 @@ const Home = () => {
                 initial="hidden"
                 whileInView={"visible"}
                 className='mt-8 md:mt-0 lg:mt-0 md:py-10 md:mx-10 flex justify-between md:justify-start'>
-                <motion.a  href={SHOP_USER}><motion.button custom={3} variants={textAnimation} className='main-button'>В каталог</motion.button></motion.a>
-                <motion.a  href={USER_PROFILE}><motion.button custom={4} variants={textAnimation} className='main-button mx-2'>Личный кабинет</motion.button></motion.a>
+                <motion.a href={SHOP_USER}><motion.button custom={3} variants={textAnimation} className='main-button'>В каталог</motion.button></motion.a>
+                <motion.a href={USER_PROFILE}><motion.button custom={4} variants={textAnimation} className='main-button mx-2'>Личный кабинет</motion.button></motion.a>
               </motion.div>
             </div>
           </div>
@@ -118,7 +127,7 @@ const Home = () => {
                   {
                     allProducts !== null ? <>
                       {
-                        allProducts.map((card, index) => card.topList && <ProductCard key={index} data={card} />)
+                        allProducts.map((card, index) => card.topList && <ProductCard key={index} data={card} count={index + 1} />)
                       }
                     </> : <DefaultSpinner />
                   }
@@ -128,11 +137,18 @@ const Home = () => {
           </div>
         </div>
         <div className='mt-10 bg-crg-opacity bg-no-repeat bg-white py-5'>
-          <div className='xl:mx-auto xl:max-w-screen-xl 2xl:max-w-screen-xl'>
-            <h2 className='text-2xl font-bold text-center'>COFFEE ROASTERY GROUP</h2>
+          <motion.div
+            initial="hidden"
+            whileInView={"visible"}
+            className='xl:mx-auto xl:max-w-screen-xl 2xl:max-w-screen-xl'>
+            <motion.h2
+              variants={textAnimationY}
+              className='text-2xl font-bold text-center'>COFFEE ROASTERY GROUP</motion.h2>
             <div className='flex w-full items-center flex-wrap md:flex-nowrap'>
               <div className='flex w-full md:w-2/6 p-10'>
-                <img src={roasterImg} alt='Roaster' />
+                <motion.img 
+                variants={textAnimation}
+                src={roasterImg} alt='Roaster' />
               </div>
               <div className='flex w-full text-justify md:w-3/5 mx-8'>
                 <p className='xl:text-md 2xl:text-md md:text-md text-sm align-top'>Наша компания в сфере HoReCa занимается поставками свежеобжаренного кофе и сиропов собственного производства.
@@ -150,35 +166,55 @@ const Home = () => {
                 <p className='md:text-md text-sm xl:text-md 2xl:text-md md:mt-5 text-justify mt-3'>*Высокая стень очистки кофе дистонером. 3-х уровневый контроль качества.
                 </p>
               </div>
-              <div className='flex w-full md:w-2/6 justify-center p-10 '>
-                <img src={skladImg} alt='sklad' />
-              </div>
+              <motion.div
+              initial="hidden"
+              whileInView={"visible"}
+              className='flex w-full md:w-2/6 justify-center p-10 '>
+                <motion.img variants={textAnimationRe} src={skladImg} alt='sklad' />
+              </motion.div>
             </div>
-          </div>
-          <div className='grid grid-cols-1 my-4 sm:grid-cols-3 row-auto gap-1 md:gap-2 md:px-2 px-1 lg:gap-10 text-md items-top lg:mt-10 xl:mx-auto xl:max-w-screen-xl 2xl:max-w-screen-2xl'>
-            <div className='mx-1 sm:mx-0 border-1 rounded-xl flex-col justify-center text-justify items-center p-5'>
+          </motion.div>
+          <motion.div
+          initial="hidden"
+          whileInView={"visible"}
+          className='grid grid-cols-1 my-4 sm:grid-cols-3 row-auto gap-1 md:gap-2 md:px-2 px-1 lg:gap-10 text-md items-top lg:mt-10 xl:mx-auto xl:max-w-screen-xl 2xl:max-w-screen-2xl'>
+            <motion.div
+            custom={1}
+            variants={textAnimationY}
+            className='mx-1 sm:mx-0 border-1 rounded-xl flex-col justify-center text-justify items-center p-5'>
               <div className='flex items-center flex-col gap-1'>
                 <img className='' width={50} src={deliveryIcon} alt='icon' />
                 <h2 className='text-xl font-semibold text-center'>Доставка</h2>
               </div>
               <p className='xl:text-md 2xl:text-md md:text-md text-sm my-4'>Бесплатно по г.Ташкенту с 12:00 и в течении дня, с понедельника по субботу при заказе на сумму выше 350.000</p>
-            </div>
-            <div className='mx-1 sm:mx-0 border-1 rounded-xl flex-col justify-center text-justify items-center p-5'>
+            </motion.div>
+            <motion.div 
+            custom={2}
+            variants={textAnimationY}
+            className='mx-1 sm:mx-0 border-1 rounded-xl flex-col justify-center text-justify items-center p-5'>
               <div className='flex items-center flex-col gap-1'>
                 <img width={50} src={qualityIcon} alt='icon' />
                 <h2 className='text-xl font-semibold text-center'>Качество</h2>
               </div>
               <p className='xl:text-md 2xl:text-md md:text-md text-sm my-4'>Мы поддерживаем микроклимат на складе для зеленого кофе, используем лучшие в мире ростеры Probat, проверяем каждую партию кофе колориметрами. А после обжарки дополнительно очищаем.</p>
-            </div>
-            <div className='mx-1 sm:mx-0 border-1 rounded-xl flex-col justify-center text-justify items-center p-5'>
+            </motion.div>
+            <motion.div 
+            custom={3}
+            variants={textAnimationY}
+            className='mx-1 sm:mx-0 border-1 rounded-xl flex-col justify-center text-justify items-center p-5'>
               <div className='flex items-center flex-col gap-1'>
                 <img width={50} src={coffeeBeanIcon} alt='icon' />
                 <h2 className='text-xl font-semibold text-center'>Жарим каждый день</h2>
               </div>
               <p className='xl:text-md 2xl:text-md md:text-md text-sm my-4'>Жарим кофе семь дней в неделю, отправляем на следующий день после заказа, чтобы вы получали максимально свежий кофе.</p>
-            </div>
-          </div>
-          <div className='flex flex-wrap md:flex-nowrap text-center md:text-start justify-center p-5 mx-2 rounded-3xl items-center bg-gray-100 xl:mx-auto xl:max-w-screen-xl 2xl:max-w-screen-2xl mb-10'>
+            </motion.div>
+          </motion.div>
+          <motion.div
+          initial="hidden"
+          whileInView={"visible"}
+          variants={boxOpacity}
+          custom={3}
+          className='flex flex-wrap md:flex-nowrap text-center md:text-start justify-center p-5 mx-2 rounded-3xl items-center bg-gray-100 xl:mx-auto xl:max-w-screen-xl 2xl:max-w-screen-2xl mb-10'>
             <img src={teamImg} alt='Team' className='' />
             <div className='mx-4'>
               <span className='text-lg font-bold'>Подпишись на нас</span>
@@ -194,7 +230,7 @@ const Home = () => {
                 <a href='https://instagram.com/jsbarista.uz?igshid=MzRlODBiNWFlZA==' target='blank' className='mx-1' >@jsbarista.uz</a>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </main>
     </div>

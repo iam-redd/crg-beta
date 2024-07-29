@@ -7,6 +7,7 @@ import { DefaultSpinner } from '../../components/Spinner';
 import ProductCard from '../../components/ProductCard';
 
 const Shop = () => {
+  
   const selectedProducts = useSelector(state => state.service.selectedProducts)
   const [data, setData] = useState(false)
   useEffect(() => {
@@ -24,7 +25,7 @@ const Shop = () => {
             {
               data ? <div className={styles.container}>
                 {
-                  selectedProducts.map((card,index) => <ProductCard key={card._id} data={card} />)
+                  selectedProducts.map((card,index) => <ProductCard key={card._id} data={card}/>)
                 }
               </div> : <div className="flex-center"><DefaultSpinner /></div>
             }

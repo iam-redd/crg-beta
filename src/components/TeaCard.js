@@ -15,7 +15,7 @@ import { motion } from 'framer-motion';
 
 
 
-const TeaCard = ({ data }) => {
+const TeaCard = ({ data ,count}) => {
 
     //Tea Card select options//
     const packages = [
@@ -41,17 +41,7 @@ const TeaCard = ({ data }) => {
     const [active, setActive] = React.useState(
         `${process.env.REACT_APP_SERVER}/${data.img[0]}`
     );
-    const boxAnimation = {
-        hidden: {
-            y: 100,
-            opacity: 0
-        },
-        visible: custom => ({
-            y: 0,
-            opacity: 1,
-            transition: { delay: custom * 0.2 }
-        })
-    }
+    
     const notifyError = (text) => toast.error(text);
     const changePackage = (val) => {
         const template = basket.filter(product => product.package === val)
@@ -141,9 +131,7 @@ const TeaCard = ({ data }) => {
             {
                 !data.stopList &&
                 <motion.div
-                initial="hidden"
-                whileInView="visible"
-                variants={boxAnimation} className='' >
+                className='' >
                     <Card className='w-80 md:w-80 h-full border py-5 px-5 card-hover snap-center'>
                         <div className={styles.header}>
                             <span className='text-xs text-red-700'>{data.stopList && 'Нет в наличии'}</span>
