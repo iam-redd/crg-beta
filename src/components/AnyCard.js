@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Button, Typography } from '@material-tailwind/react';
 import styles from './CoffeCard/CoffeCard.module.css'
-import style from './Style.module.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -110,7 +109,7 @@ const AnyCard = ({ data }) => {
                 <h2 className='text-center font-bold text-xl'>{data.name}</h2>
                 <p className='text-center text-xs mx-auto border-none p-0.5 mb-1.5'>{type}</p>
                 <div className=''>
-                    <img src={`${process.env.REACT_APP_SERVER}/${data.img}`} alt='card-img' className={`${style.imgH}object-cover object-center mx-auto`} />
+                    <img src={`${process.env.REACT_APP_SERVER}/${data.img}`} alt='card-img' className={`w-3/4 object-cover object-center mx-auto`} />
                 </div>
                 <div className='mt-5 text-sm'>
                     <ReactSpoiler

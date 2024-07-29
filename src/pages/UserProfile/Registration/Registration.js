@@ -10,8 +10,9 @@ import { Button, Input, Option, Select, Typography } from "@material-tailwind/re
 const Registration = ({ setLoginVisible, setRegisterVisible, setCodeFormVisible }) => {
     const [uploadedImages, setUploadedImages] = useState(null)
     // const userInfo = useSelector(state => state.user.userInfo)
+    const [butloading, setButloading] = useState(false);
+    const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
     const [loginError, setLogin] = useState(false)
-    const [btnBool, setBtnBool] = useState(true)
     const [errorMessage, setMessage] = useState('')
     const [selectValue, setValue] = useState(null)
     const regex = /^\+998[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]$/
@@ -42,6 +43,9 @@ const Registration = ({ setLoginVisible, setRegisterVisible, setCodeFormVisible 
                 handleError('Адрес обязательная поля')
                 return
             }
+            setButloading(true);
+            await delay(20000);
+            setButloading(false);
             // if (e.target.password.value !== e.target.password_try.value) {
             //     handleError('Пароли введенное вами не совпадает')
             //     return
@@ -216,8 +220,9 @@ const Registration = ({ setLoginVisible, setRegisterVisible, setCodeFormVisible 
                                 color='red'
                                 size='md'
                                 className='mt-4'
-                                disabled={!btnBool}
-                                type='submit'>{ btnBool ? 'Зарегистрироваться' : 'Обработка'}
+                                loading={butloading}
+                                disabled={butloading}
+                                type='submit'>{ butloading ? 'Обработка' : 'Зарегистрироваться'  }
                             </Button>
                             <div className='flex w-full mt-4 text-xs'>
                                 <p className='mr-1'>Уже есть аккаунт?</p>

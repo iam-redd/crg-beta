@@ -4,9 +4,13 @@ import axios from '../../../store/axios'
 import { setRegister } from '../../../store/slices/userSlice';
 import { useDispatch } from 'react-redux'
 //import { useNavigate } from 'react-router-dom'
-import { Input, Typography } from "@material-tailwind/react";
+import {Button, Input, Typography} from "@material-tailwind/react";
 const LogIn = ({ setLoginVisible, setRegisterVisible, setCodeFormVisible }) => {
     const [isVisible, setVisible] = useState(false)
+
+    const [butloading, setButloading] = useState(false);
+    const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
     const [loginError, setLogin] = useState(false)
     const dispatch = useDispatch()
     //const navigate = useNavigate()
@@ -27,17 +31,22 @@ const LogIn = ({ setLoginVisible, setRegisterVisible, setCodeFormVisible }) => {
                 handleError('Неправильный формат номера телефона')
                 return
             }
+            setButloading(true)
+            // await delay(5000);
+
             const data = await axios.post(`/login`, options)
             if (data.status === 200) {
                 dispatch(setRegister(options))
                 const response = await axios.post(`/send-code`, options)
                 if (response.status === 200) {
                     setLoginVisible(false)
+                    setButloading(false);
                     setTimeout(()=>{
                         setCodeFormVisible(true)
                     },200)
                 }
             }
+
 
         } catch (error) {
             const status = error?.response?.status || null
@@ -98,10 +107,15 @@ const LogIn = ({ setLoginVisible, setRegisterVisible, setCodeFormVisible }) => {
                 <p className='cursor-pointer'>Забыли пароль?</p>
             </div>
             <div className='flex w-full justify-around items-center'>
-                <button
-                    className={styles.btn}
-                >{isVisible ? 'Войти' : 'Загрузка...'}
-                </button>
+                <Button
+                    variant='outlined'
+                    color='red'
+                    size='md'
+                    loading={butloading}
+                    disabled={butloading}
+                    type='submit'
+                >{butloading ?  'Загрузка...'  :  'Войти'}
+                </Button>
                 {/* <Link to='/registration'> */}
                 <p className='cursor-pointer '
                     onClick={() => {

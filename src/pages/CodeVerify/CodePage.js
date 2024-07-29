@@ -1,4 +1,4 @@
-import { Button, Input } from '@material-tailwind/react';
+import {button, Button, Input} from '@material-tailwind/react';
 import React, { useEffect, useRef, useState } from 'react';
 import axios from '../../store/axios'
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,6 +7,9 @@ import CryptoJS from 'crypto-js';
 import secretKey from '../../default.json'
 import { toast } from 'react-toastify';
 const CodePage = ({setCodeFormVisible }) => {
+
+    const [butloading, setButloading] = useState(false);
+
     const [value, setValue] = useState(null)
     const [ErrorText, setError] = useState('')
     const [time, setTime] = useState(300); // 5 минут = 300 секунд
@@ -69,6 +72,14 @@ const CodePage = ({setCodeFormVisible }) => {
         return `${getMinutes} : ${getSeconds}`;
     };
 
+    const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+    const fetchData = async () =>{
+        setButloading(true);
+
+        await delay(20000);
+        setButloading(false);
+    }
+
     useEffect(() => {
         if (isRunning && time > 0) {
             timerRef.current = setInterval(() => {
@@ -80,6 +91,7 @@ const CodePage = ({setCodeFormVisible }) => {
         return () => clearInterval(timerRef.current);
     }, [isRunning, time]);
     return (
+
         <div>
             <form onSubmit={handleVerify} className='w-full m-auto h-full md:w-80 lg:h-2/6 border rounded-xl p-4 mt-10 md:mt-8' style={{backgroundColor:'#FFFFFF'}}>
                 <h2 className='text-center my-4 font-bold '>Верификация</h2>
@@ -96,12 +108,15 @@ const CodePage = ({setCodeFormVisible }) => {
                             className='mt-4 mx-auto'
                             variant='outlined'
                             size='md'
-                            color='red'
+                            color={ butloading ? 'blue-gray' : 'red'}
                             type='submit'
-                        >Подтвердить
+                            loading={butloading}
+                        >{
+                            butloading ? 'Проверка...' : 'Подтвердить'
+                        }
                         </Button>
                         <p
-                            color={time === 0 ? 'red' : 'blue-gray'}
+                            color={time === 0 ? 'red' : 'blue-gray-100'}
                             className='text-xs mt-4 cursor-pointer'
                             onClick={() => time === 0 && sendAgain()}
                         >Отправить повторно</p>

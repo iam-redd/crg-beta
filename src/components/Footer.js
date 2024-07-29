@@ -45,7 +45,7 @@ const Footer = () => {
                   <div className='flex mt-2 gap-2'>
                     <a href='https://www.instagram.com/coffeeroasterygroup/' title='Instagram' target='_blank'
                        rel='noreferrer'><img width={18} src={instagramIcon} alt=''/></a>
-                    <a href='https://t.me/CoffeeRoasteryGroup_bot' title='Telegram' target='_blank'
+                    <a href='https://t.me/coffee_zdes' title='Telegram' target='_blank'
                        rel='noreferrer'><img width={18} src={telegramIcon} alt=''/></a>
                     <a href='https://www.facebook.com/people/Coffee-Roastery-Group/100089262537599/?mibextid=LQQJ4d'
                        title='Facebook' target='_blank' rel='noreferrer'><img width={18} src={facebookIcon} alt=''/></a>
@@ -104,7 +104,7 @@ const Footer = () => {
                   <div className='flex mt-2 gap-2'>
                     <a href='https://www.instagram.com/coffeeroasterygroup/' title='Instagram' target='_blank'
                        rel='noreferrer'><img width={15} src={instagramIcon} alt=''/></a>
-                    <a href='https://t.me/CoffeeRoasteryGroup_bot' title='Telegram' target='_blank'
+                    <a href='https://t.me/coffee_zdes' title='Telegram' target='_blank'
                        rel='noreferrer'><img
                         width={15} src={telegramIcon} alt=''/></a>
                     <a href='https://www.facebook.com/people/Coffee-Roastery-Group/100089262537599/?mibextid=LQQJ4d'

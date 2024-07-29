@@ -16,6 +16,8 @@ export default function OrderForm({ totalPrice }) {
     const userInfo = useSelector(state => state.user.userInfo)
     const [paymentMethod, changePay] = useState(null)
     const [pomolColor, setPomoltColor] = useState(false)
+
+    const [butloading, setButloading] = useState(false);
    
     async function newOrder(e) {
         try {
@@ -57,6 +59,14 @@ export default function OrderForm({ totalPrice }) {
         setBtnBool(false)
     }
 
+
+    const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+    const fetchData = async () =>{
+        setButloading(true);
+
+        await delay(20000);
+        setButloading(false);
+    }
 
 
     const handlePomolColor = () => setPomoltColor(false)
@@ -115,12 +125,15 @@ export default function OrderForm({ totalPrice }) {
                             </Typography>
                         }
                         <Button
-                        type='submit'
-                            color='red'
+                            type='submit'
+                            className='text-center items-center'
+                            color={butloading ? 'blue-gray' : 'red'}
                             variant='outlined'
                             disabled={!btnBool}
+                            onClick={fetchData}
+                            loading={butloading}
                             >{
-                                btnBool ? 'ЗАКАЗАТЬ' : 'ЗАКАЗАТЬ'
+                                butloading ? 'ЗАКАЗЫВАЮ...' : 'ЗАКАЗАТЬ'
                             }</Button>
                     </form> : <p className='text-center' >Для того чтобы оформить свой заказ, пожалуйста войдите в свой аккаунт или зарегистрируйтесь</p>
             }

@@ -11,6 +11,9 @@ import instagramIcon from '../../assets/icons/instagram-icon.svg'
 import { DefaultSpinner } from '../../components/Spinner'
 import {  useSelector } from 'react-redux';
 import ProductCard from '../../components/ProductCard';
+import CodePage from "../CodeVerify/CodePage";
+import Registration from "../UserProfile/Registration/Registration";
+import LogIn from "../UserProfile/Login/LogIn";
 
 const Home = () => {
   const allProducts = useSelector(state => state.service.allProducts)
@@ -117,7 +120,7 @@ const Home = () => {
               <img width={50} src={qualityIcon} alt='icon'/>
               <h2 className='text-xl font-semibold text-center'>Качество</h2>
               </div>
-              <p className='xl:text-md 2xl:text-md md:text-md text-sm my-4'>Мы поддерживаем микроклимат на складе для зеленого кофе, используем лучшие в мире ростеры Probat, проверяем каждую партию кофе колориметрами. А после обжарки дополнительно очищаем.</p>
+              <p className='xl:text-md 2xl:text-md md:text-md text-sm my-4'>Наше производство - это творческая площадка , где мы каждый день стараемся создать максимально интресный, яркий и уникальный продукт. Мы тщательно выбираем партнёров зелёного кофе, чтобы собрать в нашей линейке лучшие зёрна. Мы поддерживаем жесткий контроль качества и каждая наша партия отслеживается.</p>
             </div>
             <div className='mx-1 sm:mx-0 border-1 rounded-xl flex-col justify-center text-justify items-center p-5'>
               <div className='flex items-center flex-col gap-1'>

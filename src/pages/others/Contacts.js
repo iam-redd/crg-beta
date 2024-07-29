@@ -17,7 +17,7 @@ const Contacts = () => {
                     ,
                     <span className='mx-1.5 cursor-pointer hover:text-red-500'><a href='tel:+998909555562'>+998(90) 955-55-62</a></span>
                 </p>
-                <a href='https://t.me/shvili_aleksandr' target='_blank'>
+                <a href='https://t.me/coffee_zdes' target='_blank'>
                     <Button color='red' variant='outlined' className="flex items-center gap-3 mt-4">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                              className="bi bi-telegram" viewBox="0 0 16 16">

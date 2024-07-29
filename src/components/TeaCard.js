@@ -177,7 +177,7 @@ const TeaCard = ({ data }) => {
                     )}
                 >
                     {imgdata.map((item, index) => (
-                        <img className='w-full object-cover object-center' key={index} src={`${item}`}/>
+                        <img className='w-3/4 object-cover object-center mx-auto' key={index} src={`${item}`}/>
                     ))}
                 </Carousel>
                 {/*<div className="grid gap-4">
