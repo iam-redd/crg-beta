@@ -148,42 +148,39 @@ const Footer = () => {
             <div className='flex flex-col justify-end'>
               <div className='flex flex-col gap-2 text-md text-center justify-center'>
                 <Dropdown placement='auto' size='lg' label="Страницы" inline>
-                  <Dropdown.Item>Главная</Dropdown.Item>
-                  <Dropdown.Item>Магазин</Dropdown.Item>
-                  <Dropdown.Item>Школа бариста</Dropdown.Item>
-                  <Dropdown.Item>Личный кабинет</Dropdown.Item>
+                  <Dropdown.Item onClick={()=> masterNavigate({link:'/'})}>Главная</Dropdown.Item>
+                  <Dropdown.Item onClick={()=> masterNavigate({link:'/shop'})}>Магазин</Dropdown.Item>
+                  <Dropdown.Item onClick={()=> masterNavigate({link:"/barista-school"})}>Школа бариста</Dropdown.Item>
+                  <Dropdown.Item onClick={()=> masterNavigate({link:'/user'})}>Личный кабинет</Dropdown.Item>
                   {/*<Dropdown.Item>Рецепты</Dropdown.Item>*/}
                   {/*<Dropdown.Item>Энциклопедия</Dropdown.Item>*/}
                 </Dropdown>
                 <Dropdown placement='auto' size='lg' label="Каталог" inline>
-                  <Dropdown.Item>Кофе</Dropdown.Item>
-                  <Dropdown.Item>Чаи</Dropdown.Item>
-                  <Dropdown.Item>Сиропы</Dropdown.Item>
-                  <Dropdown.Item>Химия</Dropdown.Item>
-                  <Dropdown.Item>Аксессуары</Dropdown.Item>
+                  <Dropdown.Item onClick={()=> masterNavigate({ name: "Кофе", link: '/shop', key: 'coffe-beans' })}>Кофе</Dropdown.Item>
+                  <Dropdown.Item onClick={()=> masterNavigate({ name: "Чаи", link: '/shop', key: 'tea' })}>Чаи</Dropdown.Item>
+                  <Dropdown.Item onClick={()=> masterNavigate({ name: "Сиропы", link: '/shop', key: 'syrup' })}>Сиропы</Dropdown.Item>
+                  <Dropdown.Item onClick={()=> masterNavigate({ name: "Химия", link: '/shop', key: 'chemistry' })}>Химия</Dropdown.Item>
+                  <Dropdown.Item onClick={()=> masterNavigate({ name: "Аксессуары", link: "/shop", key: 'accessory' })}>Аксессуары</Dropdown.Item>
+                  <Dropdown.Item onClick={()=> masterNavigate({ name: "Капсулы", link: "/shop", key: 'coffee-capsule' })}>Капсула</Dropdown.Item>
+
                 </Dropdown>
                 <Dropdown placement='auto' size='lg' label="Прочее" inline>
-                  <Link to={'/others/about'} ><Dropdown.Item>О нас</Dropdown.Item></Link>
-                  <Link to={'/others/payndelivery'}><Dropdown.Item>Оплата и доставка</Dropdown.Item></Link>
-                  <Link to={'others/contacts'}><Dropdown.Item>Контакты</Dropdown.Item></Link>
-                  <Link to={'/others/privacypolicy'}><Dropdown.Item>Политика конфеденциальеости</Dropdown.Item></Link>
-                  <Link to={'/others/publicoffer'}><Dropdown.Item>Публичная оферта</Dropdown.Item></Link>
+                  <Dropdown.Item onClick={()=> masterNavigate({link:"/others/about"})}>О нас</Dropdown.Item>
+                  <Dropdown.Item onClick={()=> masterNavigate({link:"/others/pay-n-delivery"})}>Оплата и доставка</Dropdown.Item>
+                  <Dropdown.Item onClick={()=> masterNavigate({link:"/others/wholesellers"})}>ОПТ</Dropdown.Item>
+                  <Dropdown.Item onClick={()=> masterNavigate({link:"/others/contacts"})}>Контакты</Dropdown.Item>
+                  <Dropdown.Item onClick={()=> masterNavigate({link:"/others/pravicypolicy"})}>Политика конфеденциальеости</Dropdown.Item>
+                  <Dropdown.Item onClick={()=> masterNavigate({link:"/others/publicoffer"})}>Публичная оферта</Dropdown.Item>
+
                 </Dropdown>
               </div>
-
             </div>
-
           </div>
           <p className="font-normal text-xs mt-4">
             &copy; 2019 COFFEE ROASTERY GROUP
           </p>
-
-
         </div>
-
       </div>
-
-
     </footer>
   );
 };
