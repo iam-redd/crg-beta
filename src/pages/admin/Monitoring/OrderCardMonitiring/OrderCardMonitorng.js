@@ -96,7 +96,7 @@ export default function OrderCardMonitorng({ data, getAllOrders, index }) {
                     {
                         data.rejectedList.length > 0 &&
                         <div className={styles.footer}
-                            onClick={handleVisible2}>
+                             onClick={handleVisible2}>
                             <span>
                                 <> Удалённые товары из заказа
                                     {
@@ -152,6 +152,3 @@ export default function OrderCardMonitorng({ data, getAllOrders, index }) {
         </>
     )
 }
-
-
-

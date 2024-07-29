@@ -141,9 +141,26 @@ function CoffeeCard({ data = {} }) {
     }
 
 
+    const boxAnimation = {
+        hidden: {
+            y: 100,
+            opacity: 0
+        },
+        visible: custom => ({
+            y: 0,
+            opacity: 1,
+            transition: { delay: custom * 0.2 }
+        })
+    }
+
+
     const handleWeightColor = () => setWeightColor(false)
     const handlePomolColor = () => setPomoltColor(false)
     useEffect(() => {
+        // if(boolBasket) {
+        //     setAmount(basket[index].amount)
+        // }
+        // boolBasket && setAmount(basket[index].amount)
         const template = basket.filter(product => product.pomol === pomol)
         let template2 = template.filter(product => product.weight === weight)
         const template3 = template2.filter(product => product.id === data._id)
@@ -160,7 +177,9 @@ function CoffeeCard({ data = {} }) {
             {
                 !data.stopList &&
                 <motion.div
-                className={styles.container}>
+                    initial="hidden"
+                    whileInView="visible"
+                    variants={boxAnimation} className={styles.container}>
                     <Card className='w-80 md:w-80 h-full border py-5 px-5 card-hover snap-center'>
                         <div className={styles.header}>
                             <span className='text-sm text-red-700'>{data.stopList && 'Нет в наличии'}</span>
@@ -182,10 +201,10 @@ function CoffeeCard({ data = {} }) {
                                     className="!absolute top-2/4 left-4 -translate-y-2/4"
                                 >
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                                        className="size-5">
+                                         className="size-5">
                                         <path fill-rule="evenodd"
-                                            d="M11.78 5.22a.75.75 0 0 1 0 1.06L8.06 10l3.72 3.72a.75.75 0 1 1-1.06 1.06l-4.25-4.25a.75.75 0 0 1 0-1.06l4.25-4.25a.75.75 0 0 1 1.06 0Z"
-                                            clip-rule="evenodd" />
+                                              d="M11.78 5.22a.75.75 0 0 1 0 1.06L8.06 10l3.72 3.72a.75.75 0 1 1-1.06 1.06l-4.25-4.25a.75.75 0 0 1 0-1.06l4.25-4.25a.75.75 0 0 1 1.06 0Z"
+                                              clip-rule="evenodd" />
                                     </svg>
 
                                 </IconButton>
@@ -198,10 +217,10 @@ function CoffeeCard({ data = {} }) {
                                     className="!absolute top-2/4 !right-4 -translate-y-2/4"
                                 >
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                                        className="size-5">
+                                         className="size-5">
                                         <path fill-rule="evenodd"
-                                            d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z"
-                                            clip-rule="evenodd" />
+                                              d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z"
+                                              clip-rule="evenodd" />
                                     </svg>
 
 
@@ -214,7 +233,6 @@ function CoffeeCard({ data = {} }) {
                                     alt: item,
                                     height: 'auto',
                                     width: "auto",
-                                    caption: 'This is caption'
                                 }
                                 return (
                                     <div className="w-3/4 object-cover object-center mx-auto" key={index}><LazyImage image={image} /></div>
@@ -281,12 +299,12 @@ function CoffeeCard({ data = {} }) {
                                 Помол:
                                 <div className='col-span-3 w-auto'>
                                     <Select size="md"
-                                        label="Выберите помол"
-                                        onChange={(e) => changePomol(e)}
-                                        style={{ borderColor: pomolColor ? "red" : '' }}
-                                        onClick={handlePomolColor}
-                                        value='В зёрнах'
-                                    // value={userInfo.role === 'superUser' ? {"1"} : {''}}
+                                            label="Выберите помол"
+                                            onChange={(e) => changePomol(e)}
+                                            style={{ borderColor: pomolColor ? "red" : '' }}
+                                            onClick={handlePomolColor}
+                                            value='В зёрнах'
+                                        // value={userInfo.role === 'superUser' ? {"1"} : {''}}
                                     >
                                         <Option value='В зёрнах'>В зёрнах</Option>
                                         <Option value='Под турку'>Под турку</Option>
@@ -354,7 +372,7 @@ function CoffeeCard({ data = {} }) {
             boolBasket ?
                 <Button variant='outlined' color='red' onClick={() => navigate('/basket')}> <span><img style={{ display: 'inline-block', marginRight: '5px' }} width={24} height={24} src={cart} alt="" /></span>Перейти</Button> :
                 <Button
-                    
+
                     variant='outlined'
                     color='red'
                     onClick={addToBasketе}>В корзину</Button>
@@ -378,7 +396,7 @@ function CoffeeCard({ data = {} }) {
 
 
                                         <Button variant='outlined' size='sm' color='blue-gray'
-                                            onClick={() => navigate('/basket')}>
+                                                onClick={() => navigate('/basket')}>
                                             <h3>Перейти</h3>
                                         </Button>
 

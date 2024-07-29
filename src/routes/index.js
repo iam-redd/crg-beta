@@ -20,7 +20,7 @@ import AboutPage from '../pages/others/About.js'
 import PayDelivery from '../pages/others/PayDelivery.js'
 import ShopUser from '../pages/Shop/Shop'
 import UserProfile from '../pages/UserProfile/UserProfile'
-import User from '../pages/admin/AllUsers/UserInfo/UserInfo.js'
+import User from'../pages/admin/AllUsers/UserInfo/UserInfo.js'
 
 const Basket = lazy(() => import('../pages/Basket/Basket'))
 const AboutCoffe = lazy(() => import('../pages/AboutCoffee'))
@@ -44,13 +44,6 @@ const router = createBrowserRouter(createRoutesFromElements(
             <Route path="about-coffe" element={<AboutCoffe />} />
             <Route path="admin" element={<Admin />} />
             <Route path="*" element={<NotFound />} />
-            <Route path="/others" element={<Others />} >
-                <Route path="pay-n-delivery" element={<PayDelivery />} />
-                <Route path="about" element={<AboutPage />} />
-                <Route path="barista-school" element={<JsBarista />} />
-                <Route path="wholesellers" element={<Wholesellers />} />
-                <Route path="contacts" element={<Contacts />} />
-            </Route>
         </Route>
         <Route path="/staff" element={<AdminLayout />} >
             <Route path="monitoring" element={<Monitoring />} />
@@ -60,6 +53,13 @@ const router = createBrowserRouter(createRoutesFromElements(
             <Route path="settings" element={<Settings />} />
             <Route path="catalog" element={<Catalog />} />
             <Route path="all-goods" element={<AllGoods />} />
+        </Route>
+        <Route path="/others" element={<Others />} >
+            <Route path="pay-n-delivery" element={<PayDelivery />} />
+            <Route path="about" element={<AboutPage />} />
+            <Route path="barista-school" element={<JsBarista />} />
+            <Route path="wholesellers" element={<Wholesellers />} />
+            <Route path="contacts" element={<Contacts />} />
         </Route>
     </Route>
 

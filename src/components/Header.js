@@ -11,6 +11,8 @@ import {  BASKET, HOME_PAGE, JS_BARISTA,  SHOP_USER, USER_PROFILE,} from '../uti
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import userPng from '../assets/icons/usrr.png';
+
 
 const Header = () => {
   const productSize = useSelector(state => state.basket.basket)
@@ -337,7 +339,16 @@ const Header = () => {
                           </IconButton>
                           :
                           <div className='border rounded-full border-red-500 mr-1'>
-                              <Avatar src={`${process.env.REACT_APP_SERVER}/${userInfo.avatarUrl}`} size={"md"}/>
+                              {
+                                  userInfo.avatarUrl !== null
+                                      ?
+                                      <Avatar src={`${process.env.REACT_APP_SERVER}/${userInfo.avatarUrl}`} size={"md"}/>
+                                      :
+                                      <Avatar src={userPng} size={"md"}/>
+
+                              }
+
+
                           </div>
                       }
                   </a>

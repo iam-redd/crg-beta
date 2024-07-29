@@ -30,6 +30,7 @@ const AnyCard = ({ data }) => {
     else if (data.type === 'chemistry') type = 'Химия'
     else if (data.type === 'coffee-capsule') type = 'Кофе в капсулах'
     else if (data.type === 'drip') type = 'Дрип-кофе'
+
     function increment() {
         try {
             if (!boolBasket) {
@@ -89,47 +90,50 @@ const AnyCard = ({ data }) => {
         } else {
             setBoolBasket(false)
         }
-    }, [data._id, basket]);
+    }, [data._id,basket]);
+
+
+    // data.description.split('\n').forEach((el) => {
+    //     document.querySelector("span.description").innerText += el + '\n';
+    // })
+
     return (
-        <>
-            {
-                !data.stopList && <motion.div
-                className=''>
-                    <Card className='w-80 md:w-80 h-full border py-5 px-5 card-hover snap-center'>
-                        <div className={styles.header}>
-                            <span className='text-xs text-red-700'>{data.stopList && 'Нет в наличии'}</span>
-                            <span className='text-xs'>{data.topList && 'Топ-недели'}</span>
-                            {
-                                data.topList || data.stopList !== undefined && <span className='pt-4'></span>
-                            }
-                        </div>
-                        <h2 className='text-center font-bold text-xl'>{data.name}</h2>
-                        <p className='text-center text-xs mx-auto border-none p-0.5 mb-1.5'>{type}</p>
-                        <div className=''>
-                            <img src={`${process.env.REACT_APP_SERVER}/${data.img}`} alt='card-img' className={`${style.imgH}object-cover object-center mx-auto`} />
-                        </div>
-                        <div className='mt-5 text-sm'>
-                            <ReactSpoiler
-                                noOfLines={6}
-                                lineHeight={7}
-                                showMoreComponent={<p className='spoiler-size'>еще...</p>}
-                                showLessComponent={<p className='spoiler-size'>Скрыть</p>}
-                                toggleContainerStyle={{ color: '#ba181b' }}
-                            >
-                                <p className='text-justify text-sm sm:text-md md:text-md lg:text-md xl:text-md 2xl:text-md'>
-                                    Описание: &nbsp;
-                                    <span className='description'>
-                                        {data.description}
-                                    </span>
-                                </p>
-                            </ReactSpoiler>
-                        </div>
-                        <div className='mt-5'>
-                            <Typography variant='h6'>Цена:
-                                <span> {userInfo !== null && userInfo.role === 'superUser' ? data.priceWS[0] : data.priceUser[0]}
-                                </span> UZS</Typography>
-                        </div>
-                        {/* <div className='flex mt-5 items-center justify-between'>
+        <div className=''>
+            <Card className='w-80 md:w-80 h-full border py-5 px-5 card-hover snap-center'>
+                <div className={styles.header}>
+                    <span className='text-xs text-red-700'>{data.stopList && 'Нет в наличии'}</span>
+                    <span className='text-xs'>{data.topList && 'Топ-недели'}</span>
+                    {
+                        data.topList || data.stopList !== undefined && <span className='pt-4'></span>
+                    }
+                </div>
+                <h2 className='text-center font-bold text-xl'>{data.name}</h2>
+                <p className='text-center text-xs mx-auto border-none p-0.5 mb-1.5'>{type}</p>
+                <div className=''>
+                    <img src={`${process.env.REACT_APP_SERVER}/${data.img}`} alt='card-img' className={`${style.imgH}object-cover object-center mx-auto`} />
+                </div>
+                <div className='mt-5 text-sm'>
+                    <ReactSpoiler
+                        noOfLines={6}
+                        lineHeight={7}
+                        showMoreComponent={<p className='spoiler-size'>еще...</p>}
+                        showLessComponent={<p className='spoiler-size'>Скрыть</p>}
+                        toggleContainerStyle={{ color: '#ba181b' }}
+                    >
+                    <p className='text-justify text-sm sm:text-md md:text-md lg:text-md xl:text-md 2xl:text-md'>
+                        Описание: &nbsp;
+                        <span className='description'>
+                        {data.description}
+                        </span>
+                    </p>
+                    </ReactSpoiler>
+                </div>
+                <div className='mt-5'>
+                    <Typography variant='h6'>Цена:
+                        <span> {userInfo !== null && userInfo.role === 'superUser' ? data.priceWS[0] : data.priceUser[0]}
+                        </span> UZS</Typography>
+                </div>
+                {/* <div className='flex mt-5 items-center justify-between'>
                     {
                         boolBasket ?
                             <Button

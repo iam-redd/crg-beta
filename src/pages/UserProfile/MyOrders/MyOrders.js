@@ -9,7 +9,8 @@ export default function MyOrders() {
       const data = await axios.get('/get-my-orders')
       if (data.status === 200) {
         setData(data.data.reverse())
-      } else throw new Error('Что-то пошло не так')
+      } else
+        throw new Error('Что-то пошло не так')
     } catch (error) {
     }
   }

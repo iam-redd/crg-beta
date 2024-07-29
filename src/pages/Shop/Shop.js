@@ -25,7 +25,7 @@ const Shop = () => {
             {
               data ? <div className={styles.container}>
                 {
-                  selectedProducts.map((card,index) => <ProductCard key={card._id} data={card}/>)
+                  selectedProducts.map((card,index) => <ProductCard key={card._id} data={card} />)
                 }
               </div> : <div className="flex-center"><DefaultSpinner /></div>
             }

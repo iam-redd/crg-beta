@@ -69,18 +69,18 @@ const Footer = () => {
       <div className='hidden md:flex w-full flex-wrap lg:flex-nowrap'>
         <div className='flex flex-wrap md:flex-nowrap mx-auto'>
           <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 justify-between gap-2 text-start text-xs">
-            <div className='mr-4'>
+            <div className='mr-4 mt-2'>
               <div className='flex'>
                 <div className='mr-2'>
                   <img width={70} src={logoIcon} alt='logo' />
                 </div>
-                <div className='w-16'>
+                <div className='w-16 '>
                   <p className='font-bold leading-none'>COFFEE ROASTERY GROUP</p>
                   <div className='flex mt-2 gap-2'>
                     <a href='https://www.instagram.com/coffeeroasterygroup/' title='Instagram' target='_blank'
-                      rel='noreferrer'><img width={18} src={instagramIcon} alt='' /></a>
+                       rel='noreferrer'><img width={18} src={instagramIcon} alt=''/></a>
                     <a href='https://t.me/CoffeeRoasteryGroup_bot' title='Telegram' target='_blank'
-                      rel='noreferrer'><img width={18} src={telegramIcon} alt='' /></a>
+                       rel='noreferrer'><img width={18} src={telegramIcon} alt=''/></a>
                     <a href='https://www.facebook.com/people/Coffee-Roastery-Group/100089262537599/?mibextid=LQQJ4d'
                       title='Facebook' target='_blank' rel='noreferrer'><img width={18} src={facebookIcon} alt='' /></a>
                   </div>
@@ -90,27 +90,28 @@ const Footer = () => {
                 &copy; 2019 COFFEE ROASTERY GROUP
               </p>
             </div>
-            {LINKS.map(({ title, items }) => (
-              <ul key={title} className='mx-1'>
-                <Typography
-                  variant="small"
-                  color="blue-gray"
-                  className="mb-1 font-medium opacity-40"
-                >
-                  {title}
-                </Typography>
-                {items.map((link, index) => (
-                  <li
-                    onClick={() => masterNavigate(link)}
-                    key={index * 5} className="text-xs py-1 font-normal transition-colors hover:text-red-400">
-                    <Typography
-                      color="gray"
-                    >
-                      {link.name}
-                    </Typography>
-                  </li>
-                ))}
-              </ul>
+            {LINKS.map(({title, items}) => (
+                <ul key={title} className='mx-1'>
+                  <Typography
+                      variant="small"
+                      color="blue-gray"
+                      className="mb-1 font-medium opacity-40"
+                  >
+                    {title}
+                  </Typography>
+                  {items.map((link) => (
+                      <li key={link}>
+                        <Typography
+                            as="a"
+                            href="#"
+                            color="gray"
+                            className="text-xs py-1 font-normal transition-colors hover:text-red-400"
+                        >
+                          {link}
+                        </Typography>
+                      </li>
+                  ))}
+                </ul>
             ))}
 
           </div>
@@ -125,54 +126,53 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className='flex w-full px-3 md:hidden'>
-        <div className='flex flex-col w-full'>
-          <div className='flex w-full items-center'>
-            <div className='flex w-full'>
-              <div className='mr-2'>
-                <img width={54} src={logoIcon} alt='logo' />
-              </div>
-              <div className='w-12'>
-                <p className='font-bold leading-none text-xs'>COFFEE ROASTERY GROUP</p>
-                <div className='flex mt-2 gap-2'>
-                  <a href='https://www.instagram.com/coffeeroasterygroup/' title='Instagram' target='_blank'
-                    rel='noreferrer'><img width={15} src={instagramIcon} alt='' /></a>
-                  <a href='https://t.me/CoffeeRoasteryGroup_bot' title='Telegram' target='_blank'
-                    rel='noreferrer'><img
-                      width={15} src={telegramIcon} alt='' /></a>
-                  <a href='https://www.facebook.com/people/Coffee-Roastery-Group/100089262537599/?mibextid=LQQJ4d'
-                    title='Facebook' target='_blank' rel='noreferrer'><img width={15} src={facebookIcon} alt='' /></a>
+        <div className='flex w-full px-3 md:hidden'>
+          <div className='flex flex-col w-full'>
+            <div className='flex w-full items-center'>
+              <div className='flex w-full'>
+                <div className='mr-2'>
+                  <img width={54} src={logoIcon} alt='logo'/>
+                </div>
+                <div className='w-12'>
+                  <p className='font-bold leading-none text-xs'>COFFEE ROASTERY GROUP</p>
+                  <div className='flex mt-2 gap-2'>
+                    <a href='https://www.instagram.com/coffeeroasterygroup/' title='Instagram' target='_blank'
+                       rel='noreferrer'><img width={15} src={instagramIcon} alt=''/></a>
+                    <a href='https://t.me/CoffeeRoasteryGroup_bot' title='Telegram' target='_blank'
+                       rel='noreferrer'><img
+                        width={15} src={telegramIcon} alt=''/></a>
+                    <a href='https://www.facebook.com/people/Coffee-Roastery-Group/100089262537599/?mibextid=LQQJ4d'
+                       title='Facebook' target='_blank' rel='noreferrer'><img width={15} src={facebookIcon} alt=''/></a>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className='flex flex-col justify-end'>
-              <div className='flex flex-col gap-2 text-md text-center justify-center'>
-                <Dropdown placement='auto' size='lg' label="Страницы" inline>
-                  <Dropdown.Item onClick={()=> masterNavigate({link:'/'})}>Главная</Dropdown.Item>
-                  <Dropdown.Item onClick={()=> masterNavigate({link:'/shop'})}>Магазин</Dropdown.Item>
-                  <Dropdown.Item onClick={()=> masterNavigate({link:"/barista-school"})}>Школа бариста</Dropdown.Item>
-                  <Dropdown.Item onClick={()=> masterNavigate({link:'/user'})}>Личный кабинет</Dropdown.Item>
-                  {/*<Dropdown.Item>Рецепты</Dropdown.Item>*/}
-                  {/*<Dropdown.Item>Энциклопедия</Dropdown.Item>*/}
-                </Dropdown>
-                <Dropdown placement='auto' size='lg' label="Каталог" inline>
-                  <Dropdown.Item onClick={()=> masterNavigate({ name: "Кофе", link: '/shop', key: 'coffe-beans' })}>Кофе</Dropdown.Item>
-                  <Dropdown.Item onClick={()=> masterNavigate({ name: "Чаи", link: '/shop', key: 'tea' })}>Чаи</Dropdown.Item>
-                  <Dropdown.Item onClick={()=> masterNavigate({ name: "Сиропы", link: '/shop', key: 'syrup' })}>Сиропы</Dropdown.Item>
-                  <Dropdown.Item onClick={()=> masterNavigate({ name: "Химия", link: '/shop', key: 'chemistry' })}>Химия</Dropdown.Item>
-                  <Dropdown.Item onClick={()=> masterNavigate({ name: "Аксессуары", link: "/shop", key: 'accessory' })}>Аксессуары</Dropdown.Item>
-                  <Dropdown.Item onClick={()=> masterNavigate({ name: "Капсулы", link: "/shop", key: 'coffee-capsule' })}>Капсула</Dropdown.Item>
+              <div className='flex flex-col justify-end'>
+                <div className='flex flex-col gap-2 text-md text-center justify-center'>
+                  <Dropdown placement='auto' size='lg' label="Страницы" inline>
+                    <Link to={'/'}><Dropdown.Item>Главная</Dropdown.Item></Link>
+                    <Link to={'/shop'}><Dropdown.Item>Магазин</Dropdown.Item></Link>
+                    <Dropdown.Item>Школа бариста</Dropdown.Item>
+                    <a href={JS_BARISTA}><Dropdown.Item>Личный кабинет</Dropdown.Item></a>
+                    {/*<Dropdown.Item>Рецепты</Dropdown.Item>*/}
+                    {/*<Dropdown.Item>Энциклопедия</Dropdown.Item>*/}
+                  </Dropdown>
+                  <Dropdown placement='auto' size='lg' label="Каталог" inline>
+                    <Link to={'/shop'}><Dropdown.Item>Кофе</Dropdown.Item></Link>
+                    <Link to={'shop'}><Dropdown.Item>Чаи</Dropdown.Item></Link>
+                    <Link to={'shop'}><Dropdown.Item>Сиропы</Dropdown.Item></Link>
+                    <Link to={'shop'}><Dropdown.Item>Химия</Dropdown.Item></Link>
+                    <Link to={'shop'}><Dropdown.Item>Аксессуары</Dropdown.Item></Link>
+                  </Dropdown>
+                  <Dropdown placement='auto' size='lg' label="Прочее" inline>
+                    <Link to={'/others/about'} ><Dropdown.Item>О нас</Dropdown.Item></Link>
+                    <Link to={'/others/payndelivery'}><Dropdown.Item>Оплата и доставка</Dropdown.Item></Link>
+                    <Link to={'others/contacts'}><Dropdown.Item>Контакты</Dropdown.Item></Link>
+                    <Link to={'/others/privacypolicy'}><Dropdown.Item>Политика конфеденциальеости</Dropdown.Item></Link>
+                    <Link to={'/others/publicoffer'}><Dropdown.Item>Публичная оферта</Dropdown.Item></Link>
+                  </Dropdown>
 
-                </Dropdown>
-                <Dropdown placement='auto' size='lg' label="Прочее" inline>
-                  <Dropdown.Item onClick={()=> masterNavigate({link:"/others/about"})}>О нас</Dropdown.Item>
-                  <Dropdown.Item onClick={()=> masterNavigate({link:"/others/pay-n-delivery"})}>Оплата и доставка</Dropdown.Item>
-                  <Dropdown.Item onClick={()=> masterNavigate({link:"/others/wholesellers"})}>ОПТ</Dropdown.Item>
-                  <Dropdown.Item onClick={()=> masterNavigate({link:"/others/contacts"})}>Контакты</Dropdown.Item>
-                  <Dropdown.Item onClick={()=> masterNavigate({link:"/others/pravicypolicy"})}>Политика конфеденциальеости</Dropdown.Item>
-                  <Dropdown.Item onClick={()=> masterNavigate({link:"/others/publicoffer"})}>Публичная оферта</Dropdown.Item>
+                </div>
 
-                </Dropdown>
               </div>
             </div>
           </div>
