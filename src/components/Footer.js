@@ -13,6 +13,7 @@ import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { JS_BARISTA } from "../utils/consts";
 import { useDispatch, useSelector } from 'react-redux';
 import { cancelSelectedProducts } from '../store/slices/serviceDataSlice';
+import { motion } from 'framer-motion';
 //import {Link} from 'react-router-dom'
 
 const LINKS = [
@@ -63,10 +64,23 @@ const Footer = () => {
       navigate(link.link, { state: link?.key ? link.key : null })
     }
   }
+
+  const textAnimationY = {
+    hidden: {
+      y: 100,
+      opacity: 0
+    },
+    visible: custom => ({
+      y: 0,
+      opacity: 1,
+      transition: { delay: custom * 0.2 }
+    })
+  }
   return (
     <footer className="bg-gray-100 pb-5 max-w-screen-full rounded-none px-4 2xl:px-0 lg:px-8 lg:py-4 flex w-full flex-row flex-wrap items-center justify-center gap-y-6 gap-x-12 border-t border-blue-gray-50 py-6 text-center md:justify-between">
+      <motion.div
 
-      <div className='hidden md:flex w-full flex-wrap lg:flex-nowrap'>
+        className='hidden md:flex w-full flex-wrap lg:flex-nowrap'>
         <div className='flex flex-wrap md:flex-nowrap mx-auto'>
           <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 justify-between gap-2 text-start text-xs">
             <div className='mr-4'>
@@ -90,8 +104,13 @@ const Footer = () => {
                 &copy; 2019 COFFEE ROASTERY GROUP
               </p>
             </div>
-            {LINKS.map(({ title, items }) => (
-              <ul key={title} className='mx-1'>
+            {LINKS.map(({ title, items },index) => (
+              <motion.ul
+
+                initial="hidden"
+                whileInView="visible"
+                custom={index + 1}
+                key={title} className='mx-1'>
                 <Typography
                   variant="small"
                   color="blue-gray"
@@ -100,7 +119,9 @@ const Footer = () => {
                   {title}
                 </Typography>
                 {items.map((link, index) => (
-                  <li
+                  <motion.li
+                    variants={textAnimationY}
+                    custom={index + 1}
                     onClick={() => masterNavigate(link)}
                     key={index * 5} className="text-xs py-1 font-normal transition-colors hover:text-red-400">
                     <Typography
@@ -108,9 +129,9 @@ const Footer = () => {
                     >
                       {link.name}
                     </Typography>
-                  </li>
+                  </motion.li>
                 ))}
-              </ul>
+              </motion.ul>
             ))}
 
           </div>
@@ -123,7 +144,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       <div className='flex w-full px-3 md:hidden'>
         <div className='flex flex-col w-full'>
