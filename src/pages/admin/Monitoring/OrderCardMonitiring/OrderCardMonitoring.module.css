@@ -1,31 +1,27 @@
 .container{
-    width: 100%;
+    width: max-content;
     height: auto;
-    /* border: 1px solid black; */
-    /* padding: 0 0 5px 0; */
-    margin-bottom: 12px;
+    border-radius: 10px;
+    margin: 12px auto;
     box-shadow: 2px 1px 8px black;
     text-align: start;
 }
 
-
 .header{
     padding: 5px 0 5px 10px;
-    /* height: 25px; */
-    font-size: 16px;
     font-weight: 700;
     border-bottom: 1px solid black;
+    margin: 10px auto;
 }
 
 .main{
     padding: 10px;
-    font-size: 16px;
+    text-align: center;
 }
 
 .footer{
-    width: 100%;
+    margin: 10px auto;
     height: 40px;
-    /* border: 1px solid black; */
     padding: 0 10px;
     display: flex;
     justify-content: space-between;

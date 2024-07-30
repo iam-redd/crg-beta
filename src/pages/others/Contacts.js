@@ -13,9 +13,15 @@ const Contacts = () => {
                 <p className='text-lg py-2'>
                     Г. Ташкент, Шайхонтахурский р-н, Ул. Кукча Дарвоза Кунчилик-37
                     <br/>Телефон:
-                    <span className='mx-1.5 cursor-pointer hover:text-red-500'><a href="tel:+998998992012">+998(99) 899-20-12</a></span>
+                    <span className='mx-1.5 cursor-pointer text-blue-500 hover:text-red-500'><a
+                        href="tel:+998998992012">+998(99) 899-20-12</a></span>
                     ,
-                    <span className='mx-1.5 cursor-pointer hover:text-red-500'><a href='tel:+998909555562'>+998(90) 955-55-62</a></span>
+                    <span className='mx-1.5 cursor-pointer text-blue-500 hover:text-red-500'><a
+                        href='tel:+998909555562'>+998(90) 955-55-62</a></span>
+                    ,
+                    <span className='mx-1.5 cursor-pointer text-blue-500 hover:text-red-500'>
+                    ,
+                        <a  href="tel:+998335666663">+998(33)566-66-63</a></span>
                 </p>
                 <a href='https://t.me/coffee_zdes' target='_blank'>
                     <Button color='red' variant='outlined' className="flex items-center gap-3 mt-4">
@@ -29,14 +35,12 @@ const Contacts = () => {
                 </a>
                 <p className='text-lg font-medium mt-4'>Как до нас добраться?
                     <a href='https://yandex.uz/maps/-/CDbD505E' target='_blank' rel='noreferrer'>
-                    <span className='hover:text-red-400 ml-2'>
+                    <span className='hover:text-red-400 text-red-300 ml-2 border-b'>
                         Яндекс.Карты
                     </span>
                     </a>
                 </p>
             </div>
-
-
         </div>
     )
         ;

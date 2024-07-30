@@ -5,6 +5,7 @@ import icon from '../../../../assets/icons/iconbottom.png'
 import { AnimatePresence, motion } from 'framer-motion'
 import ProductCard from './ProductCard/ProductCard'
 import { useSelector } from 'react-redux'
+import {Chip} from "@material-tailwind/react";
 export default function OrderCardMonitorng({ data, getAllOrders, index }) {
     const [isVisible, setVisible] = useState(false)
     const [isVisible2, setVisible2] = useState(false)
@@ -23,7 +24,7 @@ export default function OrderCardMonitorng({ data, getAllOrders, index }) {
                     <div className={styles.header}>
                         № {data.identifier}
                     </div>
-                    <div className={styles.main}>
+                    <div className={` text-md font-medium ${styles.main}`}>
                         <p>Заказчик: <span className={styles.status}>{data.userName}</span></p>
                         <p>Статус: <span className={styles.status}>{data.status}</span></p>
                         <p>Дата заказа: <span className={styles.status}>{data.creationDate}</span></p>
@@ -31,11 +32,12 @@ export default function OrderCardMonitorng({ data, getAllOrders, index }) {
                         <p>Способ оплаты: <span className={styles.status}>{data.paymentMethod}</span></p>
                     </div>
                     <div
-                        className={styles.footer}
+                        className={`w-max flex gap-6 ${styles.footer}`}
                         onClick={handleVisible}>
-                        <span>
+                        <span className='font-medium text-md'>
                             {
                                 <>
+                                    В корзине: &#160;
                                     {
                                         data.listProducts.length
                                     }
@@ -71,7 +73,7 @@ export default function OrderCardMonitorng({ data, getAllOrders, index }) {
                                 animate={{ height: "auto" }}
                                 exit={{ height: 0 }}
                             >
-                                <div className={styles.list_wrapper}>
+                                <div className={` ${styles.list_wrapper}`}>
                                     {
                                         data.listProducts.map((product, x) => {
                                             return (
@@ -133,11 +135,11 @@ export default function OrderCardMonitorng({ data, getAllOrders, index }) {
                                 animate={{ height: "auto" }}
                                 exit={{ height: 0 }}
                                 style={{ overflow: 'hidden' }}>
-                                <div className={styles.list_wrapper}>
+                                <div className={`mx-auto ${styles.list_wrapper}`}>
                                     {
                                         data.rejectedList.map((product, index) => {
                                             return (
-                                                <ProductCard data={product} key={index} isVisible={isVisibleEdit} orderId={data._id} getAllOrders={getAllOrders} />
+                                                <ProductCard  data={product} key={index} isVisible={isVisibleEdit} orderId={data._id} getAllOrders={getAllOrders} />
                                             )
                                         })
                                     }
