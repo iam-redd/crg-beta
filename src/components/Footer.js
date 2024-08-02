@@ -180,7 +180,6 @@ const Footer = () => {
             &copy; 2019 COFFEE ROASTERY GROUP
           </p>
         </div>
-      </div>
     </footer>
   );
 };

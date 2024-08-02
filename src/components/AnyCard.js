@@ -133,24 +133,6 @@ const AnyCard = ({ data }) => {
                         <span> {userInfo !== null && userInfo.role === 'superUser' ? data.priceWS[0] : data.priceUser[0]}
                         </span> UZS</Typography>
                 </div>
-                {/* <div className='flex mt-5 items-center justify-between'>
-                    {
-                        boolBasket ?
-                            <Button
-                                variant='outlined'
-                                color='red'
-                                onClick={() => navigate('/basket')}>
-                                <span>
-                                    <img style={{ display: 'inline-block', marginRight: '5px' }} width={24} height={24} src={cart} alt="" />
-                                </span>
-                                Перейти
-                            </Button> :
-                            <Button
-                                variant='outlined'
-                                color='red'
-                                onClick={addToBasketе}>В корзину</Button>
-                    }
-                </div> */}
                         <div className='flex mt-5 items-center justify-between'>
                             {
 
@@ -187,9 +169,7 @@ const AnyCard = ({ data }) => {
 
                         </div>
                     </Card>
-                </motion.div>
-            }
-        </>
+                </div>
     );
 };
 

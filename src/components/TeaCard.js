@@ -57,7 +57,7 @@ const TeaCard = ({ data }) => {
         }
     }
 
-
+    const notifyError = (text) => toast.error(text);
     function addToBasket() {
         setPackageIndex(0)
         setPackageColor(false)
