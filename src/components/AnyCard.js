@@ -21,6 +21,7 @@ const AnyCard = ({ data }) => {
     const [amount, setAmount] = useState(1)
     const [boolBasket, setBoolBasket] = useState(allProductsId.includes(data._id) ? true : false)
     const [index, setIndex] = useState(null)
+    const [description, setDescription] = useState(data !== null ? data.description : null)
     const notifyError = (text) => toast.error(text);
     let type = ''
     if (data.type === 'coffe-beans') type = 'Кофе'
@@ -91,9 +92,21 @@ const AnyCard = ({ data }) => {
         setIndex(basket.length)
         setBoolBasket(true)
     }
+    if(description.split(' ').includes('/n')){
+        const temp = `
+        ${data.name}/n
+        =========/n
+        ${description}
+        `
+        console.log(temp)
+
+    }
 
     useEffect(() => {
         const template = basket.filter(product => product.id === data._id)
+        if (data !== null && description === null) {
+            setDescription(data.description)
+        }
         if (template.length > 0) {
             setAmount(template[0].amount)
             setIndex(template[0].index)
@@ -138,7 +151,10 @@ const AnyCard = ({ data }) => {
                                 <p className='text-justify text-sm sm:text-md md:text-md lg:text-md xl:text-md 2xl:text-md'>
                                     Описание: &nbsp;
                                     <span className='description'>
-                                        {data.description}
+                                        {
+                                            data.description
+                                        }
+                                       {/* <Text>{"Привет, первая строка\nПривет, вторая строка"}</Text> */}
                                     </span>
                                 </p>
                             </ReactSpoiler>

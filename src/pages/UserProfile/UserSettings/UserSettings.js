@@ -12,9 +12,15 @@ import { toast } from "react-toastify";
 export default function MySettings() {
     const userInfo = useSelector(state => state.user.userInfo)
     const notifyError = (text) => toast.error(text);
+    const notifySuccess = (text) => toast.success(text);
+    const notifyWarning = (text) => toast.warning(text);
+
     const [, setMessage] = useState(null)
     const [paramsBool, setParams] = useState(false)
     const [image, setImage] = useState('')
+    const addressDop = useRef(null)
+    const nameOrganization = useRef(null)
+
     const dispatch = useDispatch()
     async function onSetting(e) {
         try {
@@ -36,6 +42,7 @@ export default function MySettings() {
                 window.location.reload();
             }
         } catch (e) {
+            console.log(e)
             if (e?.response?.status === 500) {
                 notifyError(e.response.data.message)
             } else {
@@ -65,6 +72,38 @@ export default function MySettings() {
         }
         setLoading(false)
     };
+
+    async function addAddress(e) {
+        try {
+            e.preventDefault()
+            if (addressDop.current.children[0].value.trim() === '') {
+                return notifyWarning('Заполните полю для организации')
+            }
+            if (nameOrganization.current.children[0].value.trim() === '') {
+                return notifyWarning('Заполните полю для адреса')
+            }
+            const options = {
+                address: addressDop.current.children[0].value.trim(),
+                organization: nameOrganization.current.children[0].value.trim()
+            }
+            // console.log(options)
+            const res = await axios.patch('/add-destination-point', { address: options })
+            if (res?.message && res.status === 200) {
+                notifySuccess(res.message)
+                setTimeout(()=> {
+                    window.location.reload();
+                },3000)
+            }
+            addressDop.current.children[0].value = ''
+            nameOrganization.current.children[0].value = ''
+        }
+        catch (error) {
+            error?.message ? notifyError(error.message) : notifyError(error)
+        }
+
+    }
+
+
 
 
 
@@ -140,50 +179,45 @@ export default function MySettings() {
                                         onInput={(e) => e.target.value.trim() !== userInfo.telegram ? setParams(true) : setParams(false)}
                                     />
                                 </div>
-                                <div>
-                                    {/* <Input
-                                        label="Адрес"
-                                        defaultValue={userInfo?.address[0] ? userInfo.address[0] : ''}
-                                        name="address"
-                                        onInput={(e) => e.target.value.trim() !== userInfo.address[0] ? setParams(true) : setParams(false)}
-                                    /> */}
-                                    {
-                                        userInfo !== null && userInfo.address.map((address, index) => {
-                                            return (
-                                                <Input
-                                                    label={`${userInfo.address.length > 1 ? `Адрес ${index}`: `Адрес`}`}
-                                                    defaultValue={userInfo?.address[index] ? userInfo.address[index] : ''}
-                                                    name="address"
-                                                    onInput={(e) => e.target.value.trim() !== userInfo.address[index] ? setParams(true) : setParams(false)}
-                                                />
-                                            )
-                                        })
-                                    }
+                                <div >
+                                    <span className="flex flex-col gap-2 p-4 md:p-0">{
+                                        userInfo !== null && userInfo.role === 'user' ? <Input
+                                            label={`Адрес`}
+                                            defaultValue={userInfo?.address[0]?.address}
+                                            name="address"
+                                            onInput={(e) => e.target.value.trim() !== userInfo.address[0] ? setParams(true) : setParams(false)} /> :
+                                            <>
+                                                {
+                                                    userInfo.address.map((address, index) => {
+                                                        return (
+                                                            <Input
+                                                                key={index}
+                                                                label={`${address?.organization ? address.organization  : `Адрес ${index + 1}`}`}
+                                                                defaultValue={address?.address ? address.address : ''}
+                                                                name={`address${index}`}
+                                                                onInput={(e) => e.target.value.trim() !== userInfo.address[index] ? setParams(true) : setParams(false)}
+                                                            />
+                                                        )
+                                                    })
+                                                }
+                                            </>
+                                    }</span>
                                     <span>Здесь можно добавить ещё один адресс</span>
-                                    {
-                                        userInfo !== null && <Input
-                                            label="Адрес"
-                                            defaultValue={''}
-                                            name="addressDop"
-                                            onInput={(e) => e.target.value.trim() !== '' && setParams(true)}
-                                        />
-                                    }
-
                                 </div>
                                 {userInfo.role === 'superUser' ?
-                                    <div className="flex flex-col gap-2">
+                                    <form className="flex flex-col gap-2" onSubmit={addAddress}>
                                         <div>
-                                            <Input label="Организация:" defaultValue={userInfo.userOrganizatsion} />
+                                            <Input label="Организация:" ref={nameOrganization} defaultValue={''} name="nameOrganization" />
                                         </div>
                                         <div className="flex items-center gap-2">
                                             <div className="flex-1">
-                                                <Input label="Адрес организации:" />
+                                                <Input label="Адрес организации:" ref={addressDop} name="addressDop" />
                                             </div>
-                                            <Button size="sm" variant="outlined" className="flex-none">+</Button>
+                                            <Button size="sm" onClick={addAddress} variant="outlined" className="flex-none">+</Button>
                                         </div>
-                                    </div>
+                                    </form>
                                     :
-                                    <div></div>
+                                    <></>
                                 }
                             </div>
                         </div>

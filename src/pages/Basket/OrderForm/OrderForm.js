@@ -13,17 +13,25 @@ export default function OrderForm({ totalPrice }) {
     const [checkBool, setCheckBool] = useState(false)
     const [isError, setError] = useState(false)
     const [errorMessage, setMessage] = useState('')
+    const userInfo = useSelector(state => state.user.userInfo)
+    const [address, setAddress] = useState(userInfo !== null ? userInfo.role === 'superUser' ? null : userInfo.address[0].address : null)
     const dispatch = useDispatch()
     const basket = useSelector(state => state.basket.basket)
-    const userInfo = useSelector(state => state.user.userInfo)
     const [paymentMethod, changePay] = useState(null)
     const [pomolColor, setPomoltColor] = useState(false)
     const [butloading, setButloading] = useState(false);
     async function newOrder(e) {
         try {
             e.preventDefault()
-
             setError(false)
+            setMessage('')
+            console.log(address)
+            if(userInfo.role === 'superUser' && address === null){
+                setMessage('Адрес доставки не выбран')
+                setError(true)
+                setBtnBool(false)
+                return
+            }
             if (paymentMethod === null) {
                 // setPomoltColor(true)
                 setMessage('Способ оплаты не выбран')
@@ -49,7 +57,7 @@ export default function OrderForm({ totalPrice }) {
                 return
             }
             setButloading(true)
-            const options = { basket, comment, totalPrice, paymentMethod }
+            const options = { basket, comment, totalPrice, paymentMethod ,address }
             const data = await axios.post('/new-order', options)
             if (data.status === 200) {
                 dispatch(cancelBasket())
@@ -79,6 +87,22 @@ export default function OrderForm({ totalPrice }) {
             {
                 basket.length > 0 && userInfo !== null ?
                     <form className={`py-2  ${styles.form}`} onSubmit={newOrder}>
+                        {
+                            userInfo.role === 'superUser' && userInfo.address.length > 1 &&
+                            <div className='p-2 rounded bg-gray-100'>
+                                <Select size="md"
+                                onChange={(e)=> setAddress(e)}
+                                    label="Выберите адрес доставки">
+                                    {
+                                        userInfo.address.map((item, index) => {
+                                            return (
+                                                <Option key={index} value={item.address}>{item.organization}</Option>
+                                            )
+                                        })
+                                    }
+                                </Select>
+                            </div>
+                        }
                         <div className='p-2 rounded bg-gray-100'>
                             <div className='col-span-3 w-auto'>
                                 <Select size="md"
@@ -87,7 +111,7 @@ export default function OrderForm({ totalPrice }) {
                                     style={{ borderColor: pomolColor ? "red" : '' }}
                                     onClick={handlePomolColor}>
                                     <>{
-                                        userInfo.role !== 'user' && <Option value='Перечислением'>Перечислением</Option>
+                                        userInfo.role === 'superUser' && <Option value='Перечислением'>Перечислением</Option>
                                     }</>
                                     <Option value='PayMe'>PayMe</Option>
                                     <Option value='Другое'>Другое</Option>

@@ -123,7 +123,7 @@ const Footer = () => {
                     variants={textAnimationY}
                     custom={index + 1}
                     onClick={() => masterNavigate(link)}
-                    key={index * 5} className="text-xs py-1 font-normal transition-colors hover:text-red-400">
+                    key={index * 5} className="text-xs py-1 font-normal transition-colors hover:text-red-400 cursor-pointer">
                     <Typography
                       color="gray"
                     >

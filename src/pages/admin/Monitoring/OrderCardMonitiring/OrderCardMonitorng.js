@@ -5,7 +5,7 @@ import icon from '../../../../assets/icons/iconbottom.png'
 import { AnimatePresence, motion } from 'framer-motion'
 import ProductCard from './ProductCard/ProductCard'
 import { useSelector } from 'react-redux'
-import {Chip} from "@material-tailwind/react";
+import { Chip } from "@material-tailwind/react";
 export default function OrderCardMonitorng({ data, getAllOrders, index }) {
     const [isVisible, setVisible] = useState(false)
     const [isVisible2, setVisible2] = useState(false)
@@ -25,11 +25,18 @@ export default function OrderCardMonitorng({ data, getAllOrders, index }) {
                         № {data.identifier}
                     </div>
                     <div className={` text-md font-medium ${styles.main}`}>
-                        <p>Заказчик: <span className={styles.status}>{data.userName}</span></p>
+
+                        <p>Заказчик: <span className={styles.status}>
+                            {
+                            data.user.role === 'superUser' ? data.user.organization.name : data.user.name
+                        }
+                        </span></p>
                         <p>Статус: <span className={styles.status}>{data.status}</span></p>
                         <p>Дата заказа: <span className={styles.status}>{data.creationDate}</span></p>
                         <p>Сумма заказа: <span className={styles.status}>{data.totalPrice}</span></p>
                         <p>Способ оплаты: <span className={styles.status}>{data.paymentMethod}</span></p>
+                        <p>Адресс: <span className={styles.status}>{data.address}</span></p>
+
                     </div>
                     <div
                         className={`w-max flex gap-6 ${styles.footer}`}
@@ -98,7 +105,7 @@ export default function OrderCardMonitorng({ data, getAllOrders, index }) {
                     {
                         data.rejectedList.length > 0 &&
                         <div className={styles.footer}
-                             onClick={handleVisible2}>
+                            onClick={handleVisible2}>
                             <span>
                                 <> Удалённые товары из заказа
                                     {
@@ -139,7 +146,7 @@ export default function OrderCardMonitorng({ data, getAllOrders, index }) {
                                     {
                                         data.rejectedList.map((product, index) => {
                                             return (
-                                                <ProductCard  data={product} key={index} isVisible={isVisibleEdit} orderId={data._id} getAllOrders={getAllOrders} />
+                                                <ProductCard data={product} key={index} isVisible={isVisibleEdit} orderId={data._id} getAllOrders={getAllOrders} />
                                             )
                                         })
                                     }

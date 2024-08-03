@@ -65,7 +65,7 @@ export default function UserHeader() {
                                         <div className={styles.userAddress}>Адрес доставки:
                                             <ul>
                                                 {
-                                                    userInfo.address.map(address => <li key={address}><span>{address}</span></li>)
+                                                    userInfo.address.map(address => <li key={address.address}><span>{address.address}</span></li>)
                                                 }
                                             </ul>
                                         </div>
