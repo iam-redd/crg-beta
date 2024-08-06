@@ -25,14 +25,17 @@ export default function MySettings() {
     async function onSetting(e) {
         try {
             e.preventDefault()
+            const address = []
+            userInfo.address.map((item,index)=> {
+                address.push({organization: item.organization,address:e.target[`address${index}`].value})
+            })
             let options = {
                 name: e.target.name.value,
                 email: e.target.email.value,
                 telegram: e.target.telegram.value,
-                address: e.target.address.value,
+                address: address,
                 avatarUrl: image,
                 phoneNumber: e.target.phoneNumber.value,
-                addressDop: e.target.addressDop.value
             }
 
             const response = await axios.patch(`/update-user-data`, options)
@@ -64,6 +67,10 @@ export default function MySettings() {
             const response = await axios.post(`/upload `, formData);
             if (response.status === 200) {
                 setImage(response.data.imagePath)
+                notifySuccess('Данные успешно обновлены')
+                setTimeout(() => {
+                    window.location.reload();
+                }, 3000)
             }
             setParams(true)
         } catch (error) {
@@ -90,9 +97,9 @@ export default function MySettings() {
             const res = await axios.patch('/add-destination-point', { address: options })
             if (res?.message && res.status === 200) {
                 notifySuccess(res.message)
-                setTimeout(()=> {
+                setTimeout(() => {
                     window.location.reload();
-                },3000)
+                }, 3000)
             }
             addressDop.current.children[0].value = ''
             nameOrganization.current.children[0].value = ''
@@ -181,28 +188,29 @@ export default function MySettings() {
                                 </div>
                                 <div >
                                     <span className="flex flex-col gap-2 p-4 md:p-0">{
-                                        userInfo !== null && userInfo.role === 'user' ? <Input
-                                            label={`Адрес`}
-                                            defaultValue={userInfo?.address[0]?.address}
-                                            name="address"
-                                            onInput={(e) => e.target.value.trim() !== userInfo.address[0] ? setParams(true) : setParams(false)} /> :
+                                        userInfo !== null && userInfo.role === 'superUser' ?
                                             <>
                                                 {
                                                     userInfo.address.map((address, index) => {
                                                         return (
                                                             <Input
                                                                 key={index}
-                                                                label={`${address?.organization ? address.organization  : `Адрес ${index + 1}`}`}
+                                                                label={`${address?.organization ? address.organization : `Адрес ${index + 1}`}`}
                                                                 defaultValue={address?.address ? address.address : ''}
                                                                 name={`address${index}`}
-                                                                onInput={(e) => e.target.value.trim() !== userInfo.address[index] ? setParams(true) : setParams(false)}
+                                                                onInput={(e) => e.target.value.trim() !== userInfo.address[index].address ? setParams(true) : setParams(false)}
                                                             />
                                                         )
                                                     })
                                                 }
-                                            </>
+                                                <span>Здесь можно добавить ещё один адресс</span>
+                                            </> :
+                                            <Input
+                                                label={`Адрес`}
+                                                defaultValue={userInfo?.address[0]?.address}
+                                                name="address"
+                                                onInput={(e) => e.target.value.trim() !== userInfo.address[0] ? setParams(true) : setParams(false)} />
                                     }</span>
-                                    <span>Здесь можно добавить ещё один адресс</span>
                                 </div>
                                 {userInfo.role === 'superUser' ?
                                     <form className="flex flex-col gap-2" onSubmit={addAddress}>

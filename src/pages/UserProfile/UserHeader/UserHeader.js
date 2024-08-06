@@ -27,7 +27,7 @@ export default function UserHeader() {
 
     //}
     return (
-        <>
+        <div>
             <div>
                 {
                     userInfo !== null ?
@@ -62,17 +62,18 @@ export default function UserHeader() {
                                     <div className={styles.userPhone}>Номер телефона: <span>{userInfo.phoneNumber}</span></div>
                                     {
                                         // userInfo?.address?.length === 1 ? <div className={styles.userAddress}>Адрес доставки: <span>{userInfo.address[0]}</span></div> :
-                                        <div className={styles.userAddress}>Адрес доставки:
-                                            <ul>
-                                                {
-                                                    userInfo.address.map(address => <li key={address.address}><span>{address.address}</span></li>)
-                                                }
-                                            </ul>
-                                        </div>
+                                        // <div className={styles.userAddress}>Адрес доставки:
+                                        //     <ul>
+                                        //         {
+                                        //             userInfo !== null && userInfo.role === 'superUser' ? <>{ userInfo.address.map(address => <li key={address.address}><span>{address.address}</span></li>)}</> :
+                                        //             <li><span>{userInfo.address[0].address}</span></li>
+                                        //         }
+                                        //     </ul>
+                                        // </div>
                                     }
 
-                                    {(userInfo.role === 'admin' || userInfo.role === 'superUser') &&
-                                        <div className={styles.userOrg}>Организация: {userInfo.org}</div>}
+                                    {/* {(userInfo.role === 'admin' || userInfo.role === 'superUser') &&
+                                        <div className={styles.userOrg}>Организация: {userInfo.organization}</div>} */}
                                 </div>
                             </div>
                             <div className={styles.unauto}>
@@ -127,8 +128,8 @@ export default function UserHeader() {
 
                     // <Navigate to='/login'/>
                 }
-<Outlet/>
+                <Outlet />
             </div >
-        </>
+        </div>
     )
 }

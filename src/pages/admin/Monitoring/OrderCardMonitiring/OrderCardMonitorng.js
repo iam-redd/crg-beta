@@ -33,6 +33,7 @@ export default function OrderCardMonitorng({ data, getAllOrders, index }) {
                         </span></p>
                         <p>Статус: <span className={styles.status}>{data.status}</span></p>
                         <p>Дата заказа: <span className={styles.status}>{data.creationDate}</span></p>
+                        <p>Менеджер: <span className={styles.status}>{data.manager.name}</span></p>
                         <p>Сумма заказа: <span className={styles.status}>{data.totalPrice}</span></p>
                         <p>Способ оплаты: <span className={styles.status}>{data.paymentMethod}</span></p>
                         <p>Адресс: <span className={styles.status}>{data.address}</span></p>
